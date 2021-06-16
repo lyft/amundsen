@@ -842,3 +842,9 @@ def get_column_lineage() -> Response:
     except Exception as e:
         payload = jsonify({'msg': 'Encountered exception: ' + str(e)})
         return make_response(payload, HTTPStatus.INTERNAL_SERVER_ERROR)
+
+# TODO - this should return a 'not-implemented error'
+# @metadata_blueprint.route('/get_data_quality_checks', methods=['GET'])
+# def get_data_quality_checks() -> Response:
+#
+#

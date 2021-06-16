@@ -1,0 +1,29 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+.table-quality-checks {
+  .checks-status,
+  .last-run-timestamp {
+    @extend %text-body-w2;
+  }
+}
+
+$title-line-height: 24px;
+$content-line-height: 18px;
+
+.shimmer-table-quality-checks {
+  margin-top: 40px;
+  height: 90px;
+
+  .shimmer-title-row {
+    height: $title-line-height;
+  }
+
+  .shimmer-content-row {
+    height: $content-line-height;
+    margin-top: $spacer-1;
+  }
+}

@@ -124,3 +124,11 @@ export interface Watermark {
   partition_value: string;
   watermark_type: string;
 }
+
+export interface TableQualityChecks {
+  external_url: string;
+  last_run_timestamp: number | null;
+  num_checks_success: number;
+  num_checks_failed: number;
+  num_checks_total: number;
+}

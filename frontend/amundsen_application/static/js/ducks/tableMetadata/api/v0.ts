@@ -9,6 +9,7 @@ import {
   User,
   Tag,
   Lineage,
+  TableQualityChecks,
 } from 'interfaces';
 
 /** HELPERS **/
@@ -38,6 +39,7 @@ export type RelatedDashboardDataAPI = {
   dashboards: DashboardResource[];
 } & MessageAPI;
 export type LineageAPI = { lineage: Lineage } & MessageAPI;
+export type TableQualityChecksAPI = { checks: TableQualityChecks } & MessageAPI;
 
 export function getTableData(key: string, index?: string, source?: string) {
   const tableQueryParams = getTableQueryParams({ key, index, source });
@@ -180,5 +182,61 @@ export function getPreviewData(queryParams: PreviewQueryParams) {
       }
       const status = response ? response.status : null;
       return Promise.reject({ data, status });
+    });
+}
+
+export function getTableLineage(key: string) {
+  const tableQueryParams = getTableQueryParams({ key });
+  return axios({
+    url: `${API_PATH}/get_table_lineage?${tableQueryParams}`,
+    method: 'GET',
+  })
+    .then((response: AxiosResponse<LineageAPI>) => ({
+      data: response.data,
+      status: response.status,
+    }))
+    .catch((e: AxiosError<LineageAPI>) => {
+      const { response } = e;
+      const status = response ? response.status : null;
+      return Promise.reject({ status });
+    });
+}
+
+export function getColumnLineage(key: string, columnName: string) {
+  const tableQueryParams = getTableQueryParams({
+    key,
+    column_name: columnName,
+  });
+  return axios({
+    url: `${API_PATH}/get_column_lineage?${tableQueryParams}`,
+    method: 'GET',
+  })
+    .then((response: AxiosResponse<LineageAPI>) => ({
+      data: response.data,
+      status: response.status,
+    }))
+    .catch((e: AxiosError<LineageAPI>) => {
+      const { response } = e;
+      const status = response ? response.status : null;
+      return Promise.reject({ status });
+    });
+}
+
+export function getTableQualityChecks(key: string) {
+  const tableQueryParams = getTableQueryParams({
+    key,
+  });
+  return axios({
+    url: `/api/quality/v0/table?${tableQueryParams}`,
+    method: 'GET',
+  })
+    .then((response: AxiosResponse<TableQualityChecksAPI>) => ({
+      checks: response.data.checks,
+      status: response.status,
+    }))
+    .catch((e: AxiosError<TableQualityChecksAPI>) => {
+      const { response } = e;
+      const status = response ? response.status : null;
+      return Promise.reject({ status });
     });
 }

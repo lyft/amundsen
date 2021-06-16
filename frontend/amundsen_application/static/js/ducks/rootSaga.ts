@@ -46,6 +46,7 @@ import {
   getColumnDescriptionWatcher,
   getPreviewDataWatcher,
   getTableDescriptionWatcher,
+  getTableQualityChecksWatcher,
   updateColumnDescriptionWatcher,
   updateTableDescriptionWatcher,
 } from './tableMetadata/sagas';
@@ -113,6 +114,7 @@ export default function* rootSaga() {
 
     getPreviewDataWatcher(),
     getTableDescriptionWatcher(),
+    getTableQualityChecksWatcher(),
     updateColumnDescriptionWatcher(),
     updateTableDescriptionWatcher(),
     updateTableOwnerWatcher(),

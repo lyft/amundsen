@@ -4,6 +4,7 @@ import {
   PreviewData,
   PreviewQueryParams,
   TableMetadata,
+  TableQualityChecks,
   Tag,
   User,
 } from 'interfaces';
@@ -32,6 +33,10 @@ import reducer, {
   initialTableDataState,
   initialState,
   TableMetadataReducerState,
+  getTableQualityChecks,
+  getTableQualityChecksSuccess,
+  getTableQualityChecksFailure,
+  emptyQualityChecks,
 } from './reducer';
 
 import {
@@ -47,6 +52,8 @@ import {
   updateColumnDescriptionWorker,
   getPreviewDataWatcher,
   getPreviewDataWorker,
+  getTableQualityChecksWatcher,
+  getTableQualityChecksWorker,
 } from './sagas';
 
 import {
@@ -56,6 +63,7 @@ import {
   GetColumnDescription,
   UpdateColumnDescription,
   GetPreviewData,
+  GetTableQualityChecks,
 } from './types';
 
 describe('tableMetadata ducks', () => {
@@ -68,6 +76,7 @@ describe('tableMetadata ducks', () => {
   let testKey: string;
   let testIndex: string;
   let testSource: string;
+  let testTableQualityChecks: TableQualityChecks;
 
   let columnIndex: number;
   let emptyPreviewData: PreviewData;
@@ -97,6 +106,14 @@ describe('tableMetadata ducks', () => {
     testKey = 'tableKey';
     testIndex = '3';
     testSource = 'search';
+    testTableQualityChecks = {
+      num_checks_total: 10,
+      num_checks_failed: 2,
+      num_checks_success: 8,
+      external_url: 'test_url',
+      last_run_timestamp: null,
+    };
+
     columnIndex = 2;
     emptyPreviewData = {
       columns: [],
@@ -254,6 +271,27 @@ describe('tableMetadata ducks', () => {
       const { payload } = action;
       expect(action.type).toBe(GetPreviewData.SUCCESS);
       expect(payload.data).toBe(previewData);
+      expect(payload.status).toBe(status);
+    });
+
+    it('getTableQualityChecks - returns the action to process failure', () => {
+      const status = 500;
+      const action = getTableQualityChecksFailure(status);
+      const { payload } = action;
+      expect(action.type).toBe(GetTableQualityChecks.FAILURE);
+      expect(payload.checks).toBe(emptyQualityChecks);
+      expect(payload.status).toBe(status);
+    });
+
+    it('getTableQualityChecks - returns the action to process success', () => {
+      const status = 500;
+      const action = getTableQualityChecksSuccess(
+        testTableQualityChecks,
+        status
+      );
+      const { payload } = action;
+      expect(action.type).toBe(GetTableQualityChecks.SUCCESS);
+      expect(payload.checks).toBe(testTableQualityChecks);
       expect(payload.status).toBe(status);
     });
   });
@@ -695,6 +733,42 @@ describe('tableMetadata ducks', () => {
           // @ts-ignore TODO: Investigate why redux-saga-test-plan throw() complains
           .throw({ data: previewData, status: 500 })
           .put(getPreviewDataFailure(previewData, 500))
+          .next()
+          .isDone();
+      });
+    });
+
+    describe('getTableQualityChecksWatcher', () => {
+      it('takes every GetTableQualityChecks.REQUEST with GetTableQualityChecksWorker', () => {
+        testSaga(getTableQualityChecksWatcher)
+          .next()
+          .takeLatest(
+            GetTableQualityChecks.REQUEST,
+            getTableQualityChecksWorker
+          )
+          .next()
+          .isDone();
+      });
+    });
+
+    describe('getTableQualityChecksWorker', () => {
+      it('executes flow for getting table quality checks', () => {
+        testSaga(getTableQualityChecksWorker, getTableQualityChecks(testKey))
+          .next()
+          .call(API.getTableQualityChecks, testKey)
+          .next({ checks: testTableQualityChecks, status: 200 })
+          .put(getTableQualityChecksSuccess(testTableQualityChecks, 200))
+          .next()
+          .isDone();
+      });
+
+      it('handles request error', () => {
+        testSaga(getTableQualityChecksWorker, getTableQualityChecks(testKey))
+          .next()
+          .call(API.getTableQualityChecks, testKey)
+          // @ts-ignore
+          .throw({ status: 500 })
+          .put(getTableQualityChecksFailure(500))
           .next()
           .isDone();
       });

@@ -13,6 +13,8 @@ import {
   getColumnDescriptionSuccess,
   getPreviewDataFailure,
   getPreviewDataSuccess,
+  getTableQualityChecksSuccess,
+  getTableQualityChecksFailure,
 } from './reducer';
 
 import {
@@ -28,6 +30,8 @@ import {
   UpdateColumnDescriptionRequest,
   UpdateTableDescription,
   UpdateTableDescriptionRequest,
+  GetTableQualityChecksRequest,
+  GetTableQualityChecks,
 } from './types';
 
 export function* getTableDataWorker(action: GetTableDataRequest): SagaIterator {
@@ -174,4 +178,21 @@ export function* getPreviewDataWorker(
 }
 export function* getPreviewDataWatcher(): SagaIterator {
   yield takeLatest(GetPreviewData.REQUEST, getPreviewDataWorker);
+}
+
+export function* getTableQualityChecksWorker(
+  action: GetTableQualityChecksRequest
+): SagaIterator {
+  const { key } = action.payload;
+  try {
+    const response = yield call(API.getTableQualityChecks, key);
+    const { checks, status } = response;
+    yield put(getTableQualityChecksSuccess(checks, status));
+  } catch (error) {
+    const { status } = error;
+    yield put(getTableQualityChecksFailure(status));
+  }
+}
+export function* getTableQualityChecksWatcher(): SagaIterator {
+  yield takeLatest(GetTableQualityChecks.REQUEST, getTableQualityChecksWorker);
 }

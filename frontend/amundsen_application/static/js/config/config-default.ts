@@ -243,6 +243,9 @@ const configDefault: AppConfig = {
     ) =>
       `https://DEFAULT_EXPLORE_URL?schema=${schema}&cluster=${cluster}&db=${database}&table=${table}`,
   },
+  tableQualityChecks: {
+    isEnabled: false,
+  },
 };
 
 export default configDefault;
