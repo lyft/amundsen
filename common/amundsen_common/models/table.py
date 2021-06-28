@@ -107,6 +107,18 @@ class ResourceReportSchema(AttrsSchema):
         register_as_scheme = True
 
 
+@attr.s(auto_attribs=True, kw_only=True)
+class Notice:
+    severity: str
+    message_html: str
+
+
+class NoticeSchema(AttrsSchema):
+    class Meta:
+        target = Notice
+        register_as_scheme = True
+
+
 # this is a temporary hack to satisfy mypy. Once https://github.com/python/mypy/issues/6136 is resolved, use
 # `attr.converters.default_if_none(default=False)`
 def default_if_none(arg: Optional[bool]) -> bool:
@@ -183,6 +195,7 @@ class Table:
     watermarks: List[Watermark] = []
     table_writer: Optional[Application] = None
     resource_reports: Optional[List[ResourceReport]] = None
+    notices: Optional[List[Notice]] = None
     last_updated_timestamp: Optional[int] = None
     source: Optional[Source] = None
     is_view: Optional[bool] = attr.ib(default=None, converter=default_if_none)

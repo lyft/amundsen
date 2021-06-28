@@ -56,6 +56,7 @@ export const initialTableDataState: TableMetadata = {
   table_readers: [],
   source: { source: '', source_type: '' },
   resource_reports: [],
+  notices: [],
   watermarks: [],
   programmatic_descriptions: {},
 };

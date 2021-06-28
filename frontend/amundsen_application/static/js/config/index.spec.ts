@@ -341,6 +341,7 @@ describe('generateExploreUrl', () => {
     table_readers: [],
     source: { source: '', source_type: '' },
     resource_reports: [],
+    notices: [],
     watermarks: [],
     programmatic_descriptions: {},
   };
@@ -463,6 +464,7 @@ describe('getColumnLineageLink', () => {
       table_readers: [],
       source: { source: '', source_type: '' },
       resource_reports: [],
+      notices: [],
       watermarks: [],
       programmatic_descriptions: {},
     };

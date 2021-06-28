@@ -151,6 +151,7 @@ class TestAtlasProxy(unittest.TestCase, Data):
                          description=ent_attrs['description'],
                          owners=[User(email=ent_attrs['owner'])],
                          resource_reports=[],
+                         notices=[],
                          last_updated_timestamp=int(str(self.entity1['updateTime'])[:10]),
                          columns=[exp_col] * self.active_columns,
                          watermarks=[],

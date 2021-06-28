@@ -8,6 +8,7 @@ import {
   FilterConfig,
   LinkConfig,
   NoticeType,
+  NoticeSeverity,
 } from './config-types';
 import { ResourceType } from '../interfaces';
 
@@ -83,6 +84,21 @@ export function getResourceNotices(
   return false;
 }
 
+/**
+ * Sorts notices: descending severity, ascending messageHtml
+ */
+export function sortNotices(notices: NoticeType[]): NoticeType[] {
+  const severityOrd = {
+    [NoticeSeverity.ALERT]: 0,
+    [NoticeSeverity.WARNING]: 1,
+    [NoticeSeverity.INFO]: 2,
+  };
+
+  return notices.sort((n1, n2) => {
+    const sevCmp = severityOrd[n1.severity] - severityOrd[n2.severity];
+    return sevCmp === 0 ? n1.messageHtml.localeCompare(n2.messageHtml) : sevCmp;
+  });
+}
 /**
  * Returns the displayName for the given resourceType
  */

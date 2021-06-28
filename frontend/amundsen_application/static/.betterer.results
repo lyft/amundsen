@@ -1040,11 +1040,11 @@ exports[`eslint`] = {
     "js/pages/TableDetailPage/index.spec.tsx:1320221888": [
       [64, 6, 25, "Use object destructuring.", "1230260048"]
     ],
-    "js/pages/TableDetailPage/index.tsx:2009672874": [
-      [135, 2, 20, "key should be placed after componentDidUpdate", "3916788587"],
-      [145, 22, 12, "\'getTableData\' is already declared in the upper scope.", "3938384029"],
-      [158, 22, 12, "\'getTableData\' is already declared in the upper scope.", "3938384029"],
-      [238, 6, 28, "\'openRequestDescriptionDialog\' is already declared in the upper scope.", "4102713454"]
+    "js/pages/TableDetailPage/index.tsx:955127622": [
+      [155, 2, 20, "key should be placed after componentDidUpdate", "3916788587"],
+      [165, 22, 12, "\'getTableData\' is already declared in the upper scope.", "3938384029"],
+      [178, 22, 12, "\'getTableData\' is already declared in the upper scope.", "3938384029"],
+      [258, 6, 28, "\'openRequestDescriptionDialog\' is already declared in the upper scope.", "4102713454"]
     ],
     "js/utils/textUtils.ts:2545492889": [
       [19, 6, 46, "Unexpected lexical declaration in case block.", "156477898"]

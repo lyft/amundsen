@@ -18,6 +18,7 @@ import { GetTableLineageRequest } from 'ducks/lineage/types';
 import { OpenRequestAction } from 'ducks/notification/types';
 import { UpdateSearchStateRequest } from 'ducks/search/types';
 
+import { NoticeSeverity } from 'config/config-types';
 import {
   getDescriptionSourceDisplayName,
   getMaxLength,
@@ -28,6 +29,7 @@ import {
   issueTrackingEnabled,
   isTableListLineageEnabled,
   notificationsEnabled,
+  sortNotices,
 } from 'config/config-utils';
 
 import BadgeList from 'features/BadgeList';
@@ -351,6 +353,13 @@ export class TableDetail extends React.Component<
         ResourceType.table,
         `${data.cluster}.${data.database}.${data.schema}.${data.name}`
       );
+      const dataNotices = data.notices.map((n) => ({
+        severity: n.severity as NoticeSeverity,
+        messageHtml: n.message_html,
+      }));
+      const notices = sortNotices(
+        tableNotice ? dataNotices.concat([tableNotice]) : dataNotices
+      );
 
       innerContent = (
         <div className="resource-detail-layout table-detail">
@@ -401,12 +410,12 @@ export class TableDetail extends React.Component<
           </header>
           <div className="column-layout-1">
             <aside className="left-panel">
-              {!!tableNotice && (
+              {notices.map((notice) => (
                 <Alert
-                  message={tableNotice.messageHtml}
-                  severity={tableNotice.severity}
+                  message={notice.messageHtml}
+                  severity={notice.severity}
                 />
-              )}
+              ))}
               <EditableSection
                 title={Constants.DESCRIPTION_TITLE}
                 readOnly={!data.is_editable}

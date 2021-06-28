@@ -16,7 +16,7 @@ from amundsen_common.models.feature import Feature
 from amundsen_common.models.generation_code import GenerationCode
 from amundsen_common.models.lineage import Lineage, LineageItem
 from amundsen_common.models.popular_table import PopularTable
-from amundsen_common.models.table import (Badge, Column,
+from amundsen_common.models.table import (Badge, Column, Notice,
                                           ProgrammaticDescription, Reader,
                                           ResourceReport, Stat, Table, Tag,
                                           User, Watermark)
@@ -326,6 +326,26 @@ class AtlasProxy(BaseProxy):
 
         return sorted(parsed_reports)
 
+    def _get_notices(self, guids: List[str]) -> List[Notice]:
+        notices = []
+        if guids:
+            notice_entities = self.client.entity.get_entities_by_guids(guids=guids)
+            for notice_entity in notice_entities.entities:
+                try:
+                    if notice_entity.status == AtlasStatus.ACTIVE:
+                        notice_attrs = notice_entity.attributes
+                        notices.append(
+                            Notice(
+                                severity=notice_attrs['severity'],
+                                message_html=notice_attrs['messageHtml']
+                            )
+                        )
+                except (KeyError, AttributeError) as ex:
+                    LOGGER.exception('Error while accessing notice: {}. {}'
+                                     .format(str(notice_entity), str(ex)))
+
+        return notices
+
     def _get_owners(self, data_owners: list, fallback_owner: str = None) -> List[User]:
         owners_detail = list()
         active_owners_list = list()
@@ -407,6 +427,7 @@ class AtlasProxy(BaseProxy):
             columns = self._serialize_columns(entity=entity)
 
             reports_guids = [report.get("guid") for report in attrs.get("reports") or list()]
+            notices_guids = [notice.get("guid") for notice in attrs.get("notices") or list()]
 
             table_type = attrs.get('tableType') or 'table'
             is_view = 'view' in table_type.lower()
@@ -424,6 +445,7 @@ class AtlasProxy(BaseProxy):
                 owners=self._get_owners(
                     table_details[AtlasCommonParams.relationships].get('ownedBy', []), attrs.get('owner')),
                 resource_reports=self._get_reports(guids=reports_guids),
+                notices=self._get_notices(guids=notices_guids),
                 columns=columns,
                 is_view=is_view,
                 table_readers=readers,

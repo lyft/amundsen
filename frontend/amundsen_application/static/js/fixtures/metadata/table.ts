@@ -120,6 +120,7 @@ export const tableMetadata: TableMetadata = {
     source_type: 'github',
   },
   resource_reports: [{ name: 'Test report', url: 'http://localhost' }],
+  notices: [{ severity: 'info', message_html: 'Test' }],
   table_readers: [
     {
       read_count: 1735,

@@ -92,6 +92,11 @@ export interface ResourceReport {
   url: string;
 }
 
+export interface Notice {
+  severity: string;
+  message_html: string;
+}
+
 export interface TableMetadata {
   badges: Badge[];
   cluster: string;
@@ -109,6 +114,7 @@ export interface TableMetadata {
   table_readers: TableReader[];
   source: TableSource;
   resource_reports: ResourceReport[];
+  notices: Notice[];
   watermarks: Watermark[];
   programmatic_descriptions: TableProgrammaticDescriptions;
 }

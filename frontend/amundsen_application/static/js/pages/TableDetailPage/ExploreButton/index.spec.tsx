@@ -53,6 +53,7 @@ describe('ExploreButton', () => {
           source_type: '',
         },
         resource_reports: [],
+        notices: [],
         watermarks: [],
         programmatic_descriptions: {},
         ...tableDataOverrides,
