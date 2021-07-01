@@ -1,10 +1,86 @@
-# Copyright Contributors to the Amundsen project.
-# SPDX-License-Identifier: Apache-2.0
+# The modular source code checker: pep8, pyflakes and co
+# License: MIT
+# Upstream url: http://bitbucket.org/tarek/flake8
+flake8==3.8.4
 
+# A flake8 plugin that helps you write tidier imports.
+# License: ISCL
+# Upstream url: https://pypi.python.org/pypi/flake8-tidy-imports
+flake8-tidy-imports==4.2.1
+
+# A mature full-featured Python testing tool.
+# License: MIT
+# Upstream url: http://pytest.org/
+pytest==6.2.2
+
+# Pytest plugin for measuring coverage.
+# License: MIT
+# Upstream url: https://github.com/pytest-dev/pytest-cov
+pytest-cov==2.11.1
+
+# Rolling backport of unittest.mock for all Pythons
+# License: BSD
+# Upstream url: https://mock.readthedocs.io/en/latest/
+mock==4.0.3
+
+# Thin-wrapper around the mock package for easier use with py.test.
+# License: MIT
+# Upstream url: https://pypi.python.org/pypi/pytest-mock
+pytest-mock==3.5.1
+
+# Mypy is an optional static type checker for Python.
+# License: MIT
+# Upstream url: https://github.com/python/mypy
+mypy==0.812
+
+# PEP 484
+# License: PSF
+# Upstream url: https://github.com/python/typing
+typing==3.6.4
+
+# A lightweight WSGI web application framework
+# License: BSD
+# Upstream url: https://github.com/pallets/flask
+flask==1.0.2
+
+# The wheel project provides a bdist_wheel command for setuptools >= 0.8.0
+# License: MIT
+# Upstream url: https://github.com/pypa/wheel
+wheel==0.36.2
+
+# HTTP for Humans
+# License: Apache
+# Upstream url: http://docs.python-requests.org/en/master/
+requests==2.25.1
+
+# A lightweight library for converting complex datatypes to and from native Python datatypes.
+# License: MIT
+# Upstream url: https://github.com/marshmallow-code/marshmallow
+marshmallow>=3.0,<=3.6
+
+# A utility library for mocking out the requests Python library.
+# License: Apache 2.0
+# Upstream url: https://pypi.org/project/responses/
 responses==0.12.1
+
+# Required for announcement client
 SQLAlchemy==1.3.23
-jira==3.0.1
+
+# A common package that holds the models deifnition and schemas that are used
+# accross different amundsen repositories.
+amundsen-common==0.18.0
+
+# Library for rest endpoints with Flask
+# Upstream url: https://github.com/flask-restful/flask-restful
+flask-restful==0.3.8
+
+# SDK for JIRA
+jira==2.0.0
+
+# SDK for Asana
 asana==0.10.3
+
+# Retrying library
 retrying>=1.3.3,<2.0
 
 # Backport of PEP 557, Data Classes for Python 3.6.

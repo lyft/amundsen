@@ -37,20 +37,22 @@ requirements_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'r
 with open(requirements_path) as requirements_file:
     requirements = requirements_file.readlines()
 
-requirements_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'requirements-common.txt')
-with open(requirements_path) as requirements_file:
-    requirements_common = requirements_file.readlines()
+# requirements_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'requirements-common.txt')
+# with open(requirements_path) as requirements_file:
+#     requirements_common = requirements_file.readlines()
 
-requirements_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'requirements-dev.txt')
-with open(requirements_path) as requirements_file:
-    requirements_dev = requirements_file.readlines()
+# requirements_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'requirements-dev.txt')
+# with open(requirements_path) as requirements_file:
+#     requirements_dev = requirements_file.readlines()
 
 __version__ = '3.11.0'
 
 oidc = ['flaskoidc==1.0.0']
 pyarrrow = ['pyarrow==3.0.0']
 bigquery_preview = ['google-cloud-bigquery>=2.13.1,<3.0.0', 'flatten-dict==0.3.0']
-all_deps = requirements + requirements_common + requirements_dev + oidc + pyarrrow + bigquery_preview
+# all_deps = requirements + requirements_common + requirements_dev + oidc + pyarrrow + bigquery_preview
+all_deps = requirements + oidc + pyarrrow + bigquery_preview
+
 
 setup(
     name='amundsen-frontend',
@@ -63,10 +65,11 @@ setup(
     include_package_data=True,
     dependency_links=[],
     setup_requires=['cython >= 0.29'],
-    install_requires=requirements + requirements_common,
+    # install_requires=requirements + requirements_common,
+    install_requires=requirements,
     extras_require={
         'oidc': oidc,
-        'dev': requirements_dev,
+        # 'dev': requirements_dev,
         'pyarrow': pyarrrow,
         'bigquery_preview': bigquery_preview,
         'all': all_deps,

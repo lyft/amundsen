@@ -15,6 +15,7 @@ import {
   getFeatureWatcher,
   getFeatureCodeWatcher,
   getFeatureDescriptionWatcher,
+  getFeatureLineageWatcher,
   updateFeatureDescriptionWatcher,
   updateFeatureOwnerWatcher,
   getFeaturePreviewDataWatcher,
@@ -98,6 +99,7 @@ export default function* rootSaga() {
     // Feature
     getFeatureWatcher(),
     getFeatureCodeWatcher(),
+    getFeatureLineageWatcher(),
     getFeaturePreviewDataWatcher(),
     getFeatureDescriptionWatcher(),
     updateFeatureDescriptionWatcher(),

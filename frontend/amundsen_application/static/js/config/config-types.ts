@@ -25,6 +25,7 @@ export interface AppConfig {
   announcements: AnnoucementsFeaturesConfig;
   navLinks: Array<LinkConfig>;
   resourceConfig: ResourceConfig;
+  featureLineage: FeatureLineageConfig;
   tableLineage: TableLineageConfig;
   columnLineage: ColumnLineageConfig;
   tableProfile: TableProfileConfig;
@@ -49,6 +50,7 @@ export interface AppConfigCustom {
   announcements?: AnnoucementsFeaturesConfig;
   navLinks?: Array<LinkConfig>;
   resourceConfig?: ResourceConfig;
+  featureLineage?: FeatureLineageConfig;
   tableLineage?: TableLineageConfig;
   columnLineage?: ColumnLineageConfig;
   tableProfile?: TableProfileConfig;
@@ -269,6 +271,13 @@ interface TableProfileConfig {
     partitionKey?: string,
     partitionValue?: string
   ) => string;
+}
+
+/**
+ * FeatureLineageConfig - enable upstream lineage tab for features
+ */
+interface FeatureLineageConfig {
+  inAppListEnabled: boolean;
 }
 
 /**

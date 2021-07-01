@@ -16,6 +16,7 @@ import reducer, {
   getFeatureDescriptionSuccess,
   updateFeatureDescriptionSuccess,
   updateFeatureDescriptionFailure,
+  initialFeatureLineageState,
   getFeaturePreviewDataSuccess,
   getFeaturePreviewDataFailure,
   getFeaturePreviewData,
@@ -31,6 +32,7 @@ describe('feature reducer', () => {
       statusCode: 200,
       feature: initialFeatureState,
       featureCode: initialFeatureCodeState,
+      featureLineage: initialFeatureLineageState,
       preview: initialPreviewState,
     };
   });

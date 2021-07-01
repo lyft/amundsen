@@ -330,6 +330,13 @@ export function getLogoTitle(): string {
 /**
  * Returns whether the in-app table lineage list is enabled.
  */
+export function isFeatureListLineageEnabled() {
+  return AppConfig.featureLineage.inAppListEnabled;
+}
+
+/**
+ * Returns whether the in-app table lineage list is enabled.
+ */
 export function isTableListLineageEnabled() {
   return AppConfig.tableLineage.inAppListEnabled;
 }

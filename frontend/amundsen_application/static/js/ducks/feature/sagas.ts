@@ -4,12 +4,16 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 
 import { ResourceType } from 'interfaces/Resources';
 import { createOwnerUpdatePayload } from 'utils/ownerUtils';
+import { getFeatureLineage } from 'ducks/lineage/api/v0';
+import { GetFeatureLineage } from 'ducks/lineage/types';
 import * as API from './api/v0';
 import {
   getFeatureSuccess,
   getFeatureFailure,
   getFeatureCodeSuccess,
   getFeatureCodeFailure,
+  getFeatureLineageSuccess,
+  getFeatureLineageFailure,
   getFeatureDescriptionSuccess,
   getFeatureDescriptionFailure,
   updateFeatureOwnerSuccess,
@@ -54,6 +58,19 @@ export function* getFeatureCodeWorker(action): SagaIterator {
 }
 export function* getFeatureCodeWatcher(): SagaIterator {
   yield takeEvery(GetFeatureCode.REQUEST, getFeatureCodeWorker);
+}
+
+export function* getFeatureLineageWorker(action): SagaIterator {
+  try {
+    const { key, depth, direction } = action.payload;
+    const response = yield call(getFeatureLineage, key, depth, direction);
+    yield put(getFeatureLineageSuccess(response));
+  } catch (error) {
+    yield put(getFeatureLineageFailure(error));
+  }
+}
+export function* getFeatureLineageWatcher(): SagaIterator {
+  yield takeEvery(GetFeatureLineage.REQUEST, getFeatureLineageWorker);
 }
 
 export function* getFeaturePreviewDataWorker(action): SagaIterator {

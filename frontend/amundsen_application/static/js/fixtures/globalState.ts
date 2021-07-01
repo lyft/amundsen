@@ -98,6 +98,17 @@ const globalState: GlobalState = {
         key: '',
       },
     },
+    featureLineage: {
+      isLoading: false,
+      statusCode: null,
+      featureLineage: {
+        upstream_entities: [],
+        downstream_entities: [],
+        depth: 0,
+        direction: 'upstream',
+        key: '',
+      },
+    },
     preview: {
       isLoading: false,
       previewData: {},

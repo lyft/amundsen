@@ -11,10 +11,12 @@ import Breadcrumb from 'components/Breadcrumb';
 import EditableSection from 'components/EditableSection';
 import TagInput from 'components/Tags/TagInput';
 import BadgeList from 'features/BadgeList';
+import LineageList from 'pages/TableDetailPage/LineageList';
 import {
   getDisplayNameByResource,
   getMaxLength,
   getSourceDisplayName,
+  isFeatureListLineageEnabled,
 } from 'config/config-utils';
 import { GlobalState } from 'ducks/rootReducer';
 import {
@@ -22,6 +24,8 @@ import {
   FeaturePreviewDataState,
   getFeature,
   getFeatureCode,
+  getFeatureLineage,
+  FeatureLineageState,
   getFeaturePreviewData,
 } from 'ducks/feature/reducer';
 import {
@@ -29,6 +33,7 @@ import {
   GetFeaturePreviewDataRequest,
   GetFeatureRequest,
 } from 'ducks/feature/types';
+import { GetFeatureLineageRequest } from 'ducks/lineage/types';
 import { PreviewDataTable } from 'features/PreviewData';
 import { FeatureMetadata, FeaturePreviewQueryParams } from 'interfaces/Feature';
 import { ResourceType } from 'interfaces/Resources';
@@ -54,6 +59,7 @@ import {
   SOURCE_TITLE,
   TAG_TITLE,
   VERSION_TITLE,
+  UPSTREAM_TAB_TITLE,
 } from './constants';
 
 import './styles.scss';
@@ -63,6 +69,7 @@ interface StateFromProps {
   statusCode: number | null;
   feature: FeatureMetadata;
   featureCode: FeatureCodeState;
+  featureLineage: FeatureLineageState;
   preview: FeaturePreviewDataState;
 }
 
@@ -73,6 +80,7 @@ export interface DispatchFromProps {
     source: string
   ) => GetFeatureRequest;
   getFeatureCodeDispatch: (key: string) => GetFeatureCodeRequest;
+  getFeatureLineageDispatch: (key: string) => GetFeatureLineageRequest;
   getFeaturePreviewDispatch: (
     payload: FeaturePreviewQueryParams
   ) => GetFeaturePreviewDataRequest;
@@ -159,8 +167,28 @@ export const FeaturePageLoader: React.FC = () => (
   </div>
 );
 
-export function renderTabs(featureCode, preview) {
+export function renderTabs(featureCode, featureLineage, preview) {
   const tabInfo: TabInfo[] = [];
+  tabInfo.push({
+    content: (
+      <PreviewDataTable
+        isLoading={preview.isLoading}
+        previewData={preview.previewData}
+      />
+    ),
+    key: FEATURE_TAB.PREVIEW_DATA,
+    title: PREVIEW_DATA_TAB_TITLE,
+  });
+  if (isFeatureListLineageEnabled()) {
+    const upstreamItems = featureLineage.featureLineage.upstream_entities;
+    if (upstreamItems.length) {
+      tabInfo.push({
+        content: <LineageList items={upstreamItems} direction="upstream" />,
+        key: FEATURE_TAB.UPSTREAM,
+        title: `${UPSTREAM_TAB_TITLE} (${upstreamItems.length})`,
+      });
+    }
+  }
   tabInfo.push({
     content: (
       <GenerationCode
@@ -172,21 +200,10 @@ export function renderTabs(featureCode, preview) {
     title: GEN_CODE_TAB_TITLE,
   });
 
-  tabInfo.push({
-    content: (
-      <PreviewDataTable
-        isLoading={preview.isLoading}
-        previewData={preview.previewData}
-      />
-    ),
-    key: FEATURE_TAB.PREVIEW_DATA,
-    title: PREVIEW_DATA_TAB_TITLE,
-  });
-
   return (
     <TabsComponent
       tabs={tabInfo}
-      defaultTab={FEATURE_TAB.GEN_CODE}
+      defaultTab={FEATURE_TAB.PREVIEW_DATA}
       onSelect={(key) => {
         logAction({
           command: 'click',
@@ -205,7 +222,9 @@ export const FeaturePage: React.FC<FeaturePageProps> = ({
   isLoading,
   feature,
   featureCode,
+  featureLineage,
   preview,
+  getFeatureLineageDispatch,
   getFeatureDispatch,
   getFeatureCodeDispatch,
   getFeaturePreviewDispatch,
@@ -221,6 +240,7 @@ export const FeaturePage: React.FC<FeaturePageProps> = ({
       setKey(newKey);
       getFeatureDispatch(newKey, index, source);
       getFeatureCodeDispatch(newKey);
+      getFeatureLineageDispatch(newKey);
       getFeaturePreviewDispatch({
         version,
         feature_group: group,
@@ -325,7 +345,9 @@ export const FeaturePage: React.FC<FeaturePageProps> = ({
             </section>
           </section>
         </aside>
-        <main className="right-panel">{renderTabs(featureCode, preview)}</main>
+        <main className="right-panel">
+          {renderTabs(featureCode, featureLineage, preview)}
+        </main>
       </article>
     </div>
   );
@@ -336,6 +358,7 @@ export const mapStateToProps = (state: GlobalState) => ({
   statusCode: state.feature.statusCode,
   feature: state.feature.feature,
   featureCode: state.feature.featureCode,
+  featureLineage: state.feature.featureLineage,
   preview: state.feature.preview,
 });
 
@@ -344,6 +367,7 @@ export const mapDispatchToProps = (dispatch: any) =>
     {
       getFeatureDispatch: getFeature,
       getFeatureCodeDispatch: getFeatureCode,
+      getFeatureLineageDispatch: getFeatureLineage,
       getFeaturePreviewDispatch: getFeaturePreviewData,
     },
     dispatch

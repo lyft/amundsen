@@ -1,5 +1,32 @@
 import { Lineage, AnalyticsEvent } from 'interfaces';
 
+export enum GetFeatureLineage {
+  REQUEST = 'amundsen/lineage/GET_FEATURE_LINEAGE_REQUEST',
+  SUCCESS = 'amundsen/lineage/GET_FEATURE_LINEAGE_SUCCESS',
+  FAILURE = 'amundsen/lineage/GET_FEATURE_LINEAGE_FAILURE',
+}
+
+export interface GetFeatureLineagePayload {
+  lineageTree: Lineage;
+  statusCode: number;
+}
+
+export interface GetFeatureLineageRequest {
+  type: GetFeatureLineage.REQUEST;
+  payload: {
+    key: string;
+    direction: string;
+    depth: number;
+  };
+}
+export interface GetFeatureLineageResponse {
+  type: GetFeatureLineage.SUCCESS | GetFeatureLineage.FAILURE;
+  payload: {
+    lineageTree: Lineage;
+    statusCode: number;
+  };
+}
+
 export enum GetTableLineage {
   REQUEST = 'amundsen/lineage/GET_TABLE_LINEAGE_REQUEST',
   SUCCESS = 'amundsen/lineage/GET_TABLE_LINEAGE_SUCCESS',

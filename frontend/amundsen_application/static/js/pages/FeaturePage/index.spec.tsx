@@ -8,6 +8,7 @@ import globalState from 'fixtures/globalState';
 import {
   featureCode,
   featureMetadata,
+  featureLineage,
   previewData,
 } from 'fixtures/metadata/feature';
 import { previewDataSuccess } from 'fixtures/metadata/previewData';
@@ -52,8 +53,9 @@ describe('FeaturePageLoader', () => {
 describe('renderTabs', () => {
   it('returns returns a tabs component', () => {
     const mockFeatureCode = featureCode;
+    const mockFeatureLineage = featureLineage;
     const mockPreviewData = previewData;
-    const result: JSX.Element = renderTabs(mockFeatureCode, mockPreviewData);
+    const result: JSX.Element = renderTabs(mockFeatureCode, mockFeatureLineage, mockPreviewData);
     expect(shallow(result).find(TabsComponent).exists).toBeTruthy();
   });
 });

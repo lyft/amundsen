@@ -1,5 +1,6 @@
 import { FeatureResource, ResourceType } from 'interfaces';
 import { FeatureCode } from 'interfaces/Feature';
+import { Lineage } from 'interfaces/Lineage';
 
 export const featureSummary: FeatureResource = {
   type: ResourceType.feature,
@@ -38,6 +39,14 @@ export const featureCode: FeatureCode = {
   source: 'testSource',
   key: 'testKey',
   text: 'testText',
+};
+
+export const featureLineage: Lineage = {
+  downstream_entities: [],
+  upstream_entities: [],
+  key: 'testKey',
+  depth: 1,
+  direction: 'upstream',
 };
 
 export const previewData = {
