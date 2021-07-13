@@ -42,6 +42,7 @@ class ElasticsearchProxy(BaseProxy):
     """
     # mapping to translate request for table resources
     TABLE_MAPPING = {
+        'key': 'key',
         'badges': 'badges',
         'tag': 'tags',
         'schema': 'schema.raw',
@@ -67,6 +68,7 @@ class ElasticsearchProxy(BaseProxy):
 
     # mapping to translate request for feature resources
     FEATURE_MAPPING = {
+        'key': 'key',
         'feature_group': 'feature_group.raw',
         'feature_name': 'feature_name.raw',
         'entity': 'entity',
@@ -76,6 +78,10 @@ class ElasticsearchProxy(BaseProxy):
         'tags': 'tags',
         'badges': 'badges'
     }
+
+    # special characters we want to escape in filter values. See:
+    # https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-query-string-query.html#_reserved_characters
+    ESCAPE_CHARS = str.maketrans({':': r'\:', '/': r'\/'})
 
     def __init__(self, *,
                  host: str = None,
@@ -347,26 +353,13 @@ class ElasticsearchProxy(BaseProxy):
             elif item_list is '' or item_list == ['']:
                 LOGGING.warn(f'The filter value cannot be empty.In this case the filter {category} is ignored')
             else:
-                query_list.append(mapped_category + ':' + '(' + ' OR '.join(item_list) + ')')
+                escaped = [item.translate(cls.ESCAPE_CHARS) for item in item_list]
+                query_list.append(mapped_category + ':' + '(' + ' OR '.join(escaped) + ')')
 
         if len(query_list) == 0:
             return ''
 
         return ' AND '.join(query_list)
-
-    @staticmethod
-    def validate_filter_values(search_request: dict) -> Any:
-        if 'filters' in search_request:
-            filter_values_list = search_request['filters'].values()
-            # Ensure all values are arrays
-            filter_values_list = list(
-                map(lambda x: x if type(x) == list else [x], filter_values_list))
-            # Flatten the array of arrays
-            filter_values_list = list(itertools.chain.from_iterable(filter_values_list))
-            # Check if / or : exist in any of the values
-            if any(("/" in str(item) or ":" in str(item)) for item in (filter_values_list)):
-                return False
-            return True
 
     @staticmethod
     def parse_query_term(query_term: str,
@@ -439,16 +432,10 @@ class ElasticsearchProxy(BaseProxy):
         add_query = ''
         query_dsl = ''
         if filter_list:
-            valid_filters = self.validate_filter_values(search_request)
-            if valid_filters is False:
-                raise Exception(
-                    'The search filters contain invalid characters and thus cannot be handled by ES')
-            query_dsl = self.parse_filters(filter_list,
-                                           index)
+            query_dsl = self.parse_filters(filter_list, index)
 
         if query_term:
-            add_query = self.parse_query_term(query_term,
-                                              index)
+            add_query = self.parse_query_term(query_term, index)
 
         if not query_dsl and not add_query:
             raise Exception('Unable to convert parameters to valid query dsl')

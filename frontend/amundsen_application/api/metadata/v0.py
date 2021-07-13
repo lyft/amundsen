@@ -12,6 +12,8 @@ from flask import current_app as app
 from flask.blueprints import Blueprint
 
 from amundsen_common.entity.resource_type import ResourceType, to_label
+
+from amundsen_application.api.utils.search_utils import generate_query_json
 from amundsen_application.log.action_log import action_logging
 
 from amundsen_application.models.user import load_user, dump_user
@@ -411,67 +413,66 @@ def _update_metadata_tag(table_key: str, method: str, tag: str) -> int:
     return status_code
 
 
-def _update_search_tag(table_key: str, method: str, tag: str) -> int:
+def _update_search_tag(key: str, resource_type: ResourceType, method: str, tag: str) -> int:
     """
-    call the search service endpoint to get whole table information uniquely identified by table_key
+    call the search service endpoint to get whole entity information uniquely identified by the key
     update tags list, call search service endpoint again to write back the updated field
     TODO: we should update dashboard tag in the future
-    :param table_key: table key e.g. 'database://cluster.schema/table'
+    :param key: e.g. 'database://cluster.schema/table'
     :param method: PUT or DELETE
-    :param tag: tag name to be put/delete
+    :param tag: tag name to be added/deleted
     :return: HTTP status code
     """
     searchservice_base = app.config['SEARCHSERVICE_BASE']
-    searchservice_get_table_url = f'{searchservice_base}/search_table'
 
-    # searchservice currently doesn't allow colon or / inside filters, thus can't get item based on key
-    # table key e.g: 'database://cluster.schema/table'
-    table_uri = TableUri.from_uri(table_key)
+    if resource_type == ResourceType.Table:
+        filter_url = f'{searchservice_base}/search_table'
+        update_url = f'{searchservice_base}/document_table'
+    elif resource_type == ResourceType.Feature:
+        filter_url = f'{searchservice_base}/search_feature_filter'
+        update_url = f'{searchservice_base}/document_feature'
+    else:
+        LOGGER.error(f'updating search tags not supported for {resource_type.name.lower()}')
+        return HTTPStatus.NOT_IMPLEMENTED
 
-    request_param_map = {
-        'search_request':
-            {
-                'type': 'AND',
-                'filters':
-                    {
-                        'database': [table_uri.database],
-                        'schema': [table_uri.schema],
-                        'table': [table_uri.table],
-                        'cluster': [table_uri.cluster]
-                    }
-            },
-        'query_term': ''
-    }
+    query = generate_query_json(filters={'key': [key]}, page_index=0, search_term='')
+    search_response = request_search(
+        url=filter_url,
+        method='POST',
+        headers={'Content-Type': 'application/json'},
+        data=json.dumps(query),
+    )
 
-    get_table_response = request_search(url=searchservice_get_table_url, method='POST', json=request_param_map)
-    get_status_code = get_table_response.status_code
-    if get_status_code != HTTPStatus.OK:
-        LOGGER.info(f'Fail to get table info from serviceservice, http status code: {get_status_code}')
-        LOGGER.debug(get_table_response.text)
-        return get_status_code
+    if search_response.status_code != HTTPStatus.OK:
+        LOGGER.info(f'Fail to get entity from serviceservice, http status code: {search_response.status_code}')
+        LOGGER.info(search_response.text)
+        return search_response.status_code
 
-    raw_data_map = json.loads(get_table_response.text)
-    # key is unique, thus (database, cluster, schema, table) should uniquely identify the table
+    raw_data_map = json.loads(search_response.text)
+    # key should uniquely identify this resource
     if len(raw_data_map['results']) > 1:
-        LOGGER.error(f'Error! Duplicate table key: {table_key}')
-    table = raw_data_map['results'][0]
+        LOGGER.error(f'Error! Duplicate table key: {key}')
+        return HTTPStatus.INTERNAL_SERVER_ERROR
 
-    old_tags_list = table['tags']
+    resource = raw_data_map['results'][0]
+    old_tags_list = resource['tags']
     new_tags_list = [item for item in old_tags_list if item['tag_name'] != tag]
     if method != 'DELETE':
         new_tags_list.append({'tag_name': tag})
-    table['tags'] = new_tags_list
+    resource['tags'] = new_tags_list
 
     # remove None values
-    pruned_table = {k: v for k, v in table.items() if v is not None}
-
+    pruned_table = {k: v for k, v in resource.items() if v is not None}
     post_param_map = {"data": pruned_table}
-    searchservice_update_url = f'{searchservice_base}/document_table'
-    update_table_response = request_search(url=searchservice_update_url, method='PUT', json=post_param_map)
-    update_status_code = update_table_response.status_code
-    if update_status_code != HTTPStatus.OK:
-        LOGGER.info(f'Fail to update table info in searchservice, http status code: {update_status_code}')
-        LOGGER.debug(update_table_response.text)
+    update_table_response = request_search(
+        url=update_url,
+        method='PUT',
+        headers={'Content-Type': 'application/json'},
+        data=json.dumps(post_param_map),
+    )
+    if update_table_response.status_code != HTTPStatus.OK:
+        LOGGER.info(f'Fail to update tag in searchservice, http status code: {update_table_response.status_code}')
+        LOGGER.info(update_table_response.text)
         return update_table_response.status_code
 
     return HTTPStatus.OK
@@ -495,7 +496,8 @@ def update_table_tags() -> Response:
         _log_update_table_tags(table_key=table_key, method=method, tag=tag)
 
         metadata_status_code = _update_metadata_tag(table_key=table_key, method=method, tag=tag)
-        search_status_code = _update_search_tag(table_key=table_key, method=method, tag=tag)
+        search_status_code = _update_search_tag(
+            key=table_key, resource_type=ResourceType.Table, method=method, tag=tag)
 
         http_status_code = HTTPStatus.OK
         if metadata_status_code == HTTPStatus.OK and search_status_code == HTTPStatus.OK:
@@ -1004,11 +1006,6 @@ def _update_metadata_feature_tag(endpoint: str, feature_key: str, method: str, t
     return status_code
 
 
-def _update_search_feature_tag(endpoint: str, feature_key: str, method: str, tag: str) -> int:
-    # TODO when search service feature work is done
-    return HTTPStatus.OK
-
-
 @metadata_blueprint.route('/update_feature_tags', methods=['PUT', 'DELETE'])
 def update_feature_tags() -> Response:
     try:
@@ -1022,9 +1019,8 @@ def update_feature_tags() -> Response:
         metadata_status_code = _update_metadata_feature_tag(endpoint=endpoint,
                                                             feature_key=feature_key,
                                                             method=method, tag=tag)
-        search_status_code = _update_search_feature_tag(endpoint=endpoint,
-                                                        feature_key=feature_key,
-                                                        method=method, tag=tag)
+        search_status_code = _update_search_tag(
+            key=feature_key, resource_type=ResourceType.Feature, method=method, tag=tag)
 
         http_status_code = HTTPStatus.OK
         if metadata_status_code == HTTPStatus.OK and search_status_code == HTTPStatus.OK:

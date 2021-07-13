@@ -1320,12 +1320,13 @@ class MetadataTest(unittest.TestCase):
         responses.add(responses.PUT, url, json={}, status=HTTPStatus.OK)
 
         searchservice_base = local_app.config['SEARCHSERVICE_BASE']
-        get_table_url = f'{searchservice_base}/search_table'
-        responses.add(responses.POST, get_table_url,
+        search_url = f'{searchservice_base}/search_feature_filter'
+        responses.add(responses.POST, search_url,
                       json={'results': [{'id': '1', 'tags': [{'tag_name': 'tag_1'}, {'tag_name': 'tag_2'}]}]},
                       status=HTTPStatus.OK)
 
-        # TODO when search implemented add search service response
+        search_update_url = f'{searchservice_base}/document_feature'
+        responses.add(responses.PUT, search_update_url, json={}, status=HTTPStatus.OK)
 
         with local_app.test_client() as test:
             response = test.put(
