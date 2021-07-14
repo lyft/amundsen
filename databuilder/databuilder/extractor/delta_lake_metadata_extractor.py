@@ -17,6 +17,7 @@ from pyspark.sql.utils import AnalysisException
 from databuilder.extractor.base_extractor import Extractor
 from databuilder.models.table_last_updated import TableLastUpdated
 from databuilder.models.table_metadata import ColumnMetadata, TableMetadata
+from databuilder.models.table_owner import TableOwner
 
 TableKey = namedtuple('TableKey', ['schema', 'table_name'])
 
@@ -159,7 +160,7 @@ class DeltaLakeMetadataExtractor(Extractor):
     def get_scope(self) -> str:
         return 'extractor.delta_lake_table_metadata'
 
-    def _get_extract_iter(self) -> Iterator[Union[TableMetadata, TableLastUpdated, None]]:
+    def _get_extract_iter(self) -> Iterator[Union[TableMetadata, TableLastUpdated, TableOwner, None]]:
         """
         Given either a list of schemas, or a list of exclude schemas,
         it will query hive metastore and then access delta log
@@ -190,6 +191,10 @@ class DeltaLakeMetadataExtractor(Extractor):
                 last_updated = self.create_table_last_updated(scraped_table)
                 if last_updated:
                     yield last_updated
+                table_owner = self.create_table_owner(scraped_table)
+                if table_owner:
+                    yield table_owner
+
 
     def get_schemas(self, exclude_list: List[str]) -> List[str]:
         '''Returns all schemas.'''
@@ -340,5 +345,18 @@ class DeltaLakeMetadataExtractor(Extractor):
                                     schema=table.schema,
                                     db=self._db,
                                     cluster=self._cluster)
+        else:
+            return None
+
+    def create_table_owner(self, table: ScrapedTableMetadata) -> Optional[TableOwner]:
+        '''Create the amundsen table owner metadata object from the ScrapedTableMetadata object.'''
+        if "owner" in table.table_detail:
+            return TableOwner(
+                db_name=self._db,
+                schema=table.schema,
+                table_name=table.table,
+                cluster=self._cluster,
+                owners=table.table_detail["owners"],
+            )
         else:
             return None
