@@ -16,6 +16,17 @@ components:
     EmptyResponse:
       type: object
       properties: {}
+    HealthcheckResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: The status of the service, values will be 'ok' or 'fail'
+        checks:
+          type: object
+          description: An arbitrary dictionary representing the healthchecks that have run
+          example:
+            $ref: '#/detailedExamples/healthcheck'
     SearchTableResults:
       type: object
       properties:
@@ -288,3 +299,25 @@ components:
           type: string
           description: 'the kinds of users'
           example: 'student'
+
+detailedExamples:
+  healthcheck:
+    {
+      'ElasticsearchProxy:connection': {
+        'cluster_name': 'docker-cluster',
+        'status': 'yellow',
+        'timed_out': False,
+        'number_of_nodes': 1,
+        'number_of_data_nodes': 1,
+        'active_primary_shards': 16,
+        'active_shards': 16,
+        'relocating_shards': 0,
+        'initializing_shards': 0,
+        'unassigned_shards': 15,
+        'delayed_unassigned_shards': 0,
+        'number_of_pending_tasks': 0,
+        'number_of_in_flight_fetch': 0,
+        'task_max_waiting_in_queue_millis': 0,
+        'active_shards_percent_as_number': 51.61290322580645
+      }
+    }

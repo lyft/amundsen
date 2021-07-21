@@ -5,8 +5,8 @@ tags:
   - 'healthcheck'
 responses:
   200:
-    description: Application is running
+    description: Status of the application and underlying proxy service
     content:
-      string:
-        description: 'Always empty'
-        example: ''
+      application/json:
+        schema:
+          $ref: '#/components/schemas/HealthcheckResponse'

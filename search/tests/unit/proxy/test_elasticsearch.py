@@ -7,6 +7,7 @@ from typing import (  # noqa: F401
 )
 from unittest.mock import MagicMock, patch
 
+from amundsen_common.models.api import health_check
 from elasticsearch_dsl import Search
 
 from search_service import create_app
@@ -197,6 +198,23 @@ class TestElasticsearchProxy(unittest.TestCase):
         for client in [a, a.cat, a.cluster, a.indices, a.ingest, a.nodes, a.snapshot, a.tasks]:
             self.assertEqual(client.transport.hosts[0]['host'], "0.0.0.0")
             self.assertEqual(client.transport.hosts[0]['port'], 9200)
+
+    def test_health_elasticsearch(self) -> None:
+        # ES pass
+        mock_elasticsearch = self.es_proxy.elasticsearch
+        mock_elasticsearch.cluster.health.return_value = {'status': 'ok'}
+        health_actual = self.es_proxy.health()
+        expected_checks = {'ElasticsearchProxy:connection': {'status': 'ok'}}
+        health_expected = health_check.HealthCheck(status='ok', checks=expected_checks)
+        self.assertEqual(health_actual.status, health_expected.status)
+        self.assertDictEqual(health_actual.checks, health_expected.checks)
+        # ES Fail
+        mock_elasticsearch.cluster.health.return_value = {'status': 'red'}
+        health_actual = self.es_proxy.health()
+        expected_checks = {'ElasticsearchProxy:connection': {'status': 'red'}}
+        health_expected = health_check.HealthCheck(status='fail', checks=expected_checks)
+        self.assertEqual(health_actual.status, health_expected.status)
+        self.assertDictEqual(health_actual.checks, health_expected.checks)
 
     @patch('elasticsearch_dsl.Search.execute')
     def test_search_with_empty_query_string(self, mock_search: MagicMock) -> None:

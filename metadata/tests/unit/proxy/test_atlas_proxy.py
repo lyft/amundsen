@@ -7,6 +7,7 @@ from typing import Any, Dict, Optional, cast
 from unittest.mock import MagicMock, patch
 
 from amundsen_common.entity.resource_type import ResourceType
+from amundsen_common.models.api import health_check
 from amundsen_common.models.dashboard import DashboardSummary
 from amundsen_common.models.lineage import Lineage, LineageItem
 from amundsen_common.models.popular_table import PopularTable
@@ -162,6 +163,13 @@ class TestAtlasProxy(unittest.TestCase, Data):
                          is_view=False)
 
         self.assertEqual(str(expected), str(response))
+
+    def test_health_atlas(self) -> None:
+        health_actual = self.proxy.health()
+        expected_checks = {'AtlasProxy:connection': {'status': 'not checked'}}
+        health_expected = health_check.HealthCheck(status='ok', checks=expected_checks)
+        self.assertEqual(health_actual.status, health_expected.status)
+        self.assertDictEqual(health_actual.checks, health_expected.checks)
 
     def test_get_table_without_custom_stats_format(self) -> None:
         self._get_table()

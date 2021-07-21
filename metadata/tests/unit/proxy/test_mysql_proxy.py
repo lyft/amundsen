@@ -6,6 +6,7 @@ from typing import Any
 from unittest.mock import MagicMock, patch
 
 from amundsen_common.entity.resource_type import ResourceType
+from amundsen_common.models.api import health_check
 from amundsen_common.models.dashboard import DashboardSummary
 from amundsen_common.models.popular_table import PopularTable
 from amundsen_common.models.table import (Application, Badge, Column,
@@ -182,6 +183,15 @@ class TestMySQLProxy(unittest.TestCase):
                          ])
 
         self.assertEqual(str(expected), str(actual_table))
+
+    @patch.object(mysql_proxy, 'RDSClient')
+    def test_health_mysql(self, mock_rds_client: Any) -> None:
+        proxy = MySQLProxy()
+        health_actual = proxy.health()
+        expected_checks = {'MySQLProxy:connection': {'status': 'not checked'}}
+        health_expected = health_check.HealthCheck(status='ok', checks=expected_checks)
+        self.assertEqual(health_actual.status, health_expected.status)
+        self.assertDictEqual(health_actual.checks, health_expected.checks)
 
     @patch.object(mysql_proxy, 'RDSClient')
     def test_get_table_description(self, mock_rds_client: Any) -> None:

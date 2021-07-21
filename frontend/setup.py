@@ -45,7 +45,7 @@ requirements_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'r
 with open(requirements_path) as requirements_file:
     requirements_dev = requirements_file.readlines()
 
-__version__ = '3.11.1'
+__version__ = '3.11.2'
 
 oidc = ['flaskoidc==1.0.0']
 pyarrrow = ['pyarrow==3.0.0']

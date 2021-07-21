@@ -9,7 +9,9 @@ from typing import (Any, Dict, Iterable, List, Optional, Tuple,  # noqa: F401
                     Union, no_type_check)
 
 import neo4j
+import neobolt
 from amundsen_common.entity.resource_type import ResourceType, to_resource_type
+from amundsen_common.models.api import health_check
 from amundsen_common.models.dashboard import DashboardSummary
 from amundsen_common.models.feature import Feature, FeatureWatermark
 from amundsen_common.models.generation_code import GenerationCode
@@ -88,13 +90,26 @@ class Neo4jProxy(BaseProxy):
                                             encrypted=encrypted,
                                             trust=trust)  # type: Driver
 
-    def is_healthy(self) -> None:
-        # throws if cluster unhealthy or can't connect.  An alternative would be to use one of
-        # the HTTP status endpoints, which might be more specific, but don't implicitly test
-        # our configuration.
-        with self._driver.session() as session:
-            session.read_transaction(self._execute_cypher_query,
-                                     statement='CALL dbms.cluster.overview()', param_dict={})
+    def health(self) -> health_check.HealthCheck:
+        """
+        Runs one or more series of checks on the service. Can also
+        optionally return additional metadata about each check (e.g.
+        latency to database, cpu utilization, etc.).
+        """
+        checks = {}
+        try:
+            # dbms.cluster.overview() is only available for enterprise neo4j users
+            cluster_overview = self._execute_cypher_query(statement='CALL dbms.cluster.overview()', param_dict={})
+            checks = dict(cluster_overview.single())
+            checks['overview_enabled'] = True
+            status = health_check.OK
+        except neobolt.exceptions.ClientError:
+            checks = {'overview_enabled': False}
+            status = health_check.OK  # Can connect to database but plugin is not available
+        except Exception:
+            status = health_check.FAIL
+        final_checks = {f'{type(self).__name__}:connection': checks}
+        return health_check.HealthCheck(status=status, checks=final_checks)
 
     @timer_with_counter
     def get_table(self, *, table_uri: str) -> Table:

@@ -29,7 +29,7 @@ from metadata_service.api.feature import (FeatureBadgeAPI,
                                           FeatureLineageAPI, FeatureOwnerAPI,
                                           FeatureSampleAPI, FeatureStatsAPI,
                                           FeatureTagAPI)
-from metadata_service.api.healthcheck import healthcheck
+from metadata_service.api.healthcheck import HealthcheckAPI
 from metadata_service.api.popular_resources import PopularResourcesAPI
 from metadata_service.api.popular_tables import PopularTablesAPI
 from metadata_service.api.system import Neo4jDetailAPI, StatisticsMetricsAPI
@@ -104,9 +104,9 @@ def create_app(*, config_module_class: str) -> Flask:
         init_custom_ext_routes(app)
 
     api_bp = Blueprint('api', __name__)
-    api_bp.add_url_rule('/healthcheck', 'healthcheck', healthcheck)
-
     api = Api(api_bp)
+
+    api.add_resource(HealthcheckAPI, '/healthcheck')
 
     # `PopularTablesAPI` is deprecated, and will be removed in version 4.
     api.add_resource(PopularTablesAPI,

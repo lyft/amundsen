@@ -5,7 +5,7 @@ import os
 
 from setuptools import find_packages, setup
 
-__version__ = '2.10.0'
+__version__ = '2.10.1'
 
 oidc = ['flaskoidc==1.0.0']
 

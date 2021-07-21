@@ -7,7 +7,9 @@ import unittest
 from typing import Any, Dict  # noqa: F401
 from unittest.mock import MagicMock, patch
 
+import neobolt
 from amundsen_common.entity.resource_type import ResourceType
+from amundsen_common.models.api import health_check
 from amundsen_common.models.dashboard import DashboardSummary
 from amundsen_common.models.feature import Feature, FeatureWatermark
 from amundsen_common.models.generation_code import GenerationCode
@@ -175,6 +177,40 @@ class TestNeo4jProxy(unittest.TestCase):
 
     def tearDown(self) -> None:
         pass
+
+    def test_health_neo4j(self) -> None:
+        # Test health when the enterprise version is used
+        with patch.object(GraphDatabase, 'driver'), patch.object(Neo4jProxy, '_execute_cypher_query') as mock_execute:
+            mock_result = MagicMock()
+            mock_result.single.return_value = {'status': 'check'}
+            mock_execute.side_effect = [
+                mock_result
+            ]
+            neo4j_proxy = Neo4jProxy(host='DOES_NOT_MATTER', port=0000)
+            health_actual = neo4j_proxy.health()
+            expected_checks = {'Neo4jProxy:connection': {'status': 'check', 'overview_enabled': True}}
+            health_expected = health_check.HealthCheck(status='ok', checks=expected_checks)
+            self.assertEqual(health_actual.status, health_expected.status)
+            self.assertDictEqual(health_actual.checks, health_expected.checks)
+
+        # Test health when the open source version is used
+        with patch.object(GraphDatabase, 'driver'), patch.object(Neo4jProxy, '_execute_cypher_query') as mock_execute:
+            mock_execute.side_effect = neobolt.exceptions.ClientError()
+            neo4j_proxy = Neo4jProxy(host='DOES_NOT_MATTER', port=0000)
+            health_actual = neo4j_proxy.health()
+            expected_checks = {'Neo4jProxy:connection': {'overview_enabled': False}}
+            health_expected = health_check.HealthCheck(status='ok', checks=expected_checks)
+            self.assertEqual(health_actual.status, health_expected.status)
+            self.assertDictEqual(health_actual.checks, health_expected.checks)
+
+        # Test health failure (e.g. any other error)
+        with patch.object(GraphDatabase, 'driver'), patch.object(Neo4jProxy, '_execute_cypher_query') as mock_execute:
+            mock_execute.side_effect = Exception()
+            health_actual = neo4j_proxy.health()
+            expected_checks = {'Neo4jProxy:connection': {}}
+            health_expected = health_check.HealthCheck(status='fail', checks=expected_checks)
+            self.assertEqual(health_actual.status, health_expected.status)
+            self.assertDictEqual(health_actual.checks, health_expected.checks)
 
     def test_get_table(self) -> None:
         with patch.object(GraphDatabase, 'driver'), patch.object(Neo4jProxy, '_execute_cypher_query') as mock_execute:

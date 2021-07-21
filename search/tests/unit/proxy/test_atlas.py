@@ -6,6 +6,7 @@ from typing import (
     Any, Callable, Dict, List, Tuple,
 )
 
+from amundsen_common.models.api import health_check
 from mock import MagicMock, patch
 
 from search_service import config, create_app
@@ -220,6 +221,13 @@ class TestAtlasProxy(unittest.TestCase):
         self.assertEqual(client.atlas.client.request_params['headers']['Authorization'],  # type: ignore
                          'Basic YWRtaW46YWRtaW4=')
         self.assertEqual(client.page_size, 1337)  # type: ignore
+
+    def test_health_atlast(self) -> None:
+        health_actual = self.proxy.health()
+        expected_checks = {'AtlasProxy:connection': {'status': 'not checked'}}
+        health_expected = health_check.HealthCheck(status='ok', checks=expected_checks)
+        self.assertEqual(health_actual.status, health_expected.status)
+        self.assertDictEqual(health_actual.checks, health_expected.checks)
 
     def test_search_normal(self) -> None:
         expected = SearchTableResult(total_results=2,

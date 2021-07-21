@@ -6,6 +6,17 @@ info:
 
 components:
   schemas:
+    HealthcheckResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: The status of the service, values will be 'ok' or 'fail'
+        checks:
+          type: object
+          description: An arbitrary dictionary representing the healthchecks that have run
+          example:
+            $ref: '#/detailedExamples/healthcheck'
     Description:
       type: object
       properties:
@@ -555,3 +566,12 @@ components:
     EmptyResponse:
       type: object
       properties: {}
+
+
+detailedExamples:
+  healthcheck:
+    {
+      'Neo4jProxy:connection': {
+        'overview_enabled': false
+      }
+    }

@@ -5,6 +5,7 @@ from abc import ABCMeta, abstractmethod
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from amundsen_common.entity.resource_type import ResourceType
+from amundsen_common.models.api.health_check import HealthCheck
 from amundsen_common.models.dashboard import DashboardSummary
 from amundsen_common.models.feature import Feature
 from amundsen_common.models.generation_code import GenerationCode
@@ -40,6 +41,9 @@ class BaseProxy(metaclass=ABCMeta):
             user_details = {'email': user_id, 'user_id': user_id}
 
         return user_details
+
+    def health(self) -> HealthCheck:
+        return HealthCheck(status='ok', checks={f'{type(self).__name__}:connection': {'status': 'not checked'}})
 
     @abstractmethod
     def get_user(self, *, id: str) -> Union[User, None]:

@@ -8,11 +8,12 @@ from typing import (
     Any, Dict, List, Union,
 )
 
+from amundsen_common.models.api import health_check
 from amundsen_common.models.index_map import (
     FEATURE_INDEX_MAP, TABLE_INDEX_MAP, USER_INDEX_MAP,
 )
 from elasticsearch import Elasticsearch
-from elasticsearch.exceptions import NotFoundError
+from elasticsearch.exceptions import ConnectionError as ElasticConnectionError, NotFoundError
 from elasticsearch_dsl import Search, query
 from flask import current_app
 
@@ -102,6 +103,24 @@ class ElasticsearchProxy(BaseProxy):
             self.elasticsearch = Elasticsearch(host, http_auth=http_auth)
 
         self.page_size = page_size
+
+    def health(self) -> health_check.HealthCheck:
+        """
+        Returns the health of the Elastic search cluster
+        """
+        try:
+            if self.elasticsearch.ping():
+                health = self.elasticsearch.cluster.health()
+                # ES status vaues: green, yellow, red
+                status = health_check.OK if health['status'] != 'red' else health_check.FAIL
+            else:
+                health = {'status': 'Unable to connect'}
+                status = health_check.FAIL
+            checks = {f'{type(self).__name__}:connection': health}
+        except ElasticConnectionError:
+            status = health_check.FAIL
+            checks = {f'{type(self).__name__}:connection': {'status': 'Unable to connect'}}
+        return health_check.HealthCheck(status=status, checks=checks)
 
     def get_user_search_query(self, query_term: str) -> dict:
         return {

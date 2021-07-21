@@ -1,11 +1,12 @@
-Simple healthcheck that returns an empty response
+Healthcheck
+Used to verify application is healthy
 ---
 tags:
   - 'healthcheck'
 responses:
   200:
-    description: 'Empty response'
+    description: Status of the application and underlying proxy service
     content:
       application/json:
         schema:
-          $ref: '#/components/schemas/EmptyResponse'
+          $ref: '#/components/schemas/HealthcheckResponse'

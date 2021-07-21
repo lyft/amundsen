@@ -19,7 +19,7 @@ from search_service.api.document import (
     DocumentFeatureAPI, DocumentFeaturesAPI, DocumentTableAPI, DocumentTablesAPI, DocumentUserAPI, DocumentUsersAPI,
 )
 from search_service.api.feature import SearchFeatureAPI, SearchFeatureFilterAPI
-from search_service.api.healthcheck import healthcheck
+from search_service.api.healthcheck import HealthcheckAPI
 from search_service.api.table import SearchTableAPI, SearchTableFilterAPI
 from search_service.api.user import SearchUserAPI
 
@@ -84,10 +84,12 @@ def create_app(*, config_module_class: str) -> Flask:
     logging.info('Created app with config name {}'.format(config_module_class))
 
     api_bp = Blueprint('api', __name__)
-    api_bp.add_url_rule('/healthcheck', 'healthcheck', healthcheck)
     api = Api(api_bp)
-    # Table Search API
 
+    # Health Check
+    api.add_resource(HealthcheckAPI, '/healthcheck')
+
+    # Table Search API
     api.add_resource(SearchTableFilterAPI, '/search_table')
     # TODO: Rename endpoint to be more generic and accept a resource type so that logic can be re-used
     api.add_resource(SearchTableAPI, '/search')
