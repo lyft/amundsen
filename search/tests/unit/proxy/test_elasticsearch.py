@@ -390,29 +390,13 @@ class TestElasticsearchProxy(unittest.TestCase):
         self.assertEqual(self.es_proxy.parse_filters(filter_list,
                                                      index=TABLE_INDEX), '')
 
-    def test_validate_wrong_filters_values(self) -> None:
-        search_request = {
-            "type": "AND",
-            "filters": {
-                "schema": ["test_schema:test_schema"],
-                "table": ["test/table"]
-            },
-            "query_term": "",
-            "page_index": 0
+    def test_parse_filter_escapes_special_characters(self) -> None:
+        filter_list = {
+            'key': ['foo://bar/baz'],
         }
-        self.assertEqual(self.es_proxy.validate_filter_values(search_request), False)
-
-    def test_validate_accepted_filters_values(self) -> None:
-        search_request = {
-            "type": "AND",
-            "filters": {
-                "schema": ["test_schema"],
-                "table": ["test_table"]
-            },
-            "query_term": "a",
-            "page_index": 0
-        }
-        self.assertEqual(self.es_proxy.validate_filter_values(search_request), True)
+        expected_result = r"key:(foo\:\/\/bar\/baz)"
+        self.assertEqual(self.es_proxy.parse_filters(filter_list,
+                                                     index=TABLE_INDEX), expected_result)
 
     def test_parse_query_term(self) -> None:
         term = 'test'
