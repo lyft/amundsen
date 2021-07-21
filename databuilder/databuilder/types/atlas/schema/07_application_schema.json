@@ -1,14 +1,15 @@
 {
   "entityDefs": [
     {
-      "name": "TablePartition",
       "superTypes": [
         "DataSet"
       ],
+      "name": "Application",
       "serviceType": "amundsen",
+      "typeVersion": "2.0",
       "attributeDefs": [
         {
-          "name": "key",
+          "name": "application_url",
           "isOptional": true,
           "isUnique": false,
           "isIndexable": true,
@@ -17,39 +18,48 @@
           "valuesMinCount": 0
         },
         {
-          "name": "create_time ",
+          "name": "id",
           "isOptional": true,
           "isUnique": false,
           "isIndexable": true,
-          "typeName": "int",
+          "typeName": "string",
           "cardinality": "SINGLE",
-          "valuesMinCount": 0,
-          "defaultValue": 0
+          "valuesMinCount": 0
+        },
+        {
+          "name": "type",
+          "isOptional": true,
+          "isUnique": false,
+          "isIndexable": true,
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0
         }
       ]
     }
   ],
   "relationshipDefs": [
     {
-      "name": "Table__TablePartition",
+      "name": "DataSet__Application",
       "typeVersion": "2.0",
-      "relationshipCategory": "COMPOSITION",
-      "relationshipLabel": "_Table.TablePartition",
+      "relationshipCategory": "ASSOCIATION",
+      "relationshipLabel": "_DataSet.Application",
       "endDef1": {
-        "type": "Table",
-        "name": "partitions",
-        "isContainer": true,
+        "type": "DataSet",
+        "name": "applications",
+        "isContainer": false,
         "cardinality": "SET",
         "isLegacyAttribute": true
       },
       "endDef2": {
-        "type": "TablePartition",
-        "name": "table",
+        "type": "Application",
+        "name": "datasets",
         "isContainer": false,
-        "cardinality": "SINGLE",
+        "cardinality": "SET",
         "isLegacyAttribute": true
       },
       "propagateTags": "NONE"
     }
   ]
 }
+

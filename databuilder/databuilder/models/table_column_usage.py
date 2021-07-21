@@ -2,11 +2,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 from typing import (
-    Iterable, Iterator, Union,
+    Iterable, Iterator, Optional, Union,
 )
 
 from amundsen_rds.models import RDSModel
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
@@ -43,7 +46,7 @@ class ColumnReader(Usage):
         )
 
 
-class TableColumnUsage(GraphSerializable, TableSerializable):
+class TableColumnUsage(GraphSerializable, TableSerializable, AtlasSerializable):
     """
     Represents an iterable of read actions.
     """
@@ -54,6 +57,8 @@ class TableColumnUsage(GraphSerializable, TableSerializable):
         self._node_iterator = self._create_node_iterator()
         self._rel_iter = self._create_rel_iterator()
         self._record_iter = self._create_record_iterator()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
+        self._atlas_relation_iterator = self._create_atlas_relation_iterator()
 
     def create_next_node(self) -> Union[GraphNode, None]:
         try:
@@ -93,6 +98,26 @@ class TableColumnUsage(GraphSerializable, TableSerializable):
             while record is not None:
                 yield record
                 record = usage.create_next_record()
+
+    def _create_next_atlas_entity(self) -> Iterator[Optional[AtlasEntity]]:
+        for usage in self.col_readers:
+            yield usage.create_next_atlas_entity()
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)  # type: ignore
+        except StopIteration:
+            return None
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        try:
+            return next(self._atlas_relation_iterator)  # type: ignore
+        except StopIteration:
+            return None
+
+    def _create_atlas_relation_iterator(self) -> Iterator[Optional[AtlasRelationship]]:
+        for usage in self.col_readers:
+            yield usage.create_next_atlas_relation()
 
     def __repr__(self) -> str:
         return f'TableColumnUsage(col_readers={self.col_readers!r})'

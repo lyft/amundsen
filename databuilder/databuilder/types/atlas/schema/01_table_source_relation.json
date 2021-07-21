@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "Source__Tables",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__Source.Tables",
+      "endDef1": {
+        "type": "Source",
+        "name": "tables",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Table",
+        "name": "source",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

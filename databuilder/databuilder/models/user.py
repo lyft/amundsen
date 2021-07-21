@@ -6,16 +6,22 @@ from typing import (
     Any, Iterator, Optional, Union,
 )
 
+from amundsen_common.utils.atlas import AtlasCommonParams, AtlasCommonTypes
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.user import User as RDSUser
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
 from databuilder.models.table_serializable import TableSerializable
+from databuilder.serializers.atlas_serializer import get_entity_attrs
+from databuilder.utils.atlas import AtlasSerializedEntityOperation
 
 
-class User(GraphSerializable, TableSerializable):
+class User(GraphSerializable, TableSerializable, AtlasSerializable):
     """
     User model. This model doesn't define any relationship.
     """
@@ -96,6 +102,7 @@ class User(GraphSerializable, TableSerializable):
         self._node_iter = self._create_node_iterator()
         self._rel_iter = self._create_relation_iterator()
         self._record_iter = self._create_record_iterator()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
 
     def create_next_node(self) -> Optional[GraphNode]:
         # return the string representation of the data
@@ -216,6 +223,47 @@ class User(GraphSerializable, TableSerializable):
     def _create_record_iterator(self) -> Iterator[RDSModel]:
         user_record = self.get_user_record()
         yield user_record
+
+    def _create_atlas_user_entity(self) -> AtlasEntity:
+        attrs_mapping = [
+            (AtlasCommonParams.qualified_name, User.get_user_model_key(email=self.email)),
+            ('email', self.email),
+            ('first_name', self.first_name),
+            ('last_name', self.last_name),
+            ('full_name', self.full_name),
+            ('github_username', self.github_username),
+            ('team_name', self.team_name),
+            ('employee_type', self.employee_type),
+            ('manager_email', self.manager_email),
+            ('slack_id', self.slack_id),
+            ('is_active', self.is_active),
+            ('updated_at', self.updated_at),
+            ('role_name', self.role_name),
+            ('displayName', self.email)
+        ]
+
+        entity_attrs = get_entity_attrs(attrs_mapping)
+
+        entity = AtlasEntity(
+            typeName=AtlasCommonTypes.user,
+            operation=AtlasSerializedEntityOperation.CREATE,
+            attributes=entity_attrs,
+            relationships=None
+        )
+
+        return entity
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        pass
+
+    def _create_next_atlas_entity(self) -> Iterator[AtlasEntity]:
+        yield self._create_atlas_user_entity()
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)
+        except StopIteration:
+            return None
 
     def __repr__(self) -> str:
         return f'User({self.first_name!r}, {self.last_name!r}, {self.full_name!r}, {self.email!r}, ' \

@@ -16,13 +16,12 @@ services:
       context: .
       dockerfile: Dockerfile.search.public
     container_name: amundsensearch
+    depends_on:
+      - elasticsearch
     ports:
       - 5001:5001
     environment:
-      - CREDENTIALS_PROXY_USER=admin
-      - CREDENTIALS_PROXY_PASSWORD=admin
-      - PROXY_ENDPOINT=http://atlas:21000
-      - PROXY_CLIENT=ATLAS
+      - PROXY_ENDPOINT=es_amundsen_atlas
     networks:
       - amundsennet
   amundsenmetadata:
@@ -60,5 +59,16 @@ services:
     environment:
       - METADATASERVICE_BASE=http://amundsenmetadata:5002
       - SEARCHSERVICE_BASE=http://amundsensearch:5001
+  elasticsearch:
+    image: elasticsearch:6.7.0
+    container_name: es_amundsen_atlas
+    ports:
+      - 9200:9200
+    networks:
+      - amundsennet
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
 networks:
   amundsennet:

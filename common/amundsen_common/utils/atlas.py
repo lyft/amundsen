@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 import abc
 import re
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Set
 
 
 class AtlasStatus:
@@ -26,10 +26,21 @@ class AtlasCommonTypes:
     bookmark = 'Bookmark'
     user = 'User'
     reader = 'Reader'
+    cluster = 'Cluster'
+    application = 'Application'
+    tag = 'Tag'
+    badge = 'Badge'
+    data_set = 'DataSet'
 
 
 class AtlasTableTypes:
     table = 'Table'
+    column = 'Column'
+    database = 'Database'
+    schema = 'Schema'
+    source = 'Source'
+    watermark = 'TablePartition'
+    process = 'LineageProcess'
 
 
 class AtlasDashboardTypes:
@@ -165,6 +176,34 @@ class AtlasKey(abc.ABC):
         """
         pass
 
+    @property
+    def native_atlas_entity_types(self) -> Set[str]:
+        """
+        Atlas can be populated using two approaches:
+        1. Using Atlas-provided bridge/hook tools to ingest data in push manner (like Atlas Hive Hook)
+        2. Using Amundsen-provided databuilder framework in pull manner
+
+        Since Atlas-provided tools follow different approach for rendering qualified name than databuilder does,
+        to provide compatibility for both approaches we need to act differently depending whether the table entity
+        was loaded by Atlas-provided or Amundsen-provided tools. We distinguish them by entity type - in Atlas the
+        naming convention assumes '_table' suffix in entity name while Amundsen does not have such suffix.
+
+        If the entity_type (database in Amundsen lingo) is one of the values from this property, we treat it like
+        it was provided by Atlas and follow Atlas qualified name convention.
+
+        If the opposite is true - we treat it like it was provided by Amundsen Databuilder, use generic entity types
+        and follow Amundsen key name convention.
+        """
+        return {'hive_table'}
+
+    @property
+    def entity_type(self) -> str:
+        if self.is_qualified_name:
+            return self._database or ''
+        else:
+            return self.get_details()['database'] \
+                if self.get_details()['database'] in self.native_atlas_entity_types else 'Table'
+
 
 class AtlasTableKey(AtlasKey):
     @property
@@ -177,7 +216,7 @@ class AtlasTableKey(AtlasKey):
 
     @property
     def qualified_name(self) -> str:
-        if not self.is_qualified_name:
+        if not self.is_qualified_name and self.get_details()['database'] in self.native_atlas_entity_types:
             spec = self._get_details_from_key()
 
             schema = spec['schema']

@@ -1,0 +1,13 @@
+{
+  "entityDefs": [
+    {
+      "superTypes": [
+        "Process"
+      ],
+      "name": "LineageProcess",
+      "serviceType": "amundsen",
+      "typeVersion": "2.0"
+    }
+  ]
+}
+

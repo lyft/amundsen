@@ -1,0 +1,11 @@
+{
+  "entityDefs": [
+    {
+      "name": "Schema",
+      "serviceType": "amundsen",
+      "superTypes": [
+        "DataSet"
+      ]
+    }
+  ]
+}

@@ -1,10 +1,19 @@
 class AtlasRelationshipTypes:
     group_dashboard = 'DashboardGroup__Dashboard'
-    dashboard_owner = 'Dashboard_Users_Owner'
+    resource_owner = 'DataSet_Users_Owner'
     dashboard_query = 'Dashboard__DashboardQuery'
     query_chart = 'DashboardQuery__DashboardChart'
     dashboard_execution = 'Dashboard__DashboardExecution'
     table_dashboard = 'Table__Dashboard'
+    dashboard_owner = 'Dashboard_Users_Owner'
+    table_application = 'DataSet__Application'
+    table_source = 'Source__Tables'
+    lineage_upstream = 'dataset_process_inputs'
+    lineage_downstream = 'process_dataset_outputs'
+    tag = 'AtlasGlossaryTerm'
+    badge = 'AtlasClassification'
+    referenceable_reader = 'Referenceable_Readers'
+    reader_user = 'Reader_Users'
 
 
 class AtlasSerializedRelationshipFields:

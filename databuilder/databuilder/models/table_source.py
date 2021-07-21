@@ -5,17 +5,23 @@ from typing import (
     Iterator, Optional, Union,
 )
 
+from amundsen_common.utils.atlas import AtlasCommonParams, AtlasTableTypes
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.table import TableSource as RDSTableSource
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
 from databuilder.models.table_metadata import TableMetadata
 from databuilder.models.table_serializable import TableSerializable
+from databuilder.serializers.atlas_serializer import get_entity_attrs
+from databuilder.utils.atlas import AtlasRelationshipTypes, AtlasSerializedEntityOperation
 
 
-class TableSource(GraphSerializable, TableSerializable):
+class TableSource(GraphSerializable, TableSerializable, AtlasSerializable):
     """
     Hive table source model.
     """
@@ -43,6 +49,8 @@ class TableSource(GraphSerializable, TableSerializable):
         self._node_iter = self._create_node_iterator()
         self._relation_iter = self._create_relation_iterator()
         self._record_iter = self._create_record_iterator()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
+        self._atlas_relation_iterator = self._create_atlas_relation_iterator()
 
     def create_next_node(self) -> Optional[GraphNode]:
         # return the string representation of the data
@@ -111,6 +119,52 @@ class TableSource(GraphSerializable, TableSerializable):
             table_rk=self.get_metadata_model_key()
         )
         yield record
+
+    def _create_atlas_source_entity(self) -> AtlasEntity:
+        attrs_mapping = [
+            (AtlasCommonParams.qualified_name, self.get_source_model_key()),
+            ('name', self.source),
+            ('source_type', self.source_type),
+            ('displayName', self.source)
+        ]
+
+        entity_attrs = get_entity_attrs(attrs_mapping)
+
+        entity = AtlasEntity(
+            typeName=AtlasTableTypes.source,
+            operation=AtlasSerializedEntityOperation.CREATE,
+            attributes=entity_attrs,
+            relationships=None
+        )
+
+        return entity
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        try:
+            return next(self._atlas_relation_iterator)
+        except StopIteration:
+            return None
+
+    def _create_atlas_relation_iterator(self) -> Iterator[AtlasRelationship]:
+        relationship = AtlasRelationship(
+            relationshipType=AtlasRelationshipTypes.table_source,
+            entityType1=AtlasTableTypes.source,
+            entityQualifiedName1=self.get_source_model_key(),
+            entityType2=AtlasTableTypes.table,
+            entityQualifiedName2=self.get_metadata_model_key(),
+            attributes={}
+        )
+
+        yield relationship
+
+    def _create_next_atlas_entity(self) -> Iterator[AtlasEntity]:
+        yield self._create_atlas_source_entity()
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)
+        except StopIteration:
+            return None
 
     def __repr__(self) -> str:
         return f'TableSource({self.db!r}, {self.cluster!r}, {self.schema!r}, {self.table!r}, {self.source!r})'

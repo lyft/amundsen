@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "Cluster__Databases",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "__Cluster.Databases",
+      "endDef1": {
+        "type": "Cluster",
+        "name": "databases",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Database",
+        "name": "cluster",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

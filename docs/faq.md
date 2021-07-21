@@ -10,19 +10,21 @@
 1. Atlas has lineage support already available. It's been tried and tested.
 2. Tag/Badge propagation is supported.
 3. It has a robust authentication and authorization system.
-4. Atlas does data governance adding amundsen for discovery makes it best of both worlds.
-5. It has support for push based due to its many plugins.
+4. Atlas does data governance adding Amundsen for discovery makes it best of both worlds.
+5. Apache Atlas is the only proxy in Amundsen supporting both push and pull approaches for collecting metadata:
+    - `Push` method by leveraging Apache Atlas Hive Hook. It's an event listener running alongside Hive Metastore, translating Hive Metastore events into Apache Atlas entities and `pushing` them to Kafka topic, from which Apache Atlas ingests the data by internal processes.
+    - `Pull` method by leveraging Amundsen Databuilder integration with Apache Atlas. It means that extractors available in Databuilder can be used to collect metadata about external systems (like PostgresMetadataExtractor) and sending them to Apache Atlas in a shape consumable by Amundsen.
+    Amundsen <> Atlas integration is prepared in such way that you can use both push and pull models at the same time.
 6. The free version of Neo4j does not have authorization support (Enterprise version does). Your question should actually be why use "neo4j over janusgraph" cause that is the right level of comparison. Atlas adds a whole bunch on top of the graph database.
 
 #### Why not Atlas?
-1. Atlas is developed with data governance in mind and not with data discovery.
-2. Atlas seems to have a slow development cycle and it's community is not very responsive although some small improvements have been made.
-3. Amundsen databuilder integration is not yet supported which puts more strain on the end user to populate the required entities.
+1. Atlas seems to have a slow development cycle and it's community is not very responsive although some small improvements have been made.
+2. Atlas integration has less community support meaning new features might land slightly later for Atlas in comparison to Neo4j
 
 ##  What are the prerequisites to use Apache Atlas as backend for Amundsen?
 To run Amundsen with Atlas, latest versions of following components should be used:
 1. [Apache Atlas](https://github.com/apache/atlas/) - built from `master` branch. Ref [`103e867cc126ddb84e64bf262791a01a55bee6e5`](https://github.com/apache/atlas/commit/103e867cc126ddb84e64bf262791a01a55bee6e5) (or higher).
-2. [amundsenatlastypes](https://pypi.org/project/amundsenatlastypes/) - library for installing Atlas entity definitions specific to Amundsen integration. Version `1.1.0` (or higher).
+2. [amundsenatlastypes](https://pypi.org/project/amundsenatlastypes/) - library for installing Atlas entity definitions specific to Amundsen integration. Version `1.3.0` (or higher).
 
 ## How to migrate from Amundsen 1.x -> 2.x?
 

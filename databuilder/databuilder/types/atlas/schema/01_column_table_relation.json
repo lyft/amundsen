@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "Table__Columns",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "__Table.Columns",
+      "endDef1": {
+        "type": "Table",
+        "name": "columns",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Column",
+        "name": "table",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

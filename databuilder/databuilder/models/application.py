@@ -3,17 +3,25 @@
 
 from typing import Iterator, Union
 
+from amundsen_common.utils.atlas import (
+    AtlasCommonParams, AtlasCommonTypes, AtlasTableTypes,
+)
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.application import Application as RDSApplication, ApplicationTable as RDSApplicationTable
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
 from databuilder.models.table_metadata import TableMetadata
 from databuilder.models.table_serializable import TableSerializable
+from databuilder.serializers.atlas_serializer import get_entity_attrs
+from databuilder.utils.atlas import AtlasRelationshipTypes, AtlasSerializedEntityOperation
 
 
-class Application(GraphSerializable, TableSerializable):
+class Application(GraphSerializable, TableSerializable, AtlasSerializable):
     """
     Application-table matching model (Airflow task and table)
     """
@@ -51,6 +59,8 @@ class Application(GraphSerializable, TableSerializable):
         self._node_iter = self._create_node_iterator()
         self._relation_iter = self._create_relation_iterator()
         self._record_iter = self._create_record_iterator()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
+        self._atlas_relation_iterator = self._create_atlas_relation_iterator()
 
     def create_next_node(self) -> Union[GraphNode, None]:
         # creates new node
@@ -148,3 +158,57 @@ class Application(GraphSerializable, TableSerializable):
             application_rk=self.get_application_model_key(),
         )
         yield application_table_record
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)
+        except StopIteration:
+            return None
+
+    def _create_next_atlas_entity(self) -> Iterator[AtlasEntity]:
+        application_description = '{app_type} with id {id}'.format(
+            app_type=Application.APPLICATION_TYPE,
+            id=Application.APPLICATION_ID_FORMAT.format(dag_id=self.dag, task_id=self.task)
+        )
+
+        application_id = Application.APPLICATION_ID_FORMAT.format(
+            dag_id=self.dag,
+            task_id=self.task
+        )
+
+        group_attrs_mapping = [
+            (AtlasCommonParams.qualified_name, self.get_application_model_key()),
+            ('name', Application.APPLICATION_TYPE),
+            ('id', application_id),
+            ('description', application_description),
+            ('application_url', self.application_url)
+        ]
+
+        entity_attrs = get_entity_attrs(group_attrs_mapping)
+
+        entity = AtlasEntity(
+            typeName=AtlasCommonTypes.application,
+            operation=AtlasSerializedEntityOperation.CREATE,
+            relationships=None,
+            attributes=entity_attrs,
+        )
+
+        yield entity
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        try:
+            return next(self._atlas_relation_iterator)
+        except StopIteration:
+            return None
+
+    def _create_atlas_relation_iterator(self) -> Iterator[AtlasRelationship]:
+        relationship = AtlasRelationship(
+            relationshipType=AtlasRelationshipTypes.table_application,
+            entityType1=AtlasTableTypes.table,
+            entityQualifiedName1=self.get_table_model_key(),
+            entityType2=AtlasCommonTypes.application,
+            entityQualifiedName2=self.get_application_model_key(),
+            attributes={}
+        )
+
+        yield relationship

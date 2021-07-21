@@ -1,0 +1,11 @@
+{
+  "entityDefs": [
+    {
+      "name": "Cluster",
+      "serviceType": "amundsen",
+      "superTypes": [
+        "DataSet"
+      ]
+    }
+  ]
+}

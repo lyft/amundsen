@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "Cluster__Dashboards",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__Cluster.Dashboards",
+      "endDef1": {
+        "type": "Cluster",
+        "name": "dashboards",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Dashboard",
+        "name": "cluster",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

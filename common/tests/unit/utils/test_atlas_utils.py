@@ -63,8 +63,8 @@ class TestAtlasTableKey(unittest.TestCase):
 
     def test_table_key_qualified_name_from_amundsen_key(self) -> None:
         params = [
-            ('hive://cluster_name.db_name/table_name', 'db_name.table_name@cluster_name'),
-            ('hive_table://cluster_name.dot.db_name/table_name', 'db_name.table_name@cluster_name.dot')
+            ('hive_table://cluster_name.db_name/table_name', 'db_name.table_name@cluster_name'),
+            ('hive://cluster_name.db_name/table_name', 'hive://cluster_name.db_name/table_name')
         ]
 
         for key, qn in params:

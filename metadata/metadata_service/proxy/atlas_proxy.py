@@ -16,7 +16,7 @@ from amundsen_common.models.feature import Feature
 from amundsen_common.models.generation_code import GenerationCode
 from amundsen_common.models.lineage import Lineage, LineageItem
 from amundsen_common.models.popular_table import PopularTable
-from amundsen_common.models.table import (Badge, Column,
+from amundsen_common.models.table import (Application, Badge, Column,
                                           ProgrammaticDescription, Reader,
                                           ResourceReport, Stat, Table, Tag,
                                           User, Watermark)
@@ -158,7 +158,7 @@ class AtlasProxy(BaseProxy):
         key = AtlasTableKey(table_uri)
 
         try:
-            return self.client.entity.get_entity_by_attribute(type_name=key.get_details()['database'],
+            return self.client.entity.get_entity_by_attribute(type_name=key.entity_type,
                                                               uniq_attributes=[
                                                                   (AtlasCommonParams.qualified_name,
                                                                    key.qualified_name)])
@@ -444,7 +444,7 @@ class AtlasProxy(BaseProxy):
         try:
             attrs = table_details[AtlasCommonParams.attributes]
 
-            programmatic_descriptions = self._get_programmatic_descriptions(attrs.get('parameters', dict()))
+            programmatic_descriptions = self._get_programmatic_descriptions(attrs.get('parameters', dict()) or dict())
 
             table_info = AtlasTableKey(attrs.get(AtlasCommonParams.qualified_name)).get_details()
 
@@ -459,9 +459,11 @@ class AtlasProxy(BaseProxy):
             is_view = 'view' in table_type.lower()
 
             readers = self._get_readers(table_details, Reader)
+            application = self._get_application(table_details)
 
             table = Table(
-                database=table_details.get('typeName'),
+                table_writer=application,
+                database=AtlasTableKey(table_uri).get_details()['database'],
                 cluster=table_info.get('cluster', ''),
                 schema=table_info.get('schema', ''),
                 name=attrs.get('name') or table_info.get('table', ''),
@@ -803,7 +805,7 @@ class AtlasProxy(BaseProxy):
             db_cluster = table_info.get('cluster', '')
 
             popular_table = PopularTable(
-                database=table.typeName,
+                database=table_info.get('database') or table.typeName,
                 cluster=db_cluster,
                 schema=schema_name,
                 name=table_name,
@@ -1145,6 +1147,29 @@ class AtlasProxy(BaseProxy):
 
         return result
 
+    def _get_application(self, entity: AtlasEntityWithExtInfo) -> Optional[Application]:
+        _applications = entity.get(AtlasCommonParams.relationships, dict()).get('applications', list())
+
+        guids = [a.get(AtlasCommonParams.guid) for a in self._filter_active(_applications)]
+
+        if not guids:
+            return None
+
+        applications = self.client.entity.get_entities_by_guids(guids=list(guids), ignore_relationships=False)
+
+        for _app in applications.entities or list():
+            url = _app.attributes.get('application_url', '')
+            description = _app.attributes.get('description', '')
+            id = _app.attributes.get('id', '')
+            name = _app.attributes.get('name', '')
+
+            app = Application(application_url=url, description=description, id=id, name=name)
+
+            # only single app per table is supported
+            break
+
+        return app
+
     def _get_programmatic_descriptions(self, parameters: dict) -> List[ProgrammaticDescription]:
         programmatic_descriptions: Dict[str, ProgrammaticDescription] = {}
 
@@ -1267,7 +1292,7 @@ class AtlasProxy(BaseProxy):
             try:
                 last_execution = executions_attributes[0]
             except IndexError:
-                last_execution = dict(timestamp=0, state='n/a')
+                last_execution = dict(timestamp=0, state='Unknown')
 
             owners = self._get_owners(relationships.get('ownedBy', []))
             readers = self._get_readers(entity.entity, User)
@@ -1279,7 +1304,7 @@ class AtlasProxy(BaseProxy):
                 updated_timestamp=attributes.get('lastModifiedTimestamp', 0),
                 owners=owners,
                 last_run_timestamp=last_execution.get('timestamp', 0),
-                last_run_state=last_execution.get('state', 'n/a'),
+                last_run_state=last_execution.get('state', 'Unknown'),
                 query_names=query_names,
                 queries=queries,
                 tables=tables,
@@ -1383,8 +1408,11 @@ class AtlasProxy(BaseProxy):
         guids = [d.get(AtlasCommonParams.guid) for d in
                  self._filter_active(table.entity[AtlasCommonParams.relationships].get(resource, []))]
 
-        entities = self.client.entity.get_entities_by_guids(guids=guids)
-        result = serialize_function(entities)
+        if guids:
+            entities = self.client.entity.get_entities_by_guids(guids=guids)
+            result = serialize_function(entities)
+        else:
+            result = []
 
         return {resource: result}
 

@@ -5,11 +5,15 @@ from typing import (
     Iterator, List, Optional, Union,
 )
 
+from amundsen_common.utils.atlas import AtlasCommonParams, AtlasCommonTypes
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.dashboard import DashboardOwner as RDSDashboardOwner
 from amundsen_rds.models.table import TableOwner as RDSTableOwner
 from amundsen_rds.models.user import User as RDSUser
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.dashboard.dashboard_metadata import DashboardMetadata
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
@@ -18,9 +22,11 @@ from databuilder.models.owner_constants import OWNER_OF_OBJECT_RELATION_TYPE, OW
 from databuilder.models.table_metadata import TableMetadata
 from databuilder.models.table_serializable import TableSerializable
 from databuilder.models.user import User
+from databuilder.serializers.atlas_serializer import get_entity_attrs
+from databuilder.utils.atlas import AtlasRelationshipTypes, AtlasSerializedEntityOperation
 
 
-class Owner(GraphSerializable, TableSerializable):
+class Owner(GraphSerializable, TableSerializable, AtlasSerializable):
     LABELS_PERMITTED_TO_HAVE_OWNER = ['Table', 'Dashboard', 'Feature']
 
     def __init__(self,
@@ -39,6 +45,8 @@ class Owner(GraphSerializable, TableSerializable):
         self._node_iter = self._create_node_iterator()
         self._relation_iter = self._create_relation_iterator()
         self._record_iter = self._create_record_iterator()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
+        self._atlas_relation_iterator = self._create_atlas_relation_iterator()
 
     def __repr__(self) -> str:
         return f'Owner({self.start_label!r}, {self.start_key!r}, {self.owner_emails!r})'
@@ -106,3 +114,54 @@ class Owner(GraphSerializable, TableSerializable):
                     )
                 else:
                     raise Exception(f'{self.start_label}<>Owner relationship is not table serializable')
+
+    def _create_atlas_owner_entity(self, owner: str) -> AtlasEntity:
+        attrs_mapping = [
+            (AtlasCommonParams.qualified_name, owner),
+            ('email', owner)
+        ]
+
+        entity_attrs = get_entity_attrs(attrs_mapping)
+
+        entity = AtlasEntity(
+            typeName=AtlasCommonTypes.user,
+            operation=AtlasSerializedEntityOperation.CREATE,
+            attributes=entity_attrs,
+            relationships=None
+        )
+
+        return entity
+
+    def _create_atlas_owner_relation(self, owner: str) -> AtlasRelationship:
+        table_relationship = AtlasRelationship(
+            relationshipType=AtlasRelationshipTypes.resource_owner,
+            entityType1=AtlasCommonTypes.data_set,
+            entityQualifiedName1=self.start_key,
+            entityType2=AtlasCommonTypes.user,
+            entityQualifiedName2=User.get_user_model_key(email=owner),
+            attributes={}
+        )
+
+        return table_relationship
+
+    def _create_next_atlas_entity(self) -> Iterator[AtlasEntity]:
+        for owner in self.owner_emails:
+            if owner:
+                yield self._create_atlas_owner_entity(owner)
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)
+        except StopIteration:
+            return None
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        try:
+            return next(self._atlas_relation_iterator)
+        except StopIteration:
+            return None
+
+    def _create_atlas_relation_iterator(self) -> Iterator[AtlasRelationship]:
+        for owner in self.owner_emails:
+            if owner:
+                yield self._create_atlas_owner_relation(owner)

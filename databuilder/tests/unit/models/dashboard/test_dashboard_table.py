@@ -140,22 +140,24 @@ class TestDashboardTable(unittest.TestCase):
 
     def test_create_next_atlas_relation(self) -> None:
         dashboard_table = DashboardTable(
-            table_ids=['hive://gold.schema/table1', 'hive://gold.schema/table2'],
+            table_ids=['hive://gold.schema/table1', 'hive_table://gold.schema/table2'],
             cluster='cluster_id', product='product_id',
             dashboard_id='dashboard_id', dashboard_group_id='dashboard_group_id',
         )
 
+        # 'hive' is db name compatible with Amundsen Databuilder sourced data. in such case qn = amundsen key
+        # 'hive_table' is db name compatible with data sources from Atlas Hive Hook. in such case custom qn is used
         expected = [
             {
                 "relationshipType": "Table__Dashboard",
-                "entityType1": "hive",
-                "entityQualifiedName1": "schema.table1@gold",
+                "entityType1": "Table",
+                "entityQualifiedName1": "hive://gold.schema/table1",
                 "entityType2": "Dashboard",
                 "entityQualifiedName2": "product_id_dashboard://cluster_id.dashboard_group_id/dashboard_id",
             },
             {
                 "relationshipType": "Table__Dashboard",
-                "entityType1": "hive",
+                "entityType1": "Table",
                 "entityQualifiedName1": "schema.table2@gold",
                 "entityType2": "Dashboard",
                 "entityQualifiedName2": "product_id_dashboard://cluster_id.dashboard_group_id/dashboard_id",

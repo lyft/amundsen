@@ -41,6 +41,7 @@
   "entityDefs": [
     {
       "name": "Column",
+      "serviceType": "amundsen",
       "superTypes": [
         "DataSet"
       ],
@@ -53,6 +54,18 @@
           "isUnique": false,
           "isIndexable": true,
           "includeInNotification": false
+        },
+        {
+          "name": "type",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false,
+          "searchWeight": -1
         }
       ]
     }

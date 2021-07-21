@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "Cluster__Schemas",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "__Cluster.Schemas",
+      "endDef1": {
+        "type": "Cluster",
+        "name": "schemas",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Schema",
+        "name": "cluster",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

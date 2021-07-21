@@ -1,0 +1,22 @@
+{
+  "entityDefs": [
+    {
+      "name": "Source",
+      "serviceType": "amundsen",
+      "superTypes": [
+        "DataSet"
+      ],
+      "attributeDefs": [
+        {
+          "name": "source_type",
+          "isOptional": true,
+          "isUnique": false,
+          "isIndexable": true,
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0
+        }
+      ]
+    }
+  ]
+}

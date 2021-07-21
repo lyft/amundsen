@@ -6,6 +6,9 @@ from typing import Iterator, Union
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.table import TableTimestamp as RDSTableTimestamp
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
@@ -14,7 +17,7 @@ from databuilder.models.table_serializable import TableSerializable
 from databuilder.models.timestamp import timestamp_constants
 
 
-class TableLastUpdated(GraphSerializable, TableSerializable):
+class TableLastUpdated(GraphSerializable, TableSerializable, AtlasSerializable):
     # constants
     LAST_UPDATED_NODE_LABEL = timestamp_constants.NODE_LABEL
     LAST_UPDATED_KEY_FORMAT = '{db}://{cluster}.{schema}/{tbl}/timestamp'
@@ -123,3 +126,12 @@ class TableLastUpdated(GraphSerializable, TableSerializable):
             table_rk=self.get_table_model_key()
         )
         yield record
+
+    # Atlas automatically updates `updateTime` of an entity if it's changed (along with storing audit info what changed)
+    # so we don't really need to implement those methods. The reason they exist at all is so loader class doesn't fail
+    # if extractor extracts this info.
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        pass
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        pass

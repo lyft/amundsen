@@ -187,7 +187,7 @@ class Data:
             'partitions': [dict(displayText=p.get('attributes', dict()).get('name'),
                                 entityStatus=p.get('status'),
                                 relationshipStatus='ACTIVE') for p in partitions],
-            'dashboards': [{'guid': 'dashboard_1'}]
+            'dashboards': [{'guid': 'dashboard_1', 'relationshipStatus': 'ACTIVE', 'entityStatus': 'ACTIVE'}]
         },
     }
     entity1.update(classification_entity)

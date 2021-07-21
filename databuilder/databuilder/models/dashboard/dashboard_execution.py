@@ -6,19 +6,27 @@ from typing import (
     Any, Iterator, Optional, Union,
 )
 
+from amundsen_common.utils.atlas import AtlasCommonParams, AtlasDashboardTypes
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.dashboard import DashboardExecution as RDSDashboardExecution
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.dashboard.dashboard_metadata import DashboardMetadata
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
 from databuilder.models.table_serializable import TableSerializable
+from databuilder.serializers.atlas_serializer import (
+    add_entity_relationship, get_entity_attrs, get_entity_relationships,
+)
+from databuilder.utils.atlas import AtlasSerializedEntityOperation
 
 LOGGER = logging.getLogger(__name__)
 
 
-class DashboardExecution(GraphSerializable, TableSerializable):
+class DashboardExecution(GraphSerializable, TableSerializable, AtlasSerializable):
     """
     A model that encapsulate Dashboard's execution timestamp in epoch and execution state
     """
@@ -51,6 +59,7 @@ class DashboardExecution(GraphSerializable, TableSerializable):
         self._node_iterator = self._create_node_iterator()
         self._relation_iterator = self._create_relation_iterator()
         self._record_iterator = self._create_record_iterator()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
 
     def create_next_node(self) -> Union[GraphNode, None]:
         try:
@@ -119,6 +128,47 @@ class DashboardExecution(GraphSerializable, TableSerializable):
             dashboard_id=self._dashboard_id,
             execution_id=self._execution_id
         )
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)
+        except StopIteration:
+            return None
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        return None
+
+    def _create_next_atlas_entity(self) -> Iterator[AtlasEntity]:
+        attrs_mapping = [
+            (AtlasCommonParams.qualified_name, self._get_last_execution_node_key()),
+            ('state', self._execution_state),
+            ('timestamp', self._execution_timestamp)
+        ]
+
+        query_entity_attrs = get_entity_attrs(attrs_mapping)
+
+        relationship_list = []  # type: ignore
+
+        add_entity_relationship(
+            relationship_list,
+            'dashboard',
+            AtlasDashboardTypes.metadata,
+            DashboardMetadata.DASHBOARD_KEY_FORMAT.format(
+                product=self._product,
+                cluster=self._cluster,
+                dashboard_group=self._dashboard_group_id,
+                dashboard_name=self._dashboard_id
+            )
+        )
+
+        execution_entity = AtlasEntity(
+            typeName=AtlasDashboardTypes.execution,
+            operation=AtlasSerializedEntityOperation.CREATE,
+            attributes=query_entity_attrs,
+            relationships=get_entity_relationships(relationship_list)
+        )
+
+        yield execution_entity
 
     def __repr__(self) -> str:
         return f'DashboardExecution({self._dashboard_group_id!r}, {self._dashboard_id!r}, ' \

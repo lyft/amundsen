@@ -10,9 +10,11 @@ from apache_atlas.model.typedef import AtlasTypesDef
 from requests import Timeout
 
 from databuilder.types.atlas.types_def import (
-    bookmark_schema, column_schema, dashboard_chart_schema, dashboard_execution_schema, dashboard_group_schema,
-    dashboard_query_schema, dashboard_schema, data_owner_schema, hive_table_partition, reader_referenceable_relation,
-    reader_schema, report_schema, table_partition_schema, table_schema, user_reader_relation, user_schema,
+    application_schema, bookmark_schema, cluster_schema, column_schema, column_table_relation, dashboard_chart_schema,
+    dashboard_execution_schema, dashboard_group_schema, dashboard_query_schema, dashboard_schema, data_owner_schema,
+    database_cluster_relation, database_schema, hive_table_partition, lineage_schema, reader_referenceable_relation,
+    reader_schema, report_schema, schema_cluster_relation, schema_schema, source_schema, table_partition_schema,
+    table_schema, table_schema_relation, table_source_relation, user_reader_relation, user_schema,
 )
 
 LOGGER = logging.getLogger(__name__)
@@ -75,6 +77,27 @@ class AtlasEntityInitializer:
     def create_column_schema(self) -> None:
         self.create_or_update(self.get_schema_dict(column_schema), "Column")
 
+    def create_column_table_relation(self) -> None:
+        self.create_or_update(self.get_schema_dict(column_table_relation), "Column <-> Table")
+
+    def create_cluster_schema(self) -> None:
+        self.create_or_update(self.get_schema_dict(cluster_schema), "Cluster")
+
+    def create_database_schema(self) -> None:
+        self.create_or_update(self.get_schema_dict(database_schema), "Database")
+
+    def create_database_cluster_relation(self) -> None:
+        self.create_or_update(self.get_schema_dict(database_cluster_relation), "Database <-> Cluster")
+
+    def create_schema_schema(self) -> None:
+        self.create_or_update(self.get_schema_dict(schema_schema), "Schema")
+
+    def create_schema_cluster_relation(self) -> None:
+        self.create_or_update(self.get_schema_dict(schema_cluster_relation), "Schema <-> Database")
+
+    def create_table_schema_relation(self) -> None:
+        self.create_or_update(self.get_schema_dict(table_schema_relation), "Table <-> Schema")
+
     def create_user_schema(self) -> None:
         self.create_or_update(self.get_schema_dict(user_schema), "User")
 
@@ -102,6 +125,18 @@ class AtlasEntityInitializer:
     def create_data_owner_relation(self) -> None:
         self.create_or_update(self.get_schema_dict(data_owner_schema), "Data Owner Relation")
 
+    def create_application_schema(self) -> None:
+        self.create_or_update(self.get_schema_dict(application_schema), "Application")
+
+    def create_source_schema(self) -> None:
+        self.create_or_update(self.get_schema_dict(source_schema), "Source")
+
+    def create_table_source_relation(self) -> None:
+        self.create_or_update(self.get_schema_dict(table_source_relation), "Table <-> Source")
+
+    def create_lineage_schema(self) -> None:
+        self.create_or_update(self.get_schema_dict(lineage_schema), "LineageProcess")
+
     def create_dashboard_group_schema(self) -> None:
         self.create_or_update(self.get_schema_dict(dashboard_group_schema), "Dashboard Group")
 
@@ -117,18 +152,32 @@ class AtlasEntityInitializer:
     def create_dashboard_execution_schema(self) -> None:
         self.create_or_update(self.get_schema_dict(dashboard_execution_schema), "Dashboard Execution")
 
+    def create_dashboard_cluster_relation(self) -> None:
+        self.create_or_update(self.get_schema_dict(database_cluster_relation), "Dashboard <-> Cluster")
+
     def create_required_entities(self, fix_existing_data: bool = False) -> None:
         """
         IMPORTANT: The order of the entity definition matters.
         Please keep this order.
         :return: Creates or Updates the entity definition in Apache Atlas
         """
+        self.create_cluster_schema()
         self.create_column_schema()
         self.create_reader_schema()
         self.create_user_schema()
         self.create_bookmark_schema()
         self.create_report_schema()
+        self.create_database_schema()
+        self.create_database_cluster_relation()
+        self.create_schema_schema()
+        self.create_schema_cluster_relation()
         self.create_table_schema()
+        self.create_column_table_relation()
+        self.create_table_schema_relation()
+        self.create_source_schema()
+        self.create_table_source_relation()
+        self.create_application_schema()
+        self.create_lineage_schema()
         self.assign_subtypes(regex="(.*)_table$", super_type="Table")
         self.assign_subtypes(regex="(.*)_column$", super_type="Column")
         self.create_user_reader_relation()
@@ -141,3 +190,4 @@ class AtlasEntityInitializer:
         self.create_dashboard_query_schema()
         self.create_dashboard_chart_schema()
         self.create_dashboard_execution_schema()
+        self.create_dashboard_cluster_relation()

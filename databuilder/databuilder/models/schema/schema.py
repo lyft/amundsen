@@ -6,12 +6,16 @@ from typing import (
     Any, Iterator, Union,
 )
 
+from amundsen_common.utils.atlas import AtlasCommonParams, AtlasTableTypes
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.schema import (
     Schema as RDSSchema, SchemaDescription as RDSSchemaDescription,
     SchemaProgrammaticDescription as RDSSchemaProgrammaticDescription,
 )
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
@@ -20,9 +24,11 @@ from databuilder.models.schema.schema_constant import (
 )
 from databuilder.models.table_metadata import DescriptionMetadata
 from databuilder.models.table_serializable import TableSerializable
+from databuilder.serializers.atlas_serializer import get_entity_attrs
+from databuilder.utils.atlas import AtlasSerializedEntityOperation
 
 
-class SchemaModel(GraphSerializable, TableSerializable):
+class SchemaModel(GraphSerializable, TableSerializable, AtlasSerializable):
     def __init__(self,
                  schema_key: str,
                  schema: str,
@@ -39,6 +45,7 @@ class SchemaModel(GraphSerializable, TableSerializable):
         self._node_iterator = self._create_node_iterator()
         self._relation_iterator = self._create_relation_iterator()
         self._record_iterator = self._create_record_iterator()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
 
     def create_next_node(self) -> Union[GraphNode, None]:
         try:
@@ -113,3 +120,35 @@ class SchemaModel(GraphSerializable, TableSerializable):
 
         cluster_key = schema_key_match.group(1)
         return cluster_key
+
+    def _create_atlas_schema_entity(self) -> AtlasEntity:
+        attrs_mapping = [
+            (AtlasCommonParams.qualified_name, self._schema_key),
+            ('name', self._schema_key),
+            ('description', self._description.text if self._description else '')
+        ]
+
+        entity_attrs = get_entity_attrs(attrs_mapping)
+
+        # Since Schema cannot exist without Cluster (COMPOSITION relationship type), we assume Schema entity was created
+        # by different process and we only update schema description here using UPDATE operation.
+        entity = AtlasEntity(
+            typeName=AtlasTableTypes.schema,
+            operation=AtlasSerializedEntityOperation.UPDATE,
+            attributes=entity_attrs,
+            relationships=None
+        )
+
+        return entity
+
+    def _create_next_atlas_entity(self) -> Iterator[AtlasEntity]:
+        yield self._create_atlas_schema_entity()
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)
+        except StopIteration:
+            return None
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        pass

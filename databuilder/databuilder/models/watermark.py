@@ -5,16 +5,24 @@ from typing import (
     Iterator, List, Tuple, Union,
 )
 
+from amundsen_common.utils.atlas import AtlasCommonParams, AtlasTableTypes
 from amundsen_rds.models import RDSModel
 from amundsen_rds.models.table import TableWatermark as RDSTableWatermark
 
+from databuilder.models.atlas_entity import AtlasEntity
+from databuilder.models.atlas_relationship import AtlasRelationship
+from databuilder.models.atlas_serializable import AtlasSerializable
 from databuilder.models.graph_node import GraphNode
 from databuilder.models.graph_relationship import GraphRelationship
 from databuilder.models.graph_serializable import GraphSerializable
 from databuilder.models.table_serializable import TableSerializable
+from databuilder.serializers.atlas_serializer import (
+    add_entity_relationship, get_entity_attrs, get_entity_relationships,
+)
+from databuilder.utils.atlas import AtlasSerializedEntityOperation
 
 
-class Watermark(GraphSerializable, TableSerializable):
+class Watermark(GraphSerializable, TableSerializable, AtlasSerializable):
     """
     Table watermark result model.
     Each instance represents one row of table watermark result.
@@ -52,6 +60,7 @@ class Watermark(GraphSerializable, TableSerializable):
         self._node_iter = self._create_node_iterator()
         self._relation_iter = self._create_relation_iterator()
         self._record_iter = self._create_next_record()
+        self._atlas_entity_iterator = self._create_next_atlas_entity()
 
     def create_next_node(self) -> Union[GraphNode, None]:
         # return the string representation of the data
@@ -128,3 +137,45 @@ class Watermark(GraphSerializable, TableSerializable):
                 table_rk=self.get_metadata_model_key()
             )
             yield part_record
+
+    def _create_atlas_partition_entity(self, spec: Tuple[str, str]) -> AtlasEntity:
+        attrs_mapping = [
+            (AtlasCommonParams.qualified_name, self.get_watermark_model_key()),
+            ('name', spec[1]),
+            ('displayName', spec[1]),
+            ('key', spec[0]),
+            ('create_time', self.create_time)
+        ]
+
+        entity_attrs = get_entity_attrs(attrs_mapping)
+
+        relationship_list = []  # type: ignore
+
+        add_entity_relationship(
+            relationship_list,
+            'table',
+            AtlasTableTypes.table,
+            self.get_metadata_model_key()
+        )
+
+        entity = AtlasEntity(
+            typeName=AtlasTableTypes.watermark,
+            operation=AtlasSerializedEntityOperation.CREATE,
+            attributes=entity_attrs,
+            relationships=get_entity_relationships(relationship_list)
+        )
+
+        return entity
+
+    def create_next_atlas_relation(self) -> Union[AtlasRelationship, None]:
+        pass
+
+    def _create_next_atlas_entity(self) -> Iterator[AtlasEntity]:
+        for part in self.parts:
+            yield self._create_atlas_partition_entity(part)
+
+    def create_next_atlas_entity(self) -> Union[AtlasEntity, None]:
+        try:
+            return next(self._atlas_entity_iterator)
+        except StopIteration:
+            return None

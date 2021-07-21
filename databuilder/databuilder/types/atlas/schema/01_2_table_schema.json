@@ -2,6 +2,7 @@
   "entityDefs": [
     {
       "name": "Table",
+      "serviceType": "amundsen",
       "superTypes": [
         "DataSet"
       ],
@@ -23,6 +24,30 @@
           "isUnique": false,
           "isIndexable": true,
           "includeInNotification": false
+        },
+        {
+          "name": "tableType",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1
+        },
+        {
+          "name": "parameters",
+          "typeName": "map<string,string>",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false,
+          "includeInNotification": false,
+          "searchWeight": -1
         }
       ]
     }
