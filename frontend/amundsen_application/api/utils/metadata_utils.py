@@ -89,6 +89,9 @@ def is_table_editable(schema_name: str, table_name: str, cfg: Any = None) -> boo
     if cfg is None:
         cfg = app.config
 
+    if cfg['ALL_UNEDITABLE_SCHEMAS']:
+        return False
+
     if schema_name in cfg['UNEDITABLE_SCHEMAS']:
         return False
 

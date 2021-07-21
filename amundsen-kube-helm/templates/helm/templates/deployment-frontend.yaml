@@ -81,6 +81,10 @@ spec:
           - name: OVERWRITE_REDIRECT_URI
             value: {{ .Values.frontEnd.OVERWRITE_REDIRECT_URI }}
           {{- end }}
+          {{ - if .Values.frontEnd.ALL_UNEDITABLE_SCHEMAS }}
+          - name: ALL_UNEDITABLE_SCHEMAS
+            value: {{ .Values.frontEnd.ALL_UNEDITABLE_SCHEMAS }}
+          {{ - end } }
           - name: FLASK_OIDC_SECRET_KEY
             valueFrom:
               secretKeyRef:

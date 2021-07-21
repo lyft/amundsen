@@ -109,14 +109,19 @@ be company specific which will not directly integrated with Amundsen.
 You can use different combinations of schema and table name for selecting tables.
 
 Here are some examples when this feature can be used:
-1. You want to set all tables with a given schema or schema pattern as un-editable.
-2. You want to set all tables with a specific table name pattern in a given schema pattern as un-editable.
-3. You want to set all tables with a given table name pattern as un-editable.
+1. You want to set ALL tables in your application as un-editable
+2. You want to set all tables with a given schema or schema pattern as un-editable.
+3. You want to set all tables with a specific table name pattern in a given schema pattern as un-editable.
+4. You want to set all tables with a given table name pattern as un-editable.
 
 Amundsen has two variables in `config.py` file which can be used to define match rules:
-1. `UNEDITABLE_SCHEMAS` : Set of schemas where all tables should be un-editable. It takes exact schema name.
-2. `UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES` : List of MatchRuleObject, where each MatchRuleObject consists of regex for
+1. `ALL_UNEDITABLE_SCHEMAS` : boolean on/off switch for ability to edit tables. This can also be set using the environment variable 'ALL_UNEDITABLE_SCHEMAS'
+2. `UNEDITABLE_SCHEMAS` : Set of schemas where all tables should be un-editable. It takes exact schema name.
+3. `UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES` : List of MatchRuleObject, where each MatchRuleObject consists of regex for
 schema name or regex for table name or both.
+
+Purpose of `ALL_UNEDITABLE_SCHEMAS` is to provide a blanket on/off switch for disabling editing schemas. This should be used if you plan to up
+all of your schemas via databuilder rather then allow users to do it via the UI.
 
 Purpose of `UNEDITABLE_SCHEMAS` can be fulfilled by `UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES` but we are keeping both
 variables for backward compatibility.

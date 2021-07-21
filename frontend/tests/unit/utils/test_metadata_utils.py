@@ -151,8 +151,20 @@ class TableEditabilityWrapper(unittest.TestCase):
     def setUp(self) -> None:
         pass
 
+    def test_no_schemas_editable(self) -> None:
+        mockConfig: Dict = {
+            'ALL_UNEDITABLE_SCHEMAS': True,
+            'UNEDITABLE_SCHEMAS': [],
+            'UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES': [],
+        }
+
+        self.assertFalse(is_table_editable('anyschema', 'anytable', mockConfig))
+        self.assertFalse(is_table_editable('anotherschema', 'anothertable', mockConfig))
+        self.assertFalse(is_table_editable('athirdschema', 'athirdtable', mockConfig))
+
     def test_empty_allowed(self) -> None:
         mockConfig: Dict = {
+            'ALL_UNEDITABLE_SCHEMAS': False,
             'UNEDITABLE_SCHEMAS': [],
             'UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES': [],
         }
@@ -161,6 +173,7 @@ class TableEditabilityWrapper(unittest.TestCase):
 
     def test_schema(self) -> None:
         mockConfig = {
+            'ALL_UNEDITABLE_SCHEMAS': False,
             'UNEDITABLE_SCHEMAS': ['uneditable_schema'],
             'UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES': [],
         }
@@ -170,6 +183,7 @@ class TableEditabilityWrapper(unittest.TestCase):
 
     def test_schema_match_rule(self) -> None:
         mockConfig = {
+            'ALL_UNEDITABLE_SCHEMAS': False,
             'UNEDITABLE_SCHEMAS': [''],
             'UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES': [
                 MatchRuleObject(schema_regex=r"^(uneditable).*"),
@@ -181,6 +195,7 @@ class TableEditabilityWrapper(unittest.TestCase):
 
     def test_schema_table_match_rule(self) -> None:
         mockConfig = {
+            'ALL_UNEDITABLE_SCHEMAS': False,
             'UNEDITABLE_SCHEMAS': [''],
             'UNEDITABLE_TABLE_DESCRIPTION_MATCH_RULES': [
                 MatchRuleObject(schema_regex=r"^first.*", table_name_regex=r".*bad.*")

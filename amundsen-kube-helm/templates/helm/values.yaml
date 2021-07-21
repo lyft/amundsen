@@ -179,6 +179,10 @@ frontEnd:
   # frontEnd.OVERWRITE_REDIRECT_URI -- The redirect uri for OIDC.
   OVERWRITE_REDIRECT_URI:
 
+  # frontEnd.ALL_UNEDITABLE_SCHEMAS -- Environment variable for allowing/disallowing editing schemas via the UI. All schemas are allowed to be edited by default. Set to 'true' to disallow.
+  # See https://www.amundsen.io/amundsen/frontend/docs/flask_config/#uneditable-table-descriptions for more
+  ALL_UNEDITABLE_SCHEMAS:
+
   # frontEnd.resources -- See pod resourcing [ref](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
   resources: {}
   #  limits:
