@@ -1,0 +1,38 @@
+Dashboard search
+This is used by the frontend API to search dashboard information.
+---
+tags:
+  - 'search_dashboard_filter'
+paths:
+  /search_dashboard:
+    post:
+      summary: This is used by the frontend API to search dashboard information.
+      requestBody:
+        description: The json data passed from the frontend API to execute a search.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                index:
+                  type: string
+                page_index:
+                  type: integer
+                query_term:
+                  type: string
+                search_request:
+                  type: object
+      responses:
+        200:
+          description: dashboard result information with query string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchDashboardResults'
+        500:
+          description: Exception encountered while searching
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

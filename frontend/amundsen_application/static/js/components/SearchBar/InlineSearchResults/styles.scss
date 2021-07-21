@@ -1,0 +1,149 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.inline-results {
+  background: white;
+  border: 1px solid $stroke;
+  border-radius: 4px;
+  box-shadow: 0 3px 12px 0 rgba(17, 17, 31, 0.04);
+  position: absolute;
+  width: 100%;
+  z-index: 10; // TODO: Establish levels for cases where we can't avoid z-index. This is a topmost element.
+
+  &.small {
+    .search-item-link {
+      padding-left: 8px !important;
+    }
+
+    .result-item-link {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+
+    .section-footer.title-3,
+    .section-title.title-3 {
+      margin-left: 12px;
+    }
+  }
+
+  .search-item-section {
+    padding-bottom: $spacer-1;
+    padding-top: $spacer-1;
+  }
+
+  .inline-results-section {
+    &:not(:last-of-type) {
+      border-bottom: 1px solid $stroke;
+    }
+
+    .section-title,
+    .section-footer {
+      margin: $spacer-1 $spacer-3;
+    }
+
+    a.section-footer {
+      color: $brand-color-4 !important;
+      display: block;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .list-group {
+      margin: 0;
+
+      .list-group-item {
+        /* Override some shared list-group-item styles */
+        border: none;
+
+        &:hover {
+          background-color: $indigo5;
+          box-shadow: none !important;
+        }
+
+        &:hover + .list-group-item {
+          box-shadow: none !important;
+        }
+
+        .result-item-link,
+        .search-item-link {
+          color: $text-primary;
+          display: flex;
+          flex-direction: row;
+          text-decoration: none;
+
+          img.icon.icon-search,
+          span.icon.result-icon,
+          .sb-avatar {
+            margin: auto 8px auto 0;
+          }
+        }
+
+        /* SEARCH ITEM */
+        .search-item-link {
+          height: 32px;
+          line-height: inherit;
+          padding: 4px 4px 4px 24px;
+
+          &:hover {
+            .search-item-info .search-item-text {
+              text-shadow: 0 0 0.6px $text-primary, 0 0 0.6px $text-primary;
+            }
+          }
+
+          .search-item-info {
+            display: flex;
+
+            .search-item-text {
+              font-weight: $font-weight-body-regular;
+            }
+          }
+
+          .loading-spinner {
+            height: 24px;
+            margin: auto 0;
+            width: 24px;
+          }
+
+          .search-item-indicator {
+            margin: auto 0 auto $spacer-1;
+            font-style: italic;
+          }
+        }
+
+        /* RESULT ITEM */
+        .result-item-link {
+          height: 56px;
+          padding: 8px 32px;
+
+          .result-info {
+            display: flex;
+            flex: 1;
+            margin-right: 8px;
+            min-width: 0;
+
+            .dashboard-title {
+              display: flex;
+
+              .dashboard-name {
+                margin-right: $spacer-2;
+              }
+
+              .dashboard-group {
+                color: $text-secondary;
+                white-space: nowrap;
+              }
+            }
+          }
+
+          .resource-type {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+}

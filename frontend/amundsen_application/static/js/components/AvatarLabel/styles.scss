@@ -1,0 +1,30 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.avatar-label-component {
+  display: inline-block;
+
+  .avatar-label {
+    cursor: inherit;
+    margin-left: 8px;
+    min-width: 0;
+    vertical-align: middle;
+  }
+
+  .gray-avatar {
+    div {
+      background: $gray20 !important;
+      color: $gray20 !important;
+    }
+  }
+}
+
+.avatar-overlap {
+  margin-left: -5px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}

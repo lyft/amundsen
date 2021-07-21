@@ -1,0 +1,24 @@
+Gets information about popular tables
+---
+tags:
+  - 'popular_tables'
+parameters:
+  - in: query
+    name: limit
+    required: false
+    type: integer
+    schema:
+      type: integer
+      default: 10
+responses:
+  200:
+    description: 'Popular tables'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            popular_tables:
+              type: array
+              items:
+                $ref: '#/components/schemas/PopularTables'

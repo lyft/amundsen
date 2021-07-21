@@ -1,0 +1,60 @@
+{
+  "structDefs": [
+    {
+      "name": "StatisticsEntry",
+      "attributeDefs": [
+        {
+          "name": "stat_name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "stat_val",
+          "typeName": "double",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "start_epoch",
+          "typeName": "date",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "end_epoch",
+          "typeName": "date",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false
+        }
+      ]
+    }
+  ],
+  "entityDefs": [
+    {
+      "name": "Column",
+      "superTypes": [
+        "DataSet"
+      ],
+      "attributeDefs": [
+        {
+          "name": "statistics",
+          "typeName": "array<StatisticsEntry>",
+          "isOptional": true,
+          "cardinality": "LIST",
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false
+        }
+      ]
+    }
+  ]
+}

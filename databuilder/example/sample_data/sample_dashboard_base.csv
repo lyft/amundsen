@@ -1,0 +1,5 @@
+product,cluster,dashboard_group,dashboard_group_id,dashboard_group_description,dashboard_group_url,dashboard_name,dashboard_id,description,created_timestamp,dashboard_url
+mode,gold,test group1,test_group_id_1,test group description 1,http://mode.test_group_id_1.com,test dashboard,test_dashboard_id_1,test dashboard description,1592333799,http://mode.test_group_id_1.com/test_dashboard_id_1
+mode,gold,test group1,test_group_id_1,test group description 1_2,http://mode.test_group_id_1.com,test dashboard,test_dashboard_id_1_2,test dashboard description 1_2,1592332799,http://mode.test_group_id_1.com/test_dashboard_id_1_2
+mode,gold,test group2,test_group_id_2,test group description 2,http://mode.test_group_id_2.com,test dashboard,test_dashboard_id_2,test dashboard description,1592133799,http://mode.test_group_id_2.com/test_dashboard_id_2
+superset,gold,test group3,test_group_id_3,test group description 1,http://mode.test_group_id_3.com,test dashboard,test_dashboard_id_3,test dashboard description,1591333799,http://mode.test_group_id_3.com/test_dashboard_id_3

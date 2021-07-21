@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'typography';
+
+$more-link-size: 18px;
+$more-link-line-height: 21px;
+$message-size: 14px;
+$message-line-height: 16px;
+$message-border-size: 1px;
+
+.announcements-list-title {
+  @extend %text-title-w1;
+}
+
+.announcements-list {
+  list-style: none;
+  margin: $spacer-1 0 0 0;
+  padding: 0;
+
+  .announcement {
+    margin-bottom: -1px;
+  }
+
+  .announcement-content p {
+    margin: 0;
+  }
+}
+
+.announcements-list-more-link {
+  font-size: $more-link-size;
+  line-height: $more-link-line-height;
+  margin-top: 12px;
+  display: block;
+}
+
+.empty-announcement,
+.error-announcement {
+  font-size: $message-size;
+  line-height: $message-line-height;
+  color: $text-primary;
+  text-align: center;
+  border-top: $message-border-size solid $gray20;
+  padding-top: $spacer-3;
+}

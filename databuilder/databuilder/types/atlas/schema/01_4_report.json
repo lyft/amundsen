@@ -1,0 +1,58 @@
+{
+  "entityDefs": [
+    {
+      "superTypes": [
+        "Referenceable"
+      ],
+      "name": "Report",
+      "serviceType": "amundsen",
+      "description": "External data report (url)",
+      "typeVersion": "2.0",
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        },
+        {
+          "name": "url",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "Referenceable__Report",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "_Referenceable.Report",
+      "endDef1": {
+        "type": "Referenceable",
+        "name": "reports",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Report",
+        "name": "entity",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

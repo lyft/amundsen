@@ -1,0 +1,4 @@
+source_column_key,target_column_key
+hive://gold.test_schema/test_table1/col1,dynamo://gold.test_schema/test_table2/col1
+hive://gold.test_schema/test_table1/col1,hive://gold.test_schema/test_view1/col1
+dynamo://gold.test_schema/test_table2/col2,hive://gold.test_schema/test_table3/col1

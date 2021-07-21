@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Delta-Down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12.6,6.8 L20.1,16.8 C20.3485281,17.1313708 20.2813708,17.6014719 19.95,17.85 C19.8201779,17.9473666 19.6622777,18 19.5,18 L4.5,18 C4.08578644,18 3.75,17.6642136 3.75,17.25 C3.75,17.0877223 3.8026334,16.9298221 3.9,16.8 L11.4,6.8 C11.6485281,6.46862915 12.1186292,6.40147186 12.45,6.65 C12.5068542,6.69264069 12.5573593,6.74314575 12.6,6.8 Z" id="path-1"></path>
+    </defs>
+    <g id="Delta-Down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Triangle-2" fill="#11111F" transform="translate(12.000000, 12.000000) scale(-1, -1) translate(-12.000000, -12.000000) " xlink:href="#path-1"></use>
+        <g id="Tint/Black" mask="url(#mask-2)"></g>
+        <g id="triangle" mask="url(#mask-2)">
+            <g transform="translate(1.000000, 2.000000)"></g>
+        </g>
+    </g>
+</svg>

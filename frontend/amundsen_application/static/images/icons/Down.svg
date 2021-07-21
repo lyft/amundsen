@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M11.9873073,13.7302417 L16.0380559,9.81237587 C16.4369613,9.42655632 17.071544,9.43184703 17.463961,9.82426407 C17.8480273,10.2083304 17.8480273,10.8310249 17.463961,11.2150912 C17.4600959,11.2189563 17.4561985,11.2227892 17.4522694,11.2265894 L12.7187984,15.8047814 C12.5412869,15.9764697 12.3171062,16.0707097 12.0883633,16.0878523 C11.7999983,16.1178672 11.5010724,16.0260245 11.2749965,15.8112549 L6.44216084,11.220116 C6.05189004,10.8493632 6.0360676,10.2324316 6.40682041,9.84216084 C6.41255824,9.83612094 6.41837327,9.83015487 6.42426407,9.82426407 C6.8176871,9.43084104 7.45299389,9.42269552 7.8563744,9.80590242 L11.9873073,13.7302417 Z" id="path-1"></path>
+    </defs>
+    <g id="Down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="mask" fill="#D6D9DB" xlink:href="#path-1"></use>
+        <g id="Tint/Gray-3" mask="url(#mask-2)"></g>
+    </g>
+</svg>

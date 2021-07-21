@@ -1,0 +1,9 @@
+recursive-include amundsen_application/static/dist *
+recursive-include amundsen_application/static/fonts *
+recursive-include amundsen_application/static/images *
+
+recursive-include amundsen_application/.*/static/dist *
+recursive-include amundsen_application/.*/static/fonts *
+recursive-include amundsen_application/.*/static/images *
+
+global-include requirements-*txt

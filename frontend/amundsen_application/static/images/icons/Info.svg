@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Info</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z M12,19 C15.8659932,19 19,15.8659932 19,12 C19,8.13400675 15.8659932,5 12,5 C8.13400675,5 5,8.13400675 5,12 C5,15.8659932 8.13400675,19 12,19 Z M13,15.1666667 C13,15.626904 12.5522847,16 12,16 C11.4477153,16 11,15.626904 11,15.1666667 L11,11.8333333 C11,11.373096 11.4477153,11 12,11 C12.5522847,11 13,11.373096 13,11.8333333 L13,15.1666667 Z M12,10 C11.4477153,10 11,9.55228475 11,9 C11,8.44771525 11.4477153,8 12,8 C12.5522847,8 13,8.44771525 13,9 C13,9.55228475 12.5522847,10 12,10 Z" id="path-1"></path>
+    </defs>
+    <g id="Info" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#9191a8" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Tint/Gray-3" mask="url(#mask-2)"></g>
+    </g>
+</svg>

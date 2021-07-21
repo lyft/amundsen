@@ -1,0 +1,3 @@
+product,cluster,dashboard_group_id,dashboard_id,table_ids
+mode,gold,test_group_id_1,test_dashboard_id_1,"hive://gold.test_schema/test_table1"
+mode,gold,test_group_id_2,test_dashboard_id_2,"hive://gold.test_schema/test_view1,hive://gold.test_schema/test_table3"

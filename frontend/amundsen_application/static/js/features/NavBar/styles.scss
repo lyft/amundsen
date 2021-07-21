@@ -1,0 +1,122 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$shimmer-loader-circle-size: 32px;
+$avatar-container-size: 40px;
+
+.nav-bar {
+  align-items: center;
+  background: $nav-bar-color;
+  display: flex;
+  flex-direction: row;
+  height: $nav-bar-height;
+  padding: 0 32px 1px;
+
+  .nav-bar-left {
+    flex-basis: 234px;
+
+    span.title-3 {
+      color: $white;
+      line-height: $navbar-item-line-height;
+    }
+  }
+
+  .nav-bar-right {
+    display: flex;
+    margin-left: auto;
+
+    a {
+      color: $white;
+      display: inline-block;
+      height: 100%;
+      line-height: $navbar-item-line-height;
+      padding: 0 $spacer-1;
+
+      &.border-bottom-white:hover,
+      &.border-bottom-white.active {
+        border-bottom: 4px solid $white;
+      }
+    }
+
+    .nav-bar-avatar {
+      background-color: $nav-bar-color;
+      border-radius: 50%;
+      border-style: none;
+      height: $avatar-container-size;
+      margin-top: -4px;
+      padding: 0;
+      width: $avatar-container-size;
+
+      &:not(.avatar-dropdown) {
+        .sb-avatar {
+          margin: 4px 0 0 4px;
+
+          div {
+            border: 0 !important;
+          }
+        }
+      }
+
+      &:hover {
+        background-color: $white;
+      }
+    }
+  }
+
+  .nav-bar-left,
+  .nav-bar-right {
+    height: 100%;
+    padding-top: 12px;
+
+    a {
+      text-decoration: none;
+      display: inline-block;
+    }
+  }
+
+  .nav-bar-right > *:not(:last-child) {
+    margin-right: 12px;
+  }
+
+  .nav-search-bar {
+    flex-grow: 1;
+    margin: auto $spacer-2 auto auto;
+
+    .search-bar {
+      max-width: 560px;
+      margin: auto 0 auto auto;
+    }
+  }
+
+  .logo-icon {
+    margin-right: $spacer-2;
+    max-height: 32px;
+    max-width: 144px;
+  }
+
+  .profile-menu {
+    $profile-menu-width: 200px;
+
+    width: $profile-menu-width;
+
+    .profile-menu-header {
+      padding: $spacer-2 $spacer-2 0;
+    }
+
+    li {
+      a {
+        color: $text-primary;
+        padding: $spacer-2;
+        width: 100%;
+      }
+    }
+  }
+
+  .shimmering-circle {
+    height: $shimmer-loader-circle-size;
+    width: $shimmer-loader-circle-size;
+    border-radius: $shimmer-loader-circle-size;
+  }
+}

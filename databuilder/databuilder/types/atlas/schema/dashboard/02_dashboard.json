@@ -1,0 +1,129 @@
+{
+  "entityDefs": [
+    {
+      "name": "Dashboard",
+      "superTypes": [
+        "Asset"
+      ],
+      "serviceType": "amundsen",
+      "attributeDefs": [
+        {
+          "name": "url",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "createdTimestamp",
+          "typeName": "int",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false,
+          "defaultValue": "0.0"
+        },
+        {
+          "name": "lastModifiedTimestamp",
+          "typeName": "int",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false,
+          "defaultValue": "0.0"
+        },
+        {
+          "name": "cluster",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "product",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false
+        },
+        {
+          "name": "popularityScore",
+          "typeName": "float",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false,
+          "defaultValue": "0.0"
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "DashboardGroup__Dashboard",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "_DashboardGroup.Dashboard",
+      "endDef1": {
+        "type": "DashboardGroup",
+        "name": "dashboards",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Dashboard",
+        "name": "group",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    },
+    {
+      "name": "Table__Dashboard",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "_Table.Dashboard",
+      "endDef1": {
+        "type": "Table",
+        "name": "dashboards",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Dashboard",
+        "name": "tables",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    },
+    {
+      "name": "Dashboard_Users_Owner",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__Dashboard.Users.Owner",
+      "endDef1": {
+        "type": "Dashboard",
+        "name": "ownedBy",
+        "cardinality": "SET",
+        "isContainer": true,
+        "isOptional": true
+      },
+      "endDef2": {
+        "type": "User",
+        "name": "owns",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isOptional": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

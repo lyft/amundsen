@@ -1,0 +1,25 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.not-found-page {
+  h1 {
+    text-align: center;
+  }
+
+  span {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+img.icon.icon-alert {
+  background-color: $brand-primary;
+  display: block;
+  height: 200px;
+  margin: auto;
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  width: 200px;
+}

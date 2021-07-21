@@ -1,0 +1,39 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  li {
+    > a,
+    > span {
+      border: 1px solid $stroke;
+      color: $brand-color-4;
+
+      &:focus,
+      &:hover {
+        background-color: $body-bg-tertiary;
+        color: $link-hover-color;
+        z-index: 0;
+      }
+    }
+
+    &.active {
+      > a,
+      > span {
+        &,
+        &:active,
+        &:hover,
+        &:focus {
+          background-color: $brand-color-4;
+          border-color: $brand-color-4;
+          color: $white;
+          z-index: 0;
+        }
+      }
+    }
+  }
+}

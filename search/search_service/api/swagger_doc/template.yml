@@ -1,0 +1,290 @@
+openapi: '3.0.2'
+info:
+  title: 'Search Service'
+  description: 'Used to communicate with elasticsearch or apache atlas to get search results. Used by the frontend service'
+  version: '1.1.12'
+
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 'A simple description of what went wrong'
+          example: 'An Exception encountered while processing your request'
+    EmptyResponse:
+      type: object
+      properties: {}
+    SearchTableResults:
+      type: object
+      properties:
+        total_results:
+          type: integer
+          description: 'number of results'
+          example: 10
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TableFields'
+    SearchDashboardResults:
+        type: object
+        properties:
+            total_results:
+                type: integer
+                description: 'number of results'
+                example: 10
+            results:
+                type: array
+                items:
+                    $ref: '#/components/schemas/DashboardFields'
+    SearchFeatureResults:
+      type: object
+      properties:
+        total_results:
+          type: integer
+          description: 'number of results'
+          example: 10
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureFields'
+    SearchUserResults:
+      type: object
+      properties:
+        total_results:
+          type: integer
+          description: 'number of results'
+          example: 10
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserFields'
+    TableFields:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'elasticsearch doc id'
+          example: 'M81jD3cBdULZTSY96PSh'
+        name:
+          type: string
+          description: 'name of table'
+          example: 'table_name'
+        key:
+          type: string
+          description: 'key format: {cluster}://{schema}.{database}/{table_name}'
+          example: 'cluster://schema.db/table_name'
+        description:
+          type: string
+          description: 'table description'
+          example: 'this table holds revenue data'
+        cluster:
+          type: string
+          description: 'table cluster'
+          example: 'cluster'
+        database:
+          type: string
+          description: 'table database'
+          example: 'db'
+        schema:
+          type: string
+          description: 'table schema'
+          example: 'schema'
+        column_names:
+          type: array
+          items:
+              type: string
+          description: 'list of column names'
+          example: ['col1', 'col2']
+        column_descriptions:
+          type: array
+          items:
+            type: string
+          description: 'list of column descriptions'
+          example: ['column description1', 'column description2']
+        programmatic_descriptions:
+          type: array
+          items:
+            type: string
+          description: 'list of programmatic descriptions'
+          example: ['programmatic description1', 'programmatic description2']
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              tag_name:
+                type: string
+          description: 'list of table tags'
+          example: [{'tag_name': 'tag1'}, {'tag_name': 'tag2'}]
+        badges:
+          type: array
+          items:
+            type: object
+            properties:
+              tag_name:
+                type: string
+          description: 'list of table badges'
+          example: [{'tag_name': 'badge1'}, {'tag_name': 'badge2'}]
+        last_updated_timestamp:
+          type: integer
+          description: 'table last updated time'
+          example: 1568814420
+        display_name:
+          type: string
+          description: 'table display name'
+          example: 'display_name'
+        total_usage:
+          type: int
+          description: 'total usage'
+          example: 0
+        schema_description:
+          type: string
+          description: 'schema description'
+          example: 'schema description1'
+    DashboardFields:
+      type: object
+      properties:
+          uri:
+              type: string
+              description: 'dashboard uri'
+              example: 'mode:product/name'
+          cluster:
+              type: string
+              description: 'dashboard cluster'
+              example: 'gold'
+          group_name:
+              type: string
+              description: 'name of dashboard group'
+              example: 'Mode dashboard group'
+          group_url:
+              type: string
+              description: 'url of the dashboard group'
+              example: 'Mode dashboard group://'
+          product:
+              type: string
+              description: 'product of the dashboard group'
+              example: 'mode'
+          url:
+              type: string
+              description: 'url of the dashboard'
+              example: 'mode ://report'
+          description:
+              type: string
+              description: 'dashboard description'
+              example: 'this dashboard has info about that metric'
+          last_successful_run_timestamp:
+              type: integer
+              description: 'dashboard last successful run time'
+              example: 1568814420
+    FeatureFields:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'elasticsearch doc id'
+          example: '1234aaabbb'
+        feature_group:
+          type: string
+          description: 'group name which feature belongs to'
+          example: 'realtime_post_processed_group'
+        feature_name:
+          type: string
+          description: 'name of feature'
+          example: 'ml_feature_420_abcd'
+        version:
+          type: string
+          description: 'version as string'
+          example: 'v1.1.5'
+        key:
+          type: string
+          description: 'key format: {feature_group}/{feature_name}/{version}'
+          example: 'realtime_post_processed_group/ml_feature_420_abcd/v1.1.5'
+        total_usage:
+          type: int
+          description: 'total usage'
+          example: 0
+        status:
+          type: string
+          description: 'feature status'
+          example: 'active'
+        entity:
+          type: string
+          description: 'business entity described by this feature'
+          example: 'listing'
+        description:
+          type: string
+          description: 'feature description'
+          example: 'this feature has durations of active listings in seconds'
+        availability:
+          type: array
+          items:
+            type: string
+          description: 'list of databases where this feature is available'
+          example: [ 'hive', 'dynamo' ]
+        badges:
+          type: array
+          items:
+            type: object
+            properties:
+              tag_name:
+                type: string
+          description: 'list of feature badges'
+          example: [ { 'tag_name': 'badge1' }, { 'tag_name': 'badge2' } ]
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              tag_name:
+                type: string
+          description: 'list of feature tags'
+          example: [ { 'tag_name': 'tag1' }, { 'tag_name': 'tag2' } ]
+        last_updated_timestamp:
+          type: integer
+          description: 'unixtime when the feature configuration was last updated'
+          example: 1568814420
+    UserFields:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'elasticsearch doc id'
+          example: 'M81jD3cBdULZTSY96PSh'
+        full_name:
+          type: string
+          description: 'user name'
+          example: 'Harry Potter'
+        first_name:
+          type: string
+          description: 'user first name'
+          example: 'Harry'
+        last_name:
+          type: string
+          description: 'user last name'
+          example: 'Potter'
+        team_name:
+          type: string
+          description: 'name of team user is on'
+          example: 'Gryffindor'
+        email:
+          type: string
+          description: 'users email address'
+          example: 'harry.potter@hogwarts.edu'
+        manager_email:
+          type: string
+          description: "email address for the user's manager"
+          example: 'minerva.mcgonagall@hogwarts.edu'
+        github_username:
+          type: string
+          description: "user's github username"
+          example: 'wizard_coder'
+        is_active:
+          type: bool
+          description: 'indicates if the user is still part of the platform'
+          example: True
+        employee_type:
+          type: string
+          description: 'the kinds of users'
+          example: 'student'

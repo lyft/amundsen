@@ -1,0 +1,29 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.label-negative {
+  background-color: $badge-negative-color;
+  color: $badge-text-color;
+}
+
+.label-neutral {
+  background-color: $badge-neutral-color;
+  color: $badge-text-color;
+}
+
+.label-primary {
+  background-color: $badge-primary-color;
+  color: $badge-text-color;
+}
+
+.label-positive {
+  background-color: $badge-positive-color;
+  color: $badge-text-color;
+}
+
+.label-warning {
+  background-color: $badge-warning-color;
+  color: $badge-text-color;
+}

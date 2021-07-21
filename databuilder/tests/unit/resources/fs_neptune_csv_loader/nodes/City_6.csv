@@ -1,0 +1,3 @@
+"~id","~label","last_extracted_datetime:Date(single)","creation_type:String(single)","name:String(single)","published_tag:String(single)","key:String(single)"
+"City:city://San Diego","City","2020-09-01T01:01:00","job","Top Gun","TESTED","city://San Diego"
+"City:city://Oakland","City","2020-09-01T01:01:00","job","Top Gun","TESTED","city://Oakland"

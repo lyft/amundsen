@@ -1,0 +1,25 @@
+Gets feature details
+---
+tags:
+  - 'feature'
+parameters:
+  - name: feature_uri
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'test_feature_group_name/test_feature_name/1.2.0'
+responses:
+  200:
+    description: 'Feature details'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/FeatureDetail'
+  404:
+    description: 'Feature not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

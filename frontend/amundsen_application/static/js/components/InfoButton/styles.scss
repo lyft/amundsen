@@ -1,0 +1,26 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$info-button-regular-size: 24px;
+$info-button-small-size: 18px;
+
+.btn.info-button {
+  background-color: transparent;
+  border: none;
+  height: $info-button-regular-size;
+  margin: 0 0 0 $spacer-1;
+  padding: 0;
+  width: $info-button-regular-size;
+
+  &.small {
+    height: $info-button-small-size;
+    margin: -4px 0 0 4px;
+    width: $info-button-small-size;
+  }
+
+  &:hover path {
+    fill: $brand-color-4;
+  }
+}

@@ -1,0 +1,38 @@
+Used by frontend API to search features
+---
+tags:
+  - 'search_feature'
+parameters:
+  - name: query_term
+    in: query
+    type: string
+    schema:
+      type: string
+    required: true
+  - name: page_index
+    in: query
+    type: integer
+    schema:
+      type: integer
+      default: 0
+    required: false
+  - name: index
+    in: query
+    type: string
+    schema:
+      type: string
+      default: feature_search_index
+    required: false
+responses:
+  200:
+    description: feature search results
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/SearchFeatureResults'
+  500:
+    description: Exception encountered while searching
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

@@ -1,0 +1,14 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.generation-code {
+  padding: $spacer-2;
+
+  .empty-message {
+    color: $text-secondary;
+    padding-top: $spacer-3;
+    text-align: center;
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "entityDefs": [
+    {
+      "name": "DashboardQuery",
+      "superTypes": [
+        "Asset"
+      ],
+      "serviceType": "amundsen",
+      "attributeDefs": [
+        {
+          "name": "id",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        },
+        {
+          "name": "url",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        },
+        {
+          "name": "queryText",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": false
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "Dashboard__DashboardQuery",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "_Dashboard.DashboardQuery",
+      "endDef1": {
+        "type": "Dashboard",
+        "name": "queries",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "DashboardQuery",
+        "name": "dashboard",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

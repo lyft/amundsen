@@ -1,0 +1,42 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$shimmer-loader-height: 20px;
+
+/* TODO: Not the greatest sticky footer implementation */
+.footer {
+  background-color: $white;
+  border-top: 1px solid $stroke;
+  bottom: 0;
+  color: $text-secondary;
+  font-size: 14px;
+  height: $footer-height;
+  left: 0;
+  padding: 20px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.phantom-div {
+  display: block;
+  height: 48px;
+  padding: 20px;
+  width: 100%;
+}
+
+.shimmer-footer {
+  height: $shimmer-loader-height;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.shimmer-footer-row {
+  height: $shimmer-loader-height - $spacer-1;
+  display: inline-block;
+  width: 33%;
+}

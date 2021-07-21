@@ -1,0 +1,91 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+/* Fixed heights via designs */
+$modal-content-height: 484px;
+$modal-dialog-height: 484px;
+$modal-header-height: 94px;
+
+/* Fixed witdh via designs */
+$modal-dialog-width: 418px;
+
+.column-type-btn {
+  border: none;
+  background: none;
+  color: $link-color;
+  padding-left: 0;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    cursor: pointer;
+  }
+}
+
+.column-type-modal {
+  .modal-body {
+    border-bottom: 1px solid $stroke-light;
+    border-top: 1px solid $stroke-light;
+    height: calc(#{$modal-dialog-height - $modal-header-height - $spacer-3});
+    font-family: $font-family-monospace-code;
+    font-size: $code-font-size;
+
+    /* Override react-bootstrap styles to match design */
+    margin: 0 $spacer-3 !important;
+    padding: $spacer-1 0 !important;
+    text-align: initial !important;
+  }
+
+  .modal-content {
+    height: $modal-content-height;
+  }
+
+  .modal-dialog {
+    height: $modal-dialog-height;
+    width: $modal-dialog-width;
+    overflow-y: hidden;
+  }
+
+  .modal-header {
+    border-bottom: none;
+    height: $modal-header-height;
+
+    /* Override react-bootstrap styles to match design */
+    padding: $spacer-3 !important;
+
+    .main-title {
+      @extend %text-title-w1;
+    }
+
+    .sub-title {
+      @extend %text-subtitle-w3;
+
+      color: $text-secondary;
+    }
+  }
+}
+
+/*
+  These three styles vertically center the modal: https://codepen.io/dimbslmh/full/mKfCc
+  Bootstrap4 will have a dedicated class to handle this.
+*/
+.modal {
+  text-align: center;
+  padding: 0 !important;
+}
+
+.modal::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  vertical-align: middle;
+}

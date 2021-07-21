@@ -1,0 +1,13 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.underline {
+  box-shadow: 0 1px 0 $stroke-underline;
+
+  &:hover,
+  &:focus {
+    background: $btn-default-bg-hover;
+  }
+}

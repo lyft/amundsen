@@ -1,0 +1,11 @@
+Simple healthcheck that returns an empty response
+---
+tags:
+  - 'healthcheck'
+responses:
+  200:
+    description: 'Empty response'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/EmptyResponse'

@@ -1,0 +1,5 @@
+email,first_name,last_name,full_name,github_username,team_name,employee_type,manager_email,slack_id,role_name
+roald.amundsen@example.org,Roald,Amundsen,"Roald Amundsen",amundsen-io,"Team Amundsen",sailor,"phboss@example.org",ramundzn,swe
+chrisc@example.org,Christopher,Columbus,"Christopher Columbus",ChristopherColumbusFAKE,"Team Amundsen",sailor,"phboss@example.org",chrisc,swe
+buzz@example.org,Buzz,Aldrin,"Buzz Aldrin",BuzzAldrinFAKE,"Team Amundsen",astronaut,"phboss@example.org",buzz,swe
+phboss@example.org,ph,Boss,"ph Boss",boss,"Team Amundsen",manager,,boss,swe

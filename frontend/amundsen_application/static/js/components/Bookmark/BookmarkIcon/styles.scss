@@ -1,0 +1,52 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.bookmark-icon {
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  margin-left: 4px;
+  padding: 4px;
+  vertical-align: top;
+  width: 32px;
+
+  &.bookmark-large {
+    height: 40px;
+    width: 40px;
+
+    .icon {
+      height: 32px;
+      -webkit-mask-size: 32px;
+      mask-size: 32px;
+      width: 32px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $body-bg-tertiary;
+  }
+
+  .icon {
+    margin: 0;
+
+    &.icon-bookmark {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $stroke !important;
+      }
+    }
+
+    &.icon-bookmark-filled {
+      &,
+      &:hover,
+      &:focus {
+        background-color: gold !important;
+      }
+    }
+  }
+}

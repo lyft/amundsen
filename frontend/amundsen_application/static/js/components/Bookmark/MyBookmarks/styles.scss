@@ -1,0 +1,25 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+.bookmark-list {
+  margin: 32px 0;
+
+  .bookmark-list-header {
+    @extend %text-title-w1;
+
+    margin-bottom: $spacer-1;
+  }
+
+  .tabs-component {
+    .nav.nav-tabs {
+      margin: 0;
+    }
+
+    .tab-content .list-group-item:first-child {
+      border-top: none;
+    }
+  }
+}

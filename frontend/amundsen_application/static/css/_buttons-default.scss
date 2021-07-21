@@ -1,0 +1,178 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.btn {
+  &.btn-primary,
+  &.btn-default {
+    border-width: 2px;
+    font-weight: $font-weight-body-bold;
+    height: 32px;
+    padding: 6px 16px;
+
+    img.icon {
+      border: none;
+      height: 18px;
+      margin: 0 4px 0 0;
+      -webkit-mask-size: 18px;
+      mask-size: 18px;
+      min-width: 18px;
+      vertical-align: top;
+      width: 18px;
+    }
+
+    &.btn-lg {
+      font-weight: $font-size-large;
+      height: 48px;
+      padding: 10px 16px;
+
+      img.icon {
+        height: 24px;
+        margin: 0 4px 0 0;
+        -webkit-mask-size: 24px;
+        mask-size: 24px;
+        min-width: 24px;
+        width: 24px;
+      }
+    }
+  }
+
+  &.btn-primary {
+    img.icon {
+      background-color: $btn-primary-color;
+    }
+
+    &:not(.disabled):hover,
+    &:not([disabled]):hover,
+    &:focus {
+      background-color: $btn-primary-bg-hover;
+      border-color: $btn-primary-border-hover;
+      outline: none;
+    }
+  }
+
+  &.btn-default {
+    img.icon {
+      background-color: $btn-default-color;
+    }
+
+    &.muted {
+      border-color: $divider;
+      color: $text-secondary;
+      padding: 0 8px;
+
+      .icon {
+        background-color: $text-secondary;
+      }
+    }
+
+    &:not(.disabled):hover,
+    &:not([disabled]):hover,
+    &:focus {
+      background-color: $btn-default-bg-hover;
+      border-color: $btn-default-border-hover;
+      outline: none;
+    }
+  }
+
+  * {
+    vertical-align: middle;
+  }
+
+  &.btn-block {
+    margin-bottom: 4px;
+  }
+
+  &.btn-flat-icon {
+    background-color: transparent;
+    border: none;
+    box-shadow: none !important;
+    color: $text-secondary;
+    padding: 0;
+    text-align: left;
+
+    &:focus,
+    &:not(.disabled):hover,
+    &:not([disabled]):hover {
+      background-color: transparent;
+      color: $brand-color-4;
+
+      .icon {
+        background-color: $brand-color-4;
+      }
+    }
+  }
+
+  &.btn-flat-icon-dark {
+    background-color: transparent;
+    border: none;
+    box-shadow: none !important;
+    color: $text-secondary;
+    padding: 0;
+    text-align: left;
+
+    &:focus,
+    &:not(.disabled):hover,
+    &:not([disabled]):hover {
+      background-color: transparent;
+      color: $text-primary;
+
+      .icon {
+        background-color: $text-primary;
+      }
+    }
+  }
+
+  &.btn-close {
+    background-color: $icon-bg;
+    border: none;
+    height: 18px;
+    margin: 4px 0 0;
+    -webkit-mask-image: url('../images/icons/Close.svg');
+    mask-image: url('../images/icons/Close.svg');
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-size: 110%;
+    mask-size: contain;
+    mask-size: 110%;
+    padding: 0;
+    width: 18px;
+
+    &:focus,
+    &:not(.disabled):hover,
+    &:not([disabled]):hover {
+      background-color: $icon-bg-dark;
+    }
+  }
+
+  &.btn-link {
+    color: $link-color;
+    text-decoration: none;
+    padding: 0 4px 0 4px;
+
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+    }
+
+    &:focus {
+      outline: 5px auto $link-hover-color;
+      outline-offset: -2px;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: $text-secondary;
+    pointer-events: none;
+
+    &:hover {
+      color: $text-secondary;
+    }
+  }
+}

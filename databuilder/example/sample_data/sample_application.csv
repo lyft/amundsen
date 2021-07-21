@@ -1,0 +1,2 @@
+task_id,dag_id,exec_date,application_url_template,db_name,schema,table_name,cluster
+hive.test_schema.test_table1,event_test,"2018-05-31T00:00:00","https://airflow_host.net/admin/airflow/tree?dag_id={dag_id}",hive,test_schema,test_table1,gold

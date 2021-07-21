@@ -1,0 +1,3 @@
+product,cluster,dashboard_group_id,dashboard_id,query_name,query_id,url,query_text
+mode,gold,test_group_id_1,test_dashboard_id_1,first query,query_1,http://mode.test_group_id_1.com/test_dashboard_id_1/query/query_1,SELECT * FROM foo.bar
+mode,gold,test_group_id_2,test_dashboard_id_2,second query,query_2,http://mode.test_group_id_2.com/test_dashboard_id_2/query/query_2,SELECT * FROM bar.foo JOIN foo.bar USING (baz)

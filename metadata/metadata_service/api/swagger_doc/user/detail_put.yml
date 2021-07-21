@@ -1,0 +1,36 @@
+Create or update a user
+---
+tags:
+  - 'user'
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/UserDetailFields'
+        description: User attribute fields
+        required: true
+responses:
+  200:
+    description: 'Existing user found and updated'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/UserDetailFields'
+  201:
+    description: 'New user created'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/UserDetailFields'
+  400:
+    description: 'Bad Request'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'
+  500:
+    description: 'Internal server error'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

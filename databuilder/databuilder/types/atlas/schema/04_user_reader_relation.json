@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "Reader_Users",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__Reader.Users",
+      "endDef1": {
+        "type": "Reader",
+        "name": "user",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "User",
+        "name": "entityReads",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

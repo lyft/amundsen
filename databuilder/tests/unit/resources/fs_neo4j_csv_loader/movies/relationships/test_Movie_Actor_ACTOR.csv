@@ -1,0 +1,3 @@
+"END_KEY","START_LABEL","END_LABEL","START_KEY","TYPE","REVERSE_TYPE"
+"actor://Tom Cruise","Movie","Actor","movie://Top Gun","ACTOR","ACTED_IN"
+"actor://Meg Ryan","Movie","Actor","movie://Top Gun","ACTOR","ACTED_IN"

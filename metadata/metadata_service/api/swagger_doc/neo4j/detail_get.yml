@@ -1,0 +1,17 @@
+Gets system information for neo4j
+---
+tags:
+  - 'neo4j'
+responses:
+  200:
+    description: 'Neo4j system information'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Neo4jDetail'
+  204:
+    description: 'Neo4j was not updated/indexed'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

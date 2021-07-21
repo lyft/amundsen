@@ -1,0 +1,44 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.editable-text {
+  // React-Markdown
+  .markdown-wrapper {
+    font-size: 14px;
+    word-break: break-word;
+  }
+
+  .edit-link {
+    text-decoration: none;
+  }
+
+  .editable-textarea {
+    background: $body-bg-secondary;
+    border-color: $stroke;
+    border-radius: 4px;
+    max-width: 600px;
+    min-width: 300px;
+    outline: none;
+    padding: 8px;
+    resize: none;
+
+    &:disabled {
+      background: $body-bg-tertiary;
+    }
+  }
+
+  .editable-textarea-controls {
+    margin: 16px 0 8px;
+
+    .btn {
+      margin-right: 8px;
+    }
+
+    .label.label-danger {
+      display: block;
+      margin-bottom: 16px;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+"~id","~from","~to","~label","last_extracted_datetime:Date(single)","creation_type:String","published_tag:String(single)","key:String(single)"
+"FILMED_AT:Movie:movie://Top Gun_City:city://San Diego","Movie:movie://Top Gun","City:city://San Diego","FILMED_AT","2020-09-01T01:01:00","job","TESTED","FILMED_AT:Movie:movie://Top Gun_City:city://San Diego"
+"APPEARS_IN:City:city://San Diego_Movie:movie://Top Gun","City:city://San Diego","Movie:movie://Top Gun","APPEARS_IN","2020-09-01T01:01:00","job","TESTED","APPEARS_IN:City:city://San Diego_Movie:movie://Top Gun"
+"FILMED_AT:Movie:movie://Top Gun_City:city://Oakland","Movie:movie://Top Gun","City:city://Oakland","FILMED_AT","2020-09-01T01:01:00","job","TESTED","FILMED_AT:Movie:movie://Top Gun_City:city://Oakland"
+"APPEARS_IN:City:city://Oakland_Movie:movie://Top Gun","City:city://Oakland","Movie:movie://Top Gun","APPEARS_IN","2020-09-01T01:01:00","job","TESTED","APPEARS_IN:City:city://Oakland_Movie:movie://Top Gun"

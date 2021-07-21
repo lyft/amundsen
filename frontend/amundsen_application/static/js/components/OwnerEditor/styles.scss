@@ -1,0 +1,114 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+/* TODO: The button styles in this file are to be migrated to _buttons-default.scsss */
+
+@import 'variables';
+
+.owner-editor-component {
+  .avatar-label-component {
+    .avatar-label {
+      display: inline-block;
+      margin-left: 4px;
+      width: calc(100% - 28px);
+      word-break: break-word;
+    }
+  }
+
+  .btn.add-item-button {
+    height: 24px;
+    padding: 0 1px;
+  }
+
+  label {
+    width: 100%;
+  }
+
+  .status-message {
+    font-weight: normal;
+  }
+}
+
+.owner-editor-modal {
+  .component-list li {
+    margin: 0;
+    padding-bottom: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 4px;
+
+    &:focus,
+    &:hover {
+      background-color: $body-bg-tertiary;
+
+      .btn.delete-button {
+        background-color: $body-bg-tertiary;
+        display: block;
+      }
+    }
+
+    .btn.delete-button {
+      display: none;
+      margin: auto;
+      margin-right: 0;
+    }
+  }
+
+  .loading-spinner {
+    margin-top: auto;
+  }
+
+  .btn.add-button {
+    margin-left: 8px;
+  }
+
+  .modal-body {
+    height: calc(100% - 150px);
+    margin: 15px 0 !important;
+  }
+
+  .modal-content {
+    height: fit-content;
+  }
+
+  .modal-dialog {
+    height: fit-content;
+    min-width: 400px;
+    width: fit-content;
+
+    p {
+      margin-left: 4px;
+      text-align: start;
+    }
+  }
+
+  form {
+    display: flex;
+    margin-bottom: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  input {
+    border: 1px solid $stroke;
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    width: 100%;
+  }
+}
+
+.component-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    margin: 1px;
+
+    &:first-child {
+      flex-grow: 1;
+    }
+  }
+}

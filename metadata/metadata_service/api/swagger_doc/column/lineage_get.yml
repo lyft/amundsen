@@ -1,0 +1,40 @@
+Get lineage
+---
+tags:
+  - 'lineage'
+parameters:
+  - name: table_uri
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'hive://gold.test_schema/test_table1'
+  - name: column_name
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'test_col_name'
+  - name: direction
+    in: query
+    type: string
+    schema:
+      type: string
+    required: false
+    example: 'upstream'
+  - name: depth
+    in: query
+    type: integer
+    schema:
+      type: integer
+    required: false
+    example: 0
+responses:
+  200:
+    description: 'Lineage for requested direction and depth'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/Lineage'

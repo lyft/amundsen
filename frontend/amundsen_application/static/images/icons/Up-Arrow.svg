@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Up-Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M11,7.92054674 L7.54660817,10.6832602 C7.16925397,10.9851436 6.61862315,10.9239624 6.31673979,10.5466082 C6.01485644,10.169254 6.07603764,9.61862315 6.45339183,9.31673979 L11.4533918,5.31673979 C11.7729582,5.06108674 12.2270418,5.06108674 12.5466082,5.31673979 L17.5466082,9.31673979 C17.9239624,9.61862315 17.9851436,10.169254 17.6832602,10.5466082 C17.3813769,10.9239624 16.830746,10.9851436 16.4533918,10.6832602 L13,7.92054674 L13,17 C13,17.6642136 12.5522847,18 12,18 C11.4477153,18 11,17.6642136 11,17 L11,7.92054674 Z" id="path-1"></path>
+    </defs>
+    <g id="Up-Arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Tint/Black" mask="url(#mask-2)"></g>
+        <g id="triangle" mask="url(#mask-2)">
+            <g transform="translate(1.000000, 2.000000)"></g>
+        </g>
+    </g>
+</svg>

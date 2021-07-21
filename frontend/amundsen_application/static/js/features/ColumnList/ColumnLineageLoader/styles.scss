@@ -1,0 +1,46 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$shimmer-height: 120px;
+$shimmer-block-spacing: $spacer-1;
+$shimmer-max-width: 800px;
+$shimmer-header-height: 24px;
+
+.column-lineage-loader {
+  display: flex;
+  height: $shimmer-height;
+  margin-top: $shimmer-block-spacing;
+  max-width: $shimmer-max-width;
+
+  .shimmer-loader-column {
+    display: flex;
+    flex-basis: 45%;
+    flex-direction: column;
+    height: 100%;
+    margin-right: $shimmer-block-spacing;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .shimmer-loader-cell {
+      margin-bottom: $shimmer-block-spacing;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.header {
+        height: $shimmer-header-height;
+      }
+
+      &.content {
+        height: (
+          $shimmer-height - $shimmer-header-height - $shimmer-block-spacing
+        );
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.search-control-panel {
+  border-right: $search-panel-border-width solid $stroke;
+  display: flex;
+  flex: 0 0 $search-panel-width;
+  flex-direction: column;
+  overflow-y: auto;
+
+  .section {
+    padding: 32px 24px 32px 32px;
+    width: $search-panel-width - $search-panel-border-width;
+
+    &:not(:first-child) {
+      border-top: 2px solid $stroke;
+    }
+  }
+
+  .checkbox,
+  .radio {
+    margin-bottom: $spacer-1;
+    margin-top: $spacer-1;
+  }
+}

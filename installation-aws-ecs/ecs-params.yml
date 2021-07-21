@@ -1,0 +1,18 @@
+version: 1
+task_definition:
+  services:
+    neo4j:
+      cpu_shares: 100
+      mem_limit: 3GB
+    elasticsearch:
+      cpu_shares: 100
+      mem_limit: 3GB
+    amundsensearch:
+      cpu_shares: 100
+      mem_limit: 500MB
+    amundsenmetadata:
+      cpu_shares: 100
+      mem_limit: 500MB   
+    amundsenfrontend:
+      cpu_shares: 100
+      mem_limit: 500MB

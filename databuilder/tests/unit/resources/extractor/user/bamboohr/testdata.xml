@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<directory>
+ <fieldset>
+  <field id="displayName">Display name</field>
+  <field id="firstName">First name</field>
+  <field id="lastName">Last name</field>
+  <field id="preferredName">Preferred name</field>
+  <field id="gender">Gender</field>
+  <field id="jobTitle">Job title</field>
+  <field id="workPhone">Work Phone</field>
+  <field id="mobilePhone">Mobile Phone</field>
+  <field id="workEmail">Work Email</field>
+  <field id="department">Department</field>
+  <field id="location">Location</field>
+  <field id="workPhoneExtension">Work Ext.</field>
+  <field id="photoUploaded">Employee photo</field>
+  <field id="photoUrl">Photo URL</field>
+  <field id="canUploadPhoto">Can Upload Photo</field>
+ </fieldset>
+ <employees>
+  <employee id="1082">
+   <field id="displayName">Roald Amundsen</field>
+   <field id="firstName">Roald</field>
+   <field id="lastName">Amundsen</field>
+   <field id="preferredName"></field>
+   <field id="gender">Male</field>
+   <field id="jobTitle">Antarctic Explorer</field>
+   <field id="workPhone"></field>
+   <field id="mobilePhone"></field>
+   <field id="workEmail">roald@amundsen.io</field>
+   <field id="department">508 Corporate Marketing</field>
+   <field id="location">Norway</field>
+   <field id="workPhoneExtension"></field>
+   <field id="photoUploaded">true</field>
+   <field id="photoUrl">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Amundsen_in_fur_skins.jpg/440px-Amundsen_in_fur_skins.jpg</field>
+   <field id="canUploadPhoto">no</field>
+  </employee>
+ </employees>
+</directory>

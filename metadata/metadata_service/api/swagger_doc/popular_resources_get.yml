@@ -1,0 +1,35 @@
+Gets information about popular resources (tables, dashboards)
+---
+tags:
+  - 'popular_resources'
+parameters:
+  - in: query
+    name: limit
+    required: false
+    type: integer
+    schema:
+      type: integer
+      default: 10
+  - in: query
+    name: types
+    required: false
+    type: string
+    schema:
+      type: string
+      default: table
+responses:
+  200:
+    description: 'Popular Resources'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            table:
+              type: array
+              items:
+                $ref: '#/components/schemas/TableSummary'
+            dashboard:
+              type: array
+              items:
+                $ref: '#/components/schemas/DashboardSummary'

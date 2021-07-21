@@ -1,0 +1,3 @@
+"name","operation","qualifiedName","typeName","relationships"
+"San Diego","CREATE","city://San Diego","City",""
+"Oakland","CREATE","city://Oakland","City",""

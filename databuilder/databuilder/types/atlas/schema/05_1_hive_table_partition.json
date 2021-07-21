@@ -1,0 +1,13 @@
+{
+  "entityDefs": [
+    {
+      "superTypes": [
+        "TablePartition"
+      ],
+      "name": "hive_table_partition",
+      "serviceType": "hive",
+      "description": "Table partition for hive table. ",
+      "typeVersion": "2.0"
+    }
+  ]
+}

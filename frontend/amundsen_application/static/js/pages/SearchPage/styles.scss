@@ -1,0 +1,30 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.search-page {
+  display: flex;
+  height: calc(100vh - #{$nav-bar-height + $footer-height});
+
+  .list-group {
+    margin-top: 0;
+  }
+
+  .search-results {
+    flex-grow: 1;
+    width: 0; // Temporary hack since list-items use width %
+    overflow-y: scroll;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    .search-error {
+      margin-top: 16px;
+    }
+  }
+
+  .search-error {
+    margin-top: 32px;
+    text-align: center;
+  }
+}

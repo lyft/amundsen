@@ -1,0 +1,12 @@
+database,cluster,schema,name,description,tags,description_source
+hive,gold,test_schema,test_table1,"**Size**: 50T
+
+**Monthly Cost**: $5000","expensive","s3_crawler"
+dynamo,gold,test_schema,test_table2,"**Size**: 1T
+
+**Monthly Cost**: $50","cheap","s3_crawler"
+hive,gold,test_schema,test_table1,"### Quality Report:
+--- 
+Ipsus enom. Ipsus enom ipsus lorenum.
+---
+[![Build Status](https://api.travis-ci.com/amundsen-io/amundsendatabuilder.svg?branch=master)](https://travis-ci.com/amundsen-io/amundsendatabuilder)","low_quality","quality_service"

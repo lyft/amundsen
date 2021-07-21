@@ -1,0 +1,1400 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Amundsen is a metadata driven application for improving the productivity of data analysts, data scientists and engineers when interacting with data.">
+      
+      
+      
+        <meta name="author" content="Amundsen Project Authors.">
+      
+      
+        <link rel="canonical" href="https://www.amundsen.io/amundsen/databuilder/CHANGELOG/">
+      
+      <link rel="icon" href="../../img/logos/amundsen_mark_orange.svg">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>CHANGELOG - Amundsen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="#2b1b81" data-md-color-accent="#2b1b81">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#440" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Amundsen" class="md-header__button md-logo" aria-label="Amundsen" data-md-component="logo">
+      
+  <img src="../../img/logos/amundsen_mark_orange.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Amundsen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CHANGELOG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/amundsen-io/amundsen/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Amundsen
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Amundsen" class="md-nav__button md-logo" aria-label="Amundsen" data-md-component="logo">
+      
+  <img src="../../img/logos/amundsen_mark_orange.svg" alt="logo">
+
+    </a>
+    Amundsen
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/amundsen-io/amundsen/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Amundsen
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Developer Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Developer Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer_guide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../issue_labeling/" class="md-nav__link">
+        Issue and Feature Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing Guide
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        User Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/index-postgres/" class="md-nav__link">
+        How to index metadata for real life databases
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/data-preview-with-superset/" class="md-nav__link">
+        How to setup a preview client with Apache Superset
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/user-profiles/" class="md-nav__link">
+        How to setup user profiles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/dashboard_ingestion_guide/" class="md-nav__link">
+        How to ingest Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/how-to-track-user-metric/" class="md-nav__link">
+        How to track user metric for Amundsen
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/badges/" class="md-nav__link">
+        How to add table level and column level badges
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/how-to-search-effective/" class="md-nav__link">
+        How to search Amundsen effectively
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/how-to-use-amundsen-with-aws-neptune/" class="md-nav__link">
+        How to use Amundsen with Amazon Neptune
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      <label class="md-nav__link" for="__nav_4_3">
+        Deployment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authentication/oidc/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation-aws-ecs/aws-ecs-deployment/" class="md-nav__link">
+        AWS ECS Installation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s_install/" class="md-nav__link">
+        K8S Installation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Components
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Components" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      <label class="md-nav__link" for="__nav_5_1">
+        Frontend
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Frontend" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Frontend
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_2" type="checkbox" id="__nav_5_1_2" >
+      
+      <label class="md-nav__link" for="__nav_5_1_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/docs/application_config/" class="md-nav__link">
+        Application Config
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/docs/configuration/" class="md-nav__link">
+        React Configuration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/docs/flask_config/" class="md-nav__link">
+        Flask Configuration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/docs/examples/superset_preview_client/" class="md-nav__link">
+        Preview Client Setup
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/docs/developer_guide/" class="md-nav__link">
+        FE Developer Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/docs/installation/" class="md-nav__link">
+        FE Installation Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/docs/recommended_practices/" class="md-nav__link">
+        Recommended Practices
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      <label class="md-nav__link" for="__nav_5_2">
+        Search
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Search" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../search/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" type="checkbox" id="__nav_5_2_2" >
+      
+      <label class="md-nav__link" for="__nav_5_2_2">
+        Proxy
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Proxy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Proxy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../search/docs/atlas-search/" class="md-nav__link">
+        Atlas Backend
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      <label class="md-nav__link" for="__nav_5_3">
+        Metadata
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Metadata" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Metadata
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metadata/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" type="checkbox" id="__nav_5_3_2" >
+      
+      <label class="md-nav__link" for="__nav_5_3_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metadata/docs/configurations/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metadata/docs/structure/" class="md-nav__link">
+        Metadata API Structure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4" type="checkbox" id="__nav_5_3_4" >
+      
+      <label class="md-nav__link" for="__nav_5_3_4">
+        Proxy
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Proxy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Proxy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4_1" type="checkbox" id="__nav_5_3_4_1" >
+      
+      <label class="md-nav__link" for="__nav_5_3_4_1">
+        Atlas Backend
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Atlas Backend" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Atlas Backend
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metadata/docs/proxy/atlas_proxy/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metadata/docs/proxy/atlas/popular_tables/" class="md-nav__link">
+        Popular Table
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metadata/docs/proxy/gremlin/" class="md-nav__link">
+        Gremlin Backend
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../metadata/docs/proxy/neptune/" class="md-nav__link">
+        Neptune Backend
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      <label class="md-nav__link" for="__nav_5_4">
+        Databuilder
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Databuilder" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Databuilder
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/models/" class="md-nav__link">
+        Models
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/dashboard_ingestion_guide/" class="md-nav__link">
+        Dashboard Ingestion guide
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      <label class="md-nav__link" for="__nav_5_5">
+        Common
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Common" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Common
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#440" class="md-nav__link">
+    4.4.0
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-440-changes" class="md-nav__link">
+    Pre 4.4.0 changes
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre 4.4.0 changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    Feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fix" class="md-nav__link">
+    Fix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+  <a href="https://github.com/amundsen-io/amundsen/edit/master/docs/databuilder/CHANGELOG.md" title="Edit this page" class="md-icon md-content__icon">
+    &#xE3C9;<!-- edit -->
+  </a>
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it
+  doesn't, the page title (or respectively site name) is used
+  as the main headline.
+-->
+
+
+<!-- Content -->
+<h2 id="440">4.4.0<a class="headerlink" href="#440" title="Permanent link">&para;</a></h2>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Column lineage implementation &amp; sample ingest scripts (<a href="https://github.com/amundsen-io/amundsendatabuilder/pull/470">https://github.com/amundsen-io/amundsendatabuilder/pull/470</a>)</li>
+<li>Add mysql staleness removal task (<a href="https://github.com/amundsen-io/amundsendatabuilder/pull/474">https://github.com/amundsen-io/amundsendatabuilder/pull/474</a>)</li>
+<li>Add merge query results functionality to rest_api_query (<a href="https://github.com/amundsen-io/amundsen/pull/1058">https://github.com/amundsen-io/amundsen/pull/1058</a>)</li>
+</ul>
+<h3 id="bugfixes">Bugfixes<a class="headerlink" href="#bugfixes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Switch to discovery api for mode spaces (<a href="https://github.com/amundsen-io/amundsendatabuilder/pull/481">https://github.com/amundsen-io/amundsendatabuilder/pull/481</a>)</li>
+<li>Update ModeDashboardExtractor to Mode discovery api (<a href="https://github.com/amundsen-io/amundsen/pull/1063">https://github.com/amundsen-io/amundsen/pull/1063</a>)</li>
+<li>Updated redshift_metadata_extractor.py to extract external schema as well as local schema. (<a href="https://github.com/amundsen-io/amundsendatabuilder/pull/479">https://github.com/amundsen-io/amundsendatabuilder/pull/479</a>)</li>
+<li>Upgrade dependency of Amundsen-gremlin (<a href="https://github.com/amundsen-io/amundsendatabuilder/pull/473">https://github.com/amundsen-io/amundsendatabuilder/pull/473</a>)</li>
+<li>fix bug in rest_api_query (<a href="https://github.com/amundsen-io/amundsen/pull/1056">https://github.com/amundsen-io/amundsen/pull/1056</a>)</li>
+</ul>
+<h1 id="pre-440-changes">Pre 4.4.0 changes<a class="headerlink" href="#pre-440-changes" title="Permanent link">&para;</a></h1>
+<h3 id="feature">Feature<a class="headerlink" href="#feature" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add support for tags based on atlas terms (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/466">#466</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/cc1caf37f87b140a393aedfd0a07fd17c58e8ac4"><code>cc1caf3</code></a>)</li>
+<li>Make DescriptionMetadata inherit from GraphSerializable (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/461">#461</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/7f095fb368dc8b6fba5f65f3870c1dd2444b0413"><code>7f095fb</code></a>)</li>
+<li>Add TableSerializable and mysql_serializer (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/459">#459</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/4bb44528d6e17a4a2fed32bb449a21c35591ecbf"><code>4bb4452</code></a>)</li>
+<li>Neptune Data builder Integration (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/438">#438</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/303e8aa2a42779070f5d6260faac010ba86a216c"><code>303e8aa</code></a>)</li>
+<li>Add config key for connect_arg for SqlAlchemyExtractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/434">#434</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/7f3be0fe58ec863679169e945441e01fcdc0e64c"><code>7f3be0f</code></a>)</li>
+<li>Vertica metadata extractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/433">#433</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/f4bd2071cf9c31ae6ff9a51bb5983f5c18e4a0bf"><code>f4bd207</code></a>)</li>
+<li>Multi-yield transformers (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/396">#396</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/49ae0ed253aabec38346d0f26479218dec62081f"><code>49ae0ed</code></a>)</li>
+<li>Atlas_search_extractor | :tada: Initial commit. (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/415">#415</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/8c633072da81b7fb2e343aa31e6e7f9c3bfae07d"><code>8c63307</code></a>)</li>
+<li>Sample Feast job with ES publisher (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/425">#425</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/453a18b9f70b94226bf01180d7e44b915ca2ddcf"><code>453a18b</code></a>)</li>
+<li>Adding CsvTableBadgeExtractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/417">#417</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/592ee7139070c6e86ab8c3050ab72465ec9ee688"><code>592ee71</code></a>)</li>
+<li>Feast extractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/414">#414</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/2343a90b09932a173cbef13ad912bd2e7864dea0"><code>2343a90</code></a>)</li>
+<li>Adding first pass of delta lake metadata extractor as well as a sample script on how it would be used. (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/351">#351</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/e8679aadbcf940fb1b422b1d44298a314f2e5f12"><code>e8679aa</code></a>)</li>
+<li>Use parameters to allow special characters in neo4j cypher statement (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/382">#382</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/6fd503563d49157a4a2611ad66fca2680dc62c68"><code>6fd5035</code></a>)</li>
+<li>Column level badges cont. (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/381">#381</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/af4b51265e11d1ee9e8651cebeb0d00592eec2d5"><code>af4b512</code></a>)</li>
+<li>Support dashboard chart in search (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/383">#383</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/6cced36bdccd7a007872928f4075f7528daa8449"><code>6cced36</code></a>)</li>
+<li>Column level badges (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/375">#375</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/8beee3ea2ba0a81f4cc321791b9185a4316d9193"><code>8beee3e</code></a>)</li>
+<li>Added Dremio extractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/377">#377</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/63f239fd793e6b362f1d9aa064862f23b4718c09"><code>63f239f</code></a>)</li>
+<li>Add an extractor for pulling user information from BambooHR (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/369">#369</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/6802ab13d18d9a3f27d54dd7a7e43b4c3606da39"><code>6802ab1</code></a>)</li>
+<li>Add sample_glue_loader script (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/366">#366</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/fa3f11b32560fe43d95bfcdab402832898858b44"><code>fa3f11b</code></a>)</li>
+<li>Parameterize Snowflake Schema in Snowflake Metadata Extractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/361">#361</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/aa4416c51668e887817d197edd5a7365f83446d3"><code>aa4416c</code></a>)</li>
+<li>Mode Batch dashboard charrt API (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/362">#362</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/87213c5ae45e1cbe116295eafa568a775d21a889"><code>87213c5</code></a>)</li>
+<li>Create a RedshiftMetadataExtractor that supports late binding views (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/356">#356</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/4113cfd309ddf633b42ae511b0f0215bd3642621"><code>4113cfd</code></a>)</li>
+<li>Add MySQL sample data loader (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/359">#359</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/871a1763a7b0837bb6c0ba12810b9264aaa67d59"><code>871a176</code></a>)</li>
+<li>Add Snowflake table last updated timestamp extractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/348">#348</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/0bac11bcb7cd1de974548d7d3428d209fb65d4f4"><code>0bac11b</code></a>)</li>
+<li>Add Tableau dashboard metadata extractors (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/333">#333</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/46207eee9bc50b7cb09e0effbff61edcb34e5d3b"><code>46207ee</code></a>)</li>
+<li>Add github actions for databuilder (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/336">#336</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/236e7dec1d6f059e0227bf92ed6df457b448ee56"><code>236e7de</code></a>)</li>
+<li>Allow hive sql to be provided as config (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/312">#312</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/8075a6c7604c0f9c3491cdd85c0e1e97a7fd5b99"><code>8075a6c</code></a>)</li>
+<li>Enhance glue extractor (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/306">#306</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/faa795ce335e12323fb69b1041435df38034b158"><code>faa795c</code></a>)</li>
+<li>Add RedashDashboardExtractor for extracting dashboards from redash.io (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/300">#300</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/f1b0dfa399295124484242a666ddf2f20791aff7"><code>f1b0dfa</code></a>)</li>
+<li>Add a transformer that adds tags to all tables created in a job (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/287">#287</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/d2f4bd308c1ef92ea2bbfb7a7443cb42113f03f9"><code>d2f4bd3</code></a>)</li>
+</ul>
+<h3 id="fix">Fix<a class="headerlink" href="#fix" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add support for Tableau multi-site deployment (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/463">#463</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/e35af5808a40512aac09735711c3ab75c578d018"><code>e35af58</code></a>)</li>
+<li>Avoid error by checking for existence before close. (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/454">#454</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/5cd0dc83d31409de1d81e38a087a1347392e6f16"><code>5cd0dc8</code></a>)</li>
+<li>Correct config getter (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/455">#455</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/4b377465b5ee195c39a0c23b746c2ad9ebd7619f"><code>4b37746</code></a>)</li>
+<li>Close SQL Alchemy connections. (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/453">#453</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/25124c169faee6c2e48f47326fcfcbaf19e32e9e"><code>25124c1</code></a>)</li>
+<li>Add comma between bigquery requirements listings (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/452">#452</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/027edb948195f3ad032548f9f3ab0868a57263a3"><code>027edb9</code></a>)</li>
+<li>Increase the compatibility of id structure between the Databuilder and the Metadata Library (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/445">#445</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/6a13762ddaea1226f54d289f2b3011c4cb1e43c7"><code>6a13762</code></a>)</li>
+<li>Move &lsquo;grouped_tables&rsquo; into <code>_retrieve_tables</code> (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/430">#430</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/26a0d0a4ffe5bf004507c9d1598a5f08b30ecdf0"><code>26a0d0a</code></a>)</li>
+<li>Address PyAthena version (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/429">#429</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/7157c24305a48e124ac873529f54c0eabe5d5190"><code>7157c24</code></a>)</li>
+<li>Add csv badges back in Quickstart (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/418">#418</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/c0296b70de8aae4116fd3869233cd9de0d08fbbc"><code>c0296b7</code></a>)</li>
+<li>Typo in Readme (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/424">#424</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/29bd72f442ce8feb002a6b56b39f38b099186604"><code>29bd72f</code></a>)</li>
+<li>Fix redash dashboard exporter (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/422">#422</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/fa626f5cb2f92e5627c1a62ba5834b458ad0994d"><code>fa626f5</code></a>)</li>
+<li>Update the key format of set &lsquo;grouped_tables&rsquo; (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/421">#421</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/4c9e5f753bab6a21f116337005e995e1d38ef268"><code>4c9e5f7</code></a>)</li>
+<li>Retry loop for exception caused by deadlock on badge node (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/404">#404</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/9fd1513b0eb0b7426d9ba8852f1e61457536adee"><code>9fd1513</code></a>)</li>
+<li>FsNeo4jCSVLoader fails if nodes have disjoint keys (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/408">#408</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/c07cec9588e30e8c87682882417a72dca1d1866d"><code>c07cec9</code></a>)</li>
+<li>Cast dashboard usage to be int (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/412">#412</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/8bcc4894c15d2de7f57e838668ff9709b97239ed"><code>8bcc489</code></a>)</li>
+<li>Pandas &lsquo;nan&rsquo; values (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/409">#409</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/3a28f46915e3757c8445f2dfe6b7714a7789820a"><code>3a28f46</code></a>)</li>
+<li>Add databuilder missing dependencies (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/400">#400</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/6718396ed0aca467f61638c307822c18fbec6f65"><code>6718396</code></a>)</li>
+<li>Allow BigQuery Usage Extractor to extract usage for views (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/399">#399</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/8779229ce8446408fff310fc9bb50f472f0eca87"><code>8779229</code></a>)</li>
+<li>Hive metadata extractor not work on postgresql (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/394">#394</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/2992618d5d29e7061755dd62acba0eb53635fc1b"><code>2992618</code></a>)</li>
+<li>Issues with inconsistency in case conversion (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/388">#388</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/95958660e72b9c17f491f6e09994a47a84b55697"><code>9595866</code></a>)</li>
+<li>Update elasticsearch table index mapping (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/373">#373</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/88c055228412aa36ab0f9d82b57b6442d7064b7c"><code>88c0552</code></a>)</li>
+<li>Fix programmatic source data (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/367">#367</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/4f5df39cd6ddf05d2347b6d2b280f5cf0fdda5b9"><code>4f5df39</code></a>)</li>
+<li>Update connection string in Snowflake extractor to include wareh… (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/357">#357</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/a11d20698fce49fbba97040d12411181aff0b194"><code>a11d206</code></a>)</li>
+<li>Edge case in Snowflake information_schema.last_altered value (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/360">#360</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/c3e713e7f39e7240f3038daa3a3937fb060dbecb"><code>c3e713e</code></a>)</li>
+<li>Correct typo in Snowflake Last Updated extract query (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/358">#358</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/5c2e98eb81aa9875f48b3e20eb5bef84ed9c481f"><code>5c2e98e</code></a>)</li>
+<li>Set Tableau URLs (base + API) via config (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/349">#349</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/1baec33899df8394b42b6a667ff2a5d1224b8528"><code>1baec33</code></a>)</li>
+<li>Fix invalid timestamp handling in dashboard transformer (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/339">#339</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/030ef4995d16711c35e205c213f90b3d72ff1499"><code>030ef49</code></a>)</li>
+<li>Update postgres_sample_dag to set table extract job as upstream for elastic search publisher (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/340">#340</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/c79935e01efdc8c9734727e07238f25c545bfd5d"><code>c79935e</code></a>)</li>
+<li><strong>deps:</strong> Unpin attrs (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/332">#332</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/86f658d1ea9750ad916a91056a678e34a71654fb"><code>86f658d</code></a>)</li>
+<li>Cypher statement param issue in Neo4jStalenessRemovalTask (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/307">#307</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/0078761dc94c33c785557df09bb86411ef8f6f46"><code>0078761</code></a>)</li>
+<li>Added missing job tag key in hive_sample_dag.py (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/308">#308</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/d6714b72c75328195a51a6a456d1ab46063243b0"><code>d6714b7</code></a>)</li>
+<li>Fix sql for missing columns and mysql based dialects (#550) (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/305">#305</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/4b7b147b1d32cd8fce6aa7c24fa1db8d823b8038"><code>4b7b147</code></a>)</li>
+<li>Escape backslashes in Neo4jCsvPublisher  (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/1faa713374c88cf0eb04f744908756c1ef70206e"><code>1faa713</code></a>)</li>
+<li>Variable organization in Model URL (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/293">#293</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/b4c24ef891ba13fc4678faef0faaa5c7bf4c5cb6"><code>b4c24ef</code></a>)</li>
+</ul>
+<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Minor fixes to README (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/457">#457</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/54e89ce74b70ade742edc77d4e76b9fc8241d8ab"><code>54e89ce</code></a>)</li>
+<li>Update DashboardMetadata docs (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/402">#402</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/093b3d6fbe40040b6f720c030aa6d8504178b0ea"><code>093b3d6</code></a>)</li>
+<li>Fix broken doc link to dashboard_execution model (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/296">#296</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/24b3b0afdf4ad3c6b13f9677d9f805ff43f42de7"><code>24b3b0a</code></a>)</li>
+<li>Fix README.md (<a href="https://github.com/amundsen-io/amundsendatabuilder/issues/301">#301</a>) (<a href="https://github.com/amundsen-io/amundsendatabuilder/commit/ad5765a1cb0ae5fceffb1168876031801b44a79f"><code>ad5765a</code></a>)</li>
+</ul>
+
+<!-- Source files -->
+
+  
+
+
+<!-- Support for mkdocs-git-revision-date-localized-plugin -->
+
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018-2020 Amundsen Project Authors.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://www.amundsen.io/" target="_blank" rel="noopener" title="www.amundsen.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/amundsen-io" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/amundsenio" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/company/the-linux-foundation/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>

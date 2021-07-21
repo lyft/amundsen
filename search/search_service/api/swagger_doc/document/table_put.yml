@@ -1,0 +1,38 @@
+Updates tables document
+Updates tables document in ElasticSearch.
+---
+tags:
+  - 'document_table'
+parameters:
+  - name: index
+    in: query
+    type: string
+    schema:
+      type: string
+      default: 'table_search_index'
+    required: false
+requestBody:
+  content:
+    'application/json':
+      schema:
+        type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/TableFields'
+  description: 'Tables to update'
+  required: true
+responses:
+  200:
+    description: Empty json response
+    content:
+      string:
+        description: 'Index that was used'
+        example: 'table_search_index'
+  500:
+    description: Exception encountered while updating document
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

@@ -1,0 +1,66 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.tabs-component {
+  .nav.nav-tabs {
+    border-bottom: 1px solid $stroke;
+    margin-top: $spacer-2;
+    padding: 0 12px;
+
+    > li {
+      margin: 0 12px;
+
+      &.active > a {
+        &,
+        &:hover {
+          color: $brand-color-4;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      > a {
+        background: none;
+        border: none;
+        color: $text-secondary;
+        font-size: $font-size-large;
+        margin: 0;
+        padding: 8px;
+
+        &:hover {
+          color: $text-primary;
+        }
+
+        // Active tab indicator
+        &::after {
+          border: 2px solid $brand-color-4;
+          bottom: 0;
+          content: '';
+          left: 0;
+          opacity: 0;
+          position: absolute;
+          transition: opacity 200ms ease-in;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    .tab-pane {
+      .list-group {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .right-panel & {
+    .tab-content .list-group-item:first-child {
+      border-top: none;
+    }
+  }
+}

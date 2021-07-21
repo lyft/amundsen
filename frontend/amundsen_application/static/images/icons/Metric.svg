@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Metric</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M14.1111111,15.8377223 L15.4957611,11.6837722 C15.6318752,11.2754301 16.014014,11 16.4444444,11 L19.5555556,11 C20.1078403,11 20.5555556,11.4477153 20.5555556,12 C20.5555556,12.5522847 20.1078403,13 19.5555556,13 L17.1652037,13 L15.0597944,19.3162278 C14.7558956,20.2279241 13.4663266,20.2279241 13.1624278,19.3162278 L9.44444444,8.16227766 L8.05979441,12.3162278 C7.92368036,12.7245699 7.54154152,13 7.11111111,13 L4,13 C3.44771525,13 3,12.5522847 3,12 C3,11.4477153 3.44771525,11 4,11 L6.39035189,11 L8.49576115,4.68377223 C8.79965992,3.77207592 10.089229,3.77207592 10.3931277,4.68377223 L14.1111111,15.8377223 Z" id="path-1"></path>
+    </defs>
+    <g id="Metric" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#11111F" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Tint/Black" mask="url(#mask-2)"></g>
+    </g>
+</svg>

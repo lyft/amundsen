@@ -1,0 +1,42 @@
+Gets column description using table_uri and column_name
+---
+tags:
+  - 'column'
+parameters:
+  - name: table_uri
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'dynamo://gold.test_schema/test_table2'
+  - name: column_name
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'col2'
+responses:
+  200:
+    description: 'Column description'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            description:
+              type: string
+              example: 'Identifies a user'
+  404:
+    description: 'Table uri with this column not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'
+  500:
+    description: 'Internal error fetching the column description'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

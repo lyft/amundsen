@@ -1,0 +1,15 @@
+# Copyright Contributors to the Amundsen project.
+# SPDX-License-Identifier: Apache-2.0
+
+# Common dependencies for code quality control (testing, linting, static checks, etc.) ---------------------------------
+
+flake8>=3.9.2
+flake8-tidy-imports>=4.3.0
+isort[colors]~=5.8.0
+mock>=4.0.3
+mypy>=0.812,<0.900
+pytest>=6.2.4
+pytest-cov>=2.12.0
+pytest-env>=0.6.2
+pytest-mock>=3.6.1
+typed-ast>=1.4.3

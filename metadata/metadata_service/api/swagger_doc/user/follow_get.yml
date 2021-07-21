@@ -1,0 +1,40 @@
+Gets the user following information
+---
+tags:
+  - 'user'
+parameters:
+  - name: user_id
+    in: path
+    example: 'roald9@example.org'
+    type: string
+    schema:
+      type: string
+    required: true
+responses:
+  200:
+    description: 'List of resources that user has followed'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            table:
+              type: array
+              items:
+                $ref: '#/components/schemas/PopularTables'
+            dashboard:
+              type: array
+              items:
+                $ref: '#/components/schemas/DashboardSummary'
+  404:
+    description: 'User not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'
+  500:
+    description: 'Internal server error'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

@@ -1,0 +1,25 @@
+Gets dashboard descriptions
+---
+tags:
+  - 'dashboard'
+parameters:
+  - name: dashboard_uri
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'mode_dashboard://gold.abcdefg/1234567'
+responses:
+  200:
+    description: 'Dashboard details'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/DashboardDetail'
+  404:
+    description: 'Dashboard not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

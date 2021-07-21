@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Database</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M20,7.52769756 C18.1751048,8.47599017 15.2701244,9 12,9 C8.7298756,9 5.82489521,8.47599017 4,7.52769756 L4,12.0000001 C4,12.8127884 7.5561637,14 12,14 C16.4438363,14 20,12.8127884 20,12 L20,7.52769756 Z M22,5 L22,19 C22,21.511827 17.5423388,23 12,23 C6.45766119,23 2,21.511827 2,19 L2,5 C2,2.49324457 6.4797337,1 12,1 C17.5202663,1 22,2.49324457 22,5 Z M20,14.5332627 C18.1788421,15.4790145 15.2792852,16 12,16 C8.72071483,16 5.82115791,15.4790145 4,14.5332627 L4,19 C4,19.8127884 7.5561637,21 12,21 C16.4438363,21 20,19.8127884 20,19 L20,14.5332627 Z M12,7 C16.4208592,7 20,5.80695307 20,5 C20,4.19304693 16.4208592,3 12,3 C7.5791408,3 4,4.19304693 4,5 C4,5.80695307 7.5791408,7 12,7 Z" id="path-1"></path>
+    </defs>
+    <g id="Database" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#11111F" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Tint/Black" mask="url(#mask-2)"></g>
+    </g>
+</svg>

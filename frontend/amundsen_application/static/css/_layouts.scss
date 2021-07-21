@@ -1,0 +1,222 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+$resource-header-height: 84px;
+$aside-separation-space: 40px;
+$screen-lg-container: 1440px;
+
+.resource-detail-layout {
+  height: calc(100vh - #{$nav-bar-height} - #{$footer-height});
+
+  .resource-header {
+    border-bottom: 2px solid $divider;
+    display: flex;
+    height: $resource-header-height;
+    padding: 16px 24px;
+
+    .icon-header {
+      height: 32px;
+      margin: 10px;
+      width: 32px;
+    }
+
+    .header-section {
+      &.header-title {
+        flex-grow: 1;
+
+        .header-title-text {
+          display: inline-block;
+          max-width: calc(100% - 100px);
+        }
+      }
+
+      .amundsen-breadcrumb {
+        // Vertically align the breadcrumb
+        // (84px header height - 18px breadcrumb height) / 2 for top & bottom - 16px resource-header padding = 17px
+
+        padding-top: 17px;
+      }
+
+      .header-bullets {
+        display: inline;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline;
+
+          &::after {
+            content: '\00A0\2022\00A0';
+          }
+
+          &:last-child::after {
+            content: '';
+          }
+        }
+      }
+
+      &.header-links {
+        flex-shrink: 0;
+
+        > * {
+          margin-right: 16px;
+        }
+
+        .header-link {
+          display: inline-block;
+          margin: 13px 16px 0 0;
+
+          .avatar-label {
+            font-weight: $font-weight-body-bold;
+          }
+        }
+      }
+
+      &.header-buttons {
+        flex-shrink: 0;
+
+        > * {
+          margin-right: 8px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Outer column layout
+  .column-layout-1 {
+    display: flex;
+    height: calc(100% - #{$resource-header-height});
+
+    > .left-panel {
+      border-right: 4px solid $divider;
+      flex-basis: 600px;
+      flex-shrink: 0;
+      min-height: min-content;
+      overflow-y: auto;
+      padding: 0 24px $aside-separation-space;
+
+      > .banner {
+        border: 1px solid $stroke;
+        height: 40px;
+        margin: 24px 24px 0;
+        padding: 8px;
+      }
+
+      .section-title {
+        @extend %text-title-w3;
+
+        color: $text-tertiary;
+        margin-bottom: 8px;
+      }
+
+      .editable-section,
+      .metadata-section {
+        margin-top: $aside-separation-space;
+      }
+
+      .editable-text {
+        font-size: 16px;
+      }
+
+      .avatar-label-component {
+        .avatar-label {
+          color: $text-primary;
+        }
+      }
+
+      .markdown-wrapper {
+        font-size: 16px;
+
+        // Restrict max size of header elements
+        h1,
+        h2,
+        h3 {
+          font-size: 20px;
+          font-weight: $font-weight-header-bold;
+          line-height: 28px;
+        }
+      }
+    }
+
+    > .right-panel {
+      flex-basis: 500px;
+      flex-grow: 1;
+      flex-shrink: 0;
+      overflow-y: scroll;
+      width: 0; // Required for text truncation
+    }
+
+    @media (max-width: 1440px) {
+      > .left-panel {
+        flex-basis: 500px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      > .left-panel {
+        flex-basis: 415px;
+      }
+    }
+  }
+
+  // Inner column layout
+  .column-layout-2 {
+    display: flex;
+
+    > .left-panel {
+      flex-basis: 262px;
+      flex-direction: column;
+      margin-right: 12px;
+    }
+
+    > .right-panel {
+      flex-basis: 262px;
+      margin-left: 12px;
+    }
+  }
+
+  .left-panel,
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Main Layout
+#main {
+  min-width: $body-min-width;
+}
+
+@media (min-width: $screen-lg-max) {
+  #main > .container {
+    width: $screen-lg-container;
+  }
+}
+
+#main > .container {
+  margin: 96px auto 48px;
+}
+
+@media (max-width: $screen-md-max) {
+  #main > .container {
+    margin: 64px auto 48px;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  #main > .container {
+    margin: 32px auto 48px;
+  }
+}
+
+.my-auto {
+  margin-bottom: auto;
+  margin-top: auto;
+}

@@ -1,0 +1,74 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+// TODO - Override Bootstrap variables and delete this.
+@import 'variables';
+
+.popover {
+  background-color: $body-bg-dark;
+  border: 1px solid $body-bg-dark;
+  color: $text-inverse;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.popover-title {
+  border-bottom: 1px solid $stroke;
+  color: $text-inverse;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.popover-content {
+  padding: 2px 5px;
+  word-break: break-word;
+}
+
+.popover.right .arrow::after {
+  border-right-color: $body-bg-dark;
+}
+
+.popover.bottom .arrow::after {
+  border-bottom-color: $body-bg-dark;
+}
+
+.popover.top .arrow::after {
+  border-top-color: $body-bg-dark;
+}
+
+.popover.left .arrow::after {
+  border-left-color: $body-bg-dark;
+}
+
+.tooltip-inner {
+  background-color: $body-bg-dark;
+  border-radius: 3px;
+  padding: 0;
+}
+
+.tooltip-inner button {
+  background-color: $body-bg-dark;
+  border: none;
+  border-radius: 3px;
+  color: $body-bg;
+  font-size: 14px;
+  font-weight: $font-weight-body-bold;
+  height: 36px;
+  outline: none;
+  width: 96px;
+}
+
+.tooltip-inner button:hover {
+  color: $text-secondary;
+}
+
+.error-tooltip {
+  display: flex;
+  padding: 5px;
+}
+
+.error-tooltip button {
+  height: 24px;
+  margin: auto;
+  width: 24px;
+}

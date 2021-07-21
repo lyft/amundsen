@@ -1,0 +1,9 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+// Amundsen Default Values
+@import 'variables-default';
+// Per-Client Custom Values
+@import 'variables-custom';
+// Bootstrap Default Values
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';

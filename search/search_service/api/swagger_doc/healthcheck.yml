@@ -1,0 +1,12 @@
+Healthcheck
+Used to verify application is healthy
+---
+tags:
+  - 'healthcheck'
+responses:
+  200:
+    description: Application is running
+    content:
+      string:
+        description: 'Always empty'
+        example: ''

@@ -1,0 +1,30 @@
+<!--
+  Copyright Contributors to the Amundsen project.
+  SPDX-License-Identifier: Apache-2.0
+-->
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Amundsen - Data Discovery Portal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if env == "development" %}
+      {% include 'fragments/icons-dev.html' %}
+    {% elif env == "staging" %}
+      {% include 'fragments/icons-staging.html' %}
+    {% else %}
+      {% include 'fragments/icons-prod.html' %}
+    {% endif %}
+
+    <%= htmlWebpackPlugin.tags.headTags %>
+
+    <!-- Do not remove: some analytics scripts attach to this. -->
+    <script id="analyitcs-script-stub"></script>
+  </head>
+  <body class="{{ env }}">
+    <div id="content"/>
+    <%= htmlWebpackPlugin.tags.bodyTags %>
+  </body>
+</html>

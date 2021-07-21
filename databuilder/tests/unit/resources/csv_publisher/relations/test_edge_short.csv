@@ -1,0 +1,3 @@
+"START_LABEL","START_KEY","END_LABEL","END_KEY","TYPE","REVERSE_TYPE"
+"Table","presto://gold.test_schema1/test_table1","Column","presto://gold.test_schema1/test_table1/test_id1","COLUMN","BELONG_TO_TABLE"
+"Table","presto://gold.test_schema1/test_table1","Column","presto://gold.test_schema1/test_table1/test_id2","COLUMN","BELONG_TO_TABLE"

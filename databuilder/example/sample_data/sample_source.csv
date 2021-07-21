@@ -1,0 +1,2 @@
+db_name,cluster,schema,table_name,source,source_type
+hive,gold,test_schema,test_table1,"https://github.com/amundsen-io/amundsen/",github

@@ -1,0 +1,390 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+// New Typography styles based on LPL
+// Use these styles going forward
+
+// Placeholder selectors
+// Ref: http://thesassway.com/intermediate/understanding-placeholder-selectors
+//
+// Example of use:
+// .header-title-text {
+//   @extend %text-headline-w2;
+// }
+
+%text-headline-w1 {
+  font-family: $text-heading-font-family;
+  font-size: $w1-headline-font-size;
+  line-height: $w1-headline-line-height;
+  font-weight: $title-font-weight;
+}
+
+%text-headline-w2 {
+  font-family: $text-heading-font-family;
+  font-size: $w2-headline-font-size;
+  line-height: $w2-headline-line-height;
+  font-weight: $title-font-weight;
+}
+
+%text-headline-w3 {
+  font-family: $text-heading-font-family;
+  font-size: $w3-headline-font-size;
+  line-height: $w3-headline-line-height;
+  font-weight: $title-font-weight;
+}
+
+%text-title-w1 {
+  font-family: $text-body-font-family;
+  font-size: $w1-font-size;
+  line-height: $w1-line-height;
+  font-weight: $title-font-weight;
+}
+
+%text-title-w2 {
+  font-family: $text-body-font-family;
+  font-size: $w2-font-size;
+  line-height: $w2-line-height;
+  font-weight: $title-font-weight;
+}
+
+%text-title-w3 {
+  font-family: $text-body-font-family;
+  font-size: $w3-font-size;
+  line-height: $w3-line-height;
+  font-weight: $title-font-weight;
+}
+
+%text-subtitle-w1 {
+  font-family: $text-body-font-family;
+  font-size: $w1-font-size;
+  line-height: $w1-line-height;
+  font-weight: $subtitle-font-weight;
+}
+
+%text-subtitle-w2 {
+  font-family: $text-body-font-family;
+  font-size: $w2-font-size;
+  line-height: $w2-line-height;
+  font-weight: $subtitle-font-weight;
+}
+
+%text-subtitle-w3 {
+  font-family: $text-body-font-family;
+  font-size: $w3-font-size;
+  line-height: $w3-line-height;
+  font-weight: $subtitle-font-weight;
+}
+
+%text-body-w1 {
+  font-family: $text-body-font-family;
+  font-size: $w1-font-size;
+  line-height: $w1-line-height;
+  font-weight: $body-font-weight;
+}
+
+%text-body-w2 {
+  font-family: $text-body-font-family;
+  font-size: $w2-font-size;
+  line-height: $w2-line-height;
+  font-weight: $body-font-weight;
+}
+
+%text-body-w3 {
+  font-family: $text-body-font-family;
+  font-size: $w3-font-size;
+  line-height: $w3-line-height;
+  font-weight: $body-font-weight;
+}
+
+%text-monospace-w3 {
+  font-family: $font-family-monospace-code;
+  font-size: $w3-font-size;
+  line-height: $w3-line-height;
+  font-weight: $body-font-weight;
+}
+
+%text-caption-w1 {
+  font-size: $w1-caption-font-size;
+  line-height: $w1-caption-line-height;
+  font-weight: $caption-font-weight;
+  text-transform: uppercase;
+}
+
+%text-caption-w2 {
+  font-size: $w2-caption-font-size;
+  line-height: $w2-caption-line-height;
+  font-weight: $caption-font-weight;
+  text-transform: uppercase;
+}
+
+// Typography classes
+// Headlines
+.text-headline-w1 {
+  @extend %text-headline-w1;
+}
+
+.text-headline-w2 {
+  @extend %text-headline-w2;
+}
+
+.text-headline-w3 {
+  @extend %text-headline-w3;
+}
+
+// Titles
+.text-title-w1 {
+  @extend %text-title-w1;
+}
+
+.text-title-w2 {
+  @extend %text-title-w2;
+}
+
+.text-title-w3 {
+  @extend %text-title-w3;
+}
+
+// Subtitles
+.text-subtitle-w1 {
+  @extend %text-subtitle-w1;
+}
+
+.text-subtitle-w2 {
+  @extend %text-subtitle-w2;
+}
+
+.text-subtitle-w3 {
+  @extend %text-subtitle-w3;
+}
+
+// Body
+.text-body-w1 {
+  @extend %text-body-w1;
+}
+
+.text-body-w2 {
+  @extend %text-body-w2;
+}
+
+.text-body-w3 {
+  @extend %text-body-w3;
+}
+
+// Captions
+.text-caption-w1 {
+  @extend %text-caption-w1;
+}
+
+.text-caption-w2 {
+  @extend %text-caption-w2;
+}
+
+// Monospace
+.text-monospace-w3 {
+  @extend %text-monospace-w3;
+}
+
+// Typography Helpers
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Text for Screen Readers only
+// Reference: Bootstrap 4 codebase
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// From https://gist.github.com/igorescobar/d74a76629bab47d601d71c3a6e010ff2
+@mixin truncate($font-size, $line-height, $lines-to-show) {
+  display: block; // Fallback for non-webkit
+  display: -webkit-box;
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Old typography styles
+// DEPRECATED - Don't use!
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: $text-primary;
+  font-family: $font-family-header;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: $font-weight-header-regular;
+  line-height: 34px;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: $font-weight-header-bold;
+  line-height: 34px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: $font-weight-header-bold;
+  line-height: 34px;
+}
+
+body {
+  color: $text-primary;
+  font-family: $font-family-body;
+  font-size: 14px;
+  font-weight: $font-weight-body-regular;
+}
+
+.title-2,
+.title-3,
+.subtitle-1,
+.subtitle-2,
+.body-1,
+.body-2,
+.body-3,
+.body-secondary-3,
+.body-placeholder,
+.body-link,
+.caption {
+  font-family: $font-family-body;
+}
+
+.title-2 {
+  font-size: 16px;
+  font-weight: $font-weight-body-bold;
+  line-height: 1.42857;
+}
+
+.title-3 {
+  color: $text-secondary;
+  font-size: 14px;
+  font-weight: $font-weight-body-bold;
+  line-height: 1.42857;
+}
+
+.subtitle-1 {
+  font-size: 20px;
+  font-weight: $font-weight-body-semi-bold;
+  line-height: 28px;
+}
+
+.subtitle-2 {
+  font-size: 16px;
+  font-weight: $font-weight-body-semi-bold;
+}
+
+.body-1 {
+  font-size: 20px;
+  font-weight: $font-weight-body-regular;
+  line-height: 20px;
+}
+
+.body-2 {
+  font-size: 16px;
+  font-weight: $font-weight-body-regular;
+  line-height: 20px;
+}
+
+.body-3 {
+  font-size: 14px;
+  font-weight: $font-weight-body-regular;
+}
+
+.body-secondary-3 {
+  color: $text-secondary;
+  font-size: 14px;
+  font-weight: $font-weight-body-regular;
+}
+
+.body-placeholder {
+  color: $text-placeholder;
+  font-size: 14px;
+  font-weight: $font-weight-body-regular;
+}
+
+.body-link {
+  color: $brand-color-4;
+  font-size: $font-size-large;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.caption {
+  color: $text-secondary;
+  font-size: 13px;
+  font-weight: $font-weight-body-bold;
+}
+
+.column-name {
+  @extend %text-title-w3;
+
+  color: $column-name-color;
+}
+
+.resource-type {
+  @extend %text-subtitle-w3;
+
+  color: $text-placeholder;
+}
+
+.helper-text {
+  color: $text-secondary;
+  font-family: $font-family-body;
+  font-size: 12px;
+}
+
+.text-placeholder {
+  color: $text-placeholder;
+}
+
+.text-secondary {
+  color: $text-secondary;
+}
+
+.text-primary {
+  color: $text-primary;
+}

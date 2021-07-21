@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Edit</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17,14 C17,13.4477153 17.4477153,13 18,13 C18.5522847,13 19,13.4477153 19,14 L19,17 C19,18.5522847 17.5522847,20 16,20 L7,20 C5.41405389,20 4,18.644016 4,17 L4,7.98046875 C4,6.44299261 5.45244866,5 7,5 L10,5 C10.5522847,5 11,5.44771525 11,6 C11,6.55228475 10.5522847,7 10,7 L7,7 C6.55410442,7 6,7.55049697 6,7.98046875 L6,17 C6,17.5202489 6.50029637,18 7,18 L16,18 C16.4477153,18 17,17.4477153 17,17 L17,14 Z M17.9289109,5.91662172 C18.3682507,6.35596155 18.3682507,7.06827215 17.9289109,7.50761198 L10.1018764,15.3159836 L8.45489769,15.8649765 C8.25841894,15.9304695 8.04604895,15.8242845 7.98055604,15.6278057 C7.95489769,15.5508307 7.95489769,15.4676099 7.98055604,15.3906349 L8.559746,13.6947963 L16.3379206,5.91662172 C16.7772604,5.47728189 17.489571,5.47728189 17.9289109,5.91662172 Z" id="path-1"></path>
+    </defs>
+    <g id="Edit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#785EF0" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Tint/Black" mask="url(#mask-2)">
+            <g transform="translate(2.000000, 2.000000)"></g>
+        </g>
+    </g>
+</svg>

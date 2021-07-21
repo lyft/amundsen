@@ -1,0 +1,49 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+// Space Mono
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: $font-weight-header-regular;
+  src: url('../fonts/SpaceMono-Regular.ttf') format('truetype');
+}
+
+// Roboto
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: $font-weight-header-regular;
+  src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: $font-weight-header-bold;
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+}
+
+// Open Sans
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: $font-weight-body-regular;
+  src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: $font-weight-body-semi-bold;
+  src: url('../fonts/OpenSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: $font-weight-body-bold;
+  src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+}

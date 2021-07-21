@@ -1,0 +1,7 @@
+source_table_key,target_table_key
+hive://gold.test_schema/test_table1,dynamo://gold.test_schema/test_table2
+hive://gold.test_schema/test_table1,hive://gold.test_schema/test_view1
+dynamo://gold.test_schema/test_table2,hive://gold.test_schema/test_table3
+hive://gold.test_schema/test_view1,hive://gold.test_schema/test's_table4
+dynamo://gold.test_schema/test_table2,hive://gold.test_schema/test's_table4
+hive://gold.test_schema/test_view1,hive://gold.test_schema/test's_table4

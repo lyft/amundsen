@@ -1,0 +1,39 @@
+Search for user
+Used by the frontend API to search for users
+---
+tags:
+  - 'search_user'
+parameters:
+  - name: query_term
+    in: query
+    type: string
+    schema:
+      type: string
+    required: true
+  - name: page_index
+    in: query
+    type: integer
+    schema:
+      type: integer
+      default: 0
+    required: false
+  - name: index
+    in: query
+    type: string
+    schema:
+      type: string
+      default: 'user_search_index'
+    required: false
+responses:
+  200:
+    description: user search results
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/SearchUserResults'
+  500:
+    description: Exception encountered while getting user
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

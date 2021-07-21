@@ -1,0 +1,36 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$date-range-label-width: 45px;
+
+.watermark-label {
+  display: flex;
+
+  .range-icon {
+    flex-basis: 12px;
+    height: 40px;
+    margin-right: $spacer-1;
+    width: 12px;
+    margin-top: 2px;
+  }
+
+  .range-labels {
+    flex-basis: 42px;
+  }
+
+  .date-range {
+    margin-top: 0;
+    margin-bottom: $spacer-1/2;
+  }
+
+  .date-range-label {
+    width: $date-range-label-width;
+    display: inline-block;
+  }
+
+  .date-range-value {
+    margin-left: $spacer-1/2;
+  }
+}

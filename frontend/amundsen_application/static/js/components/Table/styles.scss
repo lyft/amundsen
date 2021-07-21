@@ -1,0 +1,159 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+@import 'animations';
+
+$table-header-height: 33px;
+$table-header-border-width: 2px;
+
+$shimmer-block-height: 16px;
+$shimmer-block-width: 40%;
+
+$table-header-bottom-border-color: $gray15;
+$table-header-background-color: $gray5;
+$row-bottom-border-color: $gray10;
+
+.ams-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacer-2;
+  box-sizing: border-box;
+}
+
+.ams-table-header {
+  @extend %text-caption-w2;
+
+  background-color: $table-header-background-color;
+  color: $text-secondary;
+  border-bottom: $table-header-border-width solid
+    $table-header-bottom-border-color;
+}
+
+.ams-table-heading-cell {
+  height: $table-header-height;
+  text-transform: uppercase;
+
+  &.is-left-aligned {
+    text-align: left;
+    padding-right: $spacer-1;
+    padding-left: $spacer-1;
+  }
+
+  &.is-right-aligned {
+    text-align: right;
+    padding-right: $spacer-1;
+    padding-left: $spacer-1;
+  }
+
+  &.is-center-aligned {
+    text-align: center;
+    padding-left: $spacer-1;
+    padding-right: $spacer-1;
+  }
+
+  &:first-child {
+    padding-left: $spacer-3;
+  }
+
+  &:last-child {
+    padding-right: $spacer-3;
+  }
+}
+
+.ams-table-row {
+  border-bottom: 1px solid $row-bottom-border-color;
+
+  &.is-empty,
+  &.has-child-expanded {
+    border-bottom: 0;
+  }
+}
+
+.ams-table-expanded-row {
+  display: none;
+
+  &.is-expanded {
+    display: table-row;
+    border-bottom: 1px solid $row-bottom-border-color;
+  }
+}
+
+.ams-table-cell {
+  overflow: visible;
+
+  &.is-left-aligned {
+    text-align: left;
+    padding-right: $spacer-1;
+    padding-left: $spacer-1;
+  }
+
+  &.is-right-aligned {
+    text-align: right;
+    padding-right: $spacer-1;
+    padding-left: $spacer-1;
+  }
+
+  &.is-center-aligned {
+    text-align: center;
+    padding-left: $spacer-1;
+    padding-right: $spacer-1;
+  }
+
+  &:first-child {
+    padding-left: $spacer-3;
+  }
+
+  &:last-child {
+    padding-right: $spacer-3;
+  }
+}
+
+.ams-table-expanding-button {
+  border: 0;
+  padding: 0;
+  background-color: white;
+  margin-right: $spacer-2;
+
+  svg {
+    vertical-align: bottom;
+  }
+
+  &:hover svg use {
+    fill: $gray60;
+  }
+
+  // TODO: Fix this so it is accessible
+  &:focus {
+    outline: none;
+  }
+}
+
+// Loading State
+.ams-table-heading-loading-cell {
+  padding: $spacer-1;
+}
+
+.ams-table-body-loading-cell {
+  padding: 0 $spacer-1;
+
+  .shimmer-resource-loader {
+    margin-top: -1px;
+  }
+}
+
+.ams-table-shimmer-block {
+  @extend %is-shimmer-animated;
+
+  height: $shimmer-block-height;
+  width: $shimmer-block-width;
+}
+
+// Empty State
+.ams-empty-message-cell {
+  @extend %text-body-w3;
+
+  color: $text-primary;
+  text-align: center;
+}

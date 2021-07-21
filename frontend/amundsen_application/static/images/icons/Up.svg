@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Up</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12.0965192,12.1196553 L16.1455819,8.22240346 C16.5457013,7.83728567 17.1804827,7.84334872 17.573173,8.23603897 C17.9563077,8.61917373 17.9563077,9.2403579 17.573173,9.62349266 C17.5687557,9.62790994 17.5642963,9.63228493 17.5597955,9.63661703 L12.8296962,14.1893714 C12.6490881,14.363208 12.420668,14.4573419 12.1882823,14.472192 C11.9024397,14.4997601 11.6069647,14.4080264 11.3825396,14.1958585 L6.55304158,9.63012994 C6.16282066,9.26122145 6.14554352,8.64582547 6.51445201,8.25560455 C6.5207015,8.24899402 6.52704345,8.24247151 6.533476,8.23603897 C6.92716977,7.84234519 7.56266789,7.8334262 7.96725514,8.21591638 L12.0965192,12.1196553 Z" id="path-1"></path>
+    </defs>
+    <g id="Up" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="mask" fill="#D6D9DB" transform="translate(12.054606, 11.205887) rotate(-180.000000) translate(-12.054606, -11.205887) " xlink:href="#path-1"></use>
+        <g id="Tint/Gray-3" mask="url(#mask-2)">
+            <g transform="translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000) translate(0.000000, 0.000000)"></g>
+        </g>
+    </g>
+</svg>

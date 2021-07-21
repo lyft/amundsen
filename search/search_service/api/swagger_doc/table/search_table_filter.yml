@@ -1,0 +1,32 @@
+Table search
+This is used by the frontend API to search table information.
+---
+tags:
+  - 'search_table'
+requestBody:
+  description: The json data passed from the frontend API to execute a search.
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          page_index:
+            type: integer
+          query_term:
+            type: string
+          search_request:
+            type: object
+responses:
+  200:
+    description: table result information with query string
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/SearchTableResults'
+  500:
+    description: Exception encountered while searching
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

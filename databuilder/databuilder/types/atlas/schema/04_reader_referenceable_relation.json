@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "Referenceable_Readers",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__Referenceable.Readers",
+      "endDef1": {
+        "type": "Referenceable",
+        "name": "readers",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Reader",
+        "name": "entity",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

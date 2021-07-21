@@ -1,0 +1,16 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$shimmer-loader-tag-height: 36px;
+$shimmer-loader-items: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14;
+$shimmer-loader-tag-width: 90;
+
+.shimmer-tag-loader-item {
+  margin: 0 $spacer-1 $spacer-1 0;
+  height: $shimmer-loader-tag-height;
+  width: $shimmer-loader-tag-width + px;
+  border-radius: $tag-border-radius;
+  display: inline-block;
+}

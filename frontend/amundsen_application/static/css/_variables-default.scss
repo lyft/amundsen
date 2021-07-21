@@ -1,0 +1,182 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'colors';
+
+// TODO - consider using more descriptive names, or replacing with more specific variables.
+// Colors
+$brand-color-1: $indigo10 !default;
+$brand-color-2: $indigo20 !default;
+$brand-color-3: $indigo40 !default;
+$brand-color-4: $indigo60 !default;
+$brand-color-5: $indigo80 !default;
+
+$brand-primary: $brand-color-4 !default;
+
+/* Scaffolding */
+$body-bg: $white !default;
+$body-bg-secondary: $gray0 !default;
+$body-bg-tertiary: $gray5 !default;
+$body-bg-dark: $gray100 !default;
+$divider: $gray15 !default;
+$stroke: $gray20 !default;
+$stroke-light: $gray10 !default;
+$stroke-focus: $gray60 !default;
+$stroke-underline: $gray40 !default;
+
+// Typography
+$text-primary: $gray100 !default;
+$text-secondary: $gray60 !default;
+$text-tertiary: $gray40 !default;
+$text-placeholder: $gray40 !default;
+$text-inverse: $white !default;
+
+$column-name-color: $indigo70;
+$link-color: $brand-color-4;
+$link-hover-color: $brand-color-5;
+
+$font-family-body: 'Open Sans', sans-serif !default;
+$font-weight-body-regular: 400 !default;
+$font-weight-body-semi-bold: 600 !default;
+$font-weight-body-bold: 700 !default;
+
+$font-family-header: 'Roboto', sans-serif !default;
+$font-weight-header-regular: 500 !default;
+$font-weight-header-bold: 700 !default;
+
+$font-family-monospace-code: 'Space Mono', menlo, monospace !default;
+$font-family-serif: georgia, 'Times New Roman', times, serif !default;
+
+$font-size-small: 12px !default;
+$font-size-base: 14px !default;
+$font-size-large: 16px !default;
+$line-height-small: 1.5 !default;
+$line-height-large: 1.5 !default;
+
+// Badges
+$badge-text-color: $text-primary;
+$badge-negative-color: $sunset20;
+$badge-neutral-color: $gray20;
+$badge-primary-color: $cyan10;
+$badge-positive-color: $mint20;
+$badge-warning-color: $amber30;
+
+$badge-overlay: $gray100;
+$badge-opacity-light: 0.14;
+$badge-opacity-dark: 0.16;
+$badge-pressed-light: 0.21;
+$badge-pressed-dark: 0.22;
+
+$badge-height: 20px;
+
+// Buttons
+$btn-border-radius-base: 4px;
+
+$btn-primary-bg: $brand-color-4 !default;
+$btn-primary-bg-hover: $brand-color-5 !default;
+$btn-primary-border: transparent !default;
+$btn-primary-border-hover: transparent !default;
+$btn-primary-color: $white !default;
+$btn-primary-color-hover: $white !default;
+
+$btn-default-bg: $white !default;
+$btn-default-bg-hover: $gray5 !default;
+$btn-default-border: $gray20 !default;
+$btn-default-border-hover: $gray30 !default;
+$btn-default-color: $gray100 !default;
+$btn-default-color-hover: $gray90 !default;
+
+// Icons
+$icon-bg: $gray20 !default;
+$icon-bg-brand: $brand-color-3 !default;
+$icon-bg-dark: $gray60 !default;
+$icon-bg-disabled: $gray20 !default;
+$red-triangle-warning: $sunset60;
+
+// Header, Body, & Footer
+$nav-bar-color: $indigo100;
+$nav-bar-height: 60px;
+$body-min-width: 1048px;
+$footer-height: 60px;
+$navbar-item-line-height: 36px;
+
+// Extra breakpoints
+$screen-lg-max: 1490px;
+
+// SearchPanel
+$search-panel-width: 270px;
+$search-panel-border-width: 4px;
+
+// List Group
+$list-group-border: $stroke !default;
+$list-group-border-radius: 0 !default;
+
+// Labels
+$label-primary-bg: $brand-color-3 !default;
+
+//Priority
+$priority-text-blocker: $white;
+$priority-bg-color: $rose80;
+
+// Tags
+$tag-bg: $gray5;
+$tag-bg-hover: $gray10;
+$tag-border-radius: 4px;
+
+// TODO Temp Colors
+$resource-title-color: $indigo60;
+
+// Spacing
+$spacer-size: 8px;
+$spacer-half: $spacer-size/2;
+$spacer-1: $spacer-size;
+$spacer-2: $spacer-size * 2;
+$spacer-3: $spacer-size * 3;
+$spacer-4: $spacer-size * 4;
+$spacer-5: $spacer-size * 5;
+$spacer-6: $spacer-size * 6;
+
+// Elevations (from LPL)
+$elevation-level1: 0 0 1px 0 rgba(0, 0, 0, 0.12),
+  0 1px 1px 1px rgba(0, 0, 0, 0.08);
+$elevation-level2: 0 0 1px 0 rgba(0, 0, 0, 0.12),
+  0 2px 3px 0 rgba(0, 0, 0, 0.16);
+$elevation-level3: 0 0 1px 0 rgba(0, 0, 0, 0.12),
+  0 2px 4px 0 rgba(0, 0, 0, 0.16);
+$elevation-level4: 0 0 1px 0 rgba(0, 0, 0, 0.12),
+  0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+// New Typography variables based on LPL
+$text-heading-font-family: $font-family-header;
+$text-body-font-family: $font-family-body;
+
+$w1-font-size: 20px;
+$w1-line-height: 24px;
+
+$w2-font-size: 16px;
+$w2-line-height: 20px;
+
+$w3-font-size: 14px;
+$w3-line-height: 18px;
+
+$w1-headline-font-size: 36px;
+$w1-headline-line-height: 44px;
+
+$w2-headline-font-size: 26px;
+$w2-headline-line-height: 32px;
+
+$w3-headline-font-size: 22px;
+$w3-headline-line-height: 28px;
+
+$w1-caption-font-size: $w2-font-size;
+$w1-caption-line-height: $w2-line-height;
+
+$w2-caption-font-size: 12px;
+$w2-caption-line-height: 16px;
+
+$code-font-size: 12px;
+
+$title-font-weight: $font-weight-body-bold;
+$subtitle-font-weight: $font-weight-body-semi-bold;
+$body-font-weight: $font-weight-body-regular;
+$caption-font-weight: $font-weight-body-bold;

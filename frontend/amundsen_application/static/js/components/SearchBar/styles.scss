@@ -1,0 +1,81 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+#search-bar {
+  position: relative;
+
+  .search-bar-form {
+    .search-button {
+      height: 24px;
+      position: absolute;
+      width: 24px;
+
+      &.small {
+        left: 8px;
+        top: 6px;
+      }
+
+      &.large {
+        left: 24px;
+        top: 28px;
+      }
+    }
+
+    .clear-button {
+      height: 24px;
+      position: absolute;
+      right: 8px;
+      top: 2px;
+      width: 24px;
+    }
+
+    .search-bar-input {
+      border-color: $stroke;
+      border-radius: 4px;
+      box-shadow: 0 3px 12px 0 rgba(17, 17, 31, 0.04);
+      width: 100%;
+
+      &.large {
+        height: 80px;
+        padding: 16px 24px 16px 64px;
+      }
+
+      &.small {
+        border: none;
+        height: 36px;
+        padding: 6px 6px 6px 36px;
+      }
+
+      &:focus {
+        border-color: $stroke-focus;
+      }
+
+      &:focus + .search-button .icon-search:not(:hover) {
+        background-color: $stroke-focus;
+      }
+    }
+
+    @media (max-width: $screen-md-max) {
+      .search-button.large {
+        left: 16px;
+        top: 18px;
+      }
+
+      .text-headline-w2.search-bar-input {
+        font-size: 24px;
+        height: 60px;
+        padding: 16px 16px 16px 48px;
+      }
+    }
+  }
+
+  .subtext {
+    margin-top: 16px;
+  }
+
+  .error {
+    color: red;
+  }
+}

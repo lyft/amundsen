@@ -1,0 +1,32 @@
+Updates feature owner
+---
+tags:
+  - 'feature'
+parameters:
+  - name: feature_uri
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'test_feature_group_name/test_feature_name/1.2.0'
+  - name: owner
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'roald9@example.org'
+responses:
+  200:
+    description: 'Owner updated'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MessageResponse'
+  500:
+    description: 'Owner was not added / updated successfully'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

@@ -1,0 +1,40 @@
+Delete badges of a resource
+---
+tags:
+  - 'table'
+  - 'dashboard'
+parameters:
+  - name: id
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'hive://gold.test_schema/test_table1'
+  - name: badge_name
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'beta'
+  - name: category
+    in: query
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'table_status'
+responses:
+  200:
+    description: 'The badge was deleted successfully'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MessageResponse'
+  404:
+    description: 'Table or badge not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

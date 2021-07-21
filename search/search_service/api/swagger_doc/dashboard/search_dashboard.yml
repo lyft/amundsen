@@ -1,0 +1,39 @@
+Dashboard search
+This is used by the frontend API to search dashboard information.
+---
+tags:
+  - 'search_dashboard'
+parameters:
+  - name: query_term
+    in: query
+    type: string
+    schema:
+      type: string
+    required: true
+  - name: page_index
+    in: query
+    type: integer
+    schema:
+      type: integer
+      default: 0
+    required: false
+  - name: index
+    in: query
+    type: string
+    schema:
+      type: string
+      default: 'dashboard_search_index'
+    required: false
+responses:
+  200:
+    description: dashboard result information
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/SearchDashboardResults'
+  500:
+    description: Exception encountered while searching
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

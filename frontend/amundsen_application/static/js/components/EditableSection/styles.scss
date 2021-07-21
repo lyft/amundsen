@@ -1,0 +1,41 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.editable-section {
+  .editable-section-label {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  .editable-section-label-wrapper {
+    margin-bottom: $spacer-1;
+  }
+
+  .section-title {
+    color: $text-tertiary;
+    margin-bottom: $spacer-1/2;
+    font-weight: 700;
+  }
+
+  .edit-button {
+    margin-left: $spacer-1/2;
+    opacity: 0;
+
+    img {
+      margin-bottom: auto;
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    .edit-button {
+      opacity: 1;
+    }
+  }
+}

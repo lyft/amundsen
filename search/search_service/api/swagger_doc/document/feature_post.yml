@@ -1,0 +1,37 @@
+Creates feature document in ElasticSearch.
+---
+tags:
+  - 'document_feature'
+parameters:
+  - name: index
+    in: query
+    type: string
+    schema:
+      type: string
+      default: feature_search_index
+    required: false
+requestBody:
+  content:
+    'application/json':
+      schema:
+        type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/FeatureFields'
+  description: 'Features to create'
+  required: true
+responses:
+  200:
+    description: Empty json response
+    content:
+      string:
+        description: 'Index that was used'
+        example: 'feature_search_index'
+  500:
+    description: Exception encountered while creating document
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

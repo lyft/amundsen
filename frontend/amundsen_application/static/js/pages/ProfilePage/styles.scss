@@ -1,0 +1,63 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+$shimmer-loader-circle-size: 40px;
+$shimmering-line-height: 16px;
+$shimmering-short-line-width: 150px;
+$shimmering-long-line-width: 300px;
+$shimmering-link-height: 24px;
+$shimmering-link-width: 100px;
+
+.profile-page {
+  // override height from resource-detail-layout
+  height: auto;
+
+  .profile-avatar {
+    display: inline-block;
+    margin: 6px $spacer-2 0 0;
+  }
+
+  .profile-body {
+    // TODO: consider moving logic for empty content into Tab component
+    .empty-tab-message {
+      margin-top: $spacer-4;
+      text-align: center;
+    }
+  }
+
+  .resource-list:last-child {
+    margin-bottom: $spacer-3;
+  }
+
+  .header-title-text {
+    @extend %text-headline-w2;
+  }
+
+  .shimmering-circle {
+    height: $shimmer-loader-circle-size;
+    width: $shimmer-loader-circle-size;
+    border-radius: $shimmer-loader-circle-size;
+  }
+
+  .shimmering-text {
+    height: $shimmering-line-height;
+    margin: $spacer-1 0;
+
+    &.title-text {
+      width: $shimmering-short-line-width;
+    }
+
+    &.bullets {
+      width: $shimmering-long-line-width;
+    }
+
+    &.header-link {
+      width: $shimmering-link-width;
+      height: $shimmering-link-height;
+      display: inline-block;
+    }
+  }
+}

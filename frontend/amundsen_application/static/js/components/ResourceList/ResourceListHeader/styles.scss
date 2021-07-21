@@ -1,0 +1,50 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+.resource-list-header {
+  @extend %text-caption-w2;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: $spacer-6;
+  padding: $spacer-1 $spacer-3 $spacer-1;
+
+  .resource-header {
+    flex: 7;
+    margin-right: $spacer-2;
+
+    .header-text {
+      margin-left: $spacer-5;
+    }
+  }
+
+  .source-header {
+    flex: 2;
+  }
+
+  .badge-last-run-header {
+    display: flex;
+    flex: 3;
+    flex-wrap: wrap;
+    margin-left: $spacer-3;
+
+    .header-text {
+      margin-left: $spacer-3;
+    }
+  }
+
+  .entity-header {
+    display: flex;
+    flex: 2;
+    flex-wrap: wrap;
+    margin-left: $spacer-3;
+
+    .header-text {
+      margin-left: $spacer-3;
+    }
+  }
+}

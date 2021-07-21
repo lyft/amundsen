@@ -1,0 +1,3 @@
+include requirements.txt
+
+global-include requirements-*.txt

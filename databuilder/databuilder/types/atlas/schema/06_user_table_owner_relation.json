@@ -1,0 +1,25 @@
+{
+  "relationshipDefs": [
+    {
+      "name": "DataSet_Users_Owner",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__DataSet.Users.Owner",
+      "endDef1": {
+        "type": "DataSet",
+        "name": "ownedBy",
+        "cardinality": "SET",
+        "isContainer": true,
+        "isOptional": true
+      },
+      "endDef2": {
+        "type": "User",
+        "name": "owns",
+        "isContainer": false,
+        "cardinality": "SET",
+        "isOptional": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Speech</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M4,18.5857864 L6.29289322,16.2928932 C6.4804296,16.1053568 6.73478351,16 7,16 L19,16 C19.5522847,16 20,15.5522847 20,15 L20,5 C20,4.44771525 19.5522847,4 19,4 L5,4 C4.44771525,4 4,4.44771525 4,5 L4,18.5857864 Z M7.41421356,18 L3.70710678,21.7071068 C3.07714192,22.3370716 2,21.8909049 2,21 L2,5 C2,3.34314575 3.34314575,2 5,2 L19,2 C20.6568542,2 22,3.34314575 22,5 L22,15 C22,16.6568542 20.6568542,18 19,18 L7.41421356,18 Z M8,11 C8.55228475,11 9,10.5522847 9,10 C9,9.44771525 8.55228475,9 8,9 C7.44771525,9 7,9.44771525 7,10 C7,10.5522847 7.44771525,11 8,11 Z M12,11 C12.5522847,11 13,10.5522847 13,10 C13,9.44771525 12.5522847,9 12,9 C11.4477153,9 11,9.44771525 11,10 C11,10.5522847 11.4477153,11 12,11 Z M16,11 C16.5522847,11 17,10.5522847 17,10 C17,9.44771525 16.5522847,9 16,9 C15.4477153,9 15,9.44771525 15,10 C15,10.5522847 15.4477153,11 16,11 Z" id="path-1"></path>
+    </defs>
+    <g id="Speech" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Shape" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Tint/Black" mask="url(#mask-2)"></g>
+    </g>
+</svg>

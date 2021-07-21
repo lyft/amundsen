@@ -1,0 +1,14 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$min-item-height: 54px;
+
+.query-list.list-group {
+  margin-bottom: 0;
+}
+
+.query-list-item.list-group-item {
+  min-height: $min-item-height;
+}

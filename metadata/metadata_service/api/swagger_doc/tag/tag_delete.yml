@@ -1,0 +1,41 @@
+Delete tags of a resource
+---
+tags:
+  - 'table'
+  - 'dashboard'
+parameters:
+  - name: id
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'hive://gold.test_schema/test_table1'
+  - name: tag
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'tagw'
+  - name: tag_type
+    in: query
+    type: string
+    schema:
+      type: string
+    required: false
+    default: 'default'
+    example: 'badge'
+responses:
+  200:
+    description: 'The tag was deleted successfully'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MessageResponse'
+  404:
+    description: 'Table or tag not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

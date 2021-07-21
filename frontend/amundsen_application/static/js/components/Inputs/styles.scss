@@ -1,0 +1,14 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+.checkbox,
+.radio {
+  margin-bottom: 16px;
+  margin-top: 16px;
+
+  .checkbox-label,
+  .radio-label {
+    display: block;
+    width: 100%;
+  }
+}

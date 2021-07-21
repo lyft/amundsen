@@ -1,0 +1,5 @@
+create_time,database,schema,table_name,part_name,part_type,cluster
+2019-10-01T12:13:14,hive,test_schema,test_table1,col3=2017-04-22/col4=0,low_watermark,gold
+2019-10-01T12:13:14,hive,test_schema,test_table1,col3=2019-09-30/col4=11,high_watermark,gold
+2019-10-01T12:13:14,dynamo,test_schema,test_table2,col3=2018-01-01,low_watermark,gold
+2019-10-01T12:13:14,dynamo,test_schema,test_table2,col3=2019-10-01,high_watermark,gold

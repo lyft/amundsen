@@ -1,0 +1,557 @@
+openapi: '3.0.2'
+info:
+  title: 'Metadata Service'
+  description: 'Used to provide and update metadata, such as table & column description, stored in either neo4j or apache atlas.'
+  version: '1.1.7'
+
+components:
+  schemas:
+    Description:
+      type: object
+      properties:
+        description:
+          type: string
+    PopularTables:
+      type: object
+      properties:
+        database:
+          description: 'Database name'
+          type: string
+        cluster:
+          description: 'Cluster name'
+          type: string
+        schema:
+          description: 'Schema name'
+          type: string
+        name:
+          description: 'Table name'
+          type: string
+        description:
+          description: 'Table description'
+          type: string
+        schema_description:
+          description: 'Schema description'
+          type: string
+    TableSummary:
+      type: object
+      properties:
+        database:
+          description: 'Database name'
+          type: string
+        cluster:
+          description: 'Cluster name'
+          type: string
+        schema:
+          description: 'Schema name'
+          type: string
+        table_name:
+          description: 'Table name'
+          type: string
+        table_description:
+          description: 'Table description'
+          type: string
+    TagFields:
+      type: object
+      properties:
+        tag_type:
+          type: string
+          description: 'Tag type'
+        tag_name:
+          type: string
+          description: 'Tag name'
+    TagUsage:
+      type: object
+      properties:
+        tag_name:
+          type: string
+          description: 'Tag name'
+        tag_count:
+          type: integer
+          description: 'Count of times used'
+    Badge:
+        type: object
+        properties:
+          badge_name:
+            type: string
+            description: 'name of the badge'
+          category:
+            type: string
+            description: 'category that badge belongs to'
+    TableReaderFields:
+      type: object
+      properties:
+        reader:
+          $ref: '#/components/schemas/UserFields'
+        read_count:
+          type: integer
+          description: 'Number of times the reader accessed the table'
+    UserFields:
+      type: object
+      properties:
+        email:
+          type: string
+          description: 'User email'
+        first_name:
+          type: string
+          description: 'User first name'
+        last_name:
+          type: string
+          description: 'User last name'
+    UserDetailFields:
+      type: object
+      properties:
+        email:
+          type: string
+          description: 'User email'
+        first_name:
+          type: string
+          description: 'User first name'
+        last_name:
+          type: string
+          description: 'User last name'
+        full_name:
+          type: string
+          description: 'User full name'
+        is_active:
+          type: boolean
+          description: 'Is user active'
+        github_username:
+          type: string
+          description: 'User github'
+        slack_id:
+          type: string
+          description: 'User slack'
+        team_name:
+          type: string
+          description: 'User team name'
+        employee_type:
+          type: string
+          description: 'User type'
+        manager_fullname:
+          type: string
+          description: 'User manager full name'
+        other_key_values:
+          type: object
+          additionalProperties:
+            type: string
+            description: 'Additional key value properties'
+    ColumnFields:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'Column name'
+        key:
+          type: string
+          description: 'Column key'
+        description:
+          type: string
+          description: 'Column description'
+        col_type:
+          type: string
+          description: 'Column type'
+        sort_order:
+          type: integer
+          description: 'Sort order in the column'
+        stats:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnStatFields'
+    ColumnStatFields:
+      type: object
+      properties:
+        stat_type:
+          type: string
+          description: 'Type of column statistic'
+        stat_val:
+          type: string
+          description: 'Value of the statistic'
+        start_epoch:
+          type: integer
+          description: 'Start of the statistic (epoch)'
+        end_epoch:
+          type: integer
+          description: 'End of the statistic (epoch)'
+    WatermarkFields:
+      type: object
+      properties:
+        watermark_type:
+          type: string
+          description: 'Watermark type'
+        partition_key:
+          type: string
+          description: 'Partition key'
+        partition_value:
+          type: string
+          description: 'Partition value'
+        create_time:
+          type: string
+          description: 'Create time'
+    TableWriterFields:
+      type: object
+      properties:
+        application_url:
+          type: string
+          description: 'Application url'
+        name:
+          type: string
+          description: 'Table writer name'
+        id:
+          type: string
+          description: 'Table writer id'
+        description:
+          type: string
+          description: 'Table writer description'
+    SourceFields:
+      type: object
+      properties:
+        source_type:
+          type: string
+          description: 'Source type'
+        source:
+          type: string
+          description: 'Source name'
+    TableDetail:
+      type: object
+      properties:
+          database:
+            type: string
+            description: 'Name of the database'
+            example: 'dynamo'
+          cluster:
+            type: string
+            description: 'Name of the cluster'
+            example: 'gold'
+          schema:
+            type: string
+            description: 'Name of the database schema'
+          table_name:
+            type: string
+            description: 'Name of the table'
+          table_description:
+            type: string
+            description: 'Table description'
+          tags:
+            type: array
+            description: 'Tags attached to the table'
+            items:
+              $ref: '#/components/schemas/TagFields'
+          badges:
+            type: array
+            description: 'Badges associated with the table'
+            items:
+              $ref: '#/components/schemas/TagFields'
+          table_readers:
+            type: array
+            description: 'Table readers'
+            items:
+              $ref: '#/components/schemas/TableReaderFields'
+          owners:
+            type: array
+            description: 'Owners of the table'
+            items:
+              $ref: '#/components/schemas/UserFields'
+          columns:
+            type: array
+            description: 'Columns of the table'
+            items:
+              $ref: '#/components/schemas/ColumnFields'
+          watermarks:
+            type: array
+            description: 'Watermarks of the table'
+            items:
+              $ref: '#/components/schemas/WatermarkFields'
+          table_writer:
+            $ref: '#/components/schemas/TableWriterFields'
+          last_updated_timestamp:
+            type: integer
+            description: 'Epoch timestamp of when it was last updated'
+          source:
+            $ref: '#/components/schemas/SourceFields'
+          is_view:
+            type: boolean
+            description: 'If the table is a view'
+    FeatureDetail:
+      type: object
+      properties:
+        key:
+          type: string
+          description: 'Unique identifier for the feature'
+          example: 'test_feature_group_name/test_feature_name/1.2.0'
+        feature_name:
+          type: string
+          description: 'Name of the feature'
+        version:
+          type: string
+          description: 'Version of the feature'
+        feature_group:
+          type: string
+          description: 'Feature group the feature belongs to'
+        entity:
+          type: array
+          description: 'Way of grouping features semantically by using nouns'
+          items:
+            type: string
+        data_type:
+          type: string
+          description: 'Type of the dtaa in the feature'
+        availability:
+          type: array
+          description: 'Services where feature is available'
+          items:
+            type: string
+        description:
+          type: string
+          description: 'Feature description'
+        owner_tags:
+          type: array
+          description: 'Tags specified programmatically'
+          items:
+            $ref: '#/components/schemas/TagFields'
+        tags:
+          type: array
+          description: 'Tags attached to the feature'
+          items:
+            $ref: '#/components/schemas/TagFields'
+        badges:
+          type: array
+          description: 'Badges associated with the feature'
+          items:
+            $ref: '#/components/schemas/TagFields'
+        owners:
+          type: array
+          description: 'Owners of the feature'
+          items:
+            $ref: '#/components/schemas/UserFields'
+        watermarks:
+          type: array
+          description: 'Watermarks of the feature'
+          items:
+            $ref: '#/components/schemas/WatermarkFields'
+        last_updated_timestamp:
+          type: integer
+          description: 'Epoch timestamp of when it was last updated'
+    Lineage:
+      type: object
+      properties:
+        key:
+          type: string
+          description: 'Key of entity to obtain lineage for'
+          example: 'db://cluster.schema/test_table_1'
+        depth:
+          type: integer
+          description: 'how many levels of lineage are shown'
+          example: 1
+        direction:
+          type: string
+          description: 'upstream, dowstream or both'
+          example: 'downstream'
+        upstream_entities:
+          type: array
+          description: 'upstream entities from key'
+          items:
+            $ref: '#/components/schemas/LineageItem'
+        downstream_entities:
+          type: array
+          description: 'downstream entities from key'
+          items:
+            $ref: '#/components/schemas/LineageItem'
+    LineageItem:
+      type: object
+      properties:
+        key:
+          type: string
+          description: 'upstream or downstream resource key'
+          example: 'db://cluster.schema/up_table_1'
+        level:
+          type: integer
+          description: 'distance up or downstream from requested'
+          example: 2
+        source:
+          type: string
+          description: 'data source the resouce is extracted from'
+          example: 'hive'
+        badges:
+          type: array
+          description: 'badges associated with resource'
+          items:
+            $ref: '#/components/schemas/Badge'
+        usage:
+          type: integer
+          description: 'value to sort lineage results by'
+          example: 541
+    Neo4jDetail:
+      type: object
+      properties:
+        neo4j_latest_timestamp:
+          type: integer
+          description: 'Last time at which neo4j was updated (epoch)'
+          example: '1577836800'
+    StatisticsDetail:
+      type: object
+      properties:
+        number_of_tables:
+          type: integer
+          description: 'Total number of tables in the system'
+          example: '1'
+        number_of_documented_tables:
+          type: integer
+          description: 'Total number of tables that have description at the table level'
+          example: '1'
+        number_of_documented_cols:
+          type: integer
+          description: 'Number of columns that hold documentation'
+          example: '1'
+        number_of_owners:
+          type: integer
+          description: 'Number of users who have been assigned as owners for tables'
+          example: '1'
+        number_of_tables_with_owners:
+          type: integer
+          description: 'Number of tables that have at least one assigned owner'
+          example: '1'
+        number_of_documented_and_owned_tables:
+          type: integer
+          description: 'Total number of tables that have both owner and description at the table level'
+          example: '1'
+    DashboardDetail:
+      type: object
+      properties:
+        uri:
+          type: string
+          description: 'Unique identifier of the dashboard'
+        cluster:
+          type: string
+          description: 'Cluster name'
+        group_name:
+          type: string
+          description: 'Dashboard group name'
+        group_url:
+          type: string
+          description: 'Dashboard group URL'
+        product:
+          type: string
+          description: 'Dashboard product name'
+          example: 'mode'
+        name:
+          type: string
+          description: 'Dashboard name'
+        url:
+          type: string
+          description: 'Dashboard URL'
+        description:
+          type: string
+          description: 'Dashboard description'
+        created_timestamp:
+          type: int
+          description: 'Dashboard created timestamp in epoch'
+        updated_timestamp:
+          type: int
+          description: 'Dashboard updated timestamp in epoch'
+        last_run_timestamp:
+          type: int
+          description: 'Dashboard last run timestamp in epoch'
+        owners:
+          type: array
+          description: 'Dashboard owners'
+          items:
+            $ref: '#/components/schemas/UserDetailFields'
+        frequent_users:
+          type: array
+          description: 'Users frequently view dashboard'
+          items:
+            $ref: '#/components/schemas/UserDetailFields'
+        chart_names:
+          type: array
+          description: 'Chart names associated with the Dashboard'
+          items:
+            type: string
+        query_names:
+          type: array
+          description: '[DEPRECATED] Chart names associated with the Dashboard'
+          items:
+            type: string
+        frequent_users:
+          type: array
+          description: 'List of queries used by this Dashboard'
+          items:
+            $ref: '#/components/schemas/UserDetailFields'
+        tables:
+          type: array
+          description: 'Tables that is used in Dashboard'
+          items:
+            $ref: '#/components/schemas/DashboardQuery'
+        tags:
+          type: array
+          description: 'Tags tagged on Dashboard'
+          items:
+            $ref: '#/components/schemas/TagFields'
+        badges:
+            type: array
+            description: 'Badges associated with the Dashboard'
+            items:
+              $ref: '#/components/schemas/TagFields'
+        recent_view_count:
+          type: int
+          description: 'Dashboard recent view count. Not using explicit duration, as it is up to timely ingestion and timely removal of stale data'
+          example: 1024
+    DashboardSummary:
+      type: object
+      properties:
+        uri:
+          type: string
+          description: 'Unique identifier of the dashboard'
+        cluster:
+          type: string
+          description: 'Cluster name'
+        group_name:
+          type: string
+          description: 'Dashboard group name'
+        group_url:
+          type: string
+          description: 'Dashboard group URL'
+        product:
+          type: string
+          description: 'Dashboard product name'
+          example: 'mode'
+        name:
+          type: string
+          description: 'Dashboard name'
+        url:
+          type: string
+          description: 'Dashboard URL'
+        description:
+          type: string
+          description: 'Dashboard description'
+        last_successful_run_timestamp:
+          type: int
+          description: 'Dashboard last run timestamp in epoch'
+    DashboardQuery:
+      type: object
+      properties:
+        query_name:
+          type: string
+          description: 'Name of the query'
+        query_url:
+          type: string
+          description: 'URL of the query'
+        query_text:
+          type: string
+          description: 'Query statement text'
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 'A simple description of what went wrong'
+          example: 'An Exception encountered while processing your request'
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 'A simple message to give additional information about the result of the request'
+          example: 'Table was created successfully'
+    EmptyResponse:
+      type: object
+      properties: {}

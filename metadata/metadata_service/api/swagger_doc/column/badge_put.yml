@@ -1,0 +1,46 @@
+Add badge to a resource
+---
+tags:
+  - 'column'
+parameters:
+  - name: table_uri
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'hive://gold.test_schema/test_table1'
+  - name: badge
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'beta'
+  - name: category
+    in: query
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'table_status'
+  - name: column_name
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'beta'
+responses:
+  200:
+    description: 'The badge was added successfully'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MessageResponse'
+  404:
+    description: 'Table not found, or badge is not whitelisted'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

@@ -1,0 +1,49 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.feature-page {
+  .shimmer-page-title {
+    height: 24px;
+    width: 600px;
+    margin-bottom: $spacer-1;
+  }
+
+  .shimmer-page-subtitle {
+    height: 18px;
+    width: 200px;
+  }
+
+  .shimmer-section-title {
+    height: 18px;
+    width: 100%;
+    margin-bottom: $spacer-1;
+  }
+
+  .shimmer-section-content {
+    height: 32px;
+    width: 100%;
+  }
+
+  .shimmer-tab-title {
+    display: flex;
+    flex-direction: row;
+
+    .shimmer-tab {
+      height: 32px;
+      width: 100px;
+      margin: $spacer-2 $spacer-2 $spacer-1;
+    }
+  }
+
+  .shimmer-tab-content {
+    height: 50px;
+    width: 100%;
+    margin-bottom: $spacer-1;
+  }
+
+  .header-subtitle {
+    margin: 0;
+  }
+}

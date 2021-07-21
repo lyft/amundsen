@@ -1,0 +1,32 @@
+Deletes an owner from a table
+---
+tags:
+  - 'table'
+parameters:
+  - name: table_uri
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'dynamo://gold.test_schema/test_table2'
+  - name: owner
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'roald9@example.org'
+responses:
+  200:
+    description: 'Owner deleted'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MessageResponse'
+  500:
+    description: 'Owner was not deleted successfully'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

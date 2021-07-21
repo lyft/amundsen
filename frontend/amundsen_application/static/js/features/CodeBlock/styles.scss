@@ -1,0 +1,110 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$code-block-content-padding: 12px;
+$code-block-content-border-radius: $spacer-1/2;
+$code-block-button-size: 32px;
+$code-block-button-radius: 4px;
+$code-block-button-icon-size: 16px;
+$code-block-button-spacer: 12px;
+$code-block-button-hover-opacity: 1;
+$code-block-max-height: 400px;
+$shimmer-loader-height: 200px;
+$shimmer-loader-lines: 1, 2, 3, 4, 5, 6;
+
+@mixin code-block-action-button-style {
+  max-width: $code-block-button-size;
+  width: $code-block-button-size;
+  max-height: $code-block-button-size;
+  height: $code-block-button-size;
+  background: $body-bg;
+  border: 2px solid $stroke;
+  box-sizing: border-box;
+  border-radius: $code-block-button-radius;
+  color: $text-secondary;
+
+  svg {
+    fill: $text-secondary;
+  }
+
+  &:hover {
+    opacity: $code-block-button-hover-opacity;
+    text-decoration: none;
+  }
+}
+
+.shimmer-block {
+  height: $shimmer-loader-height;
+  margin: $spacer-1;
+
+  .shimmer-line {
+    margin-bottom: $spacer-1;
+    height: ($shimmer-loader-height/6 - $spacer-1);
+  }
+
+  @each $line in $shimmer-loader-lines {
+    .shimmer-line--#{$line} {
+      width: 75%;
+    }
+  }
+}
+
+.code-block-container {
+  border-radius: $code-block-content-border-radius;
+  border: 1px solid $stroke;
+  position: relative;
+  margin-top: $spacer-1/2;
+
+  > div {
+    padding: 0;
+
+    > span {
+      width: 100%;
+
+      > code {
+        width: 100%;
+        max-height: $code-block-max-height;
+        overflow-y: scroll;
+        padding: $code-block-content-padding !important;
+      }
+    }
+  }
+
+  button {
+    @include code-block-action-button-style;
+
+    display: none;
+    padding: 6px;
+    margin: 5px 14px 0 0;
+  }
+
+  svg.icon {
+    width: $code-block-button-icon-size;
+    height: $code-block-button-icon-size;
+  }
+
+  &:hover {
+    button,
+    .code-block-link {
+      display: block;
+    }
+  }
+
+  .code-block-link {
+    @include code-block-action-button-style;
+
+    display: none;
+    line-height: $code-block-button-size;
+    text-align: center;
+    position: absolute;
+    top: $code-block-button-spacer;
+    z-index: 99999;
+    right: (3 * $code-block-button-spacer) + $code-block-button-size;
+
+    .icon {
+      margin-top: 6px;
+    }
+  }
+}

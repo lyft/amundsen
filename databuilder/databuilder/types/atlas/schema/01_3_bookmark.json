@@ -1,0 +1,86 @@
+{
+  "entityDefs": [
+    {
+      "superTypes": [
+        "Referenceable"
+      ],
+      "name": "Bookmark",
+      "serviceType": "amundsen",
+      "description": "The bookmark entity. Maps user with any entity that he wants to 'subscribe' to. Used in Amundsen bookmarks feature",
+      "typeVersion": "2.0",
+      "attributeDefs": [
+        {
+          "name": "active",
+          "isOptional": false,
+          "isUnique": false,
+          "isIndexable": true,
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0
+        },
+        {
+          "name": "entityUri",
+          "isOptional": false,
+          "isUnique": false,
+          "isIndexable": true,
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0
+        },
+        {
+          "name": "entityName",
+          "isOptional": true,
+          "isUnique": false,
+          "isIndexable": true,
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "User__Bookmark",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "_User.Bookmark",
+      "endDef1": {
+        "type": "User",
+        "name": "bookmarks",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Bookmark",
+        "name": "user",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    },
+    {
+      "name": "Referenceable__Bookmark",
+      "typeVersion": "2.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "_Referenceable.Bookmark",
+      "endDef1": {
+        "type": "Referenceable",
+        "name": "bookmarks",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "Bookmark",
+        "name": "entity",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

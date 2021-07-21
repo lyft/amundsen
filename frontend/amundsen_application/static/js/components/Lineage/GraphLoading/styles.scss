@@ -1,0 +1,22 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+@import 'layouts';
+
+$pulse-loader-height: 180px;
+
+.pulse-lineage {
+  height: $pulse-loader-height;
+  width: 100%;
+  text-align: center;
+  margin: 15% auto;
+}
+
+.pulse-lineage-media {
+  height: $pulse-loader-height - $spacer-1;
+  background-image: url('../../../../images/icons/Lineage.svg');
+  display: inline-block;
+  width: 33%;
+}

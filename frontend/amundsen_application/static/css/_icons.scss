@@ -1,0 +1,223 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$icon-size: 24px;
+$icon-small-size: 16px;
+
+// Icons
+// Lookout! When you update one of these, please update the enums on
+// ../js/interfaces/Enums.ts
+// Map of Database names and icon paths
+$data-stores: (
+  database: '../images/icons/Database.svg',
+  hive: '../images/icons/logo-hive.svg',
+  bigquery: '../images/icons/logo-bigquery.svg',
+  delta: '../images/icons/logo-delta.png',
+  dremio: '../images/icons/logo-dremio.svg',
+  druid: '../images/icons/logo-druid.svg',
+  presto: '../images/icons/logo-presto.svg',
+  postgres: '../images/icons/logo-postgres.svg',
+  redshift: '../images/icons/logo-redshift.svg',
+  snowflake: '../images/icons/logo-snowflake.svg',
+  elasticsearch: '../images/icons/logo-elasticsearch.svg',
+);
+
+// Map of Dashboard names and icon paths
+$dashboards: (
+  dashboard: '../images/icons/dashboard.svg',
+  mode: '../images/icons/logo-mode.svg',
+  redash: '../images/icons/logo-redash.svg',
+  tableau: '../images/icons/logo-tableau.svg',
+  superset: '../images/icons/logo-superset.svg',
+);
+
+// Map of User names and icon paths
+$users: (
+  users: '../images/icons/users.svg',
+);
+
+$check: (
+  check: '../images/icons/check.svg',
+);
+
+// Given a Map of key/value pairs, generates a new class
+@mixin iconBackgrounds($map) {
+  @each $name, $url in $map {
+    &.icon-#{$name} {
+      background: transparent url($url) center center / contain no-repeat;
+    }
+  }
+}
+
+span.icon {
+  // Generate Icons
+  @include iconBackgrounds($data-stores);
+  @include iconBackgrounds($dashboards);
+  @include iconBackgrounds($users);
+  @include iconBackgrounds($check);
+
+  background-color: $icon-bg;
+  border: none;
+  display: inline-block;
+  height: $icon-size;
+  margin: auto 16px auto 0;
+  min-width: $icon-size;
+  vertical-align: middle;
+  width: $icon-size;
+}
+
+img.icon {
+  /* DEPRECATED: follow behavior above to generate
+  icons */
+  background-color: $icon-bg;
+  border: none;
+  height: $icon-size;
+  margin: -3px 4px -3px 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  min-width: $icon-size;
+  width: $icon-size;
+
+  &.icon-small {
+    height: $icon-small-size;
+    -webkit-mask-size: $icon-small-size $icon-small-size;
+    mask-size: $icon-small-size $icon-small-size;
+    min-width: $icon-small-size;
+    width: $icon-small-size;
+  }
+
+  &.icon-color {
+    background-color: $icon-bg-brand;
+  }
+
+  &.icon-dark {
+    background-color: $icon-bg-dark;
+  }
+
+  &.icon-alert {
+    -webkit-mask-image: url('../images/icons/Alert-Triangle.svg');
+    mask-image: url('../images/icons/Alert-Triangle.svg');
+  }
+
+  &.icon-bookmark {
+    -webkit-mask-image: url('../images/icons/Favorite.svg');
+    mask-image: url('../images/icons/Favorite.svg');
+  }
+
+  &.icon-bookmark-filled {
+    -webkit-mask-image: url('../images/icons/Favorite-Filled.svg');
+    mask-image: url('../images/icons/Favorite-Filled.svg');
+  }
+
+  &.icon-delete {
+    -webkit-mask-image: url('../images/icons/Trash.svg');
+    mask-image: url('../images/icons/Trash.svg');
+  }
+
+  &.icon-red-triangle-warning {
+    -webkit-mask-image: url('../images/icons/DataQualityWarning.svg');
+    mask-image: url('../images/icons/DataQualityWarning.svg');
+  }
+
+  &.icon-down {
+    -webkit-mask-image: url('../images/icons/Down.svg');
+    mask-image: url('../images/icons/Down.svg');
+  }
+
+  &.icon-edit {
+    -webkit-mask-image: url('../images/icons/Edit.svg');
+    mask-image: url('../images/icons/Edit.svg');
+  }
+
+  &.icon-help {
+    -webkit-mask-image: url('../images/icons/Help-Circle.svg');
+    mask-image: url('../images/icons/Help-Circle.svg');
+  }
+
+  &.icon-github {
+    -webkit-mask-image: url('../images/icons/github.svg');
+    mask-image: url('../images/icons/github.svg');
+  }
+
+  &.icon-left {
+    -webkit-mask-image: url('../images/icons/Left.svg');
+    mask-image: url('../images/icons/Left.svg');
+  }
+
+  &.icon-loading {
+    -webkit-mask-image: url('../images/icons/Loader.svg');
+    mask-image: url('../images/icons/Loader.svg');
+  }
+
+  &.icon-mail {
+    -webkit-mask-image: url('../images/icons/mail.svg');
+    mask-image: url('../images/icons/mail.svg');
+  }
+
+  &.icon-plus {
+    -webkit-mask-image: url('../images/icons/plus.svg');
+    mask-image: url('../images/icons/plus.svg');
+  }
+
+  &.icon-plus-circle {
+    -webkit-mask-image: url('../images/icons/Plus-Circle.svg');
+    mask-image: url('../images/icons/Plus-Circle.svg');
+  }
+
+  &.icon-preview {
+    -webkit-mask-image: url('../images/icons/Preview.svg');
+    mask-image: url('../images/icons/Preview.svg');
+  }
+
+  &.icon-refresh {
+    -webkit-mask-image: url('../images/icons/Refresh-cw.svg');
+    mask-image: url('../images/icons/Refresh-cw.svg');
+  }
+
+  &.icon-right {
+    -webkit-mask-image: url('../images/icons/Right.svg');
+    mask-image: url('../images/icons/Right.svg');
+  }
+
+  &.icon-search {
+    -webkit-mask-image: url('../images/icons/Search.svg');
+    mask-image: url('../images/icons/Search.svg');
+  }
+
+  &.icon-send {
+    -webkit-mask-image: url('../images/icons/Send.svg');
+    mask-image: url('../images/icons/Send.svg');
+  }
+
+  &.icon-slack {
+    -webkit-mask-image: url('../images/icons/slack.svg');
+    mask-image: url('../images/icons/slack.svg');
+  }
+
+  &.icon-up {
+    -webkit-mask-image: url('../images/icons/Up.svg');
+    mask-image: url('../images/icons/Up.svg');
+  }
+
+  &.icon-user {
+    -webkit-mask-image: url('../images/icons/users.svg');
+    mask-image: url('../images/icons/users.svg');
+  }
+
+  &.icon-more {
+    -webkit-mask-image: url('../images/icons/More.svg');
+    mask-image: url('../images/icons/More.svg');
+  }
+}
+
+.disabled,
+:disabled {
+  > img.icon,
+  > img.icon.icon-color {
+    background-color: $icon-bg-disabled;
+  }
+}

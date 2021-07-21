@@ -1,0 +1,42 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+input {
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &:-moz-placeholder,
+  &::placeholder {
+    color: $text-placeholder !important;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px $white inset !important;
+    box-shadow: 0 0 0 1000px $white inset !important;
+  }
+
+  &[type='radio'] {
+    margin: 5px;
+  }
+
+  &[type='text'] {
+    color: $text-secondary !important;
+  }
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+}
+
+textarea {
+  border: 1px solid $stroke;
+  border-radius: 5px;
+  color: $text-secondary !important;
+  padding: 10px;
+  width: 100%;
+}

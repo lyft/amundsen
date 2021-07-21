@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Null Value</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M3,11 L6,11 C6.55228475,11 7,11.4477153 7,12 C7,12.5522847 6.55228475,13 6,13 L3,13 C2.44771525,13 2,12.5522847 2,12 C2,11.4477153 2.44771525,11 3,11 Z M10,11 L13,11 C13.5522847,11 14,11.4477153 14,12 C14,12.5522847 13.5522847,13 13,13 L10,13 C9.44771525,13 9,12.5522847 9,12 C9,11.4477153 9.44771525,11 10,11 Z M17,11 L20,11 C20.5522847,11 21,11.4477153 21,12 C21,12.5522847 20.5522847,13 20,13 L17,13 C16.4477153,13 16,12.5522847 16,12 C16,11.4477153 16.4477153,11 17,11 Z" id="path-1"></path>
+    </defs>
+    <g id="Null-Value" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="lines" fill="#11111F" xlink:href="#path-1"></use>
+        <g id="Tint/Black" mask="url(#mask-2)"></g>
+    </g>
+</svg>

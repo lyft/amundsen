@@ -1,0 +1,95 @@
+@import 'variables';
+@import 'typography';
+
+$shimmer-loader-items: 1, 2, 3, 4, 5;
+$shimmer-loader-row-height: 16px;
+$shimmer-loader-row-min-width: 90;
+$shimmer-loader-row-width: 160;
+
+$card-height: 180px;
+$card-header-height: 60px;
+$card-border-size: 1px;
+$card-focus-border-size: 2px;
+
+$card-title-max-lines: 2;
+$card-copy-max-lines: 3;
+
+.card {
+  display: block;
+  padding: $spacer-3;
+  border-top: $card-border-size solid $gray20;
+  border-bottom: $card-border-size solid $gray20;
+  height: $card-height;
+
+  &.is-link {
+    &:focus {
+      text-decoration: none;
+      border: $card-focus-border-size solid $blue80;
+      border-radius: $spacer-1/2;
+      outline-offset: 0;
+    }
+
+    &:hover,
+    &:active {
+      text-decoration: none;
+      box-shadow: $elevation-level2;
+      border: 0;
+    }
+  }
+}
+
+.card-header {
+  height: $card-header-height;
+}
+
+.card-title {
+  @extend %text-title-w2;
+
+  color: $text-primary;
+
+  @include truncate($w2-font-size, $w2-line-height, $card-title-max-lines);
+}
+
+.card-subtitle {
+  @extend %text-body-w3;
+
+  color: $text-secondary;
+}
+
+.card-copy {
+  @extend %text-body-w3;
+
+  color: $text-primary;
+  margin: 0;
+
+  @include truncate($w3-font-size, $w3-line-height, $card-copy-max-lines);
+}
+
+.card-body {
+  padding-top: $spacer-2;
+}
+
+// Shimmer Loader
+.card-shimmer-loader {
+  width: 100%;
+}
+
+.card-shimmer-row {
+  height: $shimmer-loader-row-height;
+  width: $shimmer-loader-row-min-width + px;
+  margin-bottom: $spacer-1;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@each $line in $shimmer-loader-items {
+  .shimmer-row-line--#{$line} {
+    width: $shimmer-loader-row-width + px;
+  }
+}
+
+.card-shimmer-loader-body {
+  margin-top: $spacer-4;
+}

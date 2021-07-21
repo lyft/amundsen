@@ -1,0 +1,3 @@
+"KEY","name","LABEL"
+"presto://gold.test_schema1/test_table1","test_table1","Table"
+"presto://gold.test_schema1/test_table2","test_table2","Table"

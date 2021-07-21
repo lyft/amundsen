@@ -1,0 +1,11 @@
+cluster,db,schema,table_name,col_name,stat_name,stat_val,start_epoch,end_epoch
+gold,hive,test_schema,test_table1,col1,"distinct values","8",1432300762,1562300762
+gold,hive,test_schema,test_table1,col1,"min","""aardvark""",1432300762,1562300762
+gold,hive,test_schema,test_table1,col1,"max","""zebra""",1432300762,1562300762
+gold,hive,test_schema,test_table1,col1,"num nulls","""500320""",1432300762,1562300762
+gold,hive,test_schema,test_table1,col1,"verified","""230430""",1432300762,1562300762
+gold,hive,test_schema,test_table1,col5,"average","""5.0""",1532300762,1572300762
+gold,hive,test_schema,test_table1,col5,"max","""500.0""",1534300762,1572300762
+gold,hive,test_schema,test_table1,col5,"min","""-500.0""",1534300762,1572300762
+gold,dynamo,test_schema,test_table2,col4,"median","""250""",1534300762,1572300762
+gold,dynamo,test_schema,test_table2,col4,"average","""400""",1534300762,1572300762

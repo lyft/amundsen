@@ -1,0 +1,33 @@
+{
+  "entityDefs": [
+    {
+      "name": "TablePartition",
+      "superTypes": [
+        "DataSet"
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "Table__TablePartition",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "_Table.TablePartition",
+      "endDef1": {
+        "type": "Table",
+        "name": "partitions",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "TablePartition",
+        "name": "table",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

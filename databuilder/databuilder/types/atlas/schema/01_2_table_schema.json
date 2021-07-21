@@ -1,0 +1,30 @@
+{
+  "entityDefs": [
+    {
+      "name": "Table",
+      "superTypes": [
+        "DataSet"
+      ],
+      "attributeDefs": [
+        {
+          "name": "popularityScore",
+          "typeName": "float",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "isUnique": false,
+          "isIndexable": false,
+          "defaultValue": "0.0"
+        },
+        {
+          "name": "readers",
+          "typeName": "array<Reader>",
+          "isOptional": true,
+          "cardinality": "LIST",
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'typography';
+
+.list-sorting-dropdown {
+  .list-sorting-dropdown-button {
+    border: 0;
+  }
+
+  .list-sorting-dropdown-menu {
+    padding: $spacer-2;
+  }
+
+  .list-sorting-dropdown-menu-title {
+    @extend %text-caption-w2;
+
+    padding-bottom: $spacer-1;
+  }
+
+  .list-sorting-dropdown-menu-item {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .list-sorting-dropdown-menu-item-text {
+    @extend %text-body-w3;
+  }
+}

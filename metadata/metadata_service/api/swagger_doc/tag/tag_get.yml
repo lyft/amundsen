@@ -1,0 +1,16 @@
+Get tags
+---
+tags:
+  - 'tag'
+responses:
+  200:
+    description: 'The tags and their usage'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            tag_usages:
+              type: array
+              items:
+                $ref: '#/components/schemas/TagUsage'

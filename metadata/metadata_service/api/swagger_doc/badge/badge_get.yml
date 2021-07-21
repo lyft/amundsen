@@ -1,0 +1,16 @@
+Get badges
+---
+tags:
+  - 'badge'
+responses:
+  200:
+    description: 'Badges with category'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            badges:
+              type: array
+              items:
+                $ref: '#/components/schemas/Badge'

@@ -1,0 +1,56 @@
+{
+  "entityDefs": [
+    {
+      "name": "DashboardExecution",
+      "superTypes": [
+        "Referenceable"
+      ],
+      "serviceType": "amundsen",
+      "attributeDefs": [
+        {
+          "name": "state",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        },
+        {
+          "name": "timestamp",
+          "typeName": "int",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "Dashboard__DashboardExecution",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "_Dashboard.DashboardExecution",
+      "endDef1": {
+        "type": "Dashboard",
+        "name": "executions",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "DashboardExecution",
+        "name": "dashboard",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

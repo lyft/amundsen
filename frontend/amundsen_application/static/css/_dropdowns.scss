@@ -1,0 +1,32 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.dropdown {
+  .dropdown-toggle {
+    box-shadow: none;
+  }
+
+  .dropdown-menu {
+    border: 1px solid $stroke;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px -3px rgba(17, 17, 31, 0.12);
+    overflow: hidden;
+    padding: 0;
+
+    li {
+      &:hover {
+        background-color: $body-bg-tertiary;
+      }
+
+      a {
+        padding: 8px;
+
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "entityDefs": [
+    {
+      "name": "DashboardGroup",
+      "superTypes": [
+        "Asset"
+      ],
+      "serviceType": "amundsen",
+      "attributeDefs": [
+        {
+          "name": "id",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        },
+        {
+          "name": "url",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        }
+      ]
+    }
+  ]
+}

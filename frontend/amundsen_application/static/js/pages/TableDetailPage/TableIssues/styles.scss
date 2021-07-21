@@ -1,0 +1,114 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$issue-banner-height: 40px;
+$shimmer-line-height: 16px;
+$shimmer-loader-lines: 1, 2;
+
+.table-issues {
+  margin-bottom: $spacer-1;
+
+  .issue-banner {
+    border-top: 1px solid $stroke-light;
+    color: $text-secondary;
+    display: flex;
+    flex-direction: row;
+    height: $issue-banner-height;
+    line-height: 24px;
+    padding: $spacer-1;
+
+    &:last-child {
+      border-bottom: 1px solid $stroke-light;
+    }
+
+    .table-issue-priority {
+      line-height: $issue-banner-height / 2;
+    }
+  }
+
+  .table-issue-link {
+    margin-right: $spacer-1;
+    min-width: fit-content;
+  }
+
+  .issue-title-name {
+    max-width: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .issue-title-display-text {
+    display: flex;
+    max-width: fit-content;
+  }
+
+  .table-issue-status {
+    display: flex;
+    flex-grow: 1.1;
+    justify-content: flex-end;
+    margin-left: $spacer-2;
+    min-width: fit-content;
+  }
+
+  .table-issue-priority {
+    border: 1px solid $rose80;
+    border-radius: 5px;
+    flex: none;
+    margin-right: $spacer-1;
+    padding: 1px 2px;
+  }
+
+  .blocker {
+    // default is $rose80
+    background-color: rgba($priority-bg-color, 1);
+    color: $priority-text-blocker;
+  }
+
+  .critical {
+    background-color: rgba($priority-bg-color, 0.6);
+  }
+
+  .major {
+    background-color: rgba($priority-bg-color, 0.3);
+  }
+
+  .minor {
+    background-color: rgba($priority-bg-color, 0.1);
+  }
+
+  .shimmer-issues {
+    width: 100%;
+  }
+
+  .shimmer-issues-row {
+    margin-bottom: $spacer-1;
+    height: $shimmer-line-height;
+  }
+
+  @each $line in $shimmer-loader-lines {
+    .shimmer-issues-line--#{$line} {
+      width: 75%;
+    }
+  }
+}
+
+.table-issue-more-issues {
+  margin-bottom: $spacer-1;
+  margin-right: $spacer-1;
+}
+
+.table-more-issues {
+  display: flex;
+  font-size: 16px;
+}
+
+.table-report-new-issue {
+  margin-bottom: $spacer-1;
+
+  &.ml-1 {
+    margin-left: $spacer-1;
+  }
+}

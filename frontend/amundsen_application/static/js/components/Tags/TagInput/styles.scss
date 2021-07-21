@@ -1,0 +1,125 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+.tag-input {
+  /*
+   override default react-select style classes.
+   using !important as a temporary workaround in places where a compiled class
+   is taking precendence,
+  */
+  .basic-multi-select {
+    .amundsen__control {
+      min-height: 32px;
+
+      &,
+      .amundsen__control--is-focused,
+      .amundsen__control--is-focused:hover {
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .amundsen__multi-value {
+        background-color: $tag-bg !important;
+        border-radius: 4px;
+        margin: 8px 8px 0 0;
+
+        .amundsen__multi-value__label {
+          border-radius: 4px 0 0 4px;
+          color: $text-primary;
+          line-height: 14px;
+          padding: 8px;
+        }
+
+        .amundsen__multi-value__remove {
+          border-radius: 0 4px 4px 0;
+          cursor: pointer;
+
+          &:hover,
+          &:focus {
+            background-color: $tag-bg-hover !important;
+            color: $text-primary;
+          }
+        }
+      }
+    }
+
+    .amundsen__control--is-disabled {
+      background-color: transparent;
+      border-style: none;
+    }
+  }
+
+  .amundsen__value-container {
+    padding: 0 !important;
+  }
+
+  .amundsen__option--is-focused {
+    background-color: #eee !important;
+  }
+
+  .amundsen__multi-value--is-disabled .amundsen__multi-value__label {
+    padding-right: 6px;
+  }
+
+  .amundsen__indicators {
+    width: 48px;
+  }
+}
+
+.tag-input-modal {
+  .modal-body {
+    height: calc(100% - 150px);
+    overflow-y: scroll;
+  }
+
+  .modal-dialog,
+  .modal-content {
+    height: 85%;
+  }
+
+  .modal-dialog {
+    overflow-y: scroll;
+    width: 50% !important;
+
+    p {
+      margin-left: 4px;
+      text-align: start;
+    }
+  }
+
+  .tag-blob {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .multi-value-container {
+    border: 1px solid hsl(0, 0%, 90%);
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    margin: 4px;
+    min-width: 0;
+  }
+
+  .multi-value-container.selected {
+    background-color: hsl(0, 0%, 90%);
+  }
+
+  .multi-value-label {
+    box-sizing: border-box;
+    color: hsl(0, 0%, 20%);
+    overflow: hidden;
+    padding: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .multi-value-label:hover {
+    cursor: pointer;
+  }
+}

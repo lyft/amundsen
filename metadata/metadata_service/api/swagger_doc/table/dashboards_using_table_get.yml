@@ -1,0 +1,30 @@
+Gets Dashboards that is using this table
+---
+tags:
+  - 'table'
+parameters:
+  - name: id
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'hive://gold.test_schema/test_table2'
+responses:
+  200:
+    description: 'List of dashboards that table is used'
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            dashboards:
+              type: array
+              items:
+                $ref: '#/components/schemas/DashboardSummary'
+  404:
+    description: 'Table not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

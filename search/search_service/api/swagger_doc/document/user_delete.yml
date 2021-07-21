@@ -1,0 +1,32 @@
+Delete user document by id
+Deletes user document by id in ElasticSearch.
+---
+tags:
+  - 'document_user'
+parameters:
+  - name: document_id
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+  - name: index
+    in: query
+    type: string
+    schema:
+      type: string
+      default: user_search_index
+    required: false
+responses:
+  200:
+    description: Empty json response
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/EmptyResponse'
+  500:
+    description: Exception encountered while deleting document
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

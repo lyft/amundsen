@@ -1,0 +1,26 @@
+# Copyright Contributors to the Amundsen project.
+# SPDX-License-Identifier: Apache-2.0
+
+# Common dependencies (common, frontend, metadata, search) -------------------------------------------------------------
+
+# It is recommended to always pin the exact version (not range) - otherwise common upgrade won't trigger unit tests
+# on all repositories reyling on this file and any issues that arise from common upgrade might be missed.
+amundsen-common>=0.15.3
+attrs>=19.1.0
+boto3==1.17.23
+click==7.0
+flasgger==0.9.5
+Flask==1.0.2
+Flask-RESTful>=0.3.6
+flask-cors==3.0.8
+Jinja2>=2.10.1
+jsonschema>=3.0.1,<4.0
+marshmallow>=3.0,<=3.6
+marshmallow3-annotations>=1.0.0
+pytz==2021.1
+requests>=2.25.0
+requests-aws4auth==1.1.0
+statsd==3.2.1
+typing==3.6.4
+werkzeug>=2.0.0
+wheel==0.36.2

@@ -1,0 +1,3 @@
+db_name,schema,cluster,table_name,owners
+hive,test_schema,gold,test_table1,"roald.amundsen@example.org,chrisc@example.org"
+dynamo,test_schema,gold,test_table2,""

@@ -1,0 +1,3 @@
+"relationshipType","entityType1","entityQualifiedName1","entityType2","entityQualifiedName2"
+"FILMED_AT","Movie","movie://Top Gun","City","city://San Diego"
+"FILMED_AT","Movie","movie://Top Gun","City","city://Oakland"

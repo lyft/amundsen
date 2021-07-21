@@ -1,0 +1,5 @@
+product,cluster,dashboard_group_id,dashboard_id,execution_id,execution_timestamp,execution_state
+mode,gold,test_group_id_1,test_dashboard_id_1,_last_successful_execution,1592351193,success
+mode,gold,test_group_id_2,test_dashboard_id_2,_last_successful_execution,1592351210,success
+mode,gold,test_group_id_1,test_dashboard_id_1,_last_execution,1593351193,fail
+mode,gold,test_group_id_2,test_dashboard_id_2,_last_execution,1594351210,success

@@ -1,0 +1,36 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+
+$max-modal-height: 87vh;
+
+.preview-button {
+  border: none;
+  padding: 0;
+
+  &:hover img.preview {
+    border: 1px solid $gray50;
+    cursor: zoom-in;
+  }
+}
+
+.image-preview {
+  text-align: center;
+
+  .loading-spinner {
+    margin-top: 0;
+  }
+
+  .loading-error-text {
+    text-align: center;
+  }
+
+  img.preview {
+    border: 1px solid $stroke;
+  }
+}
+
+.dashboard-preview-modal .modal-body {
+  max-height: $max-modal-height;
+}

@@ -1,0 +1,834 @@
+{
+    "analysis": {
+        "title": "Pandas Profiling Report",
+        "date_start": "2021-05-19 20:57:53.972367",
+        "date_end": "2021-05-19 20:57:55.302986",
+        "duration": "0:00:01.330619"
+    },
+    "table": {
+        "n": 20,
+        "n_var": 2,
+        "memory_size": 448,
+        "record_size": 22.4,
+        "n_cells_missing": 0,
+        "n_vars_with_missing": 0,
+        "n_vars_all_missing": 0,
+        "p_cells_missing": 0.0,
+        "types": {
+            "Categorical": 1,
+            "Numeric": 1
+        },
+        "n_duplicates": 0,
+        "p_duplicates": 0.0
+    },
+    "variables": {
+        "col2": {
+            "n_distinct": 20,
+            "p_distinct": 1.0,
+            "is_unique": true,
+            "n_unique": 20,
+            "p_unique": 1.0,
+            "type": "Categorical",
+            "hashable": true,
+            "value_counts_without_nan": {
+                "Grand Theft Auto V": 1,
+                "Super Mario Bros.": 1,
+                "Wii Fit Plus": 1,
+                "Super Mario World": 1,
+                "Wii Play": 1,
+                "New Super Mario Bros.": 1,
+                "Pokemon Red/Pokemon Blue": 1,
+                "Duck Hunt": 1,
+                "Grand Theft Auto: San Andreas": 1,
+                "Wii Fit": 1,
+                "Pokemon Gold/Pokemon Silver": 1,
+                "Mario Kart Wii": 1,
+                "Wii Sports Resort": 1,
+                "Brain Age: Train Your Brain in Minutes a Day": 1,
+                "Wii Sports": 1,
+                "Kinect Adventures!": 1,
+                "Nintendogs": 1,
+                "New Super Mario Bros. Wii": 1,
+                "Tetris": 1,
+                "Mario Kart DS": 1
+            },
+            "value_counts_index_sorted": {
+                "Brain Age: Train Your Brain in Minutes a Day": 1,
+                "Duck Hunt": 1,
+                "Grand Theft Auto V": 1,
+                "Grand Theft Auto: San Andreas": 1,
+                "Kinect Adventures!": 1,
+                "Mario Kart DS": 1,
+                "Mario Kart Wii": 1,
+                "New Super Mario Bros.": 1,
+                "New Super Mario Bros. Wii": 1,
+                "Nintendogs": 1,
+                "Pokemon Gold/Pokemon Silver": 1,
+                "Pokemon Red/Pokemon Blue": 1,
+                "Super Mario Bros.": 1,
+                "Super Mario World": 1,
+                "Tetris": 1,
+                "Wii Fit": 1,
+                "Wii Fit Plus": 1,
+                "Wii Play": 1,
+                "Wii Sports": 1,
+                "Wii Sports Resort": 1
+            },
+            "ordering": true,
+            "n_missing": 0,
+            "n": 20,
+            "p_missing": 0.0,
+            "count": 20,
+            "memory_size": 288,
+            "histogram_frequencies": {
+                "counts": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    20,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "bin_edges": [
+                    0.5,
+                    0.55,
+                    0.6,
+                    0.65,
+                    0.7,
+                    0.75,
+                    0.8,
+                    0.8500000000000001,
+                    0.9,
+                    0.95,
+                    1.0,
+                    1.05,
+                    1.1,
+                    1.15,
+                    1.2000000000000002,
+                    1.25,
+                    1.3,
+                    1.35,
+                    1.4,
+                    1.4500000000000002,
+                    1.5
+                ]
+            },
+            "first_rows": {
+                "0": "Wii Sports",
+                "1": "Super Mario Bros.",
+                "2": "Mario Kart Wii",
+                "3": "Wii Sports Resort",
+                "4": "Pokemon Red/Pokemon Blue"
+            },
+            "chi_squared": {
+                "statistic": 0.0,
+                "pvalue": 1.0
+            },
+            "length": {
+                "0": 10,
+                "1": 17,
+                "2": 14,
+                "3": 17,
+                "4": 24,
+                "5": 6,
+                "6": 21,
+                "7": 8,
+                "8": 25,
+                "9": 9,
+                "10": 10,
+                "11": 13,
+                "12": 27,
+                "13": 7,
+                "14": 12,
+                "15": 18,
+                "16": 18,
+                "17": 29,
+                "18": 17,
+                "19": 44
+            },
+            "max_length": 44,
+            "mean_length": 17.3,
+            "median_length": 17.0,
+            "min_length": 6,
+            "histogram_length": {
+                "counts": [
+                    3,
+                    3,
+                    2,
+                    1,
+                    3,
+                    2,
+                    1,
+                    1,
+                    2,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "bin_edges": [
+                    6.0,
+                    8.375,
+                    10.75,
+                    13.125,
+                    15.5,
+                    17.875,
+                    20.25,
+                    22.625,
+                    25.0,
+                    27.375,
+                    29.75,
+                    32.125,
+                    34.5,
+                    36.875,
+                    39.25,
+                    41.625,
+                    44.0
+                ]
+            },
+            "n_characters": 346,
+            "character_counts": {
+                " ": 43,
+                "i": 31,
+                "r": 29,
+                "o": 26,
+                "e": 24,
+                "a": 18,
+                "n": 18,
+                "t": 17,
+                "u": 13,
+                "s": 12,
+                "S": 9,
+                "W": 8,
+                "d": 8,
+                "M": 7,
+                "p": 6,
+                "B": 6,
+                "P": 6,
+                "l": 6,
+                "k": 5,
+                "A": 5,
+                "m": 4,
+                "T": 4,
+                ".": 3,
+                "K": 3,
+                "N": 3,
+                "D": 3,
+                "G": 3,
+                "R": 2,
+                "/": 2,
+                "w": 2,
+                "y": 2,
+                "c": 2,
+                "g": 2,
+                "v": 2,
+                "F": 2,
+                "h": 2,
+                "f": 2,
+                ":": 2,
+                "H": 1,
+                "!": 1,
+                "V": 1,
+                "Y": 1
+            },
+            "category_alias_values": {
+                "W": "Uppercase_Letter",
+                "i": "Lowercase_Letter",
+                " ": "Space_Separator",
+                "S": "Uppercase_Letter",
+                "p": "Lowercase_Letter",
+                "o": "Lowercase_Letter",
+                "r": "Lowercase_Letter",
+                "t": "Lowercase_Letter",
+                "s": "Lowercase_Letter",
+                "u": "Lowercase_Letter",
+                "e": "Lowercase_Letter",
+                "M": "Uppercase_Letter",
+                "a": "Lowercase_Letter",
+                "B": "Uppercase_Letter",
+                ".": "Other_Punctuation",
+                "K": "Uppercase_Letter",
+                "R": "Uppercase_Letter",
+                "P": "Uppercase_Letter",
+                "k": "Lowercase_Letter",
+                "m": "Lowercase_Letter",
+                "n": "Lowercase_Letter",
+                "d": "Lowercase_Letter",
+                "/": "Other_Punctuation",
+                "l": "Lowercase_Letter",
+                "T": "Uppercase_Letter",
+                "N": "Uppercase_Letter",
+                "w": "Lowercase_Letter",
+                "y": "Lowercase_Letter",
+                "D": "Uppercase_Letter",
+                "c": "Lowercase_Letter",
+                "H": "Uppercase_Letter",
+                "g": "Lowercase_Letter",
+                "G": "Uppercase_Letter",
+                "v": "Lowercase_Letter",
+                "F": "Uppercase_Letter",
+                "A": "Uppercase_Letter",
+                "!": "Other_Punctuation",
+                "h": "Lowercase_Letter",
+                "f": "Lowercase_Letter",
+                "V": "Uppercase_Letter",
+                ":": "Other_Punctuation",
+                "Y": "Uppercase_Letter"
+            },
+            "block_alias_values": {
+                "W": "ASCII",
+                "i": "ASCII",
+                " ": "ASCII",
+                "S": "ASCII",
+                "p": "ASCII",
+                "o": "ASCII",
+                "r": "ASCII",
+                "t": "ASCII",
+                "s": "ASCII",
+                "u": "ASCII",
+                "e": "ASCII",
+                "M": "ASCII",
+                "a": "ASCII",
+                "B": "ASCII",
+                ".": "ASCII",
+                "K": "ASCII",
+                "R": "ASCII",
+                "P": "ASCII",
+                "k": "ASCII",
+                "m": "ASCII",
+                "n": "ASCII",
+                "d": "ASCII",
+                "/": "ASCII",
+                "l": "ASCII",
+                "T": "ASCII",
+                "N": "ASCII",
+                "w": "ASCII",
+                "y": "ASCII",
+                "D": "ASCII",
+                "c": "ASCII",
+                "H": "ASCII",
+                "g": "ASCII",
+                "G": "ASCII",
+                "v": "ASCII",
+                "F": "ASCII",
+                "A": "ASCII",
+                "!": "ASCII",
+                "h": "ASCII",
+                "f": "ASCII",
+                "V": "ASCII",
+                ":": "ASCII",
+                "Y": "ASCII"
+            },
+            "block_alias_counts": {
+                "ASCII": 346
+            },
+            "block_alias_char_counts": {
+                "ASCII": {
+                    " ": 43,
+                    "i": 31,
+                    "r": 29,
+                    "o": 26,
+                    "e": 24,
+                    "a": 18,
+                    "n": 18,
+                    "t": 17,
+                    "u": 13,
+                    "s": 12,
+                    "S": 9,
+                    "W": 8,
+                    "d": 8,
+                    "M": 7,
+                    "p": 6,
+                    "B": 6,
+                    "P": 6,
+                    "l": 6,
+                    "k": 5,
+                    "A": 5,
+                    "m": 4,
+                    "T": 4,
+                    ".": 3,
+                    "K": 3,
+                    "N": 3,
+                    "D": 3,
+                    "G": 3,
+                    "R": 2,
+                    "/": 2,
+                    "w": 2,
+                    "y": 2,
+                    "c": 2,
+                    "g": 2,
+                    "v": 2,
+                    "F": 2,
+                    "h": 2,
+                    "f": 2,
+                    ":": 2,
+                    "H": 1,
+                    "!": 1,
+                    "V": 1,
+                    "Y": 1
+                }
+            },
+            "script_counts": {
+                "Latin": 295,
+                "Common": 51
+            },
+            "script_char_counts": {
+                "Latin": {
+                    "i": 31,
+                    "r": 29,
+                    "o": 26,
+                    "e": 24,
+                    "a": 18,
+                    "n": 18,
+                    "t": 17,
+                    "u": 13,
+                    "s": 12,
+                    "S": 9,
+                    "W": 8,
+                    "d": 8,
+                    "M": 7,
+                    "p": 6,
+                    "B": 6,
+                    "P": 6,
+                    "l": 6,
+                    "k": 5,
+                    "A": 5,
+                    "m": 4,
+                    "T": 4,
+                    "K": 3,
+                    "N": 3,
+                    "D": 3,
+                    "G": 3,
+                    "R": 2,
+                    "w": 2,
+                    "y": 2,
+                    "c": 2,
+                    "g": 2,
+                    "v": 2,
+                    "F": 2,
+                    "h": 2,
+                    "f": 2,
+                    "H": 1,
+                    "V": 1,
+                    "Y": 1
+                },
+                "Common": {
+                    " ": 43,
+                    ".": 3,
+                    "/": 2,
+                    ":": 2,
+                    "!": 1
+                }
+            },
+            "category_alias_counts": {
+                "Lowercase Letter": 231,
+                "Uppercase Letter": 64,
+                "Space Separator": 43,
+                "Other Punctuation": 8
+            },
+            "category_alias_char_counts": {
+                "Uppercase_Letter": {
+                    "S": 9,
+                    "W": 8,
+                    "M": 7,
+                    "B": 6,
+                    "P": 6,
+                    "A": 5,
+                    "T": 4,
+                    "K": 3,
+                    "N": 3,
+                    "D": 3,
+                    "G": 3,
+                    "R": 2,
+                    "F": 2,
+                    "H": 1,
+                    "V": 1,
+                    "Y": 1
+                },
+                "Lowercase_Letter": {
+                    "i": 31,
+                    "r": 29,
+                    "o": 26,
+                    "e": 24,
+                    "a": 18,
+                    "n": 18,
+                    "t": 17,
+                    "u": 13,
+                    "s": 12,
+                    "d": 8,
+                    "p": 6,
+                    "l": 6,
+                    "k": 5,
+                    "m": 4,
+                    "w": 2,
+                    "y": 2,
+                    "c": 2,
+                    "g": 2,
+                    "v": 2,
+                    "h": 2,
+                    "f": 2
+                },
+                "Space_Separator": {
+                    " ": 43
+                },
+                "Other_Punctuation": {
+                    ".": 3,
+                    "/": 2,
+                    ":": 2,
+                    "!": 1
+                }
+            },
+            "n_category": 4,
+            "n_scripts": 2,
+            "n_block_alias": 1,
+            "n_characters_distinct": 42,
+            "word_counts": {
+                "wii": 7,
+                "mario": 6,
+                "super": 4,
+                "bros": 3,
+                "brain": 2,
+                "pokemon": 2,
+                "kart": 2,
+                "theft": 2,
+                "grand": 2,
+                "fit": 2,
+                "sports": 2,
+                "new": 2,
+                "auto": 2,
+                "duck": 1,
+                "in": 1,
+                "adventures": 1,
+                "your": 1,
+                "ds": 1,
+                "andreas": 1,
+                "world": 1,
+                "gold/pokemon": 1,
+                "san": 1,
+                "tetris": 1,
+                "v": 1,
+                "kinect": 1,
+                "a": 1,
+                "plus": 1,
+                "red/pokemon": 1,
+                "blue": 1,
+                "minutes": 1,
+                "hunt": 1,
+                "silver": 1,
+                "age": 1,
+                "day": 1,
+                "play": 1,
+                "nintendogs": 1,
+                "resort": 1,
+                "train": 1
+            }
+        },
+        "col5": {
+            "n_distinct": 20,
+            "p_distinct": 1.0,
+            "is_unique": true,
+            "n_unique": 20,
+            "p_unique": 1.0,
+            "type": "Numeric",
+            "hashable": true,
+            "value_counts_without_nan": {
+                "21.4": 1,
+                "23.42": 1,
+                "82.74": 1,
+                "22.0": 1,
+                "40.24": 1,
+                "30.26": 1,
+                "28.62": 1,
+                "24.76": 1,
+                "21.82": 1,
+                "20.81": 1,
+                "20.22": 1,
+                "29.02": 1,
+                "28.31": 1,
+                "22.72": 1,
+                "20.61": 1,
+                "35.82": 1,
+                "31.37": 1,
+                "30.01": 1,
+                "23.1": 1,
+                "33.0": 1
+            },
+            "value_counts_index_sorted": {
+                "20.22": 1,
+                "20.61": 1,
+                "20.81": 1,
+                "21.4": 1,
+                "21.82": 1,
+                "22.0": 1,
+                "22.72": 1,
+                "23.1": 1,
+                "23.42": 1,
+                "24.76": 1,
+                "28.31": 1,
+                "28.62": 1,
+                "29.02": 1,
+                "30.01": 1,
+                "30.26": 1,
+                "31.37": 1,
+                "33.0": 1,
+                "35.82": 1,
+                "40.24": 1,
+                "82.74": 1
+            },
+            "ordering": true,
+            "n_missing": 0,
+            "n": 20,
+            "p_missing": 0.0,
+            "count": 20,
+            "memory_size": 288,
+            "n_zeros": 0,
+            "n_negative": 0,
+            "p_negative": 0.0,
+            "n_infinite": 0,
+            "mean": 29.5125,
+            "std": 13.720252750088672,
+            "variance": 188.24533552631576,
+            "min": 20.22,
+            "max": 82.74,
+            "kurtosis": 12.928404340987253,
+            "skewness": 3.3475036755578906,
+            "sum": 590.25,
+            "mad": 4.625,
+            "chi_squared": {
+                "statistic": 51.0,
+                "pvalue": 6.982450080359676e-08
+            },
+            "range": 62.519999999999996,
+            "5%": 20.5905,
+            "25%": 21.955,
+            "50%": 26.535,
+            "75%": 30.5375,
+            "95%": 42.36500000000003,
+            "iqr": 8.582500000000003,
+            "cv": 0.464896323594703,
+            "p_zeros": 0.0,
+            "p_infinite": 0.0,
+            "monotonic_increase": false,
+            "monotonic_decrease": true,
+            "monotonic_increase_strict": false,
+            "monotonic_decrease_strict": true,
+            "monotonic": -2,
+            "histogram": {
+                "counts": [
+                    8,
+                    2,
+                    3,
+                    3,
+                    2,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                "bin_edges": [
+                    20.22,
+                    23.346,
+                    26.471999999999998,
+                    29.598,
+                    32.724,
+                    35.849999999999994,
+                    38.976,
+                    42.102,
+                    45.227999999999994,
+                    48.354,
+                    51.48,
+                    54.605999999999995,
+                    57.732,
+                    60.858,
+                    63.983999999999995,
+                    67.11,
+                    70.23599999999999,
+                    73.362,
+                    76.488,
+                    79.614,
+                    82.74
+                ]
+            }
+        }
+    },
+    "scatter": {
+        "col5": {
+            "col5": "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg height=\"396pt\" version=\"1.1\" viewBox=\"0 0 576 396\" width=\"576pt\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n <metadata>\n  <rdf:RDF xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n   <cc:Work>\n    <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\"/>\n    <dc:date>2021-05-19T22:57:54.920702</dc:date>\n    <dc:format>image/svg+xml</dc:format>\n    <dc:creator>\n     <cc:Agent>\n      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>\n     </cc:Agent>\n    </dc:creator>\n   </cc:Work>\n  </rdf:RDF>\n </metadata>\n <defs>\n  <style type=\"text/css\">*{stroke-linecap:butt;stroke-linejoin:round;}</style>\n </defs>\n <g id=\"figure_1\">\n  <g id=\"patch_1\">\n   <path d=\"M 0 396 \nL 576 396 \nL 576 0 \nL 0 0 \nz\n\" style=\"fill:#ffffff;\"/>\n  </g>\n  <g id=\"axes_1\">\n   <g id=\"patch_2\">\n    <path d=\"M 72 352.44 \nL 518.4 352.44 \nL 518.4 47.52 \nL 72 47.52 \nz\n\" style=\"fill:#ffffff;\"/>\n   </g>\n   <g id=\"matplotlib.axis_1\">\n    <g id=\"xtick_1\">\n     <g id=\"text_1\">\n      <!-- 20 -->\n      <g style=\"fill:#262626;\" transform=\"translate(84.500386 370.538437)scale(0.1 -0.1)\">\n       <defs>\n        <path d=\"M 1228 531 \nL 3431 531 \nL 3431 0 \nL 469 0 \nL 469 531 \nQ 828 903 1448 1529 \nQ 2069 2156 2228 2338 \nQ 2531 2678 2651 2914 \nQ 2772 3150 2772 3378 \nQ 2772 3750 2511 3984 \nQ 2250 4219 1831 4219 \nQ 1534 4219 1204 4116 \nQ 875 4013 500 3803 \nL 500 4441 \nQ 881 4594 1212 4672 \nQ 1544 4750 1819 4750 \nQ 2544 4750 2975 4387 \nQ 3406 4025 3406 3419 \nQ 3406 3131 3298 2873 \nQ 3191 2616 2906 2266 \nQ 2828 2175 2409 1742 \nQ 1991 1309 1228 531 \nz\n\" id=\"DejaVuSans-32\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 2034 4250 \nQ 1547 4250 1301 3770 \nQ 1056 3291 1056 2328 \nQ 1056 1369 1301 889 \nQ 1547 409 2034 409 \nQ 2525 409 2770 889 \nQ 3016 1369 3016 2328 \nQ 3016 3291 2770 3770 \nQ 2525 4250 2034 4250 \nz\nM 2034 4750 \nQ 2819 4750 3233 4129 \nQ 3647 3509 3647 2328 \nQ 3647 1150 3233 529 \nQ 2819 -91 2034 -91 \nQ 1250 -91 836 529 \nQ 422 1150 422 2328 \nQ 422 3509 836 4129 \nQ 1250 4750 2034 4750 \nz\n\" id=\"DejaVuSans-30\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-32\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_2\">\n     <g id=\"text_2\">\n      <!-- 30 -->\n      <g style=\"fill:#262626;\" transform=\"translate(149.410524 370.538437)scale(0.1 -0.1)\">\n       <defs>\n        <path d=\"M 2597 2516 \nQ 3050 2419 3304 2112 \nQ 3559 1806 3559 1356 \nQ 3559 666 3084 287 \nQ 2609 -91 1734 -91 \nQ 1441 -91 1130 -33 \nQ 819 25 488 141 \nL 488 750 \nQ 750 597 1062 519 \nQ 1375 441 1716 441 \nQ 2309 441 2620 675 \nQ 2931 909 2931 1356 \nQ 2931 1769 2642 2001 \nQ 2353 2234 1838 2234 \nL 1294 2234 \nL 1294 2753 \nL 1863 2753 \nQ 2328 2753 2575 2939 \nQ 2822 3125 2822 3475 \nQ 2822 3834 2567 4026 \nQ 2313 4219 1838 4219 \nQ 1578 4219 1281 4162 \nQ 984 4106 628 3988 \nL 628 4550 \nQ 988 4650 1302 4700 \nQ 1616 4750 1894 4750 \nQ 2613 4750 3031 4423 \nQ 3450 4097 3450 3541 \nQ 3450 3153 3228 2886 \nQ 3006 2619 2597 2516 \nz\n\" id=\"DejaVuSans-33\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-33\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_3\">\n     <g id=\"text_3\">\n      <!-- 40 -->\n      <g style=\"fill:#262626;\" transform=\"translate(214.320662 370.538437)scale(0.1 -0.1)\">\n       <defs>\n        <path d=\"M 2419 4116 \nL 825 1625 \nL 2419 1625 \nL 2419 4116 \nz\nM 2253 4666 \nL 3047 4666 \nL 3047 1625 \nL 3713 1625 \nL 3713 1100 \nL 3047 1100 \nL 3047 0 \nL 2419 0 \nL 2419 1100 \nL 313 1100 \nL 313 1709 \nL 2253 4666 \nz\n\" id=\"DejaVuSans-34\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-34\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_4\">\n     <g id=\"text_4\">\n      <!-- 50 -->\n      <g style=\"fill:#262626;\" transform=\"translate(279.2308 370.538437)scale(0.1 -0.1)\">\n       <defs>\n        <path d=\"M 691 4666 \nL 3169 4666 \nL 3169 4134 \nL 1269 4134 \nL 1269 2991 \nQ 1406 3038 1543 3061 \nQ 1681 3084 1819 3084 \nQ 2600 3084 3056 2656 \nQ 3513 2228 3513 1497 \nQ 3513 744 3044 326 \nQ 2575 -91 1722 -91 \nQ 1428 -91 1123 -41 \nQ 819 9 494 109 \nL 494 744 \nQ 775 591 1075 516 \nQ 1375 441 1709 441 \nQ 2250 441 2565 725 \nQ 2881 1009 2881 1497 \nQ 2881 1984 2565 2268 \nQ 2250 2553 1709 2553 \nQ 1456 2553 1204 2497 \nQ 953 2441 691 2322 \nL 691 4666 \nz\n\" id=\"DejaVuSans-35\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-35\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_5\">\n     <g id=\"text_5\">\n      <!-- 60 -->\n      <g style=\"fill:#262626;\" transform=\"translate(344.140937 370.538437)scale(0.1 -0.1)\">\n       <defs>\n        <path d=\"M 2113 2584 \nQ 1688 2584 1439 2293 \nQ 1191 2003 1191 1497 \nQ 1191 994 1439 701 \nQ 1688 409 2113 409 \nQ 2538 409 2786 701 \nQ 3034 994 3034 1497 \nQ 3034 2003 2786 2293 \nQ 2538 2584 2113 2584 \nz\nM 3366 4563 \nL 3366 3988 \nQ 3128 4100 2886 4159 \nQ 2644 4219 2406 4219 \nQ 1781 4219 1451 3797 \nQ 1122 3375 1075 2522 \nQ 1259 2794 1537 2939 \nQ 1816 3084 2150 3084 \nQ 2853 3084 3261 2657 \nQ 3669 2231 3669 1497 \nQ 3669 778 3244 343 \nQ 2819 -91 2113 -91 \nQ 1303 -91 875 529 \nQ 447 1150 447 2328 \nQ 447 3434 972 4092 \nQ 1497 4750 2381 4750 \nQ 2619 4750 2861 4703 \nQ 3103 4656 3366 4563 \nz\n\" id=\"DejaVuSans-36\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-36\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_6\">\n     <g id=\"text_6\">\n      <!-- 70 -->\n      <g style=\"fill:#262626;\" transform=\"translate(409.051075 370.538437)scale(0.1 -0.1)\">\n       <defs>\n        <path d=\"M 525 4666 \nL 3525 4666 \nL 3525 4397 \nL 1831 0 \nL 1172 0 \nL 2766 4134 \nL 525 4134 \nL 525 4666 \nz\n\" id=\"DejaVuSans-37\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-37\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_7\">\n     <g id=\"text_7\">\n      <!-- 80 -->\n      <g style=\"fill:#262626;\" transform=\"translate(473.961213 370.538437)scale(0.1 -0.1)\">\n       <defs>\n        <path d=\"M 2034 2216 \nQ 1584 2216 1326 1975 \nQ 1069 1734 1069 1313 \nQ 1069 891 1326 650 \nQ 1584 409 2034 409 \nQ 2484 409 2743 651 \nQ 3003 894 3003 1313 \nQ 3003 1734 2745 1975 \nQ 2488 2216 2034 2216 \nz\nM 1403 2484 \nQ 997 2584 770 2862 \nQ 544 3141 544 3541 \nQ 544 4100 942 4425 \nQ 1341 4750 2034 4750 \nQ 2731 4750 3128 4425 \nQ 3525 4100 3525 3541 \nQ 3525 3141 3298 2862 \nQ 3072 2584 2669 2484 \nQ 3125 2378 3379 2068 \nQ 3634 1759 3634 1313 \nQ 3634 634 3220 271 \nQ 2806 -91 2034 -91 \nQ 1263 -91 848 271 \nQ 434 634 434 1313 \nQ 434 1759 690 2068 \nQ 947 2378 1403 2484 \nz\nM 1172 3481 \nQ 1172 3119 1398 2916 \nQ 1625 2713 2034 2713 \nQ 2441 2713 2670 2916 \nQ 2900 3119 2900 3481 \nQ 2900 3844 2670 4047 \nQ 2441 4250 2034 4250 \nQ 1625 4250 1398 4047 \nQ 1172 3844 1172 3481 \nz\n\" id=\"DejaVuSans-38\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-38\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"text_8\">\n     <!-- col5 -->\n     <g style=\"fill:#262626;\" transform=\"translate(283.783203 384.976406)scale(0.11 -0.11)\">\n      <defs>\n       <path d=\"M 3122 3366 \nL 3122 2828 \nQ 2878 2963 2633 3030 \nQ 2388 3097 2138 3097 \nQ 1578 3097 1268 2742 \nQ 959 2388 959 1747 \nQ 959 1106 1268 751 \nQ 1578 397 2138 397 \nQ 2388 397 2633 464 \nQ 2878 531 3122 666 \nL 3122 134 \nQ 2881 22 2623 -34 \nQ 2366 -91 2075 -91 \nQ 1284 -91 818 406 \nQ 353 903 353 1747 \nQ 353 2603 823 3093 \nQ 1294 3584 2113 3584 \nQ 2378 3584 2631 3529 \nQ 2884 3475 3122 3366 \nz\n\" id=\"DejaVuSans-63\" transform=\"scale(0.015625)\"/>\n       <path d=\"M 1959 3097 \nQ 1497 3097 1228 2736 \nQ 959 2375 959 1747 \nQ 959 1119 1226 758 \nQ 1494 397 1959 397 \nQ 2419 397 2687 759 \nQ 2956 1122 2956 1747 \nQ 2956 2369 2687 2733 \nQ 2419 3097 1959 3097 \nz\nM 1959 3584 \nQ 2709 3584 3137 3096 \nQ 3566 2609 3566 1747 \nQ 3566 888 3137 398 \nQ 2709 -91 1959 -91 \nQ 1206 -91 779 398 \nQ 353 888 353 1747 \nQ 353 2609 779 3096 \nQ 1206 3584 1959 3584 \nz\n\" id=\"DejaVuSans-6f\" transform=\"scale(0.015625)\"/>\n       <path d=\"M 603 4863 \nL 1178 4863 \nL 1178 0 \nL 603 0 \nL 603 4863 \nz\n\" id=\"DejaVuSans-6c\" transform=\"scale(0.015625)\"/>\n      </defs>\n      <use xlink:href=\"#DejaVuSans-63\"/>\n      <use x=\"54.980469\" xlink:href=\"#DejaVuSans-6f\"/>\n      <use x=\"116.162109\" xlink:href=\"#DejaVuSans-6c\"/>\n      <use x=\"143.945312\" xlink:href=\"#DejaVuSans-35\"/>\n     </g>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_2\">\n    <g id=\"ytick_1\">\n     <g id=\"text_9\">\n      <!-- 20 -->\n      <g style=\"fill:#262626;\" transform=\"translate(48.775 343.354651)scale(0.1 -0.1)\">\n       <use xlink:href=\"#DejaVuSans-32\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_2\">\n     <g id=\"text_10\">\n      <!-- 30 -->\n      <g style=\"fill:#262626;\" transform=\"translate(48.775 299.016839)scale(0.1 -0.1)\">\n       <use xlink:href=\"#DejaVuSans-33\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_3\">\n     <g id=\"text_11\">\n      <!-- 40 -->\n      <g style=\"fill:#262626;\" transform=\"translate(48.775 254.679027)scale(0.1 -0.1)\">\n       <use xlink:href=\"#DejaVuSans-34\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_4\">\n     <g id=\"text_12\">\n      <!-- 50 -->\n      <g style=\"fill:#262626;\" transform=\"translate(48.775 210.341215)scale(0.1 -0.1)\">\n       <use xlink:href=\"#DejaVuSans-35\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_5\">\n     <g id=\"text_13\">\n      <!-- 60 -->\n      <g style=\"fill:#262626;\" transform=\"translate(48.775 166.003403)scale(0.1 -0.1)\">\n       <use xlink:href=\"#DejaVuSans-36\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_6\">\n     <g id=\"text_14\">\n      <!-- 70 -->\n      <g style=\"fill:#262626;\" transform=\"translate(48.775 121.665591)scale(0.1 -0.1)\">\n       <use xlink:href=\"#DejaVuSans-37\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_7\">\n     <g id=\"text_15\">\n      <!-- 80 -->\n      <g style=\"fill:#262626;\" transform=\"translate(48.775 77.327779)scale(0.1 -0.1)\">\n       <use xlink:href=\"#DejaVuSans-38\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"text_16\">\n     <!-- col5 -->\n     <g style=\"fill:#262626;\" transform=\"translate(42.487344 211.396797)rotate(-90)scale(0.11 -0.11)\">\n      <use xlink:href=\"#DejaVuSans-63\"/>\n      <use x=\"54.980469\" xlink:href=\"#DejaVuSans-6f\"/>\n      <use x=\"116.162109\" xlink:href=\"#DejaVuSans-6c\"/>\n      <use x=\"143.945312\" xlink:href=\"#DejaVuSans-35\"/>\n     </g>\n    </g>\n   </g>\n   <g id=\"PathCollection_1\">\n    <defs>\n     <path d=\"M 0 3.5 \nC 0.928211 3.5 1.81853 3.131218 2.474874 2.474874 \nC 3.131218 1.81853 3.5 0.928211 3.5 0 \nC 3.5 -0.928211 3.131218 -1.81853 2.474874 -2.474874 \nC 1.81853 -3.131218 0.928211 -3.5 0 -3.5 \nC -0.928211 -3.5 -1.81853 -3.131218 -2.474874 -2.474874 \nC -3.131218 -1.81853 -3.5 -0.928211 -3.5 0 \nC -3.5 0.928211 -3.131218 1.81853 -2.474874 2.474874 \nC -1.81853 3.131218 -0.928211 3.5 0 3.5 \nz\n\" id=\"m270d09e4e5\" style=\"stroke:#337ab7;stroke-width:0.3;\"/>\n    </defs>\n    <g clip-path=\"url(#p6053c05fa0)\">\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"498.109091\" xlink:href=\"#m270d09e4e5\" y=\"61.38\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"222.241005\" xlink:href=\"#m270d09e4e5\" y=\"249.815701\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"193.550724\" xlink:href=\"#m270d09e4e5\" y=\"269.413013\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"175.246065\" xlink:href=\"#m270d09e4e5\" y=\"281.916276\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"164.665713\" xlink:href=\"#m270d09e4e5\" y=\"289.14334\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"157.460687\" xlink:href=\"#m270d09e4e5\" y=\"294.064837\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"155.837934\" xlink:href=\"#m270d09e4e5\" y=\"295.173282\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"149.41183\" xlink:href=\"#m270d09e4e5\" y=\"299.562726\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"146.815425\" xlink:href=\"#m270d09e4e5\" y=\"301.336238\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"144.803211\" xlink:href=\"#m270d09e4e5\" y=\"302.71071\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"121.760112\" xlink:href=\"#m270d09e4e5\" y=\"318.450633\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"113.062153\" xlink:href=\"#m270d09e4e5\" y=\"324.3919\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"110.985029\" xlink:href=\"#m270d09e4e5\" y=\"325.81071\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"108.518444\" xlink:href=\"#m270d09e4e5\" y=\"327.495547\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"103.844914\" xlink:href=\"#m270d09e4e5\" y=\"330.687869\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"102.676531\" xlink:href=\"#m270d09e4e5\" y=\"331.48595\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"99.950305\" xlink:href=\"#m270d09e4e5\" y=\"333.348138\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"96.120607\" xlink:href=\"#m270d09e4e5\" y=\"335.964069\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"94.822404\" xlink:href=\"#m270d09e4e5\" y=\"336.850825\"/>\n     <use style=\"fill:#337ab7;stroke:#337ab7;stroke-width:0.3;\" x=\"92.290909\" xlink:href=\"#m270d09e4e5\" y=\"338.58\"/>\n    </g>\n   </g>\n   <g id=\"patch_3\">\n    <path d=\"M 72 352.44 \nL 72 47.52 \n\" style=\"fill:none;\"/>\n   </g>\n   <g id=\"patch_4\">\n    <path d=\"M 518.4 352.44 \nL 518.4 47.52 \n\" style=\"fill:none;\"/>\n   </g>\n   <g id=\"patch_5\">\n    <path d=\"M 72 352.44 \nL 518.4 352.44 \n\" style=\"fill:none;\"/>\n   </g>\n   <g id=\"patch_6\">\n    <path d=\"M 72 47.52 \nL 518.4 47.52 \n\" style=\"fill:none;\"/>\n   </g>\n  </g>\n </g>\n <defs>\n  <clipPath id=\"p6053c05fa0\">\n   <rect height=\"304.92\" width=\"446.4\" x=\"72\" y=\"47.52\"/>\n  </clipPath>\n </defs>\n</svg>\n"
+        }
+    },
+    "correlations": {
+        "pearson": [
+            {
+                "col5": 1.0
+            }
+        ],
+        "spearman": [
+            {
+                "col5": 1.0
+            }
+        ],
+        "kendall": [
+            {
+                "col5": 1.0
+            }
+        ],
+        "phi_k": [
+            {
+                "col2": 1.0,
+                "col5": 1.0
+            },
+            {
+                "col2": 1.0,
+                "col5": 1.0
+            }
+        ]
+    },
+    "missing": {
+        "bar": {
+            "name": "Count",
+            "caption": "A simple visualization of nullity by column.",
+            "matrix": "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg height=\"360pt\" version=\"1.1\" viewBox=\"0 0 720 360\" width=\"720pt\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n <metadata>\n  <rdf:RDF xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n   <cc:Work>\n    <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\"/>\n    <dc:date>2021-05-19T22:57:55.076561</dc:date>\n    <dc:format>image/svg+xml</dc:format>\n    <dc:creator>\n     <cc:Agent>\n      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>\n     </cc:Agent>\n    </dc:creator>\n   </cc:Work>\n  </rdf:RDF>\n </metadata>\n <defs>\n  <style type=\"text/css\">*{stroke-linecap:butt;stroke-linejoin:round;}</style>\n </defs>\n <g id=\"figure_1\">\n  <g id=\"patch_1\">\n   <path d=\"M 0 360 \nL 720 360 \nL 720 0 \nL 0 0 \nz\n\" style=\"fill:#ffffff;\"/>\n  </g>\n  <g id=\"axes_1\">\n   <g id=\"patch_2\">\n    <path d=\"M 72 252 \nL 648 252 \nL 648 72 \nL 72 72 \nz\n\" style=\"fill:#ffffff;\"/>\n   </g>\n   <g id=\"matplotlib.axis_1\">\n    <g id=\"xtick_1\">\n     <g id=\"text_1\">\n      <!-- col2 -->\n      <g style=\"fill:#262626;\" transform=\"translate(195.006884 288.566166)rotate(-45)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 3122 3366 \nL 3122 2828 \nQ 2878 2963 2633 3030 \nQ 2388 3097 2138 3097 \nQ 1578 3097 1268 2742 \nQ 959 2388 959 1747 \nQ 959 1106 1268 751 \nQ 1578 397 2138 397 \nQ 2388 397 2633 464 \nQ 2878 531 3122 666 \nL 3122 134 \nQ 2881 22 2623 -34 \nQ 2366 -91 2075 -91 \nQ 1284 -91 818 406 \nQ 353 903 353 1747 \nQ 353 2603 823 3093 \nQ 1294 3584 2113 3584 \nQ 2378 3584 2631 3529 \nQ 2884 3475 3122 3366 \nz\n\" id=\"DejaVuSans-63\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 1959 3097 \nQ 1497 3097 1228 2736 \nQ 959 2375 959 1747 \nQ 959 1119 1226 758 \nQ 1494 397 1959 397 \nQ 2419 397 2687 759 \nQ 2956 1122 2956 1747 \nQ 2956 2369 2687 2733 \nQ 2419 3097 1959 3097 \nz\nM 1959 3584 \nQ 2709 3584 3137 3096 \nQ 3566 2609 3566 1747 \nQ 3566 888 3137 398 \nQ 2709 -91 1959 -91 \nQ 1206 -91 779 398 \nQ 353 888 353 1747 \nQ 353 2609 779 3096 \nQ 1206 3584 1959 3584 \nz\n\" id=\"DejaVuSans-6f\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 603 4863 \nL 1178 4863 \nL 1178 0 \nL 603 0 \nL 603 4863 \nz\n\" id=\"DejaVuSans-6c\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 1228 531 \nL 3431 531 \nL 3431 0 \nL 469 0 \nL 469 531 \nQ 828 903 1448 1529 \nQ 2069 2156 2228 2338 \nQ 2531 2678 2651 2914 \nQ 2772 3150 2772 3378 \nQ 2772 3750 2511 3984 \nQ 2250 4219 1831 4219 \nQ 1534 4219 1204 4116 \nQ 875 4013 500 3803 \nL 500 4441 \nQ 881 4594 1212 4672 \nQ 1544 4750 1819 4750 \nQ 2544 4750 2975 4387 \nQ 3406 4025 3406 3419 \nQ 3406 3131 3298 2873 \nQ 3191 2616 2906 2266 \nQ 2828 2175 2409 1742 \nQ 1991 1309 1228 531 \nz\n\" id=\"DejaVuSans-32\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-63\"/>\n       <use x=\"54.980469\" xlink:href=\"#DejaVuSans-6f\"/>\n       <use x=\"116.162109\" xlink:href=\"#DejaVuSans-6c\"/>\n       <use x=\"143.945312\" xlink:href=\"#DejaVuSans-32\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_2\">\n     <g id=\"text_2\">\n      <!-- col5 -->\n      <g style=\"fill:#262626;\" transform=\"translate(483.006884 288.566166)rotate(-45)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 691 4666 \nL 3169 4666 \nL 3169 4134 \nL 1269 4134 \nL 1269 2991 \nQ 1406 3038 1543 3061 \nQ 1681 3084 1819 3084 \nQ 2600 3084 3056 2656 \nQ 3513 2228 3513 1497 \nQ 3513 744 3044 326 \nQ 2575 -91 1722 -91 \nQ 1428 -91 1123 -41 \nQ 819 9 494 109 \nL 494 744 \nQ 775 591 1075 516 \nQ 1375 441 1709 441 \nQ 2250 441 2565 725 \nQ 2881 1009 2881 1497 \nQ 2881 1984 2565 2268 \nQ 2250 2553 1709 2553 \nQ 1456 2553 1204 2497 \nQ 953 2441 691 2322 \nL 691 4666 \nz\n\" id=\"DejaVuSans-35\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-63\"/>\n       <use x=\"54.980469\" xlink:href=\"#DejaVuSans-6f\"/>\n       <use x=\"116.162109\" xlink:href=\"#DejaVuSans-6c\"/>\n       <use x=\"143.945312\" xlink:href=\"#DejaVuSans-35\"/>\n      </g>\n     </g>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_2\">\n    <g id=\"ytick_1\">\n     <g id=\"text_3\">\n      <!-- 0.0 -->\n      <g style=\"fill:#262626;\" transform=\"translate(40.825937 256.938984)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 2034 4250 \nQ 1547 4250 1301 3770 \nQ 1056 3291 1056 2328 \nQ 1056 1369 1301 889 \nQ 1547 409 2034 409 \nQ 2525 409 2770 889 \nQ 3016 1369 3016 2328 \nQ 3016 3291 2770 3770 \nQ 2525 4250 2034 4250 \nz\nM 2034 4750 \nQ 2819 4750 3233 4129 \nQ 3647 3509 3647 2328 \nQ 3647 1150 3233 529 \nQ 2819 -91 2034 -91 \nQ 1250 -91 836 529 \nQ 422 1150 422 2328 \nQ 422 3509 836 4129 \nQ 1250 4750 2034 4750 \nz\n\" id=\"DejaVuSans-30\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 684 794 \nL 1344 794 \nL 1344 0 \nL 684 0 \nL 684 794 \nz\n\" id=\"DejaVuSans-2e\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-30\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-2e\"/>\n       <use x=\"95.410156\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_2\">\n     <g id=\"text_4\">\n      <!-- 0.2 -->\n      <g style=\"fill:#262626;\" transform=\"translate(40.825937 220.938984)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-30\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-2e\"/>\n       <use x=\"95.410156\" xlink:href=\"#DejaVuSans-32\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_3\">\n     <g id=\"text_5\">\n      <!-- 0.4 -->\n      <g style=\"fill:#262626;\" transform=\"translate(40.825937 184.938984)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 2419 4116 \nL 825 1625 \nL 2419 1625 \nL 2419 4116 \nz\nM 2253 4666 \nL 3047 4666 \nL 3047 1625 \nL 3713 1625 \nL 3713 1100 \nL 3047 1100 \nL 3047 0 \nL 2419 0 \nL 2419 1100 \nL 313 1100 \nL 313 1709 \nL 2253 4666 \nz\n\" id=\"DejaVuSans-34\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-30\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-2e\"/>\n       <use x=\"95.410156\" xlink:href=\"#DejaVuSans-34\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_4\">\n     <g id=\"text_6\">\n      <!-- 0.6 -->\n      <g style=\"fill:#262626;\" transform=\"translate(40.825937 148.938984)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 2113 2584 \nQ 1688 2584 1439 2293 \nQ 1191 2003 1191 1497 \nQ 1191 994 1439 701 \nQ 1688 409 2113 409 \nQ 2538 409 2786 701 \nQ 3034 994 3034 1497 \nQ 3034 2003 2786 2293 \nQ 2538 2584 2113 2584 \nz\nM 3366 4563 \nL 3366 3988 \nQ 3128 4100 2886 4159 \nQ 2644 4219 2406 4219 \nQ 1781 4219 1451 3797 \nQ 1122 3375 1075 2522 \nQ 1259 2794 1537 2939 \nQ 1816 3084 2150 3084 \nQ 2853 3084 3261 2657 \nQ 3669 2231 3669 1497 \nQ 3669 778 3244 343 \nQ 2819 -91 2113 -91 \nQ 1303 -91 875 529 \nQ 447 1150 447 2328 \nQ 447 3434 972 4092 \nQ 1497 4750 2381 4750 \nQ 2619 4750 2861 4703 \nQ 3103 4656 3366 4563 \nz\n\" id=\"DejaVuSans-36\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-30\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-2e\"/>\n       <use x=\"95.410156\" xlink:href=\"#DejaVuSans-36\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_5\">\n     <g id=\"text_7\">\n      <!-- 0.8 -->\n      <g style=\"fill:#262626;\" transform=\"translate(40.825937 112.938984)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 2034 2216 \nQ 1584 2216 1326 1975 \nQ 1069 1734 1069 1313 \nQ 1069 891 1326 650 \nQ 1584 409 2034 409 \nQ 2484 409 2743 651 \nQ 3003 894 3003 1313 \nQ 3003 1734 2745 1975 \nQ 2488 2216 2034 2216 \nz\nM 1403 2484 \nQ 997 2584 770 2862 \nQ 544 3141 544 3541 \nQ 544 4100 942 4425 \nQ 1341 4750 2034 4750 \nQ 2731 4750 3128 4425 \nQ 3525 4100 3525 3541 \nQ 3525 3141 3298 2862 \nQ 3072 2584 2669 2484 \nQ 3125 2378 3379 2068 \nQ 3634 1759 3634 1313 \nQ 3634 634 3220 271 \nQ 2806 -91 2034 -91 \nQ 1263 -91 848 271 \nQ 434 634 434 1313 \nQ 434 1759 690 2068 \nQ 947 2378 1403 2484 \nz\nM 1172 3481 \nQ 1172 3119 1398 2916 \nQ 1625 2713 2034 2713 \nQ 2441 2713 2670 2916 \nQ 2900 3119 2900 3481 \nQ 2900 3844 2670 4047 \nQ 2441 4250 2034 4250 \nQ 1625 4250 1398 4047 \nQ 1172 3844 1172 3481 \nz\n\" id=\"DejaVuSans-38\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-30\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-2e\"/>\n       <use x=\"95.410156\" xlink:href=\"#DejaVuSans-38\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_6\">\n     <g id=\"text_8\">\n      <!-- 1.0 -->\n      <g style=\"fill:#262626;\" transform=\"translate(40.825937 76.938984)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 794 531 \nL 1825 531 \nL 1825 4091 \nL 703 3866 \nL 703 4441 \nL 1819 4666 \nL 2450 4666 \nL 2450 531 \nL 3481 531 \nL 3481 0 \nL 794 0 \nL 794 531 \nz\n\" id=\"DejaVuSans-31\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-31\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-2e\"/>\n       <use x=\"95.410156\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n   </g>\n   <g id=\"patch_3\">\n    <path clip-path=\"url(#p6269f86fb5)\" d=\"M 144 252 \nL 288 252 \nL 288 72 \nL 144 72 \nz\n\" style=\"fill:#337ab7;stroke:#ffffff;stroke-linejoin:miter;stroke-width:0.3;\"/>\n   </g>\n   <g id=\"patch_4\">\n    <path clip-path=\"url(#p6269f86fb5)\" d=\"M 432 252 \nL 576 252 \nL 576 72 \nL 432 72 \nz\n\" style=\"fill:#337ab7;stroke:#ffffff;stroke-linejoin:miter;stroke-width:0.3;\"/>\n   </g>\n  </g>\n  <g id=\"axes_2\">\n   <g id=\"matplotlib.axis_3\">\n    <g id=\"ytick_7\">\n     <g id=\"text_9\">\n      <!-- 0 -->\n      <g style=\"fill:#262626;\" transform=\"translate(658.5 256.938984)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_8\">\n     <g id=\"text_10\">\n      <!-- 4 -->\n      <g style=\"fill:#262626;\" transform=\"translate(658.5 220.938984)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-34\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_9\">\n     <g id=\"text_11\">\n      <!-- 8 -->\n      <g style=\"fill:#262626;\" transform=\"translate(658.5 184.938984)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-38\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_10\">\n     <g id=\"text_12\">\n      <!-- 12 -->\n      <g style=\"fill:#262626;\" transform=\"translate(658.5 148.938984)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-31\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-32\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_11\">\n     <g id=\"text_13\">\n      <!-- 16 -->\n      <g style=\"fill:#262626;\" transform=\"translate(658.5 112.938984)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-31\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-36\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_12\">\n     <g id=\"text_14\">\n      <!-- 20 -->\n      <g style=\"fill:#262626;\" transform=\"translate(658.5 76.938984)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-32\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n   </g>\n  </g>\n  <g id=\"axes_3\">\n   <g id=\"matplotlib.axis_4\">\n    <g id=\"xtick_3\">\n     <g id=\"text_15\">\n      <!-- 20 -->\n      <g style=\"fill:#262626;\" transform=\"translate(222.984779 59.588271)rotate(-45)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-32\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_4\">\n     <g id=\"text_16\">\n      <!-- 20 -->\n      <g style=\"fill:#262626;\" transform=\"translate(510.984779 59.588271)rotate(-45)scale(0.13 -0.13)\">\n       <use xlink:href=\"#DejaVuSans-32\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n   </g>\n  </g>\n </g>\n <defs>\n  <clipPath id=\"p6269f86fb5\">\n   <rect height=\"180\" width=\"576\" x=\"72\" y=\"72\"/>\n  </clipPath>\n </defs>\n</svg>\n"
+        },
+        "matrix": {
+            "name": "Matrix",
+            "caption": "Nullity matrix is a data-dense display which lets you quickly visually pick out patterns in data completion.",
+            "matrix": "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg height=\"288pt\" version=\"1.1\" viewBox=\"0 0 720 288\" width=\"720pt\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n <metadata>\n  <rdf:RDF xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n   <cc:Work>\n    <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\"/>\n    <dc:date>2021-05-19T22:57:55.265417</dc:date>\n    <dc:format>image/svg+xml</dc:format>\n    <dc:creator>\n     <cc:Agent>\n      <dc:title>Matplotlib v3.4.2, https://matplotlib.org/</dc:title>\n     </cc:Agent>\n    </dc:creator>\n   </cc:Work>\n  </rdf:RDF>\n </metadata>\n <defs>\n  <style type=\"text/css\">*{stroke-linecap:butt;stroke-linejoin:round;}</style>\n </defs>\n <g id=\"figure_1\">\n  <g id=\"patch_1\">\n   <path d=\"M 0 288 \nL 720 288 \nL 720 0 \nL 0 0 \nz\n\" style=\"fill:#ffffff;\"/>\n  </g>\n  <g id=\"axes_1\">\n   <g id=\"patch_2\">\n    <path d=\"M 72 230.4 \nL 648 230.4 \nL 648 86.4 \nL 72 86.4 \nz\n\" style=\"fill:#ffffff;\"/>\n   </g>\n   <g clip-path=\"url(#peb3a045905)\">\n    <image height=\"20\" id=\"imagecd8a574e6a\" style=\"image-rendering:crisp-edges;image-rendering:pixelated\" transform=\"matrix(288 0 0 7.2 72 86.4)\" width=\"2\" xlink:href=\"data:image/png;base64,\niVBORw0KGgoAAAANSUhEUgAAAAIAAAAUCAYAAACnOeyiAAAAF0lEQVR4nGM0rtr+n4GBgYGJAQoGPwMAtScCi46K160AAAAASUVORK5CYII=\"/>\n   </g>\n   <g id=\"matplotlib.axis_1\">\n    <g id=\"xtick_1\">\n     <g id=\"text_1\">\n      <!-- col2 -->\n      <g style=\"fill:#262626;\" transform=\"translate(221.587823 74.370616)rotate(-45)scale(0.104 -0.104)\">\n       <defs>\n        <path d=\"M 3122 3366 \nL 3122 2828 \nQ 2878 2963 2633 3030 \nQ 2388 3097 2138 3097 \nQ 1578 3097 1268 2742 \nQ 959 2388 959 1747 \nQ 959 1106 1268 751 \nQ 1578 397 2138 397 \nQ 2388 397 2633 464 \nQ 2878 531 3122 666 \nL 3122 134 \nQ 2881 22 2623 -34 \nQ 2366 -91 2075 -91 \nQ 1284 -91 818 406 \nQ 353 903 353 1747 \nQ 353 2603 823 3093 \nQ 1294 3584 2113 3584 \nQ 2378 3584 2631 3529 \nQ 2884 3475 3122 3366 \nz\n\" id=\"DejaVuSans-63\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 1959 3097 \nQ 1497 3097 1228 2736 \nQ 959 2375 959 1747 \nQ 959 1119 1226 758 \nQ 1494 397 1959 397 \nQ 2419 397 2687 759 \nQ 2956 1122 2956 1747 \nQ 2956 2369 2687 2733 \nQ 2419 3097 1959 3097 \nz\nM 1959 3584 \nQ 2709 3584 3137 3096 \nQ 3566 2609 3566 1747 \nQ 3566 888 3137 398 \nQ 2709 -91 1959 -91 \nQ 1206 -91 779 398 \nQ 353 888 353 1747 \nQ 353 2609 779 3096 \nQ 1206 3584 1959 3584 \nz\n\" id=\"DejaVuSans-6f\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 603 4863 \nL 1178 4863 \nL 1178 0 \nL 603 0 \nL 603 4863 \nz\n\" id=\"DejaVuSans-6c\" transform=\"scale(0.015625)\"/>\n        <path d=\"M 1228 531 \nL 3431 531 \nL 3431 0 \nL 469 0 \nL 469 531 \nQ 828 903 1448 1529 \nQ 2069 2156 2228 2338 \nQ 2531 2678 2651 2914 \nQ 2772 3150 2772 3378 \nQ 2772 3750 2511 3984 \nQ 2250 4219 1831 4219 \nQ 1534 4219 1204 4116 \nQ 875 4013 500 3803 \nL 500 4441 \nQ 881 4594 1212 4672 \nQ 1544 4750 1819 4750 \nQ 2544 4750 2975 4387 \nQ 3406 4025 3406 3419 \nQ 3406 3131 3298 2873 \nQ 3191 2616 2906 2266 \nQ 2828 2175 2409 1742 \nQ 1991 1309 1228 531 \nz\n\" id=\"DejaVuSans-32\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-63\"/>\n       <use x=\"54.980469\" xlink:href=\"#DejaVuSans-6f\"/>\n       <use x=\"116.162109\" xlink:href=\"#DejaVuSans-6c\"/>\n       <use x=\"143.945312\" xlink:href=\"#DejaVuSans-32\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_2\">\n     <g id=\"text_2\">\n      <!-- col5 -->\n      <g style=\"fill:#262626;\" transform=\"translate(509.587823 74.370616)rotate(-45)scale(0.104 -0.104)\">\n       <defs>\n        <path d=\"M 691 4666 \nL 3169 4666 \nL 3169 4134 \nL 1269 4134 \nL 1269 2991 \nQ 1406 3038 1543 3061 \nQ 1681 3084 1819 3084 \nQ 2600 3084 3056 2656 \nQ 3513 2228 3513 1497 \nQ 3513 744 3044 326 \nQ 2575 -91 1722 -91 \nQ 1428 -91 1123 -41 \nQ 819 9 494 109 \nL 494 744 \nQ 775 591 1075 516 \nQ 1375 441 1709 441 \nQ 2250 441 2565 725 \nQ 2881 1009 2881 1497 \nQ 2881 1984 2565 2268 \nQ 2250 2553 1709 2553 \nQ 1456 2553 1204 2497 \nQ 953 2441 691 2322 \nL 691 4666 \nz\n\" id=\"DejaVuSans-35\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-63\"/>\n       <use x=\"54.980469\" xlink:href=\"#DejaVuSans-6f\"/>\n       <use x=\"116.162109\" xlink:href=\"#DejaVuSans-6c\"/>\n       <use x=\"143.945312\" xlink:href=\"#DejaVuSans-35\"/>\n      </g>\n     </g>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_2\">\n    <g id=\"ytick_1\">\n     <g id=\"text_3\">\n      <!-- 1 -->\n      <g style=\"fill:#262626;\" transform=\"translate(53.22875 94.938984)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 794 531 \nL 1825 531 \nL 1825 4091 \nL 703 3866 \nL 703 4441 \nL 1819 4666 \nL 2450 4666 \nL 2450 531 \nL 3481 531 \nL 3481 0 \nL 794 0 \nL 794 531 \nz\n\" id=\"DejaVuSans-31\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-31\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_2\">\n     <g id=\"text_4\">\n      <!-- 20 -->\n      <g style=\"fill:#262626;\" transform=\"translate(44.9575 231.738984)scale(0.13 -0.13)\">\n       <defs>\n        <path d=\"M 2034 4250 \nQ 1547 4250 1301 3770 \nQ 1056 3291 1056 2328 \nQ 1056 1369 1301 889 \nQ 1547 409 2034 409 \nQ 2525 409 2770 889 \nQ 3016 1369 3016 2328 \nQ 3016 3291 2770 3770 \nQ 2525 4250 2034 4250 \nz\nM 2034 4750 \nQ 2819 4750 3233 4129 \nQ 3647 3509 3647 2328 \nQ 3647 1150 3233 529 \nQ 2819 -91 2034 -91 \nQ 1250 -91 836 529 \nQ 422 1150 422 2328 \nQ 422 3509 836 4129 \nQ 1250 4750 2034 4750 \nz\n\" id=\"DejaVuSans-30\" transform=\"scale(0.015625)\"/>\n       </defs>\n       <use xlink:href=\"#DejaVuSans-32\"/>\n       <use x=\"63.623047\" xlink:href=\"#DejaVuSans-30\"/>\n      </g>\n     </g>\n    </g>\n   </g>\n   <g id=\"line2d_1\">\n    <path clip-path=\"url(#peb3a045905)\" d=\"M 360 230.4 \nL 360 86.4 \n\" style=\"fill:none;stroke:#ffffff;stroke-linecap:round;stroke-width:1.75;\"/>\n   </g>\n  </g>\n </g>\n <defs>\n  <clipPath id=\"peb3a045905\">\n   <rect height=\"144\" width=\"576\" x=\"72\" y=\"86.4\"/>\n  </clipPath>\n </defs>\n</svg>\n"
+        }
+    },
+    "messages": [
+        "[HIGH_CORRELATION] warning on column col2",
+        "[HIGH_CORRELATION] warning on column col5",
+        "[UNIFORM] warning on column col2",
+        "[UNIQUE] warning on column col2",
+        "[UNIQUE] warning on column col5"
+    ],
+    "package": {
+        "pandas_profiling_version": "3.0.0",
+        "pandas_profiling_config": "{\"title\": \"Pandas Profiling Report\", \"dataset\": {\"description\": \"\", \"creator\": \"\", \"author\": \"\", \"copyright_holder\": \"\", \"copyright_year\": \"\", \"url\": \"\"}, \"variables\": {\"descriptions\": {}}, \"infer_dtypes\": true, \"show_variable_description\": true, \"pool_size\": 0, \"progress_bar\": true, \"vars\": {\"num\": {\"quantiles\": [0.05, 0.25, 0.5, 0.75, 0.95], \"skewness_threshold\": 20, \"low_categorical_threshold\": 5, \"chi_squared_threshold\": 0.999}, \"cat\": {\"length\": true, \"characters\": true, \"words\": true, \"cardinality_threshold\": 50, \"n_obs\": 5, \"chi_squared_threshold\": 0.999, \"coerce_str_to_date\": false, \"redact\": false, \"histogram_largest\": 50}, \"image\": {\"active\": false, \"exif\": true, \"hash\": true}, \"bool\": {\"n_obs\": 3, \"mappings\": {\"t\": true, \"f\": false, \"yes\": true, \"no\": false, \"y\": true, \"n\": false, \"true\": true, \"false\": false}}, \"path\": {\"active\": false}, \"file\": {\"active\": false}, \"url\": {\"active\": false}}, \"sort\": null, \"missing_diagrams\": {\"bar\": true, \"matrix\": true, \"dendrogram\": true, \"heatmap\": true}, \"correlations\": {\"spearman\": {\"key\": \"spearman\", \"calculate\": true, \"warn_high_correlations\": 10, \"threshold\": 0.5}, \"pearson\": {\"key\": \"pearson\", \"calculate\": true, \"warn_high_correlations\": 10, \"threshold\": 0.5}, \"kendall\": {\"key\": \"kendall\", \"calculate\": true, \"warn_high_correlations\": 10, \"threshold\": 0.5}, \"cramers\": {\"key\": \"cramers\", \"calculate\": true, \"warn_high_correlations\": 10, \"threshold\": 0.5}, \"phi_k\": {\"key\": \"phi_k\", \"calculate\": true, \"warn_high_correlations\": 10, \"threshold\": 0.5}}, \"interactions\": {\"continuous\": true, \"targets\": []}, \"categorical_maximum_correlation_distinct\": 100, \"memory_deep\": false, \"plot\": {\"missing\": {\"force_labels\": true, \"cmap\": \"RdBu\"}, \"image_format\": \"svg\", \"correlation\": {\"cmap\": \"RdBu\", \"bad\": \"#000000\"}, \"dpi\": 800, \"histogram\": {\"bins\": 50, \"max_bins\": 250, \"x_axis_labels\": true}, \"scatter_threshold\": 1000, \"pie\": {\"max_unique\": 10}}, \"duplicates\": {\"head\": 10, \"key\": \"# duplicates\"}, \"samples\": {\"head\": 10, \"tail\": 10, \"random\": 0}, \"reject_variables\": true, \"n_obs_unique\": 10, \"n_freq_table_max\": 10, \"n_extreme_obs\": 10, \"report\": {\"precision\": 10}, \"html\": {\"style\": {\"primary_color\": \"#337ab7\", \"logo\": \"\", \"theme\": null}, \"navbar_show\": true, \"minify_html\": true, \"use_local_assets\": true, \"inline\": true, \"assets_prefix\": null, \"assets_path\": null, \"full_width\": false}, \"notebook\": {\"iframe\": {\"height\": \"800px\", \"width\": \"100%\", \"attribute\": \"srcdoc\"}}}"
+    },
+    "sample": [
+        {
+            "id": "head",
+            "data": [
+                {
+                    "col2": "Wii Sports",
+                    "col5": 82.74
+                },
+                {
+                    "col2": "Super Mario Bros.",
+                    "col5": 40.24
+                },
+                {
+                    "col2": "Mario Kart Wii",
+                    "col5": 35.82
+                },
+                {
+                    "col2": "Wii Sports Resort",
+                    "col5": 33.0
+                },
+                {
+                    "col2": "Pokemon Red/Pokemon Blue",
+                    "col5": 31.37
+                },
+                {
+                    "col2": "Tetris",
+                    "col5": 30.26
+                },
+                {
+                    "col2": "New Super Mario Bros.",
+                    "col5": 30.01
+                },
+                {
+                    "col2": "Wii Play",
+                    "col5": 29.02
+                },
+                {
+                    "col2": "New Super Mario Bros. Wii",
+                    "col5": 28.62
+                },
+                {
+                    "col2": "Duck Hunt",
+                    "col5": 28.31
+                }
+            ],
+            "name": "First rows",
+            "caption": "None"
+        },
+        {
+            "id": "tail",
+            "data": [
+                {
+                    "col2": "Nintendogs",
+                    "col5": 24.76
+                },
+                {
+                    "col2": "Mario Kart DS",
+                    "col5": 23.42
+                },
+                {
+                    "col2": "Pokemon Gold/Pokemon Silver",
+                    "col5": 23.1
+                },
+                {
+                    "col2": "Wii Fit",
+                    "col5": 22.72
+                },
+                {
+                    "col2": "Wii Fit Plus",
+                    "col5": 22.0
+                },
+                {
+                    "col2": "Kinect Adventures!",
+                    "col5": 21.82
+                },
+                {
+                    "col2": "Grand Theft Auto V",
+                    "col5": 21.4
+                },
+                {
+                    "col2": "Grand Theft Auto: San Andreas",
+                    "col5": 20.81
+                },
+                {
+                    "col2": "Super Mario World",
+                    "col5": 20.61
+                },
+                {
+                    "col2": "Brain Age: Train Your Brain in Minutes a Day",
+                    "col5": 20.22
+                }
+            ],
+            "name": "Last rows",
+            "caption": "None"
+        }
+    ],
+    "duplicates": []
+}

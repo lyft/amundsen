@@ -1,0 +1,30 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+$column-lineage-max-width: 800px;
+
+article.column-lineage-wrapper {
+  margin-top: $spacer-3;
+  display: flex;
+  max-width: $column-lineage-max-width;
+
+  .column-lineage-title {
+    @extend %text-title-w3;
+
+    color: $text-secondary;
+    font-style: italic;
+    margin-right: $spacer-2;
+  }
+
+  .column-lineage-list {
+    flex-basis: 50%;
+    flex-grow: 1;
+
+    &:first-child {
+      margin-right: $spacer-2;
+    }
+  }
+}

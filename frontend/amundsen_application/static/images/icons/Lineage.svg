@@ -1,0 +1,25 @@
+<svg width="516" height="304" viewBox="0 0 516 304" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M258 152L508 56.5" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<path d="M258 152L8 8" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<path d="M258 152L8 104.5" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<path d="M258 152L8.5 200.5" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<path d="M258 152L8 296" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<path d="M258 152H508.5" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<path d="M258 152L508 248" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<circle cx="508" cy="56" r="8" fill="#F4F4F9"/>
+<circle cx="508" cy="56" r="7" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<circle cx="258" cy="152" r="12" fill="white"/>
+<circle cx="258" cy="152" r="10" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="4"/>
+<circle cx="508" cy="152" r="8" fill="#F4F4F9"/>
+<circle cx="508" cy="152" r="7" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<circle cx="508" cy="248" r="8" fill="#F4F4F9"/>
+<circle cx="508" cy="248" r="7" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<circle cx="8" cy="8" r="8" fill="#F4F4F9"/>
+<circle cx="8" cy="8" r="7" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<circle cx="8" cy="104" r="8" fill="#F4F4F9"/>
+<circle cx="8" cy="104" r="7" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<circle cx="8" cy="200" r="8" fill="#F4F4F9"/>
+<circle cx="8" cy="200" r="7" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+<circle cx="8" cy="296" r="8" fill="#F4F4F9"/>
+<circle cx="8" cy="296" r="7" stroke="#0C0B31" stroke-opacity="0.16" stroke-width="2"/>
+</svg>

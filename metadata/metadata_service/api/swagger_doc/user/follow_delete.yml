@@ -1,0 +1,40 @@
+Delete the user following information
+---
+tags:
+  - 'user'
+parameters:
+  - name: user_id
+    in: path
+    example: 'roald9@example.org'
+    type: string
+    schema:
+      type: string
+    required: true
+  - name: resource_type
+    in: path
+    example: 'table'
+    description: 'resource_type is ignored at the moment'
+    type: string
+    schema:
+      type: string
+    required: true
+  - name: resource_id
+    in: path
+    example: 'hive://gold.test_schema/test_table1'
+    type: string
+    schema:
+      type: string
+    required: true
+responses:
+  200:
+    description: 'User following for table removed'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/MessageResponse'
+  500:
+    description: 'Internal server error'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

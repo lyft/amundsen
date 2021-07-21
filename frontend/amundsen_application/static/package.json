@@ -1,0 +1,580 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "User interface for Amundsen",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lyft/amundsenfrontendlibrary"
+  },
+  "scripts": {
+    "betterer:update": "betterer --update",
+    "betterer": "betterer",
+    "build-storybook": "cross-env TS_NODE_PROJECT='tsconfig.webpack.json' build-storybook",
+    "build": "cross-env TS_NODE_PROJECT='tsconfig.webpack.json' webpack --progress --config webpack.prod.ts",
+    "check": "npm run eslint:errors && npm run stylelint && npm run type-check && npm run betterer",
+    "clean-sass-vars": "find-unused-sass-variables ./js",
+    "dev-build": "cross-env TS_NODE_PROJECT='tsconfig.webpack.json' webpack --progress --config webpack.dev.ts",
+    "eslint:errors": "eslint --ignore-path=.eslintignore --quiet --ext .js,.jsx,.ts,.tsx .",
+    "eslint:fix": "eslint --fix --ignore-path=.eslintignore --ext .js,.jsx,.ts,.tsx .",
+    "eslint": "eslint --ignore-path=.eslintignore --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,scss}\"",
+    "lint:fix": "npm run eslint:fix",
+    "lint": "npm run eslint",
+    "posttest": "npm run format",
+    "storybook": "cross-env TS_NODE_PROJECT='tsconfig.webpack.json' start-storybook -s ../ -p 6006",
+    "stylelint:fix": "stylelint --fix '**/*.scss'",
+    "stylelint": "stylelint '**/*.scss'",
+    "test-nocov": "cross-env TZ=UTC jest",
+    "test:watch": "cross-env TZ=UTC jest --watch",
+    "test": "cross-env TZ=UTC jest --coverage --collectCoverageFrom=js/**/*.{js,jsx,ts,tsx}",
+    "tsc": "tsc --pretty --noEmit",
+    "type-check": "tsc --pretty --noEmit",
+    "watch": "cross-env TS_NODE_PROJECT='tsconfig.webpack.json' webpack --progress --config webpack.dev.ts --watch"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-decorators": "^7.12.12",
+    "@babel/plugin-proposal-do-expressions": "^7.10.4",
+    "@babel/plugin-proposal-export-default-from": "^7.12.1",
+    "@babel/plugin-proposal-export-namespace-from": "^7.12.1",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.12.13",
+    "@babel/plugin-proposal-json-strings": "^7.12.1",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.12.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
+    "@babel/plugin-proposal-numeric-separator": "^7.12.13",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.16",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.12.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.10.4",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.10",
+    "@betterer/cli": "^3.0.3",
+    "@betterer/eslint": "^3.1.2",
+    "@storybook/addon-actions": "^6.1.2",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.0.26",
+    "@storybook/addons": "^6.1.15",
+    "@storybook/react": "^6.1.9",
+    "@storybook/theming": "^6.0.28",
+    "@types/d3": "^6.7.0",
+    "@types/enzyme": "^3.10.8",
+    "@types/jasmine-matchers": "^0.2.32",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.14.22",
+    "@types/react-redux": "^6.0.14",
+    "@types/react-router": "^4.4.5",
+    "@types/react-tagsinput": "^3.19.7",
+    "@types/storybook__addon-knobs": "^5.2.1",
+    "@types/webpack": "^4.41.26",
+    "@typescript-eslint/eslint-plugin": "4.14.2",
+    "@typescript-eslint/eslint-plugin-tslint": "4.15.0",
+    "@typescript-eslint/parser": "4.6.1",
+    "anysort": "^2.0.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "bootstrap-sass": "^3.4.1",
+    "clean-webpack-plugin": "3.0.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^5.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-import": "^2.21.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "find-unused-sass-variables": "^3.0.0",
+    "html-webpack-plugin": "5.0.0-beta.1",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "jest-css-modules": "^2.1.0",
+    "lint-staged": "^10.5.3",
+    "mini-css-extract-plugin": "^1.3.6",
+    "moment-locales-webpack-plugin": "^1.2.0",
+    "node-sass": "^5.0.0",
+    "postcss": "^7.0.32",
+    "prettier": "^2.2.1",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "redux-mock-store": "^1.5.4",
+    "redux-saga": "^1.1.3",
+    "redux-saga-test-plan": "4.0.0-rc.3",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^0.20.3",
+    "stylelint": "^13.7.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.17.2",
+    "terser-webpack-plugin": "^4.2.3",
+    "ts-jest": "^26.4.1",
+    "ts-loader": "^8.0.6",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.2.3",
+    "webpack": "^5.6.0",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2",
+    "webpack-sources": "^1.4.3",
+    "webworkify-webpack": "2.1.5"
+  },
+  "dependencies": {
+    "@analytics/google-analytics": "^0.5.2",
+    "@analytics/mixpanel": "^0.2.1",
+    "@analytics/segment": "^0.5.1",
+    "analytics": "^0.7.3",
+    "autosize": "^4.0.2",
+    "axios": "0.21.1",
+    "core-js": "^3.6.5",
+    "d3-hierarchy": "^2.0.0",
+    "d3-selection": "^2.0.0",
+    "d3-zoom": "^2.0.0",
+    "form-serialize": "^0.7.2",
+    "fsevents": "*",
+    "jquery": "^3.5.0",
+    "moment-timezone": "^0.5.33",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "react": "^16.13.1",
+    "react-avatar": "^2.5.1",
+    "react-bootstrap": "^0.32.4",
+    "react-code-blocks": "0.0.8",
+    "react-document-title": "^2.0.3",
+    "react-dom": "^16.13.1",
+    "react-js-pagination": "^3.0.3",
+    "react-linkify": "^0.2.2",
+    "react-markdown": "^5.0.3",
+    "react-redux": "^5.1.0",
+    "react-router-dom": "^4.3.1",
+    "react-sanitized-html": "^2.0.0",
+    "react-select": "^2.4.4",
+    "redux": "^4.0.0",
+    "redux-promise": "^0.5.3",
+    "sanitize-html": "^1.27.5",
+    "simple-query-string": "^1.3.2",
+    "throttle-debounce": "^2.3.0",
+    "urijs": "^1.19.6",
+    "uuid": "^8.3.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "usage",
+          "corejs": 3,
+          "debug": true
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import",
+      "@babel/plugin-syntax-import-meta",
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-json-strings",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      "@babel/plugin-proposal-function-sent",
+      "@babel/plugin-proposal-export-namespace-from",
+      "@babel/plugin-proposal-numeric-separator",
+      "@babel/plugin-proposal-throw-expressions",
+      "@babel/plugin-proposal-export-default-from",
+      "@babel/plugin-proposal-logical-assignment-operators",
+      "@babel/plugin-proposal-optional-chaining",
+      [
+        "@babel/plugin-proposal-pipeline-operator",
+        {
+          "proposal": "minimal"
+        }
+      ],
+      "@babel/plugin-proposal-nullish-coalescing-operator",
+      "@babel/plugin-proposal-do-expressions",
+      "@babel/plugin-proposal-function-bind"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx|js)"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "plugin:react/recommended",
+      "airbnb-typescript",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended",
+      "prettier/react"
+    ],
+    "ignorePatterns": [
+      "**/*{.,-}min.js",
+      "**/*.sh",
+      "coverage/**",
+      "dist/*",
+      "images/*",
+      "node_modules/*",
+      "node_modules*/*",
+      "stylesheets/*",
+      "vendor/*",
+      "docs/*",
+      "appbuilder/*",
+      "**/*{.,-}min.js",
+      "**/*.sh",
+      "coverage/**",
+      "dist/*",
+      "images/*",
+      "node_modules/*",
+      "node_modules*/*",
+      "stylesheets/*",
+      "vendor/*",
+      "docs/*",
+      "appbuilder/*",
+      ".src-custom/*"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "tsconfig.json",
+      "sourceType": "module"
+    },
+    "plugins": [
+      "prettier",
+      "@typescript-eslint",
+      "@typescript-eslint/tslint",
+      "jsx-a11y"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error"
+      ],
+      "arrow-parens": [
+        "off",
+        "always"
+      ],
+      "brace-style": [
+        "off",
+        "off"
+      ],
+      "curly": [
+        "error",
+        "multi-line"
+      ],
+      "eqeqeq": [
+        "error",
+        "smart"
+      ],
+      "id-blacklist": [
+        "error",
+        "any",
+        "Number",
+        "number",
+        "String",
+        "string",
+        "Boolean",
+        "boolean",
+        "Undefined",
+        "undefined"
+      ],
+      "one-var": [
+        "error",
+        "never"
+      ],
+      "@typescript-eslint/dot-notation": "warn",
+      "@typescript-eslint/naming-convention": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/member-delimiter-style": [
+        "off",
+        {
+          "multiline": {
+            "delimiter": "none",
+            "requireLast": true
+          },
+          "singleline": {
+            "delimiter": "semi",
+            "requireLast": false
+          }
+        }
+      ],
+      "@typescript-eslint/no-param-reassign": "off",
+      "@typescript-eslint/no-this-alias": "error",
+      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+      "@typescript-eslint/semi": [
+        "off",
+        null
+      ],
+      "@typescript-eslint/tslint/config": [
+        "error",
+        {
+          "lintFile": "./tslint.json",
+          "rules": {
+            "function-name": true,
+            "jsx-boolean-value": true,
+            "jsx-key": true,
+            "jsx-no-bind": true,
+            "jsx-no-lambda": true,
+            "jsx-no-string-ref": true,
+            "jsx-self-close": true,
+            "no-else-after-return": true,
+            "no-function-constructor-with-string-args": true,
+            "no-increment-decrement": true,
+            "object-shorthand-properties-first": true,
+            "ter-prefer-arrow-callback": true
+          }
+        }
+      ],
+      "array-callback-return": "warn",
+      "camelcase": "off",
+      "class-methods-use-this": "off",
+      "consistent-return": "warn",
+      "arrow-body-style": "warn",
+      "default-case": "warn",
+      "func-names": "off",
+      "guard-for-in": "off",
+      "id-match": "error",
+      "import/extensions": "off",
+      "import/first": "warn",
+      "import/no-cycle": "warn",
+      "import/no-extraneous-dependencies": "off",
+      "import/no-named-as-default": "off",
+      "import/no-unresolved": "off",
+      "import/order": "warn",
+      "import/prefer-default-export": "off",
+      "indent": "off",
+      "new-cap": "off",
+      "no-bitwise": "off",
+      "no-case-declarations": "warn",
+      "no-confusing-arrow": "off",
+      "no-continue": "off",
+      "no-duplicate-imports": "error",
+      "no-eval": "error",
+      "no-extra-boolean-cast": "warn",
+      "no-irregular-whitespace": "off",
+      "no-mixed-operators": "off",
+      "no-multi-assign": "off",
+      "no-multi-spaces": "off",
+      "no-multi-str": "warn",
+      "no-nested-ternary": "warn",
+      "no-new-wrappers": "error",
+      "no-param-reassign": "warn",
+      "no-plusplus": "off",
+      "no-prototype-builtins": "off",
+      "no-restricted-globals": "warn",
+      "no-restricted-properties": "off",
+      "no-restricted-syntax": "off",
+      "no-script-url": "warn",
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": "warn",
+      "no-undef": "off",
+      "no-underscore-dangle": "error",
+      "no-unneeded-ternary": "warn",
+      "no-useless-return": "warn",
+      "no-var": "error",
+      "no-void": "warn",
+      "object-shorthand": "error",
+      "padded-blocks": "off",
+      "prefer-arrow-callback": "off",
+      "prefer-const": "error",
+      "prefer-destructuring": "warn",
+      "prefer-promise-reject-errors": "warn",
+      "prefer-template": "off",
+      "radix": "error",
+      "react/button-has-type": "warn",
+      "react/destructuring-assignment": "warn",
+      "react/forbid-prop-types": "off",
+      "react/jsx-boolean-value": "warn",
+      "react/jsx-closing-tag-location": "warn",
+      "react/jsx-indent": "off",
+      "react/jsx-no-bind": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "react/jsx-props-no-spreading": "warn",
+      "react/no-access-state-in-setstate": "warn",
+      "react/no-array-index-key": "off",
+      "react/no-did-update-set-state": "warn",
+      "react/no-string-refs": "off",
+      "react/no-unescaped-entities": "off",
+      "react/no-unused-prop-types": "off",
+      "react/prefer-stateless-function": "warn",
+      "react/require-default-props": "off",
+      "react/prop-types": "off",
+      "react/sort-comp": "warn",
+      "react/state-in-constructor": "off",
+      "react/static-property-placement": "warn",
+      "space-in-parens": [
+        "off",
+        "never"
+      ],
+      "spaced-comment": [
+        "error",
+        "always",
+        {
+          "markers": [
+            "/"
+          ]
+        }
+      ],
+      "jsx-a11y/label-has-associated-control": "warn",
+      "jsx-a11y/control-has-associated-label": "warn",
+      "jsx-a11y/click-events-have-key-events": "warn",
+      "jsx-a11y/no-noninteractive-element-interactions": "warn",
+      "jsx-a11y/no-static-element-interactions": "warn",
+      "jsx-a11y/anchor-is-valid": [
+        "error",
+        {
+          "components": [
+            "Link"
+          ],
+          "specialLink": [
+            "to",
+            "hrefLeft",
+            "hrefRight"
+          ],
+          "aspects": [
+            "noHref",
+            "invalidHref",
+            "preferButton"
+          ]
+        }
+      ]
+    },
+    "globals": {
+      "document": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js",
+            ".jsx",
+            ".json",
+            ".tsx"
+          ]
+        }
+      },
+      "react": {
+        "pragma": "React",
+        "version": "detect"
+      },
+      "propWrapperFunctions": [
+        "forbidExtraProps",
+        "exact",
+        "Object.freeze"
+      ],
+      "import/extensions": [
+        ".js",
+        ".mjs",
+        ".jsx"
+      ],
+      "import/core-modules": [],
+      "import/ignore": [
+        "node_modules",
+        "\\.(coffee|scss|css|less|hbs|svg|json)$"
+      ]
+    }
+  },
+  "prettier": {
+    "endOfLine": "lf",
+    "tabWidth": 2,
+    "semi": true,
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always",
+    "overrides": [
+      {
+        "files": "*.md",
+        "options": {
+          "printWidth": 70,
+          "useTabs": false,
+          "trailingComma": "none",
+          "arrowParens": "avoid",
+          "proseWrap": "never"
+        }
+      }
+    ]
+  },
+  "stylelint": {
+    "plugins": [
+      "stylelint-scss",
+      "stylelint-prettier"
+    ],
+    "rules": {
+      "prettier/prettier": true,
+      "indentation": null,
+      "scss/dollar-variable-colon-space-after": "always",
+      "no-descending-specificity": null,
+      "declaration-colon-newline-after": null,
+      "block-no-empty": null,
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "function",
+            "if",
+            "each",
+            "include",
+            "mixin",
+            "extend"
+          ]
+        }
+      ]
+    },
+    "extends": "stylelint-config-standard"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.jsx": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.tsx": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.scss": [
+      "prettier --write",
+      "npm run stylelint:fix"
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+$description-max-width: 650px;
+$description-max-width-med: 450px;
+$description-max-width-small: 300px;
+
+.column-list {
+  margin: 0;
+}
+
+.stat-title {
+  @extend %text-title-w3;
+}
+
+// Modification for Table to support dropdowns
+// Extra nesting added for fixing specificity issues
+.table-detail-table {
+  margin-bottom: 0;
+
+  .ams-table-body .actions .column-dropdown {
+    &.open {
+      background-color: $body-bg-tertiary;
+
+      .icon {
+        background-color: $icon-bg-dark;
+      }
+    }
+
+    .dropdown-toggle {
+      border: none;
+      border-radius: 4px;
+      height: 32px;
+      padding: 4px;
+      width: 32px;
+
+      .icon {
+        background-color: $icon-bg;
+        height: 22px;
+        margin: 0;
+        -webkit-mask-size: 22px;
+        mask-size: 22px;
+        width: 22px;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: $body-bg-secondary;
+
+        .icon {
+          background-color: $icon-bg-dark;
+        }
+      }
+    }
+  }
+
+  .ams-table-header {
+    background-color: white;
+  }
+
+  .expanded-row-container {
+    padding-bottom: $spacer-2;
+  }
+
+  // Editable section modifications
+  .stat-collection-info {
+    padding-top: $spacer-1;
+    font-style: italic;
+  }
+
+  .editable-section-label-wrapper {
+    margin-bottom: 0 !important;
+  }
+
+  .markdown-wrapper p {
+    margin-top: 0;
+    white-space: normal;
+  }
+
+  .column-desc {
+    @extend %text-body-w3;
+
+    max-width: $description-max-width-small;
+
+    @media (min-width: $screen-md-max) {
+      max-width: $description-max-width-med;
+    }
+
+    @media (min-width: $screen-lg-max) {
+      max-width: $description-max-width;
+    }
+  }
+
+  .has-child-expanded .column-desc {
+    display: none;
+  }
+
+  .usage-value {
+    font-family: $font-family-monospace-code;
+  }
+}

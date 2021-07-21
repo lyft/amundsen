@@ -1,0 +1,33 @@
+Upserts description of a resource
+---
+tags:
+  - 'table'
+  - 'dashboard'
+parameters:
+  - name: id
+    in: path
+    type: string
+    schema:
+      type: string
+    required: true
+    example: 'dynamo://gold.test_schema/test_table2'
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: '#/components/schemas/Description'
+        description: Resource description
+        required: true
+responses:
+  200:
+    description: 'Empty response'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/EmptyResponse'
+  404:
+    description: 'Resource not found'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/ErrorResponse'

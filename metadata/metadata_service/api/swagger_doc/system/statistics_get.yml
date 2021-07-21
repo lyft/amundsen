@@ -1,0 +1,11 @@
+Gets system statistics for database
+---
+tags:
+  - 'system'
+responses:
+  200:
+    description: 'System statistics metrics'
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/StatisticsDetail'

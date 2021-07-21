@@ -1,0 +1,103 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+.list-group-item .resource-list-item {
+  color: $text-primary;
+  display: flex;
+  flex-direction: row;
+  height: 96px;
+  padding: 24px;
+  text-decoration: none;
+
+  img.icon.resource-icon,
+  .sb-avatar {
+    margin: auto 16px auto 0;
+  }
+
+  .icon-right {
+    margin: auto 0 auto auto;
+    opacity: 0;
+  }
+
+  &:hover .icon-right,
+  &:focus .icon-right {
+    opacity: 1;
+  }
+
+  .bookmark-icon {
+    margin: -6px 0 -4px 4px;
+  }
+
+  .resource-info {
+    display: flex;
+    flex: 7;
+    margin-right: 24px;
+    min-width: 0;
+
+    .resource-info-text {
+      max-width: calc(100% - 32px);
+    }
+
+    .resource-name {
+      @extend %text-title-w2;
+
+      color: $resource-title-color;
+      display: flex;
+
+      .dashboard-group {
+        color: $text-secondary;
+        white-space: nowrap;
+      }
+
+      .dashboard-name {
+        margin-right: $spacer-2;
+      }
+    }
+
+    ul {
+      display: flex;
+      list-style-type: unset;
+      padding: 0;
+    }
+
+    li {
+      margin-left: 12px;
+      margin-right: 12px;
+
+      &:first-child {
+        list-style-type: none;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .resource-source {
+    flex: 2;
+    margin: auto $spacer-3;
+  }
+
+  .resource-badges {
+    display: flex;
+    flex: 3;
+    flex-wrap: wrap;
+    margin-bottom: auto;
+    margin-left: $spacer-3;
+    margin-top: auto;
+
+    .flag {
+      margin: 4px;
+    }
+  }
+
+  .resource-entity {
+    display: flex;
+    flex: 2;
+    flex-wrap: wrap;
+    margin-bottom: auto;
+    margin-left: $spacer-3;
+    margin-top: auto;
+  }
+}

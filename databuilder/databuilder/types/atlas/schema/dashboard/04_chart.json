@@ -1,0 +1,56 @@
+{
+  "entityDefs": [
+    {
+      "name": "DashboardChart",
+      "superTypes": [
+        "Asset"
+      ],
+      "serviceType": "amundsen",
+      "attributeDefs": [
+        {
+          "name": "type",
+          "typeName": "string",
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        },
+        {
+          "name": "url",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "DashboardQuery__DashboardChart",
+      "typeVersion": "2.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "_DashboardQuery.DashboardChart",
+      "endDef1": {
+        "type": "DashboardQuery",
+        "name": "charts",
+        "isContainer": true,
+        "cardinality": "SET",
+        "isLegacyAttribute": true
+      },
+      "endDef2": {
+        "type": "DashboardChart",
+        "name": "query",
+        "isContainer": false,
+        "cardinality": "SINGLE",
+        "isLegacyAttribute": true
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}

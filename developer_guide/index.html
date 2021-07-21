@@ -1,0 +1,1908 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Amundsen is a metadata driven application for improving the productivity of data analysts, data scientists and engineers when interacting with data.">
+      
+      
+      
+        <meta name="author" content="Amundsen Project Authors.">
+      
+      
+        <link rel="canonical" href="https://www.amundsen.io/amundsen/developer_guide/">
+      
+      <link rel="icon" href="../img/logos/amundsen_mark_orange.svg">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>Overview - Amundsen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="#2b1b81" data-md-color-accent="#2b1b81">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#developer-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Amundsen" class="md-header__button md-logo" aria-label="Amundsen" data-md-component="logo">
+      
+  <img src="../img/logos/amundsen_mark_orange.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Amundsen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/amundsen-io/amundsen/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Amundsen
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Amundsen" class="md-nav__button md-logo" aria-label="Amundsen" data-md-component="logo">
+      
+  <img src="../img/logos/amundsen_mark_orange.svg" alt="logo">
+
+    </a>
+    Amundsen
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/amundsen-io/amundsen/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Amundsen
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Developer Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Developer Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Overview
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cloning-the-repository" class="md-nav__link">
+    Cloning the Repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    Local Development
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ensure-you-have-the-latest-code" class="md-nav__link">
+    Ensure you have the latest code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-local-changes" class="md-nav__link">
+    Building local changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-data" class="md-nav__link">
+    Local data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-amundsen-frontend-locally" class="md-nav__link">
+    Testing Amundsen frontend locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-dockerbuild-file" class="md-nav__link">
+    Developing Dockerbuild file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-and-testing-amundsen-frontend-docker-image-or-any-other-service" class="md-nav__link">
+    Building and Testing Amundsen Frontend Docker Image (or any other service)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushing-image-to-ecr-and-using-in-k8s" class="md-nav__link">
+    Pushing image to ECR and using in K8s
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-search-service-in-local-using-staging-or-production-data" class="md-nav__link">
+    Test search service in local using staging or production data
+  </a>
+  
+    <nav class="md-nav" aria-label="Test search service in local using staging or production data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standup-elasticsearch" class="md-nav__link">
+    Standup Elasticsearch
+  </a>
+  
+    <nav class="md-nav" aria-label="Standup Elasticsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-standup-kibana" class="md-nav__link">
+    (Optional) Standup Kibana
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-table-index-through-databuilder" class="md-nav__link">
+    Publish Table index through Databuilder
+  </a>
+  
+    <nav class="md-nav" aria-label="Publish Table index through Databuilder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-databuilder" class="md-nav__link">
+    Install Databuilder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-table-index" class="md-nav__link">
+    Publish Table index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standup-search-service" class="md-nav__link">
+    Standup Search service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../issue_labeling/" class="md-nav__link">
+        Issue and Feature Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        Contributing Guide
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        User Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Quick Start
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/index-postgres/" class="md-nav__link">
+        How to index metadata for real life databases
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/data-preview-with-superset/" class="md-nav__link">
+        How to setup a preview client with Apache Superset
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/user-profiles/" class="md-nav__link">
+        How to setup user profiles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../databuilder/docs/dashboard_ingestion_guide/" class="md-nav__link">
+        How to ingest Dashboard
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/how-to-track-user-metric/" class="md-nav__link">
+        How to track user metric for Amundsen
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/badges/" class="md-nav__link">
+        How to add table level and column level badges
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/how-to-search-effective/" class="md-nav__link">
+        How to search Amundsen effectively
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/how-to-use-amundsen-with-aws-neptune/" class="md-nav__link">
+        How to use Amundsen with Amazon Neptune
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      <label class="md-nav__link" for="__nav_4_3">
+        Deployment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deployment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/oidc/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation-aws-ecs/aws-ecs-deployment/" class="md-nav__link">
+        AWS ECS Installation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s_install/" class="md-nav__link">
+        K8S Installation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Components
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Components" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      <label class="md-nav__link" for="__nav_5_1">
+        Frontend
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Frontend" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Frontend
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1_2" type="checkbox" id="__nav_5_1_2" >
+      
+      <label class="md-nav__link" for="__nav_5_1_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/docs/application_config/" class="md-nav__link">
+        Application Config
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/docs/configuration/" class="md-nav__link">
+        React Configuration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/docs/flask_config/" class="md-nav__link">
+        Flask Configuration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/docs/examples/superset_preview_client/" class="md-nav__link">
+        Preview Client Setup
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/docs/developer_guide/" class="md-nav__link">
+        FE Developer Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/docs/installation/" class="md-nav__link">
+        FE Installation Guide
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frontend/docs/recommended_practices/" class="md-nav__link">
+        Recommended Practices
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      <label class="md-nav__link" for="__nav_5_2">
+        Search
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Search" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Search
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" type="checkbox" id="__nav_5_2_2" >
+      
+      <label class="md-nav__link" for="__nav_5_2_2">
+        Proxy
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Proxy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Proxy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search/docs/atlas-search/" class="md-nav__link">
+        Atlas Backend
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      <label class="md-nav__link" for="__nav_5_3">
+        Metadata
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Metadata" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Metadata
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" type="checkbox" id="__nav_5_3_2" >
+      
+      <label class="md-nav__link" for="__nav_5_3_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/docs/configurations/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/docs/structure/" class="md-nav__link">
+        Metadata API Structure
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4" type="checkbox" id="__nav_5_3_4" >
+      
+      <label class="md-nav__link" for="__nav_5_3_4">
+        Proxy
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Proxy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Proxy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_4_1" type="checkbox" id="__nav_5_3_4_1" >
+      
+      <label class="md-nav__link" for="__nav_5_3_4_1">
+        Atlas Backend
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Atlas Backend" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Atlas Backend
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/docs/proxy/atlas_proxy/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/docs/proxy/atlas/popular_tables/" class="md-nav__link">
+        Popular Table
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/docs/proxy/gremlin/" class="md-nav__link">
+        Gremlin Backend
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadata/docs/proxy/neptune/" class="md-nav__link">
+        Neptune Backend
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      <label class="md-nav__link" for="__nav_5_4">
+        Databuilder
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Databuilder" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Databuilder
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../databuilder/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../databuilder/docs/models/" class="md-nav__link">
+        Models
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../databuilder/docs/dashboard_ingestion_guide/" class="md-nav__link">
+        Dashboard Ingestion guide
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      <label class="md-nav__link" for="__nav_5_5">
+        Common
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Common" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Common
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cloning-the-repository" class="md-nav__link">
+    Cloning the Repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    Local Development
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ensure-you-have-the-latest-code" class="md-nav__link">
+    Ensure you have the latest code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-local-changes" class="md-nav__link">
+    Building local changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-data" class="md-nav__link">
+    Local data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-amundsen-frontend-locally" class="md-nav__link">
+    Testing Amundsen frontend locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-dockerbuild-file" class="md-nav__link">
+    Developing Dockerbuild file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-and-testing-amundsen-frontend-docker-image-or-any-other-service" class="md-nav__link">
+    Building and Testing Amundsen Frontend Docker Image (or any other service)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushing-image-to-ecr-and-using-in-k8s" class="md-nav__link">
+    Pushing image to ECR and using in K8s
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-search-service-in-local-using-staging-or-production-data" class="md-nav__link">
+    Test search service in local using staging or production data
+  </a>
+  
+    <nav class="md-nav" aria-label="Test search service in local using staging or production data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standup-elasticsearch" class="md-nav__link">
+    Standup Elasticsearch
+  </a>
+  
+    <nav class="md-nav" aria-label="Standup Elasticsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-standup-kibana" class="md-nav__link">
+    (Optional) Standup Kibana
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-table-index-through-databuilder" class="md-nav__link">
+    Publish Table index through Databuilder
+  </a>
+  
+    <nav class="md-nav" aria-label="Publish Table index through Databuilder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-databuilder" class="md-nav__link">
+    Install Databuilder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publish-table-index" class="md-nav__link">
+    Publish Table index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standup-search-service" class="md-nav__link">
+    Standup Search service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+  <a href="https://github.com/amundsen-io/amundsen/edit/master/docs/developer_guide.md" title="Edit this page" class="md-icon md-content__icon">
+    &#xE3C9;<!-- edit -->
+  </a>
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it
+  doesn't, the page title (or respectively site name) is used
+  as the main headline.
+-->
+
+
+<!-- Content -->
+<h1 id="developer-guide">Developer Guide<a class="headerlink" href="#developer-guide" title="Permanent link">&para;</a></h1>
+<p>This repository uses <code>git submodules</code> to link the code for all of Amundsen&rsquo;s libraries into a central location. This document offers guidance on how to develop locally with this setup.</p>
+<p>This workflow leverages <code>docker</code> and <code>docker-compose</code> in a very similar manner to our <a href="https://github.com/amundsen-io/amundsen/blob/master/docs/installation.md#bootstrap-a-default-version-of-amundsen-using-docker">installation documentation</a>, to spin up instances of all 3 of Amundsen&rsquo;s services connected with an instances of Neo4j and ElasticSearch which ingest dummy data.</p>
+<h2 id="cloning-the-repository">Cloning the Repository<a class="headerlink" href="#cloning-the-repository" title="Permanent link">&para;</a></h2>
+<p>If cloning the repository for the first time, run the following command to clone the repository and pull the submodules:</p>
+<div class="highlight"><pre><span></span><code>$ git clone --recursive git@github.com:amundsen-io/amundsen.git
+</code></pre></div>
+<p>If  you have already cloned the repository but your submodules are empty, from your cloned <code>amundsen</code> directory run:</p>
+<div class="highlight"><pre><span></span><code>$ git submodule init
+$ git submodule update
+</code></pre></div>
+<p>After cloning the repository you can change directories into any of the upstream folders and work in those directories as you normally would. You will have full access to all of the git features, and working in the upstream directories will function the same as if you were working in a cloned version of that repository.</p>
+<h2 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h2>
+<h3 id="ensure-you-have-the-latest-code">Ensure you have the latest code<a class="headerlink" href="#ensure-you-have-the-latest-code" title="Permanent link">&para;</a></h3>
+<p>Beyond running <code>git pull origin master</code> in your local <code>amundsen</code> directory, the submodules for our libraries also have to be manually updated to point to the latest versions of each libraries&rsquo; code. When creating a new branch on <code>amundsen</code> to begin local work, ensure your local submodules are pointing to the latest code for each library by running:</p>
+<div class="highlight"><pre><span></span><code>$ git submodule update --remote
+</code></pre></div>
+<h3 id="building-local-changes">Building local changes<a class="headerlink" href="#building-local-changes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>First, be sure that you have first followed the <a href="https://github.com/amundsen-io/amundsen/blob/master/docs/installation.md#bootstrap-a-default-version-of-amundsen-using-docker">installation documentation</a> and can spin up a default version of Amundsen without any issues. If you have already completed this step, be sure to have stopped and removed those containers by running:
+    <div class="highlight"><pre><span></span><code>$ docker-compose -f docker-amundsen.yml down
+</code></pre></div></p>
+</li>
+<li>
+<p>Launch the containers needed for local development (the <code>-d</code> option launches in background) :
+    <div class="highlight"><pre><span></span><code>$ docker-compose -f docker-amundsen-local.yml up -d
+</code></pre></div></p>
+</li>
+<li>
+<p>After making local changes rebuild and relaunch modified containers:
+    <div class="highlight"><pre><span></span><code>$ docker-compose -f docker-amundsen-local.yml build <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> docker-compose -f docker-amundsen-local.yml up -d
+</code></pre></div></p>
+</li>
+<li>
+<p>Optionally, to still tail logs, in a different terminal you can:
+    <div class="highlight"><pre><span></span><code>$ docker-compose -f docker-amundsen-local.yml logs --tail<span class="o">=</span><span class="m">3</span> -f
+<span class="c1">## - or just tail single container(s):</span>
+$ docker logs amundsenmetadata --tail <span class="m">10</span> -f
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="local-data">Local data<a class="headerlink" href="#local-data" title="Permanent link">&para;</a></h3>
+<p>Local data is persisted under .local/ (at the root of the project), clean up the following directories to reset the databases:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#  reset elasticsearch</span>
+rm -rf .local/elasticsearch
+
+<span class="c1">#  reset neo4j</span>
+rm -rf .local/neo4j
+</code></pre></div>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
+<ol>
+<li>If you have made a change in <code>amundsen/amundsenfrontendlibrary</code> and do not see your changes, this could be due to your browser&rsquo;s caching behaviors. Either execute a hard refresh (recommended) or clear your browser cache (last resort).</li>
+</ol>
+<h3 id="testing-amundsen-frontend-locally">Testing Amundsen frontend locally<a class="headerlink" href="#testing-amundsen-frontend-locally" title="Permanent link">&para;</a></h3>
+<p>Amundsen has an instruction regarding local frontend launch <a href="/frontend/docs/installation.md">here</a></p>
+<p>Here are some additional changes you might need for windows (OS Win 10):</p>
+<ul>
+<li>amundsen_application/config.py, set LOCAL_HOST = &lsquo;127.0.0.1&rsquo;</li>
+<li>amundsen_application/wsgi.py, set host=&lsquo;127.0.0.1&rsquo;
+ (for other microservices also need to change <code>port</code> here because the default is 5000)</li>
+</ul>
+<p>(using that approach you can run locally another microservices as well if needed)  </p>
+<p>Once you have a running frontend microservice, the rest of Amundsen components can be launched with docker-compose
+from the root Amundsen project (don&rsquo;t forget to remove frontend microservice section from docker-amundsen.yml):
+<code>docker-compose -f docker-amundsen.yml up</code>
+<a href="https://github.com/amundsen-io/amundsen/blob/master/docs/installation.md">https://github.com/amundsen-io/amundsen/blob/master/docs/installation.md</a></p>
+<h3 id="developing-dockerbuild-file">Developing Dockerbuild file<a class="headerlink" href="#developing-dockerbuild-file" title="Permanent link">&para;</a></h3>
+<p>When making edits to Dockerbuild file (docker-amundsen-local.yml) it is good to see what you are getting wrong locally.
+To do that you build it <code>docker build .</code></p>
+<p>And then the output should include a line like so at the step right before it failed:</p>
+<div class="highlight"><pre><span></span><code>Step <span class="m">3</span>/20 : RUN git clone --recursive git://github.com/amundsen-io/amundsenfrontendlibrary.git  <span class="o">&amp;&amp;</span> <span class="nb">cd</span> amundsenfrontendlibrary  <span class="o">&amp;&amp;</span> git submodule foreach git pull origin master
+ ---&gt; Using cache
+ ---&gt; ec052612747e
+</code></pre></div>
+<p>You can then launch a container from this image like so</p>
+<div class="highlight"><pre><span></span><code>docker container run -it --name<span class="o">=</span>debug ec052612747e /bin/sh
+</code></pre></div>
+<h3 id="building-and-testing-amundsen-frontend-docker-image-or-any-other-service">Building and Testing Amundsen Frontend Docker Image (or any other service)<a class="headerlink" href="#building-and-testing-amundsen-frontend-docker-image-or-any-other-service" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Build your image
+<code>docker build --no-cache .</code> it is recommended that you use &ndash;no-cache so you aren&rsquo;t accidentally using an old version of an image.</li>
+<li>Determine the hash of your images by running <code>docker images</code> and getting the id of your most recent image</li>
+<li>Go to your locally cloned amundsen repo and edit the docker compose file &ldquo;docker-amundsen.yml&rdquo; to have 
+the amundsenfrontend image point to the hash of the image that you built</li>
+</ol>
+<div class="highlight"><pre><span></span><code>  <span class="nt">amundsenfrontend</span><span class="p">:</span>
+      <span class="c1">#image: amundsendev/amundsen-frontend:1.0.9</span>
+      <span class="c1">#image: 1234.dkr.ecr.us-west-2.amazonaws.com/edmunds/amundsen-frontend:2020-01-21</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0312d0ac3938</span>
+</code></pre></div>
+<h3 id="pushing-image-to-ecr-and-using-in-k8s">Pushing image to ECR and using in K8s<a class="headerlink" href="#pushing-image-to-ecr-and-using-in-k8s" title="Permanent link">&para;</a></h3>
+<p>Assumptions:</p>
+<ul>
+<li>You have an aws account</li>
+<li>
+<p>You have aws command line set up and ready to go</p>
+</li>
+<li>
+<p>Choose an ECR repository you&rsquo;d like to push to (or create a new one)
+<a href="https://us-west-2.console.aws.amazon.com/ecr/repositories">https://us-west-2.console.aws.amazon.com/ecr/repositories</a></p>
+</li>
+<li>
+<p>Click onto repository name and open &ldquo;View push commands&rdquo; cheat sheet
+2b. Login</p>
+<p>it would look something like this:</p>
+<p><code>aws ecr get-login --no-include-email --region us-west-2</code>
+Then execute what is returned by above</p>
+</li>
+<li>
+<p>Follow the instructions (you may need to install first AWS CLI, aws-okta and configure your AWS credentials if you haven&rsquo;t done it before)
+Given image name is amundsen-frontend, build, tag and push commands will be the following:
+Here you can see the tag is YYYY-MM-dd but you should choose whatever you like. 
+    <div class="highlight"><pre><span></span><code>docker build -t amundsen-frontend:{YYYY-MM-dd} .
+docker tag amundsen-frontend:{YYYY-MM-dd} &lt;?&gt;.dkr.ecr.&lt;?&gt;.amazonaws.com/amundsen-frontend:{YYYY-MM-dd}
+docker push &lt;?&gt;.dkr.ecr.&lt;?&gt;.amazonaws.com/amundsen-frontend:{YYYY-MM-dd}
+</code></pre></div></p>
+</li>
+<li>
+<p>Go to the <code>helm/{env}/amundsen/values.yaml</code> and modify to the image tag that you want to use.</p>
+</li>
+<li>
+<p>When updating amundsen-frontend, make sure to do a hard refresh of amundsen with emptying the cache,
+otherwise you will see stale version of webpage.</p>
+</li>
+</ul>
+<h3 id="test-search-service-in-local-using-staging-or-production-data">Test search service in local using staging or production data<a class="headerlink" href="#test-search-service-in-local-using-staging-or-production-data" title="Permanent link">&para;</a></h3>
+<p>To test in local, we need to stand up Elasticsearch, publish index data, and stand up Elastic search</p>
+<h4 id="standup-elasticsearch">Standup Elasticsearch<a class="headerlink" href="#standup-elasticsearch" title="Permanent link">&para;</a></h4>
+<p>Running Elasticsearch via Docker. To install Docker, go <a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac">here</a>
+Example:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>docker run -p 9200:9200  -p 9300:9300  -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+</code></pre></div>
+</td></tr></table>
+<h5 id="optional-standup-kibana">(Optional) Standup Kibana<a class="headerlink" href="#optional-standup-kibana" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>docker run --link ecstatic_edison:elasticsearch -p 5601:5601 docker.elastic.co/kibana/kibana:6.2.4
+</code></pre></div>
+</td></tr></table>
+<p>*Note that <code>ecstatic_edison</code> is container_id of Elasticsearch container. Update it if it&rsquo;s different by looking at <code>docker ps</code></p>
+<h4 id="publish-table-index-through-databuilder">Publish Table index through Databuilder<a class="headerlink" href="#publish-table-index-through-databuilder" title="Permanent link">&para;</a></h4>
+<h5 id="install-databuilder">Install Databuilder<a class="headerlink" href="#install-databuilder" title="Permanent link">&para;</a></h5>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>cd ~/src/
+git clone git@github.com:amundsen-io/amundsendatabuilder.git
+cd ~/src/amundsendatabuilder
+virtualenv venv
+source venv/bin/activate
+python setup.py install
+pip install -r requirements.txt
+</code></pre></div>
+</td></tr></table>
+<h5 id="publish-table-index">Publish Table index<a class="headerlink" href="#publish-table-index" title="Permanent link">&para;</a></h5>
+<p>First fill this two environment variables: <code>NEO4J_ENDPOINT</code> , <code>CREDENTIALS_NEO4J_PASSWORD</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ python
+
+import logging  
+import os  
+import uuid
+
+from elasticsearch import Elasticsearch  
+from pyhocon import ConfigFactory
+
+from databuilder.extractor.neo4j_extractor import Neo4jExtractor  
+from databuilder.extractor.neo4j_search_data_extractor import Neo4jSearchDataExtractor  
+from databuilder.job.job import DefaultJob  
+from databuilder.loader.file_system_elasticsearch_json_loader import FSElasticsearchJSONLoader  
+from databuilder.publisher.elasticsearch_publisher import ElasticsearchPublisher  
+from databuilder.task.task import DefaultTask
+
+logging.basicConfig(level=logging.INFO)
+
+neo4j_user = &#39;neo4j&#39;  
+neo4j_password = os.getenv(&#39;CREDENTIALS_NEO4J_PASSWORD&#39;)  
+neo4j_endpoint = os.getenv(&#39;NEO4J_ENDPOINT&#39;)
+
+elasticsearch_client = Elasticsearch([  
+    {&#39;host&#39;: &#39;localhost&#39;},  
+])
+
+data_file_path = &#39;/var/tmp/amundsen/elasticsearch_upload/es_data.json&#39;
+
+elasticsearch_new_index = &#39;table_search_index_{hex_str}&#39;.format(hex_str=uuid.uuid4().hex)
+logging.info(&quot;Elasticsearch new index: &quot; + elasticsearch_new_index)
+
+elasticsearch_doc_type = &#39;table&#39;  
+elasticsearch_index_alias = &#39;table_search_index&#39;
+
+job_config = ConfigFactory.from_dict({  
+    &#39;extractor.search_data.extractor.neo4j.{}&#39;.format(Neo4jExtractor.GRAPH_URL_CONFIG_KEY):  
+        neo4j_endpoint,  
+  &#39;extractor.search_data.extractor.neo4j.{}&#39;.format(Neo4jExtractor.MODEL_CLASS_CONFIG_KEY):  
+        &#39;databuilder.models.table_elasticsearch_document.TableESDocument&#39;,  
+  &#39;extractor.search_data.extractor.neo4j.{}&#39;.format(Neo4jExtractor.NEO4J_AUTH_USER):  
+        neo4j_user,  
+  &#39;extractor.search_data.extractor.neo4j.{}&#39;.format(Neo4jExtractor.NEO4J_AUTH_PW):  
+        neo4j_password,  
+  &#39;loader.filesystem.elasticsearch.{}&#39;.format(FSElasticsearchJSONLoader.FILE_PATH_CONFIG_KEY):  
+        data_file_path,  
+  &#39;loader.filesystem.elasticsearch.{}&#39;.format(FSElasticsearchJSONLoader.FILE_MODE_CONFIG_KEY):  
+        &#39;w&#39;,  
+  &#39;publisher.elasticsearch.{}&#39;.format(ElasticsearchPublisher.FILE_PATH_CONFIG_KEY):  
+        data_file_path,  
+  &#39;publisher.elasticsearch.{}&#39;.format(ElasticsearchPublisher.FILE_MODE_CONFIG_KEY):  
+        &#39;r&#39;,  
+  &#39;publisher.elasticsearch.{}&#39;.format(ElasticsearchPublisher.ELASTICSEARCH_CLIENT_CONFIG_KEY):  
+        elasticsearch_client,  
+  &#39;publisher.elasticsearch.{}&#39;.format(ElasticsearchPublisher.ELASTICSEARCH_NEW_INDEX_CONFIG_KEY):  
+        elasticsearch_new_index,  
+  &#39;publisher.elasticsearch.{}&#39;.format(ElasticsearchPublisher.ELASTICSEARCH_DOC_TYPE_CONFIG_KEY):  
+        elasticsearch_doc_type,  
+  &#39;publisher.elasticsearch.{}&#39;.format(ElasticsearchPublisher.ELASTICSEARCH_ALIAS_CONFIG_KEY):  
+        elasticsearch_index_alias,  
+})
+
+job = DefaultJob(conf=job_config,  
+  task=DefaultTask(extractor=Neo4jSearchDataExtractor(),  
+  loader=FSElasticsearchJSONLoader()),  
+  publisher=ElasticsearchPublisher())  
+if neo4j_password:  
+    job.launch()  
+else:  
+    raise ValueError(&#39;Add environment variable CREDENTIALS_NEO4J_PASSWORD&#39;)
+</code></pre></div>
+</td></tr></table>
+<h4 id="standup-search-service">Standup Search service<a class="headerlink" href="#standup-search-service" title="Permanent link">&para;</a></h4>
+<p>Follow this <a href="/search#instructions-to-start-the-search-service-from-source">instruction</a></p>
+<p>Test the search API with this command:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>curl -vv &quot;http://localhost:5001/search?query_term=test&amp;page_index=0&quot;
+</code></pre></div>
+</td></tr></table>
+
+<!-- Source files -->
+
+  
+
+
+<!-- Support for mkdocs-git-revision-date-localized-plugin -->
+
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Architecture
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../issue_labeling/" class="md-footer__link md-footer__link--next" aria-label="Next: Issue and Feature Labeling" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Issue and Feature Labeling
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018-2020 Amundsen Project Authors.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://www.amundsen.io/" target="_blank" rel="noopener" title="www.amundsen.io" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/amundsen-io" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/amundsenio" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/company/the-linux-foundation/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>

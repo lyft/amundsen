@@ -1,0 +1,42 @@
+// Copyright Contributors to the Amundsen project.
+// SPDX-License-Identifier: Apache-2.0
+
+@import 'variables';
+@import 'typography';
+
+$browse-tags-link-font-size: 16px;
+
+.header-hr {
+  border: 2px solid $brand-color-4;
+}
+
+.tag-list-title {
+  @extend %text-title-w1;
+
+  margin-bottom: $spacer-2;
+}
+
+.tags-list {
+  margin: 0 -4px;
+}
+
+.browse-tags-link {
+  font-size: $browse-tags-link-font-size;
+  text-decoration: none;
+  display: block;
+  margin-top: $spacer-1;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+.section-label {
+  display: block;
+  font-weight: $font-weight-body-regular;
+  margin-top: $spacer-3;
+  margin-bottom: $spacer-2;
+}

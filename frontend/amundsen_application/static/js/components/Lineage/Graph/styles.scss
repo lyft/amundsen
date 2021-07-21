@@ -1,0 +1,76 @@
+@import 'variables';
+@import 'typography';
+
+$svg-label-width: 150px;
+$svg-label-height: 30px;
+$graph-node-color-fill: #fff;
+$graph-node-color-outline: $purple60;
+$graph-node-stroke-width: 3px;
+$graph-node-collapsed-font-size: 25px;
+$svg-link-color-outline: rgba(12, 11, 49, 0.16);
+$svg-link-stroke-width: 2px;
+
+.lineage-graph {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  vertical-align: top;
+  overflow: hidden;
+  background: linear-gradient(90deg, $gray5 50%, $gray0 50%);
+
+  .svg-content {
+    display: block;
+    margin: auto;
+  }
+}
+
+.graph-direction-label {
+  color: $gray30;
+  width: $svg-label-width;
+  height: $svg-label-height;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  &.upstream-label {
+    direction: rtl;
+  }
+
+  img.icon {
+    background-color: $gray30;
+  }
+}
+
+.graph-node {
+  cursor: pointer;
+}
+
+.graph-node circle {
+  fill: $graph-node-color-fill;
+  stroke: $graph-node-color-outline;
+  stroke-width: $graph-node-stroke-width;
+}
+
+.graph-node text {
+  font: $font-size-small;
+
+  &.plus {
+    fill: $purple60;
+    font-size: $graph-node-collapsed-font-size;
+  }
+}
+
+.graph-link {
+  fill: none;
+  stroke: $svg-link-color-outline;
+  stroke-width: $svg-link-stroke-width;
+}
+
+.upstream-tree text {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+}

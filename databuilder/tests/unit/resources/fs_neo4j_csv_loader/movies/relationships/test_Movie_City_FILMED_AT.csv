@@ -1,0 +1,3 @@
+"END_KEY","START_LABEL","END_LABEL","START_KEY","TYPE","REVERSE_TYPE"
+"city://San Diego","Movie","City","movie://Top Gun","FILMED_AT","APPEARS_IN"
+"city://Oakland","Movie","City","movie://Top Gun","FILMED_AT","APPEARS_IN"
