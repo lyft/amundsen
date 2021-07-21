@@ -41,20 +41,21 @@ This is setup templates for deploying [amundsen](https://github.com/amundsen-io/
 | elasticsearch.enabled | bool | `true` | set this to false, if you want to provide your own ES instance. |
 | elasticsearch.master.replicas | int | `1` | only running amundsen on 1 master replica |
 | environment | string | `"dev"` | **DEPRECATED - its not standard to pre construct urls this way.** The environment the app is running in. Used to construct dns hostnames (on aws only) and ports. |
-| frontEnd.OIDC_AUTH_SERVER_ID | string | `nil` | The authorization server id for OIDC. |
-| frontEnd.OIDC_CLIENT_ID | string | `nil` | The client id for OIDC. |
-| frontEnd.OIDC_CLIENT_SECRET | string | `""` | The client secret for OIDC. |
-| frontEnd.OIDC_ORG_URL | string | `nil` | The organization URL for OIDC. |
-| frontEnd.OVERWRITE_REDIRECT_URI | string | `nil` | The redirect uri for OIDC. |
+| frontEnd.OIDC_AUTH_SERVER_ID **(DEPRECATED)** | string | `nil` | The authorization server id for OIDC. |
+| frontEnd.OIDC_CLIENT_ID **(DEPRECATED)** | string | `nil` | The client id for OIDC. |
+| frontEnd.OIDC_CLIENT_SECRET **(DEPRECATED)** | string | `""` | The client secret for OIDC. |
+| frontEnd.OIDC_ORG_URL **(DEPRECATED)** | string | `nil` | The organization URL for OIDC. |
+| frontEnd.OVERWRITE_REDIRECT_URI **(DEPRECATED)** | string | `nil` | The redirect uri for OIDC. |
 | frontEnd.affinity | object | `{}` | Frontend pod specific affinity. |
 | frontEnd.annotations | object | `{}` | Frontend service specific tolerations. |
 | frontEnd.baseUrl | string | `"http://localhost"` | used by notifications util to provide links to amundsen pages in emails. |
 | frontEnd.createOidcSecret | bool | `false` | OIDC needs some configuration. If you want the chart to make your secrets, set this to true and set the next four values. If you don't want to configure your secrets via helm, you can still use the amundsen-oidc-config.yaml as a template |
 | frontEnd.image | string | `"amundsendev/amundsen-frontend"` | The image of the frontend container. |
+| frontEnd.envVars | object | `{}` |Everything set under "envVars" during helm install/upgrade will be parsed as environment variable for this service. |
 | frontEnd.imagePullSecrets | list | `[]` | Optional pod imagePullSecrets [ref](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) |
 | frontEnd.imageTag | string | `"2.3.0"` | The image tag of the frontend container. |
 | frontEnd.nodeSelector | object | `{}` | Frontend pod specific nodeSelector. |
-| frontEnd.oidcEnabled | bool | `false` | To enable auth via OIDC, set this to true. |
+| frontEnd.oidcEnabled **(DEPRECATED)** | bool | `false` | *Use `oidc.enabled` instead.* To enable auth via OIDC, set this to true. |
 | frontEnd.podAnnotations | object | `{}` | Frontend pod specific annotations. |
 | frontEnd.replicas | int | `1` | How many replicas of the frontend service to run. |
 | frontEnd.resources | object | `{}` | See pod resourcing [ref](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/) |
@@ -64,12 +65,17 @@ This is setup templates for deploying [amundsen](https://github.com/amundsen-io/
 | frontEnd.tolerations | list | `[]` | Frontend pod specific tolerations. |
 | metadata.affinity | object | `{}` | Metadata pod specific affinity. |
 | metadata.annotations | object | `{}` | Metadata service specific tolerations. |
+| metadata.envVars | object | `{}` |Everything set under "envVars" during helm install/upgrade will be parsed as environment variable for this service. |
 | metadata.image | string | `"amundsendev/amundsen-metadata"` | The image of the metadata container. |
 | metadata.imagePullSecrets | list | `[]` | Optional pod imagePullSecrets [ref](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) |
 | metadata.imageTag | string | `"2.5.5"` | The image tag of the metadata container. |
-| metadata.neo4jEndpoint | string | `nil` | The name of the service hosting neo4j on your cluster, if you bring your own. You should only need to change this, if you don't use the version in this chart. |
+| metadata.neo4jEndpoint **(DEPRECATED)** | string | `nil` | *Use `metadata.proxy.host` & `metadata.proxy.port` instead.* The name of the service hosting neo4j on your cluster, if you bring your own. You should only need to change this, if you don't use the version in this chart. |
 | metadata.nodeSelector | object | `{}` | Metadata pod specific nodeSelector. |
 | metadata.podAnnotations | object | `{}` | Metadata pod specific annotations. |
+| metadata.proxy.host | string | `nil` | Host name / URI of your proxy. |
+| metadata.proxy.port | string | `nil` | Metadata Proxy Port on which the proxy is running. |
+| metadata.proxy.user | string | `nil` | Credentials - Username of the Metadata proxy. |
+| metadata.proxy.password | string | `nil` | Credentials - Password of the Metadata proxy. |
 | metadata.replicas | int | `1` | How many replicas of the metadata service to run. |
 | metadata.resources | object | `{}` | See pod resourcing [ref](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/) |
 | metadata.serviceName | string | `"metadata"` | The metadata service name. |
@@ -93,17 +99,23 @@ This is setup templates for deploying [amundsen](https://github.com/amundsen-io/
 | neo4j.tolerations | list | `[]` | neo4j specific tolerations. |
 | neo4j.version | string | `"3.3.0"` | The neo4j application version used by amundsen. |
 | nodeSelector | object | `{}` | amundsen application wide configuration of nodeSelector. This applies to search, metadata, frontend and neo4j. Elasticsearch has it's own configuation properties for this. [ref](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector) |
+| oidc.enabled | bool | `false` | Flag to enable/disable the OIDC. Once enabled, everything under oidc.configs will be parsed. Please make sure to set `frontend.config.class: amundsen_application.oidc_config.OidcConfig`, and following variables must also be set under `oidc.[frontend/metadata/search]`. `client_id`, `client_secret`.|
+| oidc.configs | object | `{}` | Everything under oidc.configs will be parsed as environment variables for each service. More information on how to setup these variables can be found here: [verdan/flaskoidc](https://github.com/verdan/flaskoidc#configurations) |
 | podAnnotations | object | `{}` | amundsen application wide configuration of podAnnotations. This applies to search, metadata, frontend and neo4j. Elasticsearch has it's own configuation properties for this. [ref](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) |
 | provider | string | `"aws"` | The cloud provider the app is running in. Used to construct dns hostnames (on aws only). |
 | search.affinity | object | `{}` | Search pod specific affinity. |
 | search.annotations | object | `{}` | Search service specific tolerations. |
-| search.elasticSearchCredentials | object | `{}` | The elasticsearch user and password. This should only be set if you bring your own elasticsearch cluster in which case you must also set elasticsearch.enabled to false |
-| search.elasticsearchEndpoint | string | `nil` | The name of the service hosting elasticsearch on your cluster, if you bring your own. You should only need to change this, if you don't use the version in this chart. |
+| search.elasticSearchCredentials **(DEPRECATED)** | object | `{}` | *Use `search.proxy.user` & `search.proxy.password` instead.* The elasticsearch user and password. This should only be set if you bring your own elasticsearch cluster in which case you must also set elasticsearch.enabled to false |
+| search.elasticsearchEndpoint **(DEPRECATED)** | string | `nil` | *Use `search.proxy.endpoint` instead.* The name of the service hosting elasticsearch on your cluster, if you bring your own. You should only need to change this, if you don't use the version in this chart. |
+| search.envVars | object | `{}` |Everything set under "envVars" during helm install/upgrade will be parsed as environment variable for this service. |
 | search.image | string | `"amundsendev/amundsen-search"` | The image of the search container. |
 | search.imagePullSecrets | list | `[]` | Optional pod imagePullSecrets [ref](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) |
 | search.imageTag | string | `"2.4.0"` | The image tag of the search container. |
 | search.nodeSelector | object | `{}` | Search pod specific nodeSelector. |
 | search.podAnnotations | object | `{}` | Search pod specific annotations. |
+| search.proxy.endpoint | string | `nil` | Endpoint of the search proxy (i.e., ES endpoint etc.). |
+| search.proxy.user | string | `nil` | Credentials / Username to connect to proxy. |
+| search.proxy.password | string | `nil` | Credentials / Password to connect to proxy. |
 | search.replicas | int | `1` | How many replicas of the search service to run. |
 | search.resources | object | `{}` | See pod resourcing [ref](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/) |
 | search.serviceName | string | `"search"` | The search service name. |

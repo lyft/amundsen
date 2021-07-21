@@ -48,15 +48,9 @@ spec:
         image: {{ .Values.search.image }}:{{ .Values.search.imageTag }}
         ports:
         - containerPort: 5001
-        env:
-        - name: PROXY_ENDPOINT
-          value: {{ if .Values.search.elasticsearchEndpoint }}{{ .Values.search.elasticsearchEndpoint }}{{ else }}{{ .Release.Name }}-elasticsearch-client.{{ .Release.Namespace }}.svc.cluster.local{{ end }}
-        {{- if and .Values.search.elasticSearchCredentials (not .Values.elasticsearch.enabled) }}
-        - name: CREDENTIALS_PROXY_USER
-          value: {{ .Values.search.elasticSearchCredentials.user }}
-        - name: CREDENTIALS_PROXY_PASSWORD
-          value: {{ .Values.search.elasticSearchCredentials.password }}
-        {{- end }}
+        envFrom:
+          - configMapRef:
+              name: {{ template "amundsen.fullname" . }}-{{ .Values.search.serviceName }}
         livenessProbe:
           httpGet:
             path: "/healthcheck"

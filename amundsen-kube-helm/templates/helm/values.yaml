@@ -30,6 +30,64 @@ tolerations: []
 # podAnnotations -- amundsen application wide configuration of podAnnotations. This applies to search, metadata, frontend and neo4j. Elasticsearch has it's own configuation properties for this. [ref](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)
 podAnnotations: {}
 
+# Optional Flask App wrapper to wrap your Amundsen Microservices
+# Important: If you are using oidc.enabled=true, then you don't need to set this explicitly,
+# as this will be set for you.
+flaskApp:
+  #  flaskApp.module -- Any custom flask module you may need to implement as a wrapper
+  module: ""
+  #  flaskApp.class -- The class name within the flaskApp.module
+  class: ""
+
+# To enable OIDC,
+#     - please make sure set frontend.config.class: amundsen_application.oidc_config.OidcConfig
+# Following variables must be set for each service under the oidc.frontend, oidc.metadata and oidc.search.
+# - FLASK_OIDC_CLIENT_ID
+# - FLASK_OIDC_CLIENT_SECRET
+# More Information: https://github.com/verdan/flaskoidc#configurations
+oidc:
+  # oidc.enabled -- flag to enable/disable the OIDC.
+  # Once enabled,
+  #   - everything under oidc.configs will be parsed
+  #   - flaskApp.module will be set as 'flaskoidc'
+  #   - flaskApp.class will be set as 'FlaskOIDC'
+  enabled: true
+  frontend:
+    client_id: ""
+    # Do not paste the secret directly here, instead set this via env variable like
+    # `--set oidc.frontend.client_secret=$OIDC_FRONTEND_CLIENT_SECRET`
+    client_secret: ""
+  metadata:
+    client_id: ""
+    # Do not paste the secret directly here, instead set this via env variable like
+    # `--set oidc.metadata.client_secret=$OIDC_METADATA_CLIENT_SECRET`
+    client_secret: ""
+  search:
+    client_id: ""
+    # Do not paste the secret directly here, instead set this via env variable like
+    # `--set oidc.search.client_secret=$OIDC_SEARCH_CLIENT_SECRET`
+    client_secret: ""
+
+  # Everything under oidc.configs will be parsed as environment variables for each service.
+  configs:
+    # oidc.configs.FLASK_OIDC_PROVIDER_NAME
+    FLASK_OIDC_PROVIDER_NAME: google
+
+    # oidc.configs.FLASK_OIDC_SCOPES
+    FLASK_OIDC_SCOPES: "openid email profile"
+
+    # oidc.configs.FLASK_OIDC_USER_ID_FIELD
+    FLASK_OIDC_USER_ID_FIELD: email
+
+    # oidc.configs.FLASK_OIDC_REDIRECT_URI
+    FLASK_OIDC_REDIRECT_URI: "/auth"
+
+    # oidc.configs.FLASK_OIDC_CONFIG_URL
+    FLASK_OIDC_CONFIG_URL: "https://accounts.google.com/.well-known/openid-configuration"
+
+    # oidc.configs.FLASK_OIDC_WHITELISTED_ENDPOINTS
+    FLASK_OIDC_WHITELISTED_ENDPOINTS: "status,healthcheck,health"
+
 # Configuration related to the search service.
 search:
   # search.serviceName -- The search service name.
@@ -38,13 +96,17 @@ search:
   # search.serviceType -- The search service type. See service types [ref](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)
   serviceType: ClusterIP
 
-  # search.elasticsearchEndpoint -- The name of the service hosting elasticsearch on your cluster, if you bring your own. You should only need to change this, if you don't use the version in this chart.
-  elasticsearchEndpoint:
+  # Proxy information needed for the search
+  proxy:
+    # search.proxy.endpoint -- Endpoint of the search proxy (i.e., ES endpoint etc.)
+    # You should only need to change this, if you don't use the version in this chart.
+    endpoint:
 
-  # search.elasticSearchCredentials -- The elasticsearch user and password. This should only be set if you bring your own elasticsearch cluster in which case you must also set elasticsearch.enabled to false
-  elasticSearchCredentials: {}
-  #  user:
-  #  password:
+    # The user and password of the search proxy. This should only be set if you bring your own proxy or ES cluster in which case you must also set elasticsearch.enabled to false
+    # search.proxy.user --
+    user:
+    # search.proxy.password --
+    password:
 
   # search.image -- The image of the search container.
   image: amundsendev/amundsen-search
@@ -83,6 +145,9 @@ search:
   # search.podAnnotations -- Search pod specific annotations.
   podAnnotations: {}
 
+  # Everything set under "envVars" during helm install/upgrade will be parsed as environment variable for this service.
+  envVars: {}
+
 # Configuration related to the metadata service.
 metadata:
   # metadata.serviceName -- The metadata service name.
@@ -91,8 +156,20 @@ metadata:
   # metadata.serviceType -- The metadata service type. See service types [ref](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)
   serviceType: ClusterIP
 
-  # metadata.neo4jEndpoint -- The name of the service hosting neo4j on your cluster, if you bring your own. You should only need to change this, if you don't use the version in this chart.
-  neo4jEndpoint:
+  # Metadata proxy information including host, port, user and password.
+  proxy:
+
+    # metadata.proxy.host -- host name / URI of your proxy
+    host:
+
+    # metadata.proxy.port -- Port on which the proxy is running
+    port:
+
+    # metadata.proxy.user -- Credentials - Username of the proxy
+    user:
+
+    # metadata.proxy.password -- Credentials - Password of the proxy
+    password:
 
   # metadata.image -- The image of the metadata container.
   image: amundsendev/amundsen-metadata
@@ -131,6 +208,9 @@ metadata:
   # metadata.podAnnotations -- Metadata pod specific annotations.
   podAnnotations: {}
 
+  # Everything set under "envVars" during helm install/upgrade will be parsed as environment variable for this service.
+  envVars: {}
+
 # Configuration related to the frontEnd service.
 frontEnd:
   # frontEnd.serviceName -- The frontend service name.
@@ -158,26 +238,9 @@ frontEnd:
   # frontEnd.baseUrl -- used by notifications util to provide links to amundsen pages in emails.
   baseUrl: http://localhost
 
-  # frontEnd.oidcEnabled -- To enable auth via OIDC, set this to true.
-  oidcEnabled: false
-
-  # frontEnd.createOidcSecret -- OIDC needs some configuration. If you want the chart to make your secrets, set this to true and set the next four values. If you don't want to configure your secrets via helm, you can still use the amundsen-oidc-config.yaml as a template
-  createOidcSecret: false
-
-  # frontEnd.OIDC_CLIENT_ID -- The client id for OIDC.
-  OIDC_CLIENT_ID:
-
-  # frontEnd.OIDC_CLIENT_SECRET -- The client secret for OIDC.
-  OIDC_CLIENT_SECRET: ""
-
-  # frontEnd.OIDC_ORG_URL -- The organization URL for OIDC.
-  OIDC_ORG_URL:
-
-  # frontEnd.OIDC_AUTH_SERVER_ID -- The authorization server id for OIDC.
-  OIDC_AUTH_SERVER_ID:
-
-  # frontEnd.OVERWRITE_REDIRECT_URI -- The redirect uri for OIDC.
-  OVERWRITE_REDIRECT_URI:
+  # frontEnd.config.class -- Optional Config class.
+  config:
+    class:
 
   # frontEnd.resources -- See pod resourcing [ref](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
   resources: {}
@@ -202,6 +265,9 @@ frontEnd:
 
   # frontEnd.podAnnotations -- Frontend pod specific annotations.
   podAnnotations: {}
+
+  # Everything set under "envVars" during helm install/upgrade will be parsed as environment variable for this service.
+  envVars: {}
 
 # Configuration related to neo4j.
 neo4j:

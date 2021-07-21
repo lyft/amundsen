@@ -39,12 +39,6 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
       {{- end }}
-      volumes:
-      {{- if .Values.frontEnd.oidcEnabled }}
-        - name: oidc-config
-          secret:
-            secretName: oidc-config
-      {{- end }}
     {{- if .Values.frontEnd.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.frontEnd.imagePullSecrets | indent 8 }}
@@ -55,38 +49,9 @@ spec:
         imagePullPolicy: Always
         ports:
           - containerPort: 5000
-        env:
-          - name: FRONTEND_BASE
-            value: {{ .Values.frontEnd.baseUrl }}
-          - name: SEARCHSERVICE_BASE
-            value: http://{{ .Chart.Name }}-{{ .Values.search.serviceName }}:5001
-          - name: METADATASERVICE_BASE
-            value: http://{{ .Chart.Name }}-{{ .Values.metadata.serviceName }}:5002
-          - name: LONG_RANDOM_STRING
-            value: {{ quote .Values.LONG_RANDOM_STRING }}
-        {{- if .Values.frontEnd.oidcEnabled }}
-          - name: FRONTEND_SVC_CONFIG_MODULE_CLASS
-            value: amundsen_application.oidc_config.OidcConfig
-          - name: FLASK_OIDC_WHITELISTED_ENDPOINTS
-            value: status,healthcheck,health,logout
-          - name: SQLALCHEMY_DATABASE_URI
-            value: sqlite:///sessions.db
-          - name: APP_WRAPPER
-            value: flaskoidc
-          - name: APP_WRAPPER_CLASS
-            value: FlaskOIDC
-          - name: OIDC_CLIENT_SECRETS
-            value: /etc/client_secrets.json
-          {{- if .Values.frontEnd.OVERWRITE_REDIRECT_URI }}
-          - name: OVERWRITE_REDIRECT_URI
-            value: {{ .Values.frontEnd.OVERWRITE_REDIRECT_URI }}
-          {{- end }}
-          - name: FLASK_OIDC_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: oidc-config
-                key: OIDC_CLIENT_SECRET
-        {{- end }}
+        envFrom:
+          - configMapRef:
+              name: {{ template "amundsen.fullname" . }}-{{ .Values.frontEnd.serviceName }}
         command: ["gunicorn"]
         args: ['-w', '4', '--bind', ':5000', 'amundsen_application.wsgi']
         readinessProbe:
@@ -107,12 +72,6 @@ spec:
           timeoutSeconds: 1
           successThreshold: 1
           failureThreshold: 5
-        volumeMounts:
-        {{- if .Values.frontEnd.oidcEnabled }}
-          - name: oidc-config
-            mountPath: /etc/client_secrets.json
-            subPath: client_secrets.json
-        {{- end }}
         {{- with .Values.metadata.resources }}
         resources:
 {{ toYaml . | indent 10 }}

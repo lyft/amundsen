@@ -37,12 +37,6 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
       {{- end }}
-      volumes:
-      {{- if .Values.frontEnd.oidcEnabled }}
-        - name: oidc-config
-          secret:
-            secretName: oidc-config
-      {{- end }}
     {{- if .Values.metadata.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.metadata.imagePullSecrets | indent 8 }}
@@ -53,18 +47,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5002
-        env:
-        - name: PROXY_HOST
-          value: {{ if .Values.metadata.neo4jEndpoint }}{{ .Values.metadata.neo4jEndpoint }}{{ else }}bolt://neo4j.{{ .Release.Namespace }}.svc.cluster.local{{ end }}
-        {{- if .Values.frontEnd.oidcEnabled }}
-        - name: FLASK_OIDC_CLIENT_SECRETS
-          value: /etc/client_secrets.json
-        - name: FLASK_OIDC_SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: oidc-config
-              key: OIDC_CLIENT_SECRET
-        {{- end }}
+        envFrom:
+          - configMapRef:
+              name: {{ template "amundsen.fullname" . }}-{{ .Values.metadata.serviceName }}
         livenessProbe:
           httpGet:
             path: "/healthcheck"
@@ -74,12 +59,6 @@ spec:
           timeoutSeconds: 1
           successThreshold: 1
           failureThreshold: 5
-        volumeMounts:
-        {{- if .Values.frontEnd.oidcEnabled }}
-          - name: oidc-config
-            mountPath: /etc/client_secrets.json
-            subPath: client_secrets.json
-        {{- end }}
         {{- with .Values.metadata.resources }}
         resources:
 {{ toYaml . | indent 10 }}
