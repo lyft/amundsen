@@ -130,6 +130,10 @@ const configDefault: AppConfig = {
           displayName: 'Hive',
           iconClass: 'icon-hive',
         },
+        oracle: {
+          displayName: 'Oracle',
+          iconClass: 'icon-oracle',
+        },
         presto: {
           displayName: 'Presto',
           iconClass: 'icon-presto',

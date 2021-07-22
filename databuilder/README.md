@@ -253,6 +253,26 @@ job = DefaultJob(
 job.launch()
 ```
 
+#### [OracleMetadataExtractor](https://github.com/amundsen-io/amundsen/blob/main/databuilder/databuilder/extractor/oracle_metadata_extractor.py "OracleMetadataExtractor")
+An extractor that extracts table and column metadata including database, schema, table name, table description, column name and column description from the Oracle database.
+
+By default, the Oracle database name is used as the cluster name. To override this, set `USE_CATALOG_AS_CLUSTER_NAME` to `False`, and `CLUSTER_KEY` to what you wish to use as the cluster name.
+
+The `where_clause_suffix` below should define which schemas you'd like to query. The SQL query driving the extraction is defined [here](https://github.com/amundsen-io/amundsen/blob/main/databuilder/databuilder/extractor/oracle_metadata_extractor.py)
+
+```python
+job_config = ConfigFactory.from_dict({
+    'extractor.oracle_metadata.{}'.format(OracleMetadataExtractor.WHERE_CLAUSE_SUFFIX_KEY): where_clause_suffix,
+    'extractor.oracle_metadata.{}'.format(OracleMetadataExtractor.USE_CATALOG_AS_CLUSTER_NAME): True,
+    'extractor.oracle_metadata.extractor.sqlalchemy.{}'.format(SQLAlchemyExtractor.CONN_STRING): connection_string()})
+job = DefaultJob(
+    conf=job_config,
+    task=DefaultTask(
+        extractor=OracleMetadataExtractor(),
+        loader=AnyLoader()))
+job.launch()
+```
+
 #### [PostgresMetadataExtractor](https://github.com/amundsen-io/amundsen/blob/main/databuilder/databuilder/extractor/postgres_metadata_extractor.py "PostgresMetadataExtractor")
 An extractor that extracts table and column metadata including database, schema, table name, table description, column name and column description from a Postgres or Redshift database.
 
