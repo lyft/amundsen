@@ -79,8 +79,12 @@ rds = [
     'mysqlclient>=1.3.6,<3'
 ]
 
+salesforce = [
+    'simple-salesforce>=1.11.2'
+]
+
 all_deps = requirements + requirements_dev + kafka + cassandra + glue + snowflake + athena + \
-    bigquery + jsonpath + db2 + dremio + druid + spark + feast + neptune + rds + atlas
+    bigquery + jsonpath + db2 + dremio + druid + spark + feast + neptune + rds + atlas + salesforce
 
 setup(
     name='amundsen-databuilder',
@@ -111,7 +115,8 @@ setup(
         'delta': spark,
         'feast': feast,
         'atlas': atlas,
-        'rds': rds
+        'rds': rds,
+        'salesforce': salesforce,
     },
     classifiers=[
         'Programming Language :: Python :: 3.6',

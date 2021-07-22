@@ -1449,6 +1449,45 @@ job = DefaultJob(conf=job_config,
 job.launch()
 ```
 
+### [SalesForceExtractor](./databuilder/extractor/salesforce_extractor.py)
+
+The included `SalesForceExtractor` provides support for extracting basic SalesForce object metadata 
+from [SalesForce](https://developer.salesforce.com/).
+
+This extractor depends on the Python client [simple-salesforce](https://github.com/simple-salesforce/simple-salesforce).
+
+A sample job config is shown below. Some notes about the configuration keys. 
+
+This extractor currently only supports connecting to SalesForce with a username, password, and security token. 
+You pass these values in as configuration keys. 
+
+The extractor will by default pull all SalesForce metadata objects which is likely not what you want. To only pull
+specific SalesForce metadata objects specify their names with the `SalesForceExtractor.OBJECT_NAMES_KEY`.
+
+There is no real notion of a schema for the SalesForce metadata objects but you still need to specify one. 
+
+```python
+from databuilder.extractor.salesforce_extractor import SalesForceExtractor
+extractor = SalesForceExtractor()
+task = SalesForceExtractor(extractor=extractor, loader=FsNeo4jCSVLoader())
+
+job_config = ConfigFactory.from_dict({
+    f"extractor.salesforce_metadata.{SalesForceExtractor.USERNAME_KEY}": "user",
+    f"extractor.salesforce_metadata.{SalesForceExtractor.PASSWORD_KEY}": "password",
+    f"extractor.salesforce_metadata.{SalesForceExtractor.SECURITY_TOKEN_KEY}": "token",
+    f"extractor.salesforce_metadata.{SalesForceExtractor.SCHEMA_KEY}": "default",
+    f"extractor.salesforce_metadata.{SalesForceExtractor.CLUSTER_KEY}": "gold",
+    f"extractor.salesforce_metadata.{SalesForceExtractor.DATABASE_KEY}": "salesforce",
+    f"extractor.salesforce_metadata.{SalesForceExtractor.OBJECT_NAMES_KEY}": ["Account", "Profile"]
+})
+
+job = DefaultJob(conf=job_config,
+                 task=task,
+                 publisher=Neo4jCsvPublisher())
+job.launch()
+```
+
+
 ## List of transformers
 
 Transformers are implemented by subclassing [Transformer](https://github.com/amundsen-io/amundsen/blob/main/databuilder/databuilder/transformer/base_transformer.py#L12 "Transformer") and implementing `transform(self, record)`. A transformer can:
