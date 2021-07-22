@@ -6,7 +6,7 @@ The following instructions are for setting up a version of Amundsen using Docker
 1. Make sure you have at least 3GB available to docker. Install `docker` and  `docker-compose`.
 2. Clone [this repo](https://github.com/amundsen-io/amundsen) and its submodules by running:
    ```bash
-   $ git clone --recursive git@github.com:amundsen-io/amundsen.git
+   $ git clone --recursive https://github.com/amundsen-io/amundsen.git
    ```
 3. Enter the cloned directory and run below:
     ```bash
